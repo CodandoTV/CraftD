@@ -49,8 +49,8 @@ class CraftDButtonComponent @JvmOverloads constructor(
             binding.button.isAllCaps = isTextAllCaps
         }
 
-        binding.button.layoutParams = buttonProperties.fillMaxSize?.let { isfillMaxSize ->
-            LayoutParams(
+        buttonProperties.fillMaxSize?.let { isfillMaxSize ->
+            binding.button.layoutParams = LayoutParams(
                 if (isfillMaxSize) {
                     ViewGroup.LayoutParams.MATCH_PARENT
                 } else {

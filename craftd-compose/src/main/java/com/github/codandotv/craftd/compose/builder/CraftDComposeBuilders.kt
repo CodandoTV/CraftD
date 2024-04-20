@@ -1,8 +1,8 @@
-package com.github.rviannaoliveira.dynamic.compose.presentation.builder
+package com.github.codandotv.craftd.compose.builder
 
-import com.github.rviannaoliveira.dynamic.compose.presentation.ui.button.CraftDButtonComposeBuilder
-import com.github.rviannaoliveira.dynamic.compose.presentation.ui.empty.CraftDEmptyComposeRender
-import com.github.rviannaoliveira.dynamic.compose.presentation.ui.text.CraftDTextComposeRender
+import com.github.codandotv.craftd.compose.ui.button.CraftDButtonComposeBuilder
+import com.github.codandotv.craftd.compose.ui.empty.CraftDEmptyComposeRender
+import com.github.codandotv.craftd.compose.ui.text.CraftDTextComposeRender
 
 class CraftDComposeBuilders {
 

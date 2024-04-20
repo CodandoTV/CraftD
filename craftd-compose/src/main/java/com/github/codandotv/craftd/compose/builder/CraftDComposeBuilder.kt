@@ -1,4 +1,4 @@
-package com.github.rviannaoliveira.dynamic.compose.presentation.builder
+package com.github.codandotv.craftd.compose.builder
 
 import androidx.compose.runtime.Composable
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
