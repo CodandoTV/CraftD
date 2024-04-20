@@ -1,4 +1,4 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui
+package com.github.codandotv.craftd.xml.ui
 
 import android.util.SparseArray
 import android.view.ViewGroup
@@ -26,7 +26,7 @@ class CraftDViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Craft
     /**
      * List from Renderers to each component with SparseArray is intended to be more memory-efficient than a HashMap
      */
-    private var renderers = SparseArray<ViewRenderer<RecyclerView.ViewHolder>>()
+    private var renderers = SparseArray<CraftDViewRenderer<RecyclerView.ViewHolder>>()
 
     /**
      * method that take each viewRenderer until viewType from CraftDComponent
@@ -68,16 +68,16 @@ class CraftDViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Craft
     /**
      * Is required register the ViewRender to show on the screen
      */
-    override fun registerRenderer(renderer: ViewRenderer<*>) {
+    override fun registerRenderer(renderer: CraftDViewRenderer<*>) {
         if (renderers.get(renderer.viewType) == null) {
-            renderers.put(renderer.viewType, renderer as ViewRenderer<RecyclerView.ViewHolder>)
+            renderers.put(renderer.viewType, renderer as CraftDViewRenderer<RecyclerView.ViewHolder>)
         }
     }
 
     /**
      * Is required register the ViewRender to show on the screen and received a list of renders
      */
-    override fun registerRenderers(renderers: List<ViewRenderer<*>>) {
+    override fun registerRenderers(renderers: List<CraftDViewRenderer<*>>) {
         renderers.forEach { registerRenderer(it) }
     }
 
@@ -103,7 +103,7 @@ class CraftDViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Craft
         } ?: notifyItemChanged(position)
     }
 
-    private fun findRenderOrNull(key: String): ViewRenderer<RecyclerView.ViewHolder>? {
+    private fun findRenderOrNull(key: String): CraftDViewRenderer<RecyclerView.ViewHolder>? {
         renderers.forEach { _, value ->
             if (value.key == key) return value
         }

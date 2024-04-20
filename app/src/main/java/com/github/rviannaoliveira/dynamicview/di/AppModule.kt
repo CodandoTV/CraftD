@@ -1,6 +1,6 @@
 package com.github.rviannaoliveira.dynamicview.di
 
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.CraftDViewAdapter
+import com.github.codandotv.craftd.xml.ui.CraftDViewAdapter
 import com.github.rviannaoliveira.dynamicview.compose.presentation.DynamicComposeViewModel
 import com.github.rviannaoliveira.dynamicview.data.DynamicRepository
 import com.github.rviannaoliveira.dynamicview.data.DynamicRepositoryImpl

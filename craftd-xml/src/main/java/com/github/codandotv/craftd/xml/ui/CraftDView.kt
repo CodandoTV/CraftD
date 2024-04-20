@@ -1,11 +1,11 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui
+package com.github.codandotv.craftd.xml.ui
 
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 
 
 interface CraftDView {
-    fun registerRenderer(renderer: ViewRenderer<*>)
-    fun registerRenderers(renderers: List<ViewRenderer<*>>)
+    fun registerRenderer(renderer: CraftDViewRenderer<*>)
+    fun registerRenderers(renderers: List<CraftDViewRenderer<*>>)
     fun setViewObjectDiff(properties: List<SimpleProperties>)
     fun updateViewAt(properties: SimpleProperties, index: Int)
     fun notifyPositionRemovedAt(position: Int)

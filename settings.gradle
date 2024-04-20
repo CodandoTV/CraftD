@@ -11,3 +11,4 @@ rootProject.name = "DynamicView"
 include ':app'
 include ':dynamic'
 include ':craftd-core'
+include ':craftd-xml'

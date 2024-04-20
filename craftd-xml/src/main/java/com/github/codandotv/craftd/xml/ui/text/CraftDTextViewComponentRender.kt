@@ -1,4 +1,4 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui.text
+package com.github.codandotv.craftd.xml.ui.text
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,10 +7,10 @@ import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.ViewRenderer
+import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
 
 class CraftDTextViewComponentRender(override var onClickListener: CraftDViewListener?) :
-    ViewRenderer<CraftDTextViewComponentRender.TextViewHolder>(
+    CraftDViewRenderer<CraftDTextViewComponentRender.TextViewHolder>(
         CraftDComponent.TEXT_VIEW_COMPONENT.key, CraftDComponent.TEXT_VIEW_COMPONENT.ordinal
     ) {
 

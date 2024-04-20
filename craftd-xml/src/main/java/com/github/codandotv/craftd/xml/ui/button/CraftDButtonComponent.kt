@@ -1,4 +1,4 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui.button
+package com.github.codandotv.craftd.xml.ui.button
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -12,7 +12,7 @@ import androidx.core.content.ContextCompat
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
 import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
 import com.github.codandotv.craftd.androidcore.extensions.getAttrColorRes
-import com.github.rviannaoliveira.dynamic.databinding.ButtonBinding
+import com.github.codandotv.craftd.xml.databinding.ButtonBinding
 
 class CraftDButtonComponent @JvmOverloads constructor(
     context: Context,

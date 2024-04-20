@@ -1,4 +1,4 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui.text;
+package com.github.codandotv.craftd.xml.ui.text;
 
 import android.content.Context
 import android.graphics.Typeface
@@ -17,7 +17,7 @@ import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
 import com.github.codandotv.craftd.androidcore.domain.CraftDTextStyle
 import com.github.codandotv.craftd.androidcore.extensions.getAttrColorRes
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.button.parseColor
+import com.github.codandotv.craftd.xml.ui.button.parseColor
 
 
 class CraftDTextViewComponent @JvmOverloads constructor(

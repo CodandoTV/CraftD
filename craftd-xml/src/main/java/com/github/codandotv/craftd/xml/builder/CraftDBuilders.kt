@@ -1,17 +1,17 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.builder
+package com.github.codandotv.craftd.xml.builder
 
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.ViewRenderer
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.button.ButtonComponentRender
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.text.CraftDTextViewComponentRender
+import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
+import com.github.codandotv.craftd.xml.ui.button.ButtonComponentRender
+import com.github.codandotv.craftd.xml.ui.text.CraftDTextViewComponentRender
 
 class CraftDBuilders {
     fun getBuilderRenders(
         simpleProperties: List<SimpleProperties>,
-        customDynamicBuilderList: List<ViewRenderer<*>> = emptyList(),
+        customDynamicBuilderList: List<CraftDViewRenderer<*>> = emptyList(),
         onAction: CraftDViewListener
-    ): List<ViewRenderer<*>> {
+    ): List<CraftDViewRenderer<*>> {
         val allViewRenders = (customDynamicBuilderList + listOf(
             CraftDTextViewComponentRender(onAction),
             ButtonComponentRender(onAction)
