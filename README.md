@@ -2,7 +2,7 @@
 
 > A Server Driven UI library for Android.
 
-Inspired by the [RendererRecyclerViewAdapter](https://github.com/vivchar/RendererRecyclerViewAdapter).
+Inspired by the [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
 
 
 ## Setup
@@ -22,7 +22,7 @@ dependencyResolutionManagement {
 
 ```kotlin
 dependencies {
-    implementation("com.github.codandotv:CraftD:{latest version}")
+    implementation("com.github.codandotv:CraftD-android:{latest version}")
 }
 ```
 
