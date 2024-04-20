@@ -3,16 +3,16 @@ package com.github.rviannaoliveira.dynamic.compose.presentation.ui
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.github.rviannaoliveira.dynamic.compose.presentation.builder.DynamicComposeBuilders
-import com.github.rviannaoliveira.dynamic.core.data.model.action.DynamicActionProperties
-import com.github.rviannaoliveira.dynamic.core.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties
+import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
+import com.github.rviannaoliveira.dynamic.compose.presentation.builder.CraftDComposeBuilders
 
 @Composable
 fun DynamicComposeController(
     properties: List<SimpleProperties>,
     modifier: Modifier = Modifier,
-    dynamicBuilder : DynamicComposeBuilders,
-    onAction: (DynamicActionProperties) -> Unit
+    dynamicBuilder : CraftDComposeBuilders,
+    onAction: (ActionProperties) -> Unit
 ) {
     LazyColumn(
         modifier

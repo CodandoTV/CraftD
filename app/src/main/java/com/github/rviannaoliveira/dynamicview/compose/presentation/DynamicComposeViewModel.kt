@@ -2,7 +2,7 @@ package com.github.rviannaoliveira.dynamicview.compose.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.rviannaoliveira.dynamic.core.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.rviannaoliveira.dynamicview.data.DynamicRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

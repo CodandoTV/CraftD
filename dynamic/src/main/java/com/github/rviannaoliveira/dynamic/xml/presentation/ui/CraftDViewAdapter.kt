@@ -6,21 +6,22 @@ import android.widget.FrameLayout
 import androidx.core.util.forEach
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
-import com.github.rviannaoliveira.dynamic.core.presentation.SimplePropertiesItemCallback
-import com.github.rviannaoliveira.dynamic.core.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.presentation.CraftDSimplePropertiesItemCallback
 
 /**
- * The creation I use with base/inspiration two papers :
+ * The creation I use with base/inspiration tree papers :
+ * https://medium.com/@rodrigo.vianna.oliveira/the-perfect-d-d-party-for-your-android-application-8b5919661605
  * https://medium.com/android-news/simplifying-the-work-with-recyclerview-a64027bca8c3
  * https://medium.com/gustavo-santorio/android-dynamic-views-with-recyclerview-c2974c96a85f
  * Adapter that use viewRenders with type from ViewType
  */
-class DynamicViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), DynamicView {
+class CraftDViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), CraftDView {
     /**
      * Helper for computing the difference between two lists via DiffUtil on a background thread
      */
     private val differ: AsyncListDiffer<SimpleProperties?> =
-        AsyncListDiffer(this, SimplePropertiesItemCallback)
+        AsyncListDiffer(this, CraftDSimplePropertiesItemCallback)
 
     /**
      * List from Renderers to each component with SparseArray is intended to be more memory-efficient than a HashMap
@@ -28,10 +29,10 @@ class DynamicViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(), Dyna
     private var renderers = SparseArray<ViewRenderer<RecyclerView.ViewHolder>>()
 
     /**
-     * method that take each viewRenderer until viewType from DynamicComponent
+     * method that take each viewRenderer until viewType from CraftDComponent
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val holder = renderers.get(viewType)?.createViewHolder(parent) ?: EmptyViewHolder(
+        val holder = renderers.get(viewType)?.createViewHolder(parent) ?: CraftDEmptyViewHolder(
             FrameLayout(parent.context)
         )
         holder.itemView.layoutParams = ViewGroup.LayoutParams(

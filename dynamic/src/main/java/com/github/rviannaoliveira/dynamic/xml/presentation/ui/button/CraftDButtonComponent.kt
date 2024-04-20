@@ -9,12 +9,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
-import com.github.rviannaoliveira.dynamic.core.data.model.button.ButtonProperties
-import com.github.rviannaoliveira.dynamic.core.domain.Align
-import com.github.rviannaoliveira.dynamic.core.extensions.getAttrColorRes
+import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
+import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
+import com.github.codandotv.craftd.androidcore.extensions.getAttrColorRes
 import com.github.rviannaoliveira.dynamic.databinding.ButtonBinding
 
-class ButtonComponent @JvmOverloads constructor(
+class CraftDButtonComponent @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
@@ -66,12 +66,12 @@ class ButtonComponent @JvmOverloads constructor(
         buttonProperties.align.toGravity()
     }
 
-    private fun Align?.toGravity() = when (this) {
-        Align.CENTER -> {
+    private fun CraftDAlign?.toGravity() = when (this) {
+        CraftDAlign.CENTER -> {
             gravity = Gravity.CENTER
         }
 
-        Align.RIGHT -> {
+        CraftDAlign.RIGHT -> {
             gravity = Gravity.RIGHT
         }
 

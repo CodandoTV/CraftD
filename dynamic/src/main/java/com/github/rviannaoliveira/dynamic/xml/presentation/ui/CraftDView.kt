@@ -1,8 +1,9 @@
 package com.github.rviannaoliveira.dynamic.xml.presentation.ui
 
-import com.github.rviannaoliveira.dynamic.core.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 
-interface DynamicView {
+
+interface CraftDView {
     fun registerRenderer(renderer: ViewRenderer<*>)
     fun registerRenderers(renderers: List<ViewRenderer<*>>)
     fun setViewObjectDiff(properties: List<SimpleProperties>)

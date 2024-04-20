@@ -12,7 +12,7 @@
         android:name="com.github.rviannaoliveira.dynamicview.CustomApplication"
         android:exported="false">
         <activity
-            android:name="com.github.rviannaoliveira.dynamicview.xml.presentation.DynamicComponentActivity"
+            android:name="com.github.rviannaoliveira.dynamicview.xml.presentation.CraftDComponentActivity"
             android:exported="true">
 
         </activity>

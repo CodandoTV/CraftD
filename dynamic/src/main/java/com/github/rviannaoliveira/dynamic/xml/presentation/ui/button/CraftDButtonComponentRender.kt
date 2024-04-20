@@ -4,19 +4,19 @@ import android.graphics.Color.parseColor
 import android.view.ViewGroup
 import androidx.compose.ui.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
-import com.github.rviannaoliveira.dynamic.core.data.convertToVO
-import com.github.rviannaoliveira.dynamic.core.data.model.base.SimpleProperties
-import com.github.rviannaoliveira.dynamic.core.data.model.button.ButtonProperties
-import com.github.rviannaoliveira.dynamic.core.presentation.DynamicComponent
-import com.github.rviannaoliveira.dynamic.core.presentation.DynamicViewListener
+import com.github.codandotv.craftd.androidcore.data.convertToVO
+import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
+import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
+import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.rviannaoliveira.dynamic.xml.presentation.ui.ViewRenderer
 
-class ButtonComponentRender(override var onClickListener: DynamicViewListener?) :
+class ButtonComponentRender(override var onClickListener: CraftDViewListener?) :
     ViewRenderer<ButtonComponentRender.ButtonHolder>(
-        DynamicComponent.BUTTON_COMPONENT.key, DynamicComponent.BUTTON_COMPONENT.ordinal
+        CraftDComponent.BUTTON_COMPONENT.key, CraftDComponent.BUTTON_COMPONENT.ordinal
     ) {
 
-    inner class ButtonHolder(val button: ButtonComponent) : RecyclerView.ViewHolder(button)
+    inner class ButtonHolder(val button: CraftDButtonComponent) : RecyclerView.ViewHolder(button)
 
     override fun bindView(model: SimpleProperties, holder: ButtonHolder, position: Int) {
         val buttonProperties = model.value.convertToVO<ButtonProperties>()
@@ -30,7 +30,7 @@ class ButtonComponentRender(override var onClickListener: DynamicViewListener?) 
     }
 
     override fun createViewHolder(parent: ViewGroup): ButtonHolder {
-        return ButtonHolder(ButtonComponent(parent.context))
+        return ButtonHolder(CraftDButtonComponent(parent.context))
     }
 }
 

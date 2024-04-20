@@ -5,7 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import com.github.rviannaoliveira.dynamic.compose.presentation.builder.DynamicComposeBuilders
+import com.github.rviannaoliveira.dynamic.compose.presentation.builder.CraftDComposeBuilders
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.DynamicComposeController
 
 @Composable
@@ -14,7 +14,7 @@ fun InitialScreen(
 ) {
     val properties by vm.properties.collectAsStateWithLifecycle()
     val dynamicBuilder = remember {
-        DynamicComposeBuilders()
+        CraftDComposeBuilders()
     }
     LaunchedEffect(Unit) {
         vm.loadProperties()

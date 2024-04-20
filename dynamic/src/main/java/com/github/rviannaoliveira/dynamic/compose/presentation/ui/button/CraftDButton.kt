@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
+import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.text.DynamicText
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.toArrangementCompose
-import com.github.rviannaoliveira.dynamic.core.data.model.button.ButtonProperties
-import com.github.rviannaoliveira.dynamic.core.data.model.text.TextProperties
 
 @Composable
 fun DynamicButton(

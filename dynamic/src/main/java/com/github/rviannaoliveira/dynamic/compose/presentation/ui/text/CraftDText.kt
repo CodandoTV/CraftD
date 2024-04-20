@@ -10,10 +10,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import androidx.core.text.HtmlCompat
+import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
+import com.github.codandotv.craftd.androidcore.extensions.empty
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.toAlignCompose
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.toTextStyle
-import com.github.rviannaoliveira.dynamic.core.data.model.text.TextProperties
-import com.github.rviannaoliveira.dynamic.core.extensions.empty
 import com.github.rviannaoliveira.dynamic.xml.presentation.ui.button.parseColorCompose
 
 @Composable

@@ -2,19 +2,19 @@ package com.github.rviannaoliveira.dynamic.xml.presentation.ui.text
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.rviannaoliveira.dynamic.core.data.convertToVO
-import com.github.rviannaoliveira.dynamic.core.data.model.base.SimpleProperties
-import com.github.rviannaoliveira.dynamic.core.data.model.text.TextProperties
-import com.github.rviannaoliveira.dynamic.core.presentation.DynamicComponent
-import com.github.rviannaoliveira.dynamic.core.presentation.DynamicViewListener
+import com.github.codandotv.craftd.androidcore.data.convertToVO
+import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
+import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
+import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
+import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.rviannaoliveira.dynamic.xml.presentation.ui.ViewRenderer
 
-class TextViewComponentRender(override var onClickListener: DynamicViewListener?) :
-    ViewRenderer<TextViewComponentRender.TextViewHolder>(
-        DynamicComponent.TEXT_VIEW_COMPONENT.key, DynamicComponent.TEXT_VIEW_COMPONENT.ordinal
+class CraftDTextViewComponentRender(override var onClickListener: CraftDViewListener?) :
+    ViewRenderer<CraftDTextViewComponentRender.TextViewHolder>(
+        CraftDComponent.TEXT_VIEW_COMPONENT.key, CraftDComponent.TEXT_VIEW_COMPONENT.ordinal
     ) {
 
-    inner class TextViewHolder(val textView: TextViewComponent) : RecyclerView.ViewHolder(textView)
+    inner class TextViewHolder(val textView: CraftDTextViewComponent) : RecyclerView.ViewHolder(textView)
 
     override fun bindView(model: SimpleProperties, holder: TextViewHolder, position: Int) {
         val textProperties = model.value.convertToVO<TextProperties>()
@@ -29,6 +29,6 @@ class TextViewComponentRender(override var onClickListener: DynamicViewListener?
     }
 
     override fun createViewHolder(parent: ViewGroup): TextViewHolder {
-        return TextViewHolder(TextViewComponent(parent.context))
+        return TextViewHolder(CraftDTextViewComponent(parent.context))
     }
 }

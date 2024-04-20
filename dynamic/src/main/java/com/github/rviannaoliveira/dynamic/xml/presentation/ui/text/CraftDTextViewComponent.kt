@@ -13,14 +13,14 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
-import com.github.rviannaoliveira.dynamic.core.data.model.text.TextProperties
-import com.github.rviannaoliveira.dynamic.core.domain.Align
-import com.github.rviannaoliveira.dynamic.core.domain.DynamicTextStyle
-import com.github.rviannaoliveira.dynamic.core.extensions.getAttrColorRes
+import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
+import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
+import com.github.codandotv.craftd.androidcore.domain.CraftDTextStyle
+import com.github.codandotv.craftd.androidcore.extensions.getAttrColorRes
 import com.github.rviannaoliveira.dynamic.xml.presentation.ui.button.parseColor
 
 
-class TextViewComponent @JvmOverloads constructor(
+class CraftDTextViewComponent @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -74,12 +74,12 @@ class TextViewComponent @JvmOverloads constructor(
         }
     }
 
-    private fun Align?.toGravity() = when (this) {
-        Align.CENTER -> {
+    private fun CraftDAlign?.toGravity() = when (this) {
+        CraftDAlign.CENTER -> {
             gravity = Gravity.CENTER
         }
 
-        Align.RIGHT -> {
+        CraftDAlign.RIGHT -> {
             gravity = Gravity.RIGHT
         }
 
@@ -87,10 +87,10 @@ class TextViewComponent @JvmOverloads constructor(
     }
 
 
-    private fun DynamicTextStyle.toTextStyle() = when (this) {
-        DynamicTextStyle.BOLD -> Typeface.BOLD
-        DynamicTextStyle.ITALIC -> Typeface.ITALIC
-        DynamicTextStyle.NORMAL -> Typeface.NORMAL
+    private fun CraftDTextStyle.toTextStyle() = when (this) {
+        CraftDTextStyle.BOLD -> Typeface.BOLD
+        CraftDTextStyle.ITALIC -> Typeface.ITALIC
+        CraftDTextStyle.NORMAL -> Typeface.NORMAL
     }
 
     class InternalLinkMovementMethod(
