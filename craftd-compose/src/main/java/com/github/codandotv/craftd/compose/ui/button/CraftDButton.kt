@@ -6,8 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
-import com.github.codandotv.craftd.compose.ui.text.DynamicText
 import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
+import com.github.codandotv.craftd.compose.ui.text.CraftDText
 
 @Composable
 fun DynamicButton(

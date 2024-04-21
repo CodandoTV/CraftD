@@ -8,7 +8,7 @@ import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilders
 
 @Composable
-fun DynamicComposeController(
+fun CraftDComposeController(
     properties: List<SimpleProperties>,
     modifier: Modifier = Modifier,
     dynamicBuilder : CraftDComposeBuilders,

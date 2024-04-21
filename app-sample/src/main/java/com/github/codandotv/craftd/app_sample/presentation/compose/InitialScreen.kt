@@ -6,7 +6,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilders
-import com.github.codandotv.craftd.compose.ui.DynamicComposeController
+import com.github.codandotv.craftd.compose.ui.CraftDComposeController
 
 @Composable
 fun InitialScreen(
@@ -20,7 +20,7 @@ fun InitialScreen(
         vm.loadProperties()
     }
 
-    DynamicComposeController(
+    CraftDComposeController(
         properties = properties,
         dynamicBuilder = dynamicBuilder
     ) {
