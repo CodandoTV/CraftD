@@ -1,18 +1,17 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui.button
+package com.github.codandotv.craftd.xml.ui.button
 
 import android.graphics.Color.parseColor
 import android.view.ViewGroup
-import androidx.compose.ui.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.github.codandotv.craftd.androidcore.data.convertToVO
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
 import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.ViewRenderer
+import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
 
 class ButtonComponentRender(override var onClickListener: CraftDViewListener?) :
-    ViewRenderer<ButtonComponentRender.ButtonHolder>(
+    CraftDViewRenderer<ButtonComponentRender.ButtonHolder>(
         CraftDComponent.BUTTON_COMPONENT.key, CraftDComponent.BUTTON_COMPONENT.ordinal
     ) {
 
@@ -39,13 +38,5 @@ internal fun String.parseColor(): Int {
         parseColor(this)
     } catch (ex: Exception) {
         0
-    }
-}
-
-internal fun String?.parseColorCompose(): Color {
-    return try {
-        Color(parseColor(this))
-    } catch (ex: Exception) {
-        Color.Unspecified
     }
 }

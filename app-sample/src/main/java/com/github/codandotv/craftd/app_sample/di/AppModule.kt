@@ -5,7 +5,7 @@ import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepositoryImpl
 import com.github.codandotv.craftd.app_sample.data.SampleCraftDSampleService
 import com.github.codandotv.craftd.app_sample.presentation.compose.SampleCraftDComposeViewModel
 import com.github.codandotv.craftd.app_sample.presentation.xml.SampleCraftDViewModel
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.CraftDViewAdapter
+import com.github.codandotv.craftd.xml.ui.CraftDViewAdapter
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor

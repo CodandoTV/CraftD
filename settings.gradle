@@ -10,4 +10,5 @@ dependencyResolutionManagement {
 rootProject.name = "DynamicView"
 include ':dynamic'
 include ':craftd-core'
+include ':craftd-xml'
 include ':app-sample'

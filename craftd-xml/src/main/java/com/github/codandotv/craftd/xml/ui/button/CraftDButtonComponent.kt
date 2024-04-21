@@ -1,10 +1,9 @@
-package com.github.rviannaoliveira.dynamic.xml.presentation.ui.button
+package com.github.codandotv.craftd.xml.ui.button
 
 import android.content.Context
 import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.RelativeLayout
@@ -12,7 +11,7 @@ import androidx.core.content.ContextCompat
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
 import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
 import com.github.codandotv.craftd.androidcore.extensions.getAttrColorRes
-import com.github.rviannaoliveira.dynamic.databinding.ButtonBinding
+import com.github.codandotv.craftd.xml.databinding.ButtonBinding
 
 class CraftDButtonComponent @JvmOverloads constructor(
     context: Context,
@@ -49,6 +48,23 @@ class CraftDButtonComponent @JvmOverloads constructor(
             binding.button.isAllCaps = isTextAllCaps
         }
 
+        setupFillMaxSize(buttonProperties)
+
+        buttonProperties.textSize?.let { size ->
+            binding.button.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
+        }
+
+        buttonProperties.align?.let {
+            binding.button.layoutParams = LayoutParams (
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            ).apply {
+                addRule(it.toRelativeLayoutParams())
+            }
+        }
+    }
+
+    private fun setupFillMaxSize(buttonProperties: ButtonProperties) {
         binding.button.layoutParams = buttonProperties.fillMaxSize?.let { isfillMaxSize ->
             LayoutParams(
                 if (isfillMaxSize) {
@@ -57,24 +73,19 @@ class CraftDButtonComponent @JvmOverloads constructor(
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 }, ViewGroup.LayoutParams.MATCH_PARENT
             )
-        }
-
-        buttonProperties.textSize?.let { size ->
-            binding.button.setTextSize(TypedValue.COMPLEX_UNIT_SP, size.toFloat())
-        }
-
-        buttonProperties.align.toGravity()
+        } ?: LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
     }
 
-    private fun CraftDAlign?.toGravity() = when (this) {
+    private fun CraftDAlign?.toRelativeLayoutParams() : Int = when (this) {
         CraftDAlign.CENTER -> {
-            gravity = Gravity.CENTER
+            CENTER_IN_PARENT
         }
-
         CraftDAlign.RIGHT -> {
-            gravity = Gravity.RIGHT
+            ALIGN_PARENT_END
         }
-
-        else -> gravity = Gravity.LEFT
+        else -> ALIGN_PARENT_START
     }
 }

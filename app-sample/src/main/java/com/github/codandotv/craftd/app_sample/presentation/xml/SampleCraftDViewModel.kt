@@ -8,8 +8,8 @@ import com.github.codandotv.craftd.androidcore.data.model.action.ActionPropertie
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepository
-import com.github.rviannaoliveira.dynamic.xml.presentation.builder.CraftDBuilders
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.CraftDView
+import com.github.codandotv.craftd.xml.builder.CraftDBuilders
+import com.github.codandotv.craftd.xml.ui.CraftDView
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
@@ -27,21 +27,21 @@ class SampleCraftDViewModel(
     fun loadDynamic() {
         viewModelScope.launch {
             repository.getDynamic().catch {
-                    it.printStackTrace()
-                }.collect {
-                    setupDynamicRender(it)
-                    craft.setViewObjectDiff(it)
-                }
+                it.printStackTrace()
+            }.collect {
+                setupDynamicRender(it)
+                craft.setViewObjectDiff(it)
+            }
         }
     }
 
     private fun setupDynamicRender(list: List<SimpleProperties>) {
         craft.registerRenderers(
-            CraftDBuilders().getBuilderRenders(
-            simpleProperties = list,
-        ) { action ->
-            listener.invoke(action)
-        })
+            CraftDBuilders.getBuilderRenders(
+                simpleProperties = list,
+            ) { action ->
+                listener.invoke(action)
+            })
     }
 
     private val listener = object : CraftDViewListener {
