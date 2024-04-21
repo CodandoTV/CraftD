@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
-import com.github.rviannaoliveira.dynamic.compose.presentation.ui.text.DynamicText
+import com.github.rviannaoliveira.dynamic.compose.presentation.ui.text.CraftDText
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.toArrangementCompose
 
 @Composable
@@ -22,7 +22,7 @@ fun DynamicButton(
             onClick = onClick,
             modifier = modifier
         ) {
-            DynamicText(
+            CraftDText(
                 textProperties = TextProperties(
                     text = buttonProperties.text,
                     align = buttonProperties.textAlign,

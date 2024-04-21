@@ -1,0 +1,391 @@
+[
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex" : "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "DynamicButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "dynamicview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex" : "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "DynamicButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "dynamicview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex" : "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "DynamicButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "fillMaxSize": false,
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "dynamicview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex" : "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+
+  {
+    "key": "DynamicTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "DynamicButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "dynamicview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  }
+]

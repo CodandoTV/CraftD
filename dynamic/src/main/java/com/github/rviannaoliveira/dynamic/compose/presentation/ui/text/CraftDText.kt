@@ -17,7 +17,7 @@ import com.github.rviannaoliveira.dynamic.compose.presentation.ui.toAlignCompose
 import com.github.rviannaoliveira.dynamic.compose.presentation.ui.toTextStyle
 
 @Composable
-fun DynamicText(
+fun CraftDText(
     textProperties: TextProperties,
     modifier: Modifier = Modifier,
     clickable: (() -> Unit)? = null,
