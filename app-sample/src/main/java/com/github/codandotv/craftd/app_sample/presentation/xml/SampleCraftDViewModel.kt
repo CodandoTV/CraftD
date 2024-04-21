@@ -27,21 +27,21 @@ class SampleCraftDViewModel(
     fun loadDynamic() {
         viewModelScope.launch {
             repository.getDynamic().catch {
-                    it.printStackTrace()
-                }.collect {
-                    setupDynamicRender(it)
-                    craft.setViewObjectDiff(it)
-                }
+                it.printStackTrace()
+            }.collect {
+                setupDynamicRender(it)
+                craft.setViewObjectDiff(it)
+            }
         }
     }
 
     private fun setupDynamicRender(list: List<SimpleProperties>) {
         craft.registerRenderers(
-            CraftDBuilders().getBuilderRenders(
-            simpleProperties = list,
-        ) { action ->
-            listener.invoke(action)
-        })
+            CraftDBuilders.getBuilderRenders(
+                simpleProperties = list,
+            ) { action ->
+                listener.invoke(action)
+            })
     }
 
     private val listener = object : CraftDViewListener {

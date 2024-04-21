@@ -80,7 +80,7 @@
     "key": "DynamicButton",
     "value": {
       "text": "Some Action :)",
-      "align": "RIGHT",
+      "align": "CENTER",
       "textAlign": "CENTER",
       "textAllCaps": true,
       "textSize": "20",
