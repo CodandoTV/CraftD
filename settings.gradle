@@ -7,7 +7,7 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "DynamicView"
+rootProject.name = "CraftD"
 include ':app-sample'
 include ':craftd-core'
 include ':craftd-xml'
