@@ -1,17 +1,18 @@
-package com.github.codandotv.craftd.compose.ui.button
+package com.github.codandotv.craftd.app_sample.presentation.compose.customview
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
-import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
-import com.github.codandotv.craftd.compose.ui.text.CraftDText
 
 @Composable
-fun CraftDButton(
+fun MySampleButton(
     buttonProperties: ButtonProperties,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
@@ -22,17 +23,10 @@ fun CraftDButton(
     ) {
         Button(
             onClick = onClick,
-            modifier = modifier
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Magenta),
+            modifier = modifier,
         ) {
-            CraftDText(
-                textProperties = TextProperties(
-                    text = buttonProperties.text,
-                    align = buttonProperties.textAlign,
-                    textAllCaps = buttonProperties.textAllCaps,
-                    textColorHex = buttonProperties.textColorHex,
-                    textSize = buttonProperties.textSize,
-                )
-            )
+            Text(buttonProperties.text ?: "empty")
         }
     }
 }

@@ -12,3 +12,5 @@ include ':app-sample'
 include ':craftd-core'
 include ':craftd-xml'
 include ':craftd-compose'
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

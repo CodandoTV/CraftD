@@ -24,8 +24,8 @@ fun CraftDAlign?.toAlignCompose() = when (this) {
 }
 fun CraftDAlign?.toArrangementCompose() : Arrangement.Horizontal = when (this) {
     CraftDAlign.CENTER -> Arrangement.Center
-    CraftDAlign.RIGHT -> Arrangement.Start
-    else -> Arrangement.End
+    CraftDAlign.RIGHT -> Arrangement.End
+    else -> Arrangement.Start
 }
 
 fun String?.parseColorCompose(): Color {
