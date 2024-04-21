@@ -1,0 +1,39 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - name: install fastlane
+      run: bundle install
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Run Lane from fastlane
+      run: |
+        ls
+        pwd 
+        bundle exec fastlane ci
+      
+    - name: Adding markdown
+      if: failure()
+      run: | 
+        echo '### Report' >> $GITHUB_STEP_SUMMARY
+        echo ' Build FAILED ' >> $GITHUB_STEP_SUMMARY
+        echo ' > Execute `./gradlew build` local ' >> $GITHUB_STEP_SUMMARY
