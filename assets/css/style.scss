@@ -4,7 +4,7 @@
 @import "{{ site.theme }}";
 
 header {
-    background: #401EB5;
+    background: #4A13B8; // Dark purple CodandoTV
 }
 
 #banner {
@@ -13,8 +13,8 @@ header {
 }
 
 #banner .button {
-    background: #0276FA;
-    border: 1px solid #401EB5;
+    background: #4A13B8; // Dark purple CodandoTV
+    border: 1px solid #38B6FF; // Blue CodandoTV
 }
 
 #banner .button strong {
@@ -22,12 +22,12 @@ header {
 }
 
 #banner .button:hover {
-    background: #401EB5;
+    background: #722EFF; // Light Purple CodandoTV
     border: 1px solid #401EB5;
 }
 
 body {
-    background: #02B9FA;
+    background: #38B6FF; // Blue CodandoTV
 }
 
 section {
