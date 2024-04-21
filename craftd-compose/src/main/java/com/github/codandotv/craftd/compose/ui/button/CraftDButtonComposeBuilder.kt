@@ -14,7 +14,7 @@ class CraftDButtonComposeBuilder : CraftDComposeBuilder(
     @Composable
     override fun craft(model: SimpleProperties, listener: CraftDViewListener) {
         val buttonProperties = model.value.convertToVO<ButtonProperties>()
-        DynamicButton(buttonProperties) {
+        CraftDButton(buttonProperties) {
             buttonProperties.actionProperties?.let { listener.invoke(it) }
         }
     }

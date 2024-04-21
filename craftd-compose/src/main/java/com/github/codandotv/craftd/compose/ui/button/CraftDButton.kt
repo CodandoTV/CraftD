@@ -10,7 +10,7 @@ import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
 import com.github.codandotv.craftd.compose.ui.text.CraftDText
 
 @Composable
-fun DynamicButton(
+fun CraftDButton(
     buttonProperties: ButtonProperties,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
