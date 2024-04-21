@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.codandotv.craftd.app_sample.databinding.ActivityDynamicComponentBinding
-import com.github.rviannaoliveira.dynamic.xml.presentation.ui.CraftDViewAdapter
+import com.github.codandotv.craftd.xml.ui.CraftDViewAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CraftDComponentActivity : AppCompatActivity() {
