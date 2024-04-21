@@ -17,7 +17,7 @@ import com.github.codandotv.craftd.compose.extensions.toAlignCompose
 import com.github.codandotv.craftd.compose.extensions.toTextStyle
 
 @Composable
-fun DynamicText(
+fun CraftDText(
     textProperties: TextProperties,
     modifier: Modifier = Modifier,
     clickable: (() -> Unit)? = null,

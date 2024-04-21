@@ -6,7 +6,7 @@ import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
 import com.github.codandotv.craftd.xml.ui.button.ButtonComponentRender
 import com.github.codandotv.craftd.xml.ui.text.CraftDTextViewComponentRender
 
-class CraftDBuilders {
+object CraftDBuilders {
     fun getBuilderRenders(
         simpleProperties: List<SimpleProperties>,
         customDynamicBuilderList: List<CraftDViewRenderer<*>> = emptyList(),

@@ -14,7 +14,7 @@ class CraftDTextComposeRender : CraftDComposeBuilder(
     @Composable
     override fun craft(model: SimpleProperties, listener: CraftDViewListener) {
         val textProperties = model.value.convertToVO<TextProperties>()
-        DynamicText(textProperties = textProperties) {
+        CraftDText(textProperties = textProperties) {
             textProperties.actionProperties?.let { listener.invoke(it) }
         }
     }

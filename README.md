@@ -1,24 +1,24 @@
-# CraftD
+# CraftD-Android
 
 > A Server Driven UI library for Android.
 
 Inspired by the [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
 
 
-## Setup
+## 📝 Setup
 
-1. Add `jitpack.io` url:
+- Add `jitpack.io` url:
 
 ```kotlin
 dependencyResolutionManagement {
     repositories {
         ...
-        maven { url 'https://jitpack.io' }
+        maven(url = "https://jitpack.io")
     }
 }
 ```
 
-2. Declare the dependency in your `build.gradle.kts`:
+- Declare the dependency in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
@@ -26,13 +26,17 @@ dependencies {
 }
 ```
 
-3. Sync your project ✅
+- Sync your project ✅
 
-## How to use?
+## 🧑‍💻 How to use?
 
 You can use the existing components or create your own components, more details you can check in our [documentation](./docs/index.md).
 
-## Compatibility
+### Existing Components
+
+### Create your own component
+
+## 🔗 Compatibility
 
 | Tech                            |      Support         |
 |---------------------------------|:--------------------:|

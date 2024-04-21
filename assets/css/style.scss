@@ -1,0 +1,43 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+header {
+    background: #401EB5;
+}
+
+#banner {
+    background: #02B9FA;
+    border: 1px solid #02B9FA;
+}
+
+#banner .button {
+    background: #0276FA;
+    border: 1px solid #401EB5;
+}
+
+#banner .button strong {
+    color: #FFFFFF;
+}
+
+#banner .button:hover {
+    background: #401EB5;
+    border: 1px solid #401EB5;
+}
+
+body {
+    background: #D1F3FF;
+}
+
+section {
+    background: #FFFFFF;
+}
+
+nav ul {
+    font-size: 18px;
+}
+
+nav ul li {
+    line-height: 25px;
+}

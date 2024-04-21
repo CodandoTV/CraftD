@@ -22,7 +22,7 @@ fun DynamicButton(
             onClick = onClick,
             modifier = modifier
         ) {
-            DynamicText(
+            CraftDText(
                 textProperties = TextProperties(
                     text = buttonProperties.text,
                     align = buttonProperties.textAlign,
