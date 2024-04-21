@@ -1,31 +1,37 @@
 plugins {
-    id 'com.android.library'
+    id 'com.android.application'
     id 'kotlin-android'
-    id 'maven-publish'
 }
 
 android {
     compileSdk 34
-    namespace 'com.github.rviannaoliveira.dynamic'
+    namespace 'com.github.codandotv.craftd.app_sample'
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    buildFeatures {
+        buildConfig = true
+        compose = true
+    }
+
     defaultConfig {
+        applicationId "com.github.codandotv.craftd.app_sample"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-    buildFeatures {
-        buildConfig = true
-        compose = true
-        viewBinding = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -34,22 +40,54 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.7"
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    def koin_version = "2.2.3"
+    implementation(project(":dynamic"))
     implementation(project(":craftd-core"))
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
-    testImplementation 'junit:junit:4.13.2'
+
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+    // Koin AndroidX Scope features
+    implementation "io.insert-koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel features
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+    // Koin AndroidX Fragment features
+    implementation "io.insert-koin:koin-androidx-fragment:$koin_version"
+    // Koin AndroidX Experimental features
+    implementation "io.insert-koin:koin-androidx-ext:$koin_version"
+
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    def lifecycle_version = "2.7.0"
+    // Lifecycle utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
 
     def composeBom = platform'androidx.compose:compose-bom:2024.02.02'
     implementation(composeBom)
+    androidTestImplementation(composeBom)
 
     // Choose one of the following:
     // Material Design 3
@@ -72,17 +110,4 @@ dependencies {
     implementation'androidx.activity:activity-compose:1.8.2'
     // Optional - Integration with ViewModels
     implementation'androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0'
-
-}
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'br.com.rviannaolivera'
-                artifactId = 'dynamic-view'
-                version = '1.0.2'
-            }
-        }
-    }
 }
