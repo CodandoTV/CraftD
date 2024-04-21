@@ -7,8 +7,10 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "DynamicView"
-include ':dynamic'
+rootProject.name = "CraftD"
+include ':app-sample'
 include ':craftd-core'
 include ':craftd-xml'
-include ':app-sample'
+include ':craftd-compose'
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

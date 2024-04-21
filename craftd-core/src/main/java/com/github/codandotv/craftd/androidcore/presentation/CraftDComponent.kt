@@ -2,8 +2,8 @@ package com.github.codandotv.craftd.androidcore.presentation
 
 
 enum class CraftDComponent(val key: String) {
-    TEXT_VIEW_COMPONENT("${DYNAMIC}TextView"),
-    BUTTON_COMPONENT("${DYNAMIC}Button"),
+    TEXT_VIEW_COMPONENT("${CRAFT_D}TextView"),
+    BUTTON_COMPONENT("${CRAFT_D}Button"),
 }
 
-internal const val DYNAMIC = "Dynamic"
+internal const val CRAFT_D = "CraftD"

@@ -5,8 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import com.github.rviannaoliveira.dynamic.compose.presentation.builder.CraftDComposeBuilders
-import com.github.rviannaoliveira.dynamic.compose.presentation.ui.DynamicComposeController
+import com.github.codandotv.craftd.app_sample.presentation.compose.customview.MySampleButtonComposeBuilder
+import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilders
+import com.github.codandotv.craftd.compose.ui.CraftDComposeController
 
 @Composable
 fun InitialScreen(
@@ -14,13 +15,15 @@ fun InitialScreen(
 ) {
     val properties by vm.properties.collectAsStateWithLifecycle()
     val dynamicBuilder = remember {
-        CraftDComposeBuilders()
+        CraftDComposeBuilders().addBuilderRender(
+            MySampleButtonComposeBuilder()
+        )
     }
     LaunchedEffect(Unit) {
         vm.loadProperties()
     }
 
-    DynamicComposeController(
+    CraftDComposeController(
         properties = properties,
         dynamicBuilder = dynamicBuilder
     ) {
