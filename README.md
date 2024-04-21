@@ -13,7 +13,7 @@ Inspired by the [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
 dependencyResolutionManagement {
     repositories {
         ...
-        maven { url 'https://jitpack.io' }
+        maven(url = "https://jitpack.io")
     }
 }
 ```
