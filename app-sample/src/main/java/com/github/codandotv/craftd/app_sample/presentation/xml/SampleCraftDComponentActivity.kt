@@ -9,14 +9,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CraftDComponentActivity : AppCompatActivity() {
     lateinit var binding: ActivityDynamicComponentBinding
-    private val vm: DynamicViewModel by viewModel()
+    private val vm: SampleCraftDViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDynamicComponentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recycler.adapter = vm.dynamic as CraftDViewAdapter
+        binding.recycler.adapter = vm.craft as CraftDViewAdapter
 
         vm.deeplink.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()

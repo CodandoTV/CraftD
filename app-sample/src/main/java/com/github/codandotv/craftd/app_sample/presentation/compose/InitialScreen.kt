@@ -10,7 +10,7 @@ import com.github.rviannaoliveira.dynamic.compose.presentation.ui.DynamicCompose
 
 @Composable
 fun InitialScreen(
-    vm: DynamicComposeViewModel
+    vm: SampleCraftDComposeViewModel
 ) {
     val properties by vm.properties.collectAsStateWithLifecycle()
     val dynamicBuilder = remember {

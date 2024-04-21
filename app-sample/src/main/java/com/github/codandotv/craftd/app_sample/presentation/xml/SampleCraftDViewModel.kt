@@ -7,13 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
+import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepository
 import com.github.rviannaoliveira.dynamic.xml.presentation.builder.CraftDBuilders
 import com.github.rviannaoliveira.dynamic.xml.presentation.ui.CraftDView
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class DynamicViewModel(
-    val dynamic: CraftDView, val repository: com.github.codandotv.craftd.app_sample.data.DynamicRepository
+class SampleCraftDViewModel(
+    val craft: CraftDView, val repository: SampleCraftDRepository
 ) : ViewModel() {
     private val _analytics = MutableLiveData<String>()
     val analytics: LiveData<String>
@@ -29,13 +30,13 @@ class DynamicViewModel(
                     it.printStackTrace()
                 }.collect {
                     setupDynamicRender(it)
-                    dynamic.setViewObjectDiff(it)
+                    craft.setViewObjectDiff(it)
                 }
         }
     }
 
     private fun setupDynamicRender(list: List<SimpleProperties>) {
-        dynamic.registerRenderers(
+        craft.registerRenderers(
             CraftDBuilders().getBuilderRenders(
             simpleProperties = list,
         ) { action ->

@@ -9,14 +9,14 @@ import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-interface DynamicRepository {
+interface SampleCraftDRepository {
     suspend fun getDynamic(): Flow<List<SimpleProperties>>
 }
 
-class DynamicRepositoryImpl(
+class SampleCraftDRepositoryImpl(
     private val gson: Gson,
     private val context: Context
-) : DynamicRepository {
+) : SampleCraftDRepository {
     override suspend fun getDynamic(): Flow<List<SimpleProperties>> = flow {
         emit(
             gson.fromJson(

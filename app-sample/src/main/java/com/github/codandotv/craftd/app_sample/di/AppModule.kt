@@ -1,10 +1,10 @@
 package com.github.codandotv.craftd.app_sample.di
 
-import com.github.codandotv.craftd.app_sample.data.DynamicRepository
-import com.github.codandotv.craftd.app_sample.data.DynamicRepositoryImpl
-import com.github.codandotv.craftd.app_sample.data.DynamicSampleService
-import com.github.codandotv.craftd.app_sample.presentation.compose.DynamicComposeViewModel
-import com.github.codandotv.craftd.app_sample.presentation.xml.DynamicViewModel
+import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepository
+import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepositoryImpl
+import com.github.codandotv.craftd.app_sample.data.SampleCraftDSampleService
+import com.github.codandotv.craftd.app_sample.presentation.compose.SampleCraftDComposeViewModel
+import com.github.codandotv.craftd.app_sample.presentation.xml.SampleCraftDViewModel
 import com.github.rviannaoliveira.dynamic.xml.presentation.ui.CraftDViewAdapter
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -21,19 +21,19 @@ import java.util.concurrent.TimeUnit
 object AppModule {
     val instance = module {
         viewModel {
-            DynamicViewModel(
-                dynamic = CraftDViewAdapter(),
+            SampleCraftDViewModel(
+                craft = CraftDViewAdapter(),
                 repository = get()
             )
         }
         viewModel {
-            DynamicComposeViewModel(
+            SampleCraftDComposeViewModel(
                 repository = get()
             )
         }
 
-        factory<DynamicRepository> {
-            DynamicRepositoryImpl(
+        factory<SampleCraftDRepository> {
+            SampleCraftDRepositoryImpl(
                 gson = get(),
                 context = androidContext()
             )
@@ -61,14 +61,14 @@ object AppModule {
     private fun provideRetrofitClient(
         oktHttpClient: OkHttpClient.Builder,
         gson: Gson
-    ): DynamicSampleService {
+    ): SampleCraftDSampleService {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://demo5700495.mockable.io/")
             .client(oktHttpClient.build())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
-        return retrofit.create(DynamicSampleService::class.java)
+        return retrofit.create(SampleCraftDSampleService::class.java)
     }
 
     private fun provideOkHttpClientBuilder(
