@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  CraftD Sample
+//  CraftDSample
 //
 //  Created by Victor Pereira de Paula on 24/04/24.
 //

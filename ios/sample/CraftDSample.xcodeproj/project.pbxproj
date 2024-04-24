@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C14654A2BD9C2BB00BB8A2A /* CraftD_SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1465492BD9C2BB00BB8A2A /* CraftD_SampleApp.swift */; };
-		5C14654C2BD9C2BB00BB8A2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C14654B2BD9C2BB00BB8A2A /* ContentView.swift */; };
-		5C14654E2BD9C2C000BB8A2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C14654D2BD9C2C000BB8A2A /* Assets.xcassets */; };
-		5C1465512BD9C2C000BB8A2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C1465502BD9C2C000BB8A2A /* Preview Assets.xcassets */; };
+		5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */; };
+		5C0DC3732BD9C7B20077FCC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */; };
+		5C0DC3752BD9C7B50077FCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */; };
+		5C0DC3782BD9C7B50077FCC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C1465462BD9C2BB00BB8A2A /* CraftD Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CraftD Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C1465492BD9C2BB00BB8A2A /* CraftD_SampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftD_SampleApp.swift; sourceTree = "<group>"; };
-		5C14654B2BD9C2BB00BB8A2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5C14654D2BD9C2C000BB8A2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5C1465502BD9C2C000BB8A2A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraftDSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftDSampleApp.swift; sourceTree = "<group>"; };
+		5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5C1465432BD9C2BB00BB8A2A /* Frameworks */ = {
+		5C0DC36A2BD9C7B20077FCC7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,37 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C14653D2BD9C2BB00BB8A2A = {
+		5C0DC3642BD9C7B20077FCC7 = {
 			isa = PBXGroup;
 			children = (
-				5C1465482BD9C2BB00BB8A2A /* CraftD Sample */,
-				5C1465472BD9C2BB00BB8A2A /* Products */,
+				5C0DC36F2BD9C7B20077FCC7 /* CraftDSample */,
+				5C0DC36E2BD9C7B20077FCC7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		5C1465472BD9C2BB00BB8A2A /* Products */ = {
+		5C0DC36E2BD9C7B20077FCC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C1465462BD9C2BB00BB8A2A /* CraftD Sample.app */,
+				5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5C1465482BD9C2BB00BB8A2A /* CraftD Sample */ = {
+		5C0DC36F2BD9C7B20077FCC7 /* CraftDSample */ = {
 			isa = PBXGroup;
 			children = (
-				5C1465492BD9C2BB00BB8A2A /* CraftD_SampleApp.swift */,
-				5C14654B2BD9C2BB00BB8A2A /* ContentView.swift */,
-				5C14654D2BD9C2C000BB8A2A /* Assets.xcassets */,
-				5C14654F2BD9C2C000BB8A2A /* Preview Content */,
+				5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */,
+				5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */,
+				5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */,
+				5C0DC3762BD9C7B50077FCC7 /* Preview Content */,
 			);
-			path = "CraftD Sample";
+			path = CraftDSample;
 			sourceTree = "<group>";
 		};
-		5C14654F2BD9C2C000BB8A2A /* Preview Content */ = {
+		5C0DC3762BD9C7B50077FCC7 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				5C1465502BD9C2C000BB8A2A /* Preview Assets.xcassets */,
+				5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -70,39 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5C1465452BD9C2BB00BB8A2A /* CraftD Sample */ = {
+		5C0DC36C2BD9C7B20077FCC7 /* CraftDSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C1465542BD9C2C000BB8A2A /* Build configuration list for PBXNativeTarget "CraftD Sample" */;
+			buildConfigurationList = 5C0DC37B2BD9C7B50077FCC7 /* Build configuration list for PBXNativeTarget "CraftDSample" */;
 			buildPhases = (
-				5C1465422BD9C2BB00BB8A2A /* Sources */,
-				5C1465432BD9C2BB00BB8A2A /* Frameworks */,
-				5C1465442BD9C2BB00BB8A2A /* Resources */,
+				5C0DC3692BD9C7B20077FCC7 /* Sources */,
+				5C0DC36A2BD9C7B20077FCC7 /* Frameworks */,
+				5C0DC36B2BD9C7B20077FCC7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "CraftD Sample";
-			productName = "CraftD Sample";
-			productReference = 5C1465462BD9C2BB00BB8A2A /* CraftD Sample.app */;
+			name = CraftDSample;
+			productName = CraftDSample;
+			productReference = 5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5C14653E2BD9C2BB00BB8A2A /* Project object */ = {
+		5C0DC3652BD9C7B20077FCC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					5C1465452BD9C2BB00BB8A2A = {
+					5C0DC36C2BD9C7B20077FCC7 = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = 5C1465412BD9C2BB00BB8A2A /* Build configuration list for PBXProject "CraftD Sample" */;
+			buildConfigurationList = 5C0DC3682BD9C7B20077FCC7 /* Build configuration list for PBXProject "CraftDSample" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 5C14653D2BD9C2BB00BB8A2A;
-			productRefGroup = 5C1465472BD9C2BB00BB8A2A /* Products */;
+			mainGroup = 5C0DC3642BD9C7B20077FCC7;
+			productRefGroup = 5C0DC36E2BD9C7B20077FCC7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C1465452BD9C2BB00BB8A2A /* CraftD Sample */,
+				5C0DC36C2BD9C7B20077FCC7 /* CraftDSample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5C1465442BD9C2BB00BB8A2A /* Resources */ = {
+		5C0DC36B2BD9C7B20077FCC7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C1465512BD9C2C000BB8A2A /* Preview Assets.xcassets in Resources */,
-				5C14654E2BD9C2C000BB8A2A /* Assets.xcassets in Resources */,
+				5C0DC3782BD9C7B50077FCC7 /* Preview Assets.xcassets in Resources */,
+				5C0DC3752BD9C7B50077FCC7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5C1465422BD9C2BB00BB8A2A /* Sources */ = {
+		5C0DC3692BD9C7B20077FCC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C14654C2BD9C2BB00BB8A2A /* ContentView.swift in Sources */,
-				5C14654A2BD9C2BB00BB8A2A /* CraftD_SampleApp.swift in Sources */,
+				5C0DC3732BD9C7B20077FCC7 /* ContentView.swift in Sources */,
+				5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		5C1465522BD9C2C000BB8A2A /* Debug */ = {
+		5C0DC3792BD9C7B50077FCC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -208,7 +208,7 @@
 			};
 			name = Debug;
 		};
-		5C1465532BD9C2C000BB8A2A /* Release */ = {
+		5C0DC37A2BD9C7B50077FCC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -264,14 +264,14 @@
 			};
 			name = Release;
 		};
-		5C1465552BD9C2C000BB8A2A /* Debug */ = {
+		5C0DC37C2BD9C7B50077FCC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CraftD Sample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CraftDSample/Preview Content\"";
 				DEVELOPMENT_TEAM = 8HG6PCH8MC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -285,7 +285,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "victorpereiradepaula.CraftD-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = victorpereiradepaula.CraftDSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -293,14 +293,14 @@
 			};
 			name = Debug;
 		};
-		5C1465562BD9C2C000BB8A2A /* Release */ = {
+		5C0DC37D2BD9C7B50077FCC7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CraftD Sample/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CraftDSample/Preview Content\"";
 				DEVELOPMENT_TEAM = 8HG6PCH8MC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -314,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "victorpereiradepaula.CraftD-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = victorpereiradepaula.CraftDSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -325,25 +325,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C1465412BD9C2BB00BB8A2A /* Build configuration list for PBXProject "CraftD Sample" */ = {
+		5C0DC3682BD9C7B20077FCC7 /* Build configuration list for PBXProject "CraftDSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C1465522BD9C2C000BB8A2A /* Debug */,
-				5C1465532BD9C2C000BB8A2A /* Release */,
+				5C0DC3792BD9C7B50077FCC7 /* Debug */,
+				5C0DC37A2BD9C7B50077FCC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C1465542BD9C2C000BB8A2A /* Build configuration list for PBXNativeTarget "CraftD Sample" */ = {
+		5C0DC37B2BD9C7B50077FCC7 /* Build configuration list for PBXNativeTarget "CraftDSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C1465552BD9C2C000BB8A2A /* Debug */,
-				5C1465562BD9C2C000BB8A2A /* Release */,
+				5C0DC37C2BD9C7B50077FCC7 /* Debug */,
+				5C0DC37D2BD9C7B50077FCC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5C14653E2BD9C2BB00BB8A2A /* Project object */;
+	rootObject = 5C0DC3652BD9C7B20077FCC7 /* Project object */;
 }
