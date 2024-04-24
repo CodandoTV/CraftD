@@ -1,6 +1,7 @@
 package com.github.codandotv.craftd.app_sample
 
 import android.app.Application
+import com.github.codandotv.BuildConfig
 import com.github.codandotv.craftd.app_sample.di.AppModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
