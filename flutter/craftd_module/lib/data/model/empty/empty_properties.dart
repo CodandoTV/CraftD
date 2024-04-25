@@ -1,0 +1,3 @@
+class EmptyProperties {
+  const EmptyProperties();
+}
