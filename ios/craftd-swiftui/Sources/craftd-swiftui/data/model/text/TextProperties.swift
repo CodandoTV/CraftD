@@ -1,4 +1,4 @@
-struct TextProperties : SimpleValue{
+public struct TextProperties: Codable {
     let text: String?
     let textColorHex: String?
     let textSize: String?

@@ -3,29 +3,23 @@ import Foundation
 public class CraftDBuilders {
     public init() {}
     
-    private var listCraftDBuilder : [any CraftDBuilder] = [
+    private let listCraftDBuilder : [any CraftDBuilder] = [
         CraftDTextBuilder()
     ]
     
-    private let customBuilders = [any CraftDBuilder]()
+    private var customBuilders = [any CraftDBuilder]()
     
-    public func addBuilderRenders(
-        listBuilders: [any CraftDBuilder]
-    ) -> CraftDBuilders {
-        listCraftDBuilder.append(contentsOf: listBuilders)
+    public func addBuilderRenders(listBuilders: [any CraftDBuilder]) -> CraftDBuilders {
+        customBuilders.append(contentsOf: listBuilders)
         return self
     }
     
-    public func addBuilderRender(
-        builder: any CraftDBuilder
-    ) -> CraftDBuilders {
-        listCraftDBuilder.append(builder)
+    public func addBuilderRender(builder: any CraftDBuilder) -> CraftDBuilders {
+        customBuilders.append(builder)
         return self
     }
     
-    public func getBuilder(
-        key: String
-    ) -> any CraftDBuilder {
+    public func getBuilder(key: String) -> any CraftDBuilder {
         var newList = listCraftDBuilder
         newList.append(contentsOf: customBuilders)
         
