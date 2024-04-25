@@ -25,7 +25,7 @@ fun InitialScreen(
 
     CraftDComposeController(
         properties = properties,
-        dynamicBuilder = dynamicBuilder
+        craftBuilder = dynamicBuilder
     ) {
         println(
             ">>>> category ${it.analytics?.category} -" + " action ${it.analytics?.action} -" + " label  ${it.analytics?.label} -" + " deeplink ${it.deeplink}"

@@ -8,7 +8,7 @@ import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilder
 
-class CraftDTextComposeRender : CraftDComposeBuilder(
+class CraftDTextComposeBuilder : CraftDComposeBuilder(
     CraftDComponent.TEXT_VIEW_COMPONENT.key
 ) {
     @Composable
