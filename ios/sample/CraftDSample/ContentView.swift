@@ -4,6 +4,16 @@ struct ContentView: View {
     @State var list = [SimpleProperties]()
     var craftBuilders = CraftDBuilders()
     
+    init(){
+        do {
+            let fileURL = URL(fileURLWithPath: bundle!)
+            let jsonData = try Data(contentsOf: fileURL)
+            list = try decoder.decode([SimpleProperties].self, from: jsonData)
+        } catch {
+            print("Erro ao ler o arquivo JSON:", error.localizedDescription)
+        }
+    }
+
     var body: some View {
         ScrollView {
             LazyVStack {
