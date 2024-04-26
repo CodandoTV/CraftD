@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="CustomApplication"
+        android:name=".craftd.app_sample.CustomApplication"
         android:allowBackup="true"
         android:exported="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,20 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicView">
         <activity
-            android:name=".presentation.xml.CraftDComponentActivity"
+            android:name=".craftd.app_sample.presentation.xml.CraftDComponentActivity"
             android:exported="true">
 
-
-        </activity>
-
-        <activity
-            android:name=".presentation.compose.SampleCraftDComposeActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".craftd.app_sample.presentation.compose.SampleCraftDComposeActivity"
+            android:exported="true">
+
         </activity>
     </application>
 

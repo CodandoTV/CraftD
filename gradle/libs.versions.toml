@@ -1,0 +1,75 @@
+[versions]
+kotlin = "1.9.21"
+android_gradle_plugin = "8.2.2"
+
+jackson = "2.12.7"
+
+#Test
+test_junit = "4.13.2"
+androidx_core_testing = "2.2.0"
+mockk = "1.13.7"
+kotlinx-coroutines-test= "1.5.1"
+
+#Android
+androidx_appcompat = "1.6.1"
+material = "1.11.0"
+dynamic_animation = "1.0.0"
+viewmodel = "2.7.0"
+androidx_core_ktx = "1.13.0"
+
+#Compose
+compose_bom = "2024.04.01"
+compose_material_3 = "1.2.1"
+lifecycle_version = "2.7.0"
+
+[libraries]
+kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }
+
+# Kotlin
+kotlin_stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlin_reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+
+# Android Support
+androidx_core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx_core_ktx" }
+androidx_appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx_appcompat" }
+androidx_dynamicanimation = { group = "androidx.dynamicanimation", name = "dynamicanimation", version.ref = "dynamic_animation" }
+
+# Test
+junit = { group = "junit", name = "junit", version.ref = "test_junit" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk_android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+viewmodel_test = { group = "androidx.arch.core", name = "core-testing", version.ref = "androidx_core_testing" }
+coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
+
+# Google
+google_material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Compose
+compose_bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose_bom" }
+compose_ui = { module = "androidx.compose.ui:ui" }
+compose_lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle_version" }
+compose_material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose_material_3" }
+compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose_ui_test = { module = "androidx.compose.ui:ui-test-junit4" }
+compose_uitest = { module = "androidx.compose.ui:ui-test" }
+compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+
+#jackson
+fasterxml_jackson = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson" }
+fasterxml_jackson_databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
+
+[bundles]
+compose = ["compose.ui", "compose.material3", "compose.lifecycle", "compose.ui.tooling"]
+composetest = ["compose.uitest", "compose.junit4", "compose.ui.test"]
+test = ["junit", "mockk", "mockk_android", "viewmodel_test","coroutines_test"]
+androidSupport = ["androidx_core", "androidx_appcompat", "androidx_dynamicanimation","google_material"]
+kotlin = ["androidx_core", "kotlin_stdlib", "kotlin_reflect"]
+
+[plugins]
+android_application = { id = "com.android.application", version.ref = "android_gradle_plugin" }
+android_library = { id = "com.android.library", version.ref = "android_gradle_plugin" }
+
+kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin_kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin_parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
