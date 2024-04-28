@@ -2,13 +2,13 @@ package com.github.codandotv.craftd.compose.builder
 
 import com.github.codandotv.craftd.compose.ui.button.CraftDButtonComposeBuilder
 import com.github.codandotv.craftd.compose.ui.empty.CraftDEmptyComposeRender
-import com.github.codandotv.craftd.compose.ui.text.CraftDTextComposeRender
+import com.github.codandotv.craftd.compose.ui.text.CraftDTextComposeBuilder
 
 class CraftDComposeBuilders {
 
     private val listDynamicBuilder = listOf(
         CraftDButtonComposeBuilder(),
-        CraftDTextComposeRender()
+        CraftDTextComposeBuilder()
     )
 
     private val customBuilders = mutableListOf<CraftDComposeBuilder>()
