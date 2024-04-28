@@ -1,9 +1,7 @@
 import craftd_swiftui
 
 struct ContentView: View {
-    var list = [SimpleProperties]()
-    let decoder = JSONDecoder()
-    let bundle = Bundle.main.path(forResource: "dynamic", ofType: "json")
+    @State var list = [SimpleProperties]()
     var craftBuilders = CraftDBuilders()
     
     init(){
@@ -17,16 +15,38 @@ struct ContentView: View {
     }
 
     var body: some View {
-        LazyVStack {
-            ForEach(list) { item in
-                let builder = craftBuilders.getBuilder(key: item.key)
-                builder.craft(model: item) { action in
-                    print(">>>>\(action)")
+        ScrollView {
+            LazyVStack {
+                ForEach(list) { item in
+                    let builder = craftBuilders.getBuilder(
+                        key: item.key
+                    )
+                    AnyView(erasing: builder.craft(model: item) { _ in })
                 }
             }
         }
         .padding()
+        .onAppear(perform: {
+            do {
+                try loadJson()
+            } catch {
+                print(error.localizedDescription)
+            }
+        })
     }
+    
+    private func loadJson() throws {
+        guard let jsonData = Bundle.main.path(forResource: "dynamic", ofType: "json") else {
+            return
+        }
+        let fileURL = URL(fileURLWithPath: jsonData)
+        let data = try Data(contentsOf: fileURL)
+        let container = try SimplePropertiesContainer(from: data)
+        list = container.items
+    }
+    
+    
+    
 }
 
 #Preview {

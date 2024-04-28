@@ -1,30 +1,28 @@
 import Foundation
 
+enum CraftDBuildersError: Error {
+    case builderNotFound
+}
+
 public class CraftDBuilders {
     public init() {}
     
-    private let listCraftDBuilder : [any CraftDBuilder] = [
-        CraftDTextBuilder()
-    ]
+    private var listCraftDBuilder: [String: CraftDBuilder] = [:]
     
-    private var customBuilders = [any CraftDBuilder]()
-    
-    public func addBuilderRenders(listBuilders: [any CraftDBuilder]) -> CraftDBuilders {
-        customBuilders.append(contentsOf: listBuilders)
+    public func add(builders: [CraftDBuilder]) -> CraftDBuilders {
+        builders.forEach { builder in add(builder: builder) }
         return self
     }
     
-    public func addBuilderRender(builder: any CraftDBuilder) -> CraftDBuilders {
-        customBuilders.append(builder)
+    public func add(builder: CraftDBuilder) -> CraftDBuilders {
+        listCraftDBuilder[builder.key] = builder
         return self
     }
     
-    public func getBuilder(key: String) -> any CraftDBuilder {
-        var newList = listCraftDBuilder
-        newList.append(contentsOf: customBuilders)
-        
-        return newList.first { item in
-            item.key == key
-        } ?? CraftDTextBuilder()
+    public func getBuilder(key: String) -> CraftDBuilder {
+        guard let builder = listCraftDBuilder[key] else {
+            return CraftDTextBuilder()
+        }
+        return builder
     }
 }

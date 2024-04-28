@@ -1,8 +1,8 @@
-public struct TextProperties: Codable {
-    let text: String?
-    let textColorHex: String?
-    let textSize: String?
-    let backgroundHex: String?
-    let textAllCaps: Bool?
-    let textHtml: String?
+public struct TextProperties: Decodable {
+    public let text: String?
+    public let textColorHex: String?
+    public let textSize: String?
+    public let backgroundHex: String?
+    public let textAllCaps: Bool?
+    public let textHtml: String?
 }

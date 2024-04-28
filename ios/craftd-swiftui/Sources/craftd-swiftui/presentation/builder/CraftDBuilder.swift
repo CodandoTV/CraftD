@@ -4,7 +4,10 @@ public protocol CraftDBuilder {
     associatedtype T: Codable
     var key: String { get }
     
-    func craft(model: SimpleProperties, listener: CraftDViewListener) -> AnyView
+    func craft(
+        model: SimpleProperties,
+        listener: CraftDViewListener
+    ) -> any View
 }
 
 extension CraftDBuilder {
