@@ -1,0 +1,1 @@
+enum CraftDAlign { center, left, right }
