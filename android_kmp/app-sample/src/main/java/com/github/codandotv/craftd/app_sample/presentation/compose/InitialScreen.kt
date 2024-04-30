@@ -17,8 +17,7 @@ fun InitialScreen(
     val properties by vm.properties.collectAsStateWithLifecycle()
     val dynamicBuilder = remember {
         CraftDComposeBuilders().addBuilderRender(
-            MySampleButtonComposeBuilder()
-        ).addBuilderRender(
+            MySampleButtonComposeBuilder(),
             MySampleCheckBoxComposeBuilder()
         )
     }
