@@ -49,6 +49,22 @@
     }
   },
   {
+    "key": "MySampleCheckBox",
+    "value": {
+      "text": "Mark here",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "hasItRightText": true,
+      "actionProperties": {
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
     "key": "MySampleButton",
     "value": {
       "text": "MySampleButton",
