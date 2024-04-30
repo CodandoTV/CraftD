@@ -10,7 +10,6 @@
 		5BFC1CC32BD9CBD9004BF31C /* craftd-swiftui in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFC1CC22BD9CBD9004BF31C /* craftd-swiftui */; };
 		5BFC1CC52BD9DA43004BF31C /* dynamic.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC1CC42BD9DA43004BF31C /* dynamic.json */; };
 		5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */; };
-		5C0DC3732BD9C7B20077FCC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */; };
 		5C0DC3752BD9C7B50077FCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */; };
 		5C0DC3782BD9C7B50077FCC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -19,7 +18,6 @@
 		5BFC1CC42BD9DA43004BF31C /* dynamic.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dynamic.json; sourceTree = "<group>"; };
 		5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraftDSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftDSampleApp.swift; sourceTree = "<group>"; };
-		5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */,
-				5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */,
 				5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */,
 				5C0DC3762BD9C7B50077FCC7 /* Preview Content */,
 				5BFC1CC42BD9DA43004BF31C /* dynamic.json */,
@@ -149,7 +146,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C0DC3732BD9C7B20077FCC7 /* ContentView.swift in Sources */,
 				5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

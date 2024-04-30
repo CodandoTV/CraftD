@@ -1,13 +1,13 @@
 import 'package:craftd_module/craftd_module.export.dart';
+import 'package:craftd_module/presentation/builder/craftd_builder_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../builder/craftd_widget_builders.dart';
 
-class CraftDWidgetController extends StatelessWidget {
+class CraftDynamic extends StatelessWidget {
   final List<SimpleProperties> simplePropertiesList;
   final Function(ActionProperties) onAction;
 
-  const CraftDWidgetController(
+  const CraftDynamic(
       {super.key, required this.simplePropertiesList, required this.onAction});
 
   @override
@@ -17,7 +17,7 @@ class CraftDWidgetController extends StatelessWidget {
         itemBuilder: (context, index) {
           final SimpleProperties simpleProperties = simplePropertiesList[index];
           final craftdBuilder =
-              CraftDWidgetBuilders.getBuilder(simpleProperties.key);
+              CraftDBuilderManager.getBuilder(simpleProperties.key);
           return craftdBuilder
               .craft(craftdBuilder.fromJson(simpleProperties.value),
                   (actionProperties) {

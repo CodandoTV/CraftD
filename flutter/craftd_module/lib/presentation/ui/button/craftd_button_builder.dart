@@ -1,11 +1,11 @@
 import 'package:flutter/src/widgets/framework.dart';
 import '../../../data/model/action/action_properties.dart';
 import '../../../data/model/button/button_properties.dart';
-import '../../builder/craftd_widget_builder.dart';
+import '../../builder/craftd_builder.dart';
 import '../../craftd_view_listener.dart';
 import 'craftd_button.dart';
 
-class CraftDButtonBuilder extends CraftDWidgetBuilder<ButtonProperties> {
+class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
   CraftDButtonBuilder() : super(key: key);
 
   @override

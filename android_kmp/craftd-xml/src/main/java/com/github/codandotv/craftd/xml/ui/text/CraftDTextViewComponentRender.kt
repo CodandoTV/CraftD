@@ -5,13 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.codandotv.craftd.androidcore.data.convertToVO
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
-import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
+import com.github.codandotv.craftd.androidcore.presentation.CraftDComponentKey
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
 
 class CraftDTextViewComponentRender(override var onClickListener: CraftDViewListener?) :
     CraftDViewRenderer<CraftDTextViewComponentRender.TextViewHolder>(
-        CraftDComponent.TEXT_VIEW_COMPONENT.key, CraftDComponent.TEXT_VIEW_COMPONENT.ordinal
+        CraftDComponentKey.TEXT_VIEW_COMPONENT.key, CraftDComponentKey.TEXT_VIEW_COMPONENT.ordinal
     ) {
 
     inner class TextViewHolder(val textView: CraftDTextViewComponent) : RecyclerView.ViewHolder(textView)

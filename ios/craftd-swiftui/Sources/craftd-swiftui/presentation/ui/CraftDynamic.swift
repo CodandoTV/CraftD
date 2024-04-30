@@ -1,8 +1,8 @@
 import craftd_swiftui
 
-struct ContentView: View {
+public struct CraftDynamic: View {
     @State var list = [SimpleProperties]()
-    var craftBuilders = CraftDBuilders()
+    var craftBuilders = CraftDBuilderManager()
     
     init(){
         do {
