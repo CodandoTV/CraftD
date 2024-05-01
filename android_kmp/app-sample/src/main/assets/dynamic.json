@@ -3,7 +3,7 @@
     "key": "CraftDTextView",
     "value": {
       "text": "Knife",
-      "backgroundHex" : "#9A71F6",
+      "backgroundHex": "#9A71F6",
       "textSize": "30",
       "textColorHex": "#000000"
     }
@@ -16,7 +16,6 @@
       "textColorHex": "#D977EB"
     }
   },
-
   {
     "key": "CraftDTextView",
     "value": {
@@ -49,12 +48,17 @@
     }
   },
   {
-    "key": "MySampleCheckBox",
+    "key": "CraftDCheckBox",
     "value": {
-      "text": "Mark here",
+      "text": "Mark here ",
       "align": "RIGHT",
       "textAlign": "CENTER",
-      "hasItRightText": true,
+      "hasItRightText": false,
+      "enable": true,
+      "style": {
+        "checkedColorHex": "#FF0000",
+        "uncheckedColorHex": " #808080"
+      },
       "actionProperties": {
         "analytics": {
           "category": "hello",
@@ -88,7 +92,7 @@
     "key": "CraftDTextView",
     "value": {
       "text": "Knife",
-      "backgroundHex" : "#9A71F6",
+      "backgroundHex": "#9A71F6",
       "textSize": "30",
       "textColorHex": "#000000"
     }
@@ -149,7 +153,6 @@
       "textColorHex": "#D977EB"
     }
   },
-
   {
     "key": "CraftDTextView",
     "value": {
@@ -185,7 +188,7 @@
     "key": "CraftDTextView",
     "value": {
       "text": "Knife",
-      "backgroundHex" : "#9A71F6",
+      "backgroundHex": "#9A71F6",
       "textSize": "30",
       "textColorHex": "#000000"
     }
@@ -246,7 +249,6 @@
       "textColorHex": "#D977EB"
     }
   },
-
   {
     "key": "CraftDTextView",
     "value": {
@@ -283,7 +285,7 @@
     "key": "CraftDTextView",
     "value": {
       "text": "Knife",
-      "backgroundHex" : "#9A71F6",
+      "backgroundHex": "#9A71F6",
       "textSize": "30",
       "textColorHex": "#000000"
     }
@@ -344,7 +346,6 @@
       "textColorHex": "#D977EB"
     }
   },
-
   {
     "key": "CraftDTextView",
     "value": {
