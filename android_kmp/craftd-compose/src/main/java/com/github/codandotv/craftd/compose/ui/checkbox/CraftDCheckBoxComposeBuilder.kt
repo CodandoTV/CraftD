@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import com.github.codandotv.craftd.androidcore.data.convertToVO
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.checkbox.CheckBoxProperties
+import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilder
 
 class CraftDCheckBoxComposeBuilder : CraftDComposeBuilder(
-    key = "MySampleCheckBox"
+    key = CraftDComponent.CHECK_BOX_COMPONENT.key
 ) {
     @Composable
     override fun craft(model: SimpleProperties, listener: CraftDViewListener) {
