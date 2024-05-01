@@ -7,14 +7,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.codandotv.craftd.androidcore.data.model.checkbox.CheckBoxProperties
+import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.codandotv.craftd.compose.extensions.toAlignmentCompose
 import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
+import com.github.codandotv.craftd.compose.ui.text.CraftDText
 
 @Composable
 fun CraftDCheckBox(
     checkboxProperties: CheckBoxProperties,
     modifier: Modifier = Modifier,
-    onChecked: (Boolean) -> Unit,
+    onChecked: (Boolean) -> Unit
 ) {
     Row(
         horizontalArrangement = checkboxProperties.align.toArrangementCompose(),
@@ -23,7 +25,11 @@ fun CraftDCheckBox(
     ) {
 
         if (checkboxProperties.hasItRightText == true)
-            Text(text = checkboxProperties.text ?: "empty")
+            CraftDText(
+                textProperties = TextProperties(
+                    text = checkboxProperties.text
+                )
+            )
 
         Checkbox(
             checked = checkboxProperties.enable ?: false,
@@ -31,6 +37,10 @@ fun CraftDCheckBox(
             modifier = modifier,
         )
         if (checkboxProperties.hasItRightText == false)
-            Text(text = checkboxProperties.text ?: "empty")
+            CraftDText(
+                textProperties = TextProperties(
+                    text = checkboxProperties.text
+                )
+            )
     }
 }
