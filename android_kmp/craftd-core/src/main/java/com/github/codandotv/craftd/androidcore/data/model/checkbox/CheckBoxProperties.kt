@@ -17,4 +17,5 @@ data class CheckBoxProperties(
     @JsonProperty("enable") val enable: Boolean? = false,
     @JsonProperty("hasItRightText") val hasItRightText: Boolean? = false,
     @JsonProperty("actionProperties") var actionProperties: ActionProperties? = null,
+    @JsonProperty("style") var styleProperties: StyleProperties? = null,
 )
