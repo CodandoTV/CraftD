@@ -20,9 +20,9 @@ class CraftDComposeBuilders {
         return this
     }
    fun addBuilderRender(
-        vararg dynamicComposeBuilder: CraftDComposeBuilder
+        dynamicComposeBuilder: CraftDComposeBuilder
     ): CraftDComposeBuilders {
-        customBuilders.addAll(dynamicComposeBuilder)
+        customBuilders.add(dynamicComposeBuilder)
         return this
     }
 
