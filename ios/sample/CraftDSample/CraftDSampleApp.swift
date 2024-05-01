@@ -1,11 +1,15 @@
 import SwiftUI
-import craftd_swiftui
+import CraftDSwiftUI
 
 @main
 struct CraftDSampleApp: App {
     var body: some Scene {
         WindowGroup {
-          CraftDynamic()
+            CraftDynamic()
         }
     }
+}
+
+#Preview {
+    CraftDynamic()
 }

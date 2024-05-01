@@ -1,20 +1,12 @@
-import craftd_swiftui
+import SwiftUI
 
 public struct CraftDynamic: View {
-    @State var list = [SimpleProperties]()
-    var craftBuilders = CraftDBuilderManager()
-    
-    init(){
-        do {
-            let fileURL = URL(fileURLWithPath: bundle!)
-            let jsonData = try Data(contentsOf: fileURL)
-            list = try decoder.decode([SimpleProperties].self, from: jsonData)
-        } catch {
-            print("Erro ao ler o arquivo JSON:", error.localizedDescription)
-        }
-    }
+    @State private var list: [SimpleProperties] = []
+    private let craftBuilders = CraftDBuilderManager()
 
-    var body: some View {
+    public init() {}
+    
+    public var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach(list) { item in
@@ -50,5 +42,5 @@ public struct CraftDynamic: View {
 }
 
 #Preview {
-    ContentView()
+    CraftDynamic()
 }

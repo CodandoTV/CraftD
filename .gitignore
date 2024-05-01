@@ -84,3 +84,7 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# macOS & Xcode files
+*.DS_Store
+xcuserdata

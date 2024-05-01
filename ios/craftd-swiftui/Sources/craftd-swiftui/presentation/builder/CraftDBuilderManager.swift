@@ -1,9 +1,5 @@
 import Foundation
 
-enum CraftDBuildersError: Error {
-    case builderNotFound
-}
-
 public class CraftDBuilderManager {
     public init() {}
     
