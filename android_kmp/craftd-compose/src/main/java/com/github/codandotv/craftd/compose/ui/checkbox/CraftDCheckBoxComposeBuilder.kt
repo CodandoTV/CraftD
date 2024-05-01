@@ -1,4 +1,4 @@
-package com.github.codandotv.craftd.app_sample.presentation.compose.customview
+package com.github.codandotv.craftd.compose.ui.checkbox
 
 import androidx.compose.runtime.Composable
 import com.github.codandotv.craftd.androidcore.data.convertToVO
@@ -7,13 +7,13 @@ import com.github.codandotv.craftd.androidcore.data.model.checkbox.CheckBoxPrope
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilder
 
-class MySampleCheckBoxComposeBuilder : CraftDComposeBuilder(
+class CraftDCheckBoxComposeBuilder : CraftDComposeBuilder(
     key = "MySampleCheckBox"
 ) {
     @Composable
     override fun craft(model: SimpleProperties, listener: CraftDViewListener) {
         val checkBoxProperties = model.value.convertToVO<CheckBoxProperties>()
-        MySampleCheckBox(checkBoxProperties) {
+        CraftDCheckBox(checkBoxProperties) {
             checkBoxProperties.actionProperties?.let { listener.invoke(it) }
         }
     }

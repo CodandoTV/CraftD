@@ -1,4 +1,4 @@
-package com.github.codandotv.craftd.app_sample.presentation.compose.customview
+package com.github.codandotv.craftd.compose.ui.checkbox
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,7 +11,7 @@ import com.github.codandotv.craftd.compose.extensions.toAlignmentCompose
 import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
 
 @Composable
-fun MySampleCheckBox(
+fun CraftDCheckBox(
     checkboxProperties: CheckBoxProperties,
     modifier: Modifier = Modifier,
     onChecked: (Boolean) -> Unit,
