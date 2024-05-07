@@ -6,9 +6,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import com.github.codandotv.craftd.app_sample.presentation.compose.customview.MySampleButtonComposeBuilder
-import com.github.codandotv.craftd.compose.ui.checkbox.CraftDCheckBoxComposeBuilder
-import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilders
-import com.github.codandotv.craftd.compose.ui.CraftDComposeController
+import com.github.codandotv.craftd.compose.builder.CraftDBuilderManager
+import com.github.codandotv.craftd.compose.ui.CraftDynamic
 
 @Composable
 fun InitialScreen(
@@ -16,17 +15,15 @@ fun InitialScreen(
 ) {
     val properties by vm.properties.collectAsStateWithLifecycle()
     val dynamicBuilder = remember {
-        CraftDComposeBuilders().addBuilderRender(
+        CraftDBuilderManager().add(
             MySampleButtonComposeBuilder()
-        ).addBuilderRender(
-            CraftDCheckBoxComposeBuilder()
         )
     }
     LaunchedEffect(Unit) {
         vm.loadProperties()
     }
 
-    CraftDComposeController(
+    CraftDynamic(
         properties = properties,
         dynamicBuilder = dynamicBuilder
     ) {

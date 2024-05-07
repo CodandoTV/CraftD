@@ -1,7 +1,8 @@
 package com.github.codandotv.craftd.androidcore.presentation
 
 
-enum class CraftDComponent(val key: String) {
+
+enum class CraftDComponentKey(val key: String) {
     TEXT_VIEW_COMPONENT("${CRAFT_D}TextView"),
     BUTTON_COMPONENT("${CRAFT_D}Button"),
     CHECK_BOX_COMPONENT("${CRAFT_D}CheckBox"),

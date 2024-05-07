@@ -7,19 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5BFC1CC32BD9CBD9004BF31C /* craftd-swiftui in Frameworks */ = {isa = PBXBuildFile; productRef = 5BFC1CC22BD9CBD9004BF31C /* craftd-swiftui */; };
 		5BFC1CC52BD9DA43004BF31C /* dynamic.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC1CC42BD9DA43004BF31C /* dynamic.json */; };
 		5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */; };
-		5C0DC3732BD9C7B20077FCC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */; };
 		5C0DC3752BD9C7B50077FCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */; };
 		5C0DC3782BD9C7B50077FCC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */; };
+		A7C099252BE1C353006988A3 /* CraftDSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A7C099242BE1C353006988A3 /* CraftDSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5BFC1CC42BD9DA43004BF31C /* dynamic.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dynamic.json; sourceTree = "<group>"; };
 		5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraftDSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftDSampleApp.swift; sourceTree = "<group>"; };
-		5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -29,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BFC1CC32BD9CBD9004BF31C /* craftd-swiftui in Frameworks */,
+				A7C099252BE1C353006988A3 /* CraftDSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +39,7 @@
 			children = (
 				5C0DC36F2BD9C7B20077FCC7 /* CraftDSample */,
 				5C0DC36E2BD9C7B20077FCC7 /* Products */,
+				A7C099212BE1C30C006988A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */,
-				5C0DC3722BD9C7B20077FCC7 /* ContentView.swift */,
 				5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */,
 				5C0DC3762BD9C7B50077FCC7 /* Preview Content */,
 				5BFC1CC42BD9DA43004BF31C /* dynamic.json */,
@@ -70,6 +68,13 @@
 				5C0DC3772BD9C7B50077FCC7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A7C099212BE1C30C006988A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,7 +94,7 @@
 			);
 			name = CraftDSample;
 			packageProductDependencies = (
-				5BFC1CC22BD9CBD9004BF31C /* craftd-swiftui */,
+				A7C099242BE1C353006988A3 /* CraftDSwiftUI */,
 			);
 			productName = CraftDSample;
 			productReference = 5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */;
@@ -149,7 +154,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C0DC3732BD9C7B20077FCC7 /* ContentView.swift in Sources */,
 				5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +288,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CraftDSample/Preview Content\"";
-				DEVELOPMENT_TEAM = 8HG6PCH8MC;
+				DEVELOPMENT_TEAM = GX3ZT26ZRR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -313,7 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CraftDSample/Preview Content\"";
-				DEVELOPMENT_TEAM = 8HG6PCH8MC;
+				DEVELOPMENT_TEAM = GX3ZT26ZRR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -365,9 +369,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5BFC1CC22BD9CBD9004BF31C /* craftd-swiftui */ = {
+		A7C099242BE1C353006988A3 /* CraftDSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "craftd-swiftui";
+			package = 5BFC1CC12BD9CBD9004BF31C /* XCLocalSwiftPackageReference "../craftd-swiftui" */;
+			productName = CraftDSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

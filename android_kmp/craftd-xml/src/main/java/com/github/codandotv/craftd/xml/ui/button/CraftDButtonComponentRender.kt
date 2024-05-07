@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.codandotv.craftd.androidcore.data.convertToVO
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
-import com.github.codandotv.craftd.androidcore.presentation.CraftDComponent
+import com.github.codandotv.craftd.androidcore.presentation.CraftDComponentKey
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
 
 class ButtonComponentRender(override var onClickListener: CraftDViewListener?) :
     CraftDViewRenderer<ButtonComponentRender.ButtonHolder>(
-        CraftDComponent.BUTTON_COMPONENT.key, CraftDComponent.BUTTON_COMPONENT.ordinal
+        CraftDComponentKey.BUTTON_COMPONENT.key, CraftDComponentKey.BUTTON_COMPONENT.ordinal
     ) {
 
     inner class ButtonHolder(val button: CraftDButtonComponent) : RecyclerView.ViewHolder(button)

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../craftd_view_listener.dart';
 
-abstract class CraftDWidgetBuilder<T> {
-  const CraftDWidgetBuilder({required String key});
+abstract class CraftDBuilder<T> {
+  const CraftDBuilder({required String key});
 
   T fromJson(dynamic properties);
 

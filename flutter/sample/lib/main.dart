@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:craftd_module/presentation/ui/craftd_dynamic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dynamics/main_state.dart';
-import 'package:craftd_module/presentation/ui/craftd_widget_controller.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'main_controller.dart';
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
             case MainSuccessState:
               final simplePropertiesList =
                   _controller.state.toStateSuccess().properties;
-              return CraftDWidgetController(
+              return CraftDynamic(
                   simplePropertiesList: simplePropertiesList,
                   onAction: (actionProperties) {
                     print(

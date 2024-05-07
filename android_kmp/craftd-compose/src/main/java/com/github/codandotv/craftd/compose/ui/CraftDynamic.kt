@@ -5,13 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
-import com.github.codandotv.craftd.compose.builder.CraftDComposeBuilders
+import com.github.codandotv.craftd.compose.builder.CraftDBuilderManager
 
 @Composable
-fun CraftDComposeController(
+fun CraftDynamic(
     properties: List<SimpleProperties>,
     modifier: Modifier = Modifier,
-    dynamicBuilder : CraftDComposeBuilders,
+    dynamicBuilder : CraftDBuilderManager,
     onAction: (ActionProperties) -> Unit
 ) {
     LazyColumn(
