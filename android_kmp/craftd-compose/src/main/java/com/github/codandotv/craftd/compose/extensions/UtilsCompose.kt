@@ -1,6 +1,7 @@
 package com.github.codandotv.craftd.compose.extensions
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -26,6 +27,12 @@ fun CraftDAlign?.toArrangementCompose() : Arrangement.Horizontal = when (this) {
     CraftDAlign.CENTER -> Arrangement.Center
     CraftDAlign.RIGHT -> Arrangement.End
     else -> Arrangement.Start
+}
+
+fun CraftDAlign?.toAlignmentCompose() : Alignment.Vertical = when (this) {
+    CraftDAlign.CENTER -> Alignment.CenterVertically
+    CraftDAlign.BOTTOM -> Alignment.Bottom
+    else -> Alignment.Top
 }
 
 fun String?.parseColorCompose(): Color {
