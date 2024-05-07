@@ -2,6 +2,7 @@ package com.github.codandotv.craftd.compose.builder
 
 import com.github.codandotv.craftd.androidcore.presentation.CraftDComponentKey
 import com.github.codandotv.craftd.compose.ui.button.CraftDButtonBuilder
+import com.github.codandotv.craftd.compose.ui.checkbox.CraftDCheckBoxBuilder
 import com.github.codandotv.craftd.compose.ui.empty.CraftDEmptyBuilder
 import com.github.codandotv.craftd.compose.ui.text.CraftDTextBuilder
 
@@ -9,6 +10,7 @@ class CraftDBuilderManager {
     private val mapBuilder = hashMapOf(
         CraftDComponentKey.BUTTON_COMPONENT.key to CraftDButtonBuilder(),
         CraftDComponentKey.TEXT_VIEW_COMPONENT.key to CraftDTextBuilder(),
+        CraftDComponentKey.CHECK_BOX_COMPONENT.key to CraftDCheckBoxBuilder(),
     )
     fun add(vararg arrayCraftDBuilder: CraftDBuilder) : CraftDBuilderManager{
         arrayCraftDBuilder.forEach {

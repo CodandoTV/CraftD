@@ -17,8 +17,6 @@ fun InitialScreen(
     val dynamicBuilder = remember {
         CraftDBuilderManager().add(
             MySampleButtonComposeBuilder()
-        ).addBuilderRender(
-            CraftDCheckBoxComposeBuilder()
         )
     }
     LaunchedEffect(Unit) {
