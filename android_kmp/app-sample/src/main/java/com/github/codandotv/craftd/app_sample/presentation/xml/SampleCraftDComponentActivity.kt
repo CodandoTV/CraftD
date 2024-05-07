@@ -3,7 +3,7 @@ package com.github.codandotv.craftd.app_sample.presentation.xml
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.github.codandotv.craftd.app_sample.databinding.ActivityDynamicComponentBinding
+import com.github.codandotv.databinding.ActivityDynamicComponentBinding
 import com.github.codandotv.craftd.xml.ui.CraftDViewAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
