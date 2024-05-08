@@ -1,4 +1,6 @@
-# CraftD-Android
+# CraftD
+
+Check our [documentation](https://codandotv.gitbook.io/craftd).
 
 > A Server Driven UI library for Android.
 
