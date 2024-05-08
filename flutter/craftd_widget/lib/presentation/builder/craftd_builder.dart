@@ -1,4 +1,4 @@
-library craftd_module;
+library craftd_widget;
 
 import 'package:flutter/material.dart';
 

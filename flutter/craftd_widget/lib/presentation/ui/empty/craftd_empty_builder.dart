@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:craftd_module/data/model/empty/empty_properties.dart';
+import 'package:craftd_widget/data/model/empty/empty_properties.dart';
 import '../../builder/craftd_builder.dart';
 import '../../craftd_view_listener.dart';
 import 'craftd_empty.dart';

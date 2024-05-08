@@ -1,5 +1,5 @@
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:craftd_module/data/model/text/text_properties.dart';
+import 'package:craftd_widget/data/model/text/text_properties.dart';
 
 import '../../../data/model/action/action_properties.dart';
 import '../../builder/craftd_builder.dart';

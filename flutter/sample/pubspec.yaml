@@ -16,8 +16,8 @@ dependencies:
   material: ^1.0.0+2
   dio: ^5.4.1
   equatable: ^2.0.5
-  craftd_module:
-    path: ../craftd_module
+  craftd_widget:
+    path: ../craftd_widget
 
 dev_dependencies:
   flutter_test:

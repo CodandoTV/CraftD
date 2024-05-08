@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:craftd_module/presentation/ui/craftd_dynamic.dart';
+import 'package:craftd_widget/presentation/ui/craftd_dynamic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dynamics/main_state.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
