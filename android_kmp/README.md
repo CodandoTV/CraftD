@@ -2,6 +2,14 @@
 
 ### 1. Create your ComponentPropertyClass with properties that you need
 - In this example i used checkbox component
+> :warning: **Warning:** Here we have some points to consider
+> To avoid unnecessary recompositions at your component. We recommend use
+> the @Immutable and @Stable annotations in your properties. More about it below
+
+- **@immutable**: This guarantee the composition optimization based on the assumption that values read from the type will not change.
+
+- **@stable**: this is used to communicate some guarantees to the compose compiler about how a certain type or function will behave and keep the compose compiler notified about changes
+
 ```kotlin
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Immutable
