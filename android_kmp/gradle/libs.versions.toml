@@ -1,6 +1,7 @@
 [versions]
 kotlin = "1.9.21"
 android_gradle_plugin = "8.2.2"
+plugin-maven = "0.28.0"
 
 jackson = "2.12.7"
 
@@ -23,6 +24,7 @@ compose_material_3 = "1.2.1"
 lifecycle_version = "2.7.0"
 
 [libraries]
+plugin_maven = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "plugin-maven" }
 kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }
 

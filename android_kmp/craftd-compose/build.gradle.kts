@@ -1,6 +1,7 @@
 plugins {
     id("com.codandotv.compose")
     id("com.codandotv.android-library")
+    id("com.codandotv.publish")
 }
 
 dependencies {
