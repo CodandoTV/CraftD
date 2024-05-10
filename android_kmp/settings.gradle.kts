@@ -13,8 +13,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")
     }
+
 }
 rootProject.name = "CraftD"
 include(":app-sample")

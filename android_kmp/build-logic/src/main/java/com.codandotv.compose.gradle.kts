@@ -1,9 +1,6 @@
 @file:Suppress("UnstableApiUsage")
-import extensions.getBundle
 import extensions.getLibrary
 import extensions.setupCompose
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.artifacts.VersionCatalogsExtension
 
 plugins {
     id("com.codandotv.android-library")
@@ -15,10 +12,11 @@ android {
    setupCompose()
 }
 
+//Note: In order to publish and appear in the pom the versions cannot be used BOM
 dependencies {
-    implementation(platform(libs.getLibrary("compose.bom")))
-    androidTestImplementation(platform(libs.getLibrary("compose.bom")))
-
-    implementation(libs.getBundle("compose"))
+    implementation(libs.getLibrary("compose.ui.tooling"))
+    implementation(libs.getLibrary("compose.ui"))
+    implementation(libs.getLibrary("compose.lifecycle"))
+    implementation(libs.getLibrary("compose.material3"))
     debugImplementation(libs.getLibrary("compose.ui.tooling"))
 }

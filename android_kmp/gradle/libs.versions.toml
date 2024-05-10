@@ -1,6 +1,7 @@
 [versions]
 kotlin = "1.9.21"
 android_gradle_plugin = "8.2.2"
+plugin-maven = "0.28.0"
 
 jackson = "2.12.7"
 
@@ -8,7 +9,7 @@ jackson = "2.12.7"
 test_junit = "4.13.2"
 androidx_core_testing = "2.2.0"
 mockk = "1.13.7"
-kotlinx-coroutines-test= "1.5.1"
+kotlinx-coroutines-test = "1.5.1"
 
 #Android
 androidx_appcompat = "1.6.1"
@@ -21,8 +22,10 @@ androidx_core_ktx = "1.13.0"
 compose_bom = "2024.04.01"
 compose_material_3 = "1.2.1"
 lifecycle_version = "2.7.0"
+compose_ui = "1.6.7"
 
 [libraries]
+plugin_maven = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "plugin-maven" }
 kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }
 
@@ -47,10 +50,11 @@ google_material = { group = "com.google.android.material", name = "material", ve
 
 # Compose
 compose_bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose_bom" }
-compose_ui = { module = "androidx.compose.ui:ui" }
+compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose_ui" }
 compose_lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle_version" }
 compose_material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose_material_3" }
-compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling" }
+
+compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose_ui" }
 compose_ui_test = { module = "androidx.compose.ui:ui-test-junit4" }
 compose_uitest = { module = "androidx.compose.ui:ui-test" }
 compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
@@ -62,8 +66,8 @@ fasterxml_jackson_databind = { group = "com.fasterxml.jackson.core", name = "jac
 [bundles]
 compose = ["compose.ui", "compose.material3", "compose.lifecycle", "compose.ui.tooling"]
 composetest = ["compose.uitest", "compose.junit4", "compose.ui.test"]
-test = ["junit", "mockk", "mockk_android", "viewmodel_test","coroutines_test"]
-androidSupport = ["androidx_core", "androidx_appcompat", "androidx_dynamicanimation","google_material"]
+test = ["junit", "mockk", "mockk_android", "viewmodel_test", "coroutines_test"]
+androidSupport = ["androidx_core", "androidx_appcompat", "androidx_dynamicanimation", "google_material"]
 kotlin = ["androidx_core", "kotlin_stdlib", "kotlin_reflect"]
 
 [plugins]
