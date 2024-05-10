@@ -6,7 +6,7 @@ class ActionProperties {
 
   const ActionProperties({this.deeplink, this.analyticsProperties});
 
-  factory ActionProperties.fromJson(dynamic? properties) {
+  factory ActionProperties.fromJson(dynamic properties) {
     return ActionProperties(
         deeplink: properties != null ? properties["deeplink"] : null,
         analyticsProperties: properties != null ? AnalyticsProperties

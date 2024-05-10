@@ -153,10 +153,10 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
-  craftd_module:
+  craftd_widget:
     dependency: "direct main"
     description:
-      path: "../craftd_module"
+      path: "../craftd_widget"
       relative: true
     source: path
     version: "0.0.1"

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:craftd_module/data/model/base/simple_properties.dart';
+import 'package:craftd_widget/data/model/base/simple_properties.dart';
 import 'package:mobx/mobx.dart';
 
 import 'main_state.dart';

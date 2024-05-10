@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:craftd_module/data/model/text/text_properties.dart';
+import 'package:craftd_widget/data/model/text/text_properties.dart';
 
 import '../helper/craftd_colors.dart';
 

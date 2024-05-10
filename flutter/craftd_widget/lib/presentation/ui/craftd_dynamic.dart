@@ -1,5 +1,5 @@
-import 'package:craftd_module/craftd_module.export.dart';
-import 'package:craftd_module/presentation/builder/craftd_builder_manager.dart';
+import 'package:craftd_widget/craftd_widget.export.dart';
+import 'package:craftd_widget/presentation/builder/craftd_builder_manager.dart';
 import 'package:flutter/material.dart';
 
 

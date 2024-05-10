@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:craftd_module/craftd_module.export.dart';
+import 'package:craftd_widget/craftd_widget.export.dart';
 
 class MainState extends Equatable {
   @override
