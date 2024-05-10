@@ -14,7 +14,6 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-    id("maven-publish")
 }
 
 android {
@@ -30,35 +29,12 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
-            proguardFiles("proguard-android.txt", "proguard-rules.pro")
+            proguardFiles("proguard-rules.pro")
             consumerProguardFiles("proguard-rules.pro")
         }
 
         getByName("debug") {
             isMinifyEnabled = false
-        }
-    }
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = project.property("GROUP_ID") as String
-                artifactId = project.property("ARTIFACT_ID") as String
-                version = project.property("VERSION") as String
-            }
-        }
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/CodandoTV/CraftD")
-                credentials {
-                    username = System.getenv("GPR_USER")
-                    password = System.getenv("GPR_API_KEY")
-                }
-            }
         }
     }
 }
