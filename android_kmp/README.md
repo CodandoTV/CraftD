@@ -23,15 +23,8 @@ data class CheckBoxProperties(
  }
   
 ```
-### 3. Add the component's key value at CraftDComponentKey enum
-```kotlin
-enum class CraftDComponentKey(val key: String) {
-    CHECK_BOX_COMPONENT("${CRAFT_D}CheckBox")
-    ... rest of keys
-}
-  
-```
-### 4. Create your Component
+
+### 3. Create your Component
 > :memo: **Note:** Your composable component must have three properties.
 - componentProperties: The mapped properties from json
 - modifier: Default for composable componets
@@ -47,7 +40,7 @@ fun CraftDCheckBox(
 }
 ```
 
-### 5. Create your Component Builder
+### 4. Create your Component Builder
  > :memo: **Note:** This Builder must extend CraftBuilder Class and override craft method.
 
 ```kotlin
@@ -65,7 +58,7 @@ class CraftDCheckBoxBuilder(
 }
 ```
 
-### 6. In your initial screen add yout builder inside of CraftBuilderManager
+### 5. In your initial screen add yout builder inside of CraftBuilderManager
 ```kotlin
 @Composable
 fun InitialScreen(
