@@ -1,163 +1,98 @@
 ## How to use
 
-### 1. Add in a xml that you want to use
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+### 1. Create your ComponentPropertyClass with properties that you need
+- In this example i used checkbox component
+> :warning: **Warning:** Here we have some points to consider
+> To avoid unnecessary recompositions at your component. We recommend use
+> the @Immutable and @Stable annotations in your properties. More about it below
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+- **@immutable**: This guarantee the composition optimization based on the assumption that values read from the type will not change.
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-```
-
-### 2. Add in your ViewModel the interface from the Dynamic
+- **@stable**: this is used to communicate some guarantees to the compose compiler about how a certain type or function will behave and keep the compose compiler notified about changes
 
 ```kotlin
-class DynamicViewModel(
-    val dynamic: Dynamic,
-    val repository: DynamicRepository 
-) : ViewModel() {
- //Stuffs 
-}
-```
-
-### 3. In your Activity/Fragment connect the Dynamic to the adapter in xml
-
-```kotlin
-  override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDynamicComponentBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        
-        binding.recycler.adapter = vm.dynamic as DynamicAdapter
-        //--- Stuffs
-}
-```
-
-
-### 4. Create the mapping to your visual components for example:
-
-```kotlin
-enum class DynamicComponent(val key: String) {
-    TEXT_VIEW_COMPONENT("${DYNAMIC}TextView"),
-}
-
-fun List<SimpleProperties>.toRenders(listener : DynamicViewListener): List<ViewRenderer<*>> {
-    return this
-        .distinctBy { it.key }
-        .mapNotNull { simpleProperties ->
-            val key = simpleProperties.key
-            when (DynamicComponent.values().find { it.key == key }) {
-                DynamicComponent.TEXT_VIEW_COMPONENT -> TextViewComponentRender(listener)
-                else -> null
-            }
-        }
-}
-
-internal const val DYNAMIC = "Dynamic"
-```
-
-### 5. Create object `Properties` of according with your components for example:
-```
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class TextProperties(
-    @JsonProperty("xxx") val myProperties1: String,
-    @JsonProperty("xxx") val myProperties2: String,
+@Immutable
+@Stable
+data class CheckBoxProperties(
+    @JsonProperty("text") val text: String? = null,
+    ... rest of your properties
 )
+
 ```
 
-### 6. Create object `ViewRenders` of according with your components for example:
-
-
-```kotlin
-class MyComponentRender(override var onClickListener: DynamicViewListener?)
-    : ViewRenderer<MyComponentRender.MyHolder>(DynamicComponent.MY_COMPONENT.key, DynamicComponent.MY_COMPONENT.ordinal) {
-
-    inner class MyHolder(val anyView: AnyView) : RecyclerView.ViewHolder(anyView)
-
-    override fun bindView(model: SimpleProperties, holder: MyHolder, position: Int) {
-        val anyProperties = model.value.convertToVO<AnyProperties>()
-
-        holder.any.text = anyProperties.text
-        anyProperties.textColorHex?.let { textColorHex ->
-            //Stuff
-        }
-        anyProperties.actionProperties?.let { actionProperties ->
-          //Stuff
-        }
-    }
-
-    override fun createViewHolder(parent: ViewGroup): MyHolder {
-        return MyHolder(AnyView(parent.context))
-    }
-}
-```
-
-### 7. Configure your ViewModel to accept for example:
-
-```kotlin
-class DynamicViewModel(
-    val dynamic: Dynamic,
-    val repository: DynamicRepository
-) : ViewModel() {
-  
-    fun onResume() {
-        viewModelScope.launch {
-            repository.getDynamic()
-                .catch {
-                    it.printStackTrace()
-                }
-                .collect {
-                    setupDynamicRender(it)
-                    dynamic.setViewObjectDiff(it)
-                }
-        }
-    }
-
-    private fun setupDynamicRender(list : List<SimpleProperties>) {
-        dynamic.registerRenderers(list.toRenders {
-            listener.invoke(it)
-        })
-    }
-
-    private val listener = object : DynamicViewListener {
-        override fun invoke(actionProperties: DynamicActionProperties) {
-            actionProperties.analytics?.let {
-              //Stuff
-            }
-            actionProperties.deeplink?.let {
-              //Stuff
-            }
-        }
-    }
-}
-``` 
-
-## 7. Enjoy and Have fun to create a json that you need
-
-Your json must to have at least two parameters `key` and `value` that are respective of your object for example:
+### 2. Add your Component json object in Dymanic.json
 ```json
 {
-  "data": [
-    {
-      "key": "MyDynamicView",
-      "value": {
-        "text": "Any",
-        "textColor": "Any"
-      }
-    }
-  ]
+    "key": "CraftDCheckBox",
+    "value": {
+     ... rest of your properties
+     }
+ }
+  
+```
+
+### 3. Create your Component
+> :memo: **Note:** Your composable component must have three properties.
+- componentProperties: The mapped properties from json
+- modifier: Default for composable componets
+- behaviour: This make reference to the component's behaviour, for example: onclick -> for buttons, onchange -> for checkbox etc...
+```kotlin
+@Composable
+fun CraftDCheckBox(
+    checkboxProperties: CheckBoxProperties,
+    modifier: Modifier = Modifier,
+    onChecked: (Boolean) -> Unit 
+) {
+   ... Rest of your code
 }
 ```
 
+### 4. Create your Component Builder
+ > :memo: **Note:** This Builder must extend CraftBuilder Class and override craft method.
+
+```kotlin
+class CraftDCheckBoxBuilder(
+    override val key: String = CraftDComponentKey.CHECK_BOX_COMPONENT.key
+) :
+    CraftDBuilder {
+    @Composable
+    override fun craft(model: SimpleProperties, listener: CraftDViewListener) {
+        val checkBoxProperties = model.value.convertToVO<CheckBoxProperties>()
+        CraftDCheckBox(checkBoxProperties) {
+            checkBoxProperties.actionProperties?.let { listener.invoke(it) }
+        }
+    }
+}
+```
+
+### 5. In your initial screen add yout builder inside of CraftBuilderManager
+```kotlin
+@Composable
+fun InitialScreen(
+    vm: SampleCraftDComposeViewModel
+) {
+    val properties by vm.properties.collectAsStateWithLifecycle()
+    val dynamicBuilder = remember {
+        CraftDBuilderManager().add(
+           CraftDCheckBoxBuilder()
+        )
+    }
+    LaunchedEffect(Unit) {
+        vm.loadProperties()
+    }
+
+    CraftDynamic(
+        properties = properties,
+        dynamicBuilder = dynamicBuilder
+    ) {
+        println(
+            ">>>> category ${it.analytics?.category} -" + " action ${it.analytics?.action} -" + " label  ${it.analytics?.label} -" + " deeplink ${it.deeplink}"
+        )
+    }
+}
+```
+## So now just enjoy your component!!!
 
 ## Credits
 
