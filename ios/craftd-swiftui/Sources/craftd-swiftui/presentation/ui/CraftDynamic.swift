@@ -1,11 +1,14 @@
 import SwiftUI
 
-public struct CraftDynamic: View {
-    @State private var list: [SimpleProperties] = []
-    private let craftBuilders = CraftDBuilderManager()
-
-    public init() {}
+public struct CraftDynamic : View {
+    private var craftBuilders: CraftDBuilderManager
     
+    public init(craftBuilders: CraftDBuilderManager) {
+        self.craftBuilders = craftBuilders
+    }
+    
+    @State private var list: [SimpleProperties] = []
+        
     public var body: some View {
         ScrollView {
             LazyVStack {
@@ -39,8 +42,4 @@ public struct CraftDynamic: View {
     
     
     
-}
-
-#Preview {
-    CraftDynamic()
 }

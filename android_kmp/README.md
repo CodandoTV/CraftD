@@ -99,7 +99,7 @@ class CraftDCheckBoxBuilder(
 }
 ```
 
-### 5. In your initial screen add yout builder inside of CraftBuilderManager
+### 5. In your screen you can add the builder inside of CraftBuilderManager
 ```kotlin
 @Composable
 fun InitialScreen(
