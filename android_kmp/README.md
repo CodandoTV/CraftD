@@ -49,7 +49,7 @@ implementation("io.github.codandotv:craftd-core:${last_version}")
 @Stable
 data class CheckBoxProperties(
     @JsonProperty("text") val text: String? = null,
-    ... rest of your properties
+    ... define your properties here
 )
 
 ```
@@ -59,7 +59,7 @@ data class CheckBoxProperties(
 {
     "key": "CraftDCheckBox",
     "value": {
-     ... rest of your properties
+     ... define your properties here
      }
  }
   
@@ -77,7 +77,7 @@ fun CraftDCheckBox(
     modifier: Modifier = Modifier,
     onChecked: (Boolean) -> Unit 
 ) {
-   ... Rest of your code
+   ... place your code
 }
 ```
 
