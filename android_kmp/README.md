@@ -1,4 +1,37 @@
+## Setup
+
+Add in your settings.gradle `mavenCetral`
+```kotlin
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        //Stuff
+        mavenCentral()
+    }
+
+}
+```
+
+### There are tree versions for Android:
+- [Compose](#compose-version)
+
+```kotlin
+implementation("io.github.codandotv:craftd-compose:${last_version}")
+```
+
+- [XML View System](#xml-version)
+```kotlin
+implementation("io.github.codandotv:craftd-xml:${last_version}")
+```
+
+- [Core](#core) - Is meant to be used for you to customize even the craftD mechanism
+```kotlin
+implementation("io.github.codandotv:craftd-core:${last_version}")
+```
+
 ## How to use
+
+### 🎯 Compose version
 
 ### 1. Create your ComponentPropertyClass with properties that you need
 - In this example i used checkbox component
@@ -49,7 +82,7 @@ fun CraftDCheckBox(
 ```
 
 ### 4. Create your Component Builder
- > :memo: **Note:** This Builder must extend CraftBuilder Class and override craft method.
+> :memo: **Note:** This Builder must extend CraftBuilder Class and override craft method.
 
 ```kotlin
 class CraftDCheckBoxBuilder(
@@ -86,20 +119,151 @@ fun InitialScreen(
         properties = properties,
         dynamicBuilder = dynamicBuilder
     ) {
-        println(
-            ">>>> category ${it.analytics?.category} -" + " action ${it.analytics?.action} -" + " label  ${it.analytics?.label} -" + " deeplink ${it.deeplink}"
-        )
+        //Component click return to do something
     }
 }
 ```
 ## So now just enjoy your component!!!
 
-## Credits
+------------------------------------------
 
-The DynamicView library was made inspired by these repositories:
+### 🎯 XML version
 
-https://github.com/vivchar/RendererRecyclerViewAdapter
+### 1. Add in a xml that you want to use
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-https://github.com/GustavoHSSantorio/Dynamic-Adapter (We worked in the initial solution)
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-Thanks to these repositories that made I think in new ideas to generate a new library version
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+```
+
+### 2. Add in your ViewModel the interface from the Dynamic
+
+```kotlin
+class YourViewModel(
+    val craft: CraftDView,
+    val repository: DynamicRepository 
+) : ViewModel() {
+ //Stuffs 
+}
+```
+
+### 3. In your Activity/Fragment connect the Dynamic to the adapter in xml
+
+```kotlin
+  override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDynamicComponentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.recycler.adapter = vm.craft as CraftDViewAdapter
+        //--- Stuffs
+}
+```
+
+
+### 4. Create object `Properties` of according with your components for example:
+```
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class TextProperties(
+    @JsonProperty("xxx") val myProperties1: String,
+    @JsonProperty("xxx") val myProperties2: String,
+)
+```
+
+### 5. Create object `ViewRenders` of according with your components for example:
+
+```kotlin
+class MyComponentRender(override var onClickListener: CraftDViewListener?)
+    : ViewRenderer<MyComponentRender.MyHolder>("Your Key", "Your Identifier") {
+
+    inner class MyHolder(val anyView: AnyView) : RecyclerView.ViewHolder(anyView)
+
+    override fun bindView(model: SimpleProperties, holder: MyHolder, position: Int) {
+        val anyProperties = model.value.convertToVO<AnyProperties>()
+
+        holder.any.text = anyProperties.text
+        anyProperties.textColorHex?.let { textColorHex ->
+            //Stuff
+        }
+        anyProperties.actionProperties?.let { actionProperties ->
+          //Stuff
+        }
+    }
+
+    override fun createViewHolder(parent: ViewGroup): MyHolder {
+        return MyHolder(AnyView(parent.context))
+    }
+}
+```
+
+### 6. Configure your ViewModel to accept for example:
+
+```kotlin
+class DynamicViewModel(
+    val craft: CraftD,
+    val repository: SampleCraftDRepository
+) : ViewModel() {
+  
+    fun onResume() {
+        viewModelScope.launch {
+            repository.getDynamic()
+                .catch {
+                    it.printStackTrace()
+                }
+                .collect {
+                    setupDynamicRender(it)
+                    craft.setViewObjectDiff(it)
+                }
+        }
+    }
+
+    private fun setupDynamicRender(list: List<SimpleProperties>) {
+        craft.registerRenderers(
+            CraftDBuilderManager.getBuilderRenders(
+                simpleProperties = list,
+                customDynamicBuilderList = customListViewRender // Can you pass your custom list from ViewRender
+            ) { action ->
+                listener.invoke(action)
+            })
+    }
+
+    private val listener = object : CraftDViewListener {
+        override fun invoke(actionProperties: ActionProperties) {
+            actionProperties.analytics?.let {
+               //Stuff
+            }
+            actionProperties.deeplink?.let {
+                //Stuff
+            }
+        }
+    }
+}
+``` 
+
+## 7. Enjoy and Have fun to create a json that you need
+
+Your json must to have at least two parameters `key` and `value` that are respective of your object for example:
+```json
+{
+  "data": [
+    {
+      "key": "MyDynamicView",
+      "value": {
+        "text": "Any",
+        "textColor": "Any"
+      }
+    }
+  ]
+}
+```
