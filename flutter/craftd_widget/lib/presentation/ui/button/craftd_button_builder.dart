@@ -5,8 +5,9 @@ import '../../builder/craftd_builder.dart';
 import '../../craftd_view_listener.dart';
 import 'craftd_button.dart';
 
+
 class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
-  CraftDButtonBuilder() : super(key: key);
+  CraftDButtonBuilder() : super(key: keyBuilder);
 
   @override
   Widget craft(ButtonProperties model, CraftDViewListener listener) {
@@ -32,6 +33,5 @@ class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
         actionProperties: ActionProperties.fromJson(
             properties[ActionProperties.key]));
   }
-
-  static String key = "CraftDButton";
+  static String keyBuilder = "CraftDButton";
 }

@@ -5,7 +5,7 @@ import '../../craftd_view_listener.dart';
 import 'craftd_empty.dart';
 
 class CraftDEmptyBuilder extends CraftDBuilder<EmptyProperties> {
-  CraftDEmptyBuilder() : super(key: key);
+  CraftDEmptyBuilder() : super(key: keyBuilder);
 
   @override
   Widget craft(EmptyProperties model, CraftDViewListener listener) {
@@ -16,5 +16,5 @@ class CraftDEmptyBuilder extends CraftDBuilder<EmptyProperties> {
   EmptyProperties fromJson(properties) {
     return const EmptyProperties();
   }
-  static String key = "CraftDEmpty";
+  static String keyBuilder = "CraftDEmpty";
 }
