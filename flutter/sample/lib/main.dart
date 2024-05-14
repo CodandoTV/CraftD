@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:craftd_widget/presentation/builder/craftd_builder_manager.dart';
 import 'package:craftd_widget/presentation/ui/craftd_dynamic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dynamics/main_state.dart';
@@ -60,8 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
             case MainSuccessState:
               final simplePropertiesList =
                   _controller.state.toStateSuccess().properties;
+
+              // You can put it in your dependency injection
+              final craftdBuilderManager = CraftDBuilderManager();
               return CraftDynamic(
                   simplePropertiesList: simplePropertiesList,
+                  craftDBuilderManager : craftdBuilderManager,
                   onAction: (actionProperties) {
                     print(
                         "categoria ${actionProperties.analyticsProperties?.category} "

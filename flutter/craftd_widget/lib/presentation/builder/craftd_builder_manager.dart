@@ -4,15 +4,23 @@ import '../ui/text/craftd_text_builder.dart';
 import 'craftd_builder.dart';
 
 class CraftDBuilderManager {
-  static final Map<String, CraftDBuilder> _builders = {
-    CraftDButtonBuilder.key: CraftDButtonBuilder(),
-    CraftDTextBuilder.key: CraftDTextBuilder(),
+  final Map<String, CraftDBuilder> _builders = {
+    CraftDButtonBuilder.keyBuilder: CraftDButtonBuilder(),
+    CraftDTextBuilder.keyBuilder: CraftDTextBuilder(),
   };
 
-  static CraftDBuilder getBuilder(String key,
-      {Map<String, CraftDBuilder>? customMap}) {
-    if (customMap != null) {
-      _builders.addAll(customMap);
+  final Map<String, CraftDBuilder> customBuilders = {};
+
+  CraftDBuilderManager add(List<CraftDBuilder> arrayCraftDBuilder) {
+    for (var it in arrayCraftDBuilder) {
+      _builders[it.key] = it;
+  }
+    return this;
+  }
+
+  CraftDBuilder getBuilder(String key) {
+    if (customBuilders.isNotEmpty) {
+      _builders.addAll(customBuilders);
     }
     return _builders[key] != null ? _builders[key]! : CraftDEmptyBuilder();
   }

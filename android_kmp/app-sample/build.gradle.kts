@@ -9,6 +9,7 @@ dependencies {
     implementation(projects.craftdCompose)
     implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("io.github.codandotv:craftd-xml:0.0.1")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")

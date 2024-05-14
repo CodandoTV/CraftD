@@ -7,7 +7,8 @@ import '../../craftd_view_listener.dart';
 import 'craftd_text.dart';
 
 class CraftDTextBuilder extends CraftDBuilder<TextProperties> {
-  CraftDTextBuilder() : super(key: key);
+  CraftDTextBuilder() : super(key: keyBuilder);
+  static String keyBuilder = "CraftDTextView";
 
   @override
   Widget craft(TextProperties model, CraftDViewListener listener) {
@@ -32,5 +33,4 @@ class CraftDTextBuilder extends CraftDBuilder<TextProperties> {
             properties[ActionProperties.key]));
   }
 
-  static String key = "CraftDTextView";
 }

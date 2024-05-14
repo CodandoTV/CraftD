@@ -11,7 +11,7 @@ import com.github.codandotv.craftd.compose.builder.CraftDBuilderManager
 fun CraftDynamic(
     properties: List<SimpleProperties>,
     modifier: Modifier = Modifier,
-    dynamicBuilder : CraftDBuilderManager,
+    craftDBuilderManager : CraftDBuilderManager,
     onAction: (ActionProperties) -> Unit
 ) {
     LazyColumn(
@@ -21,7 +21,7 @@ fun CraftDynamic(
             count = properties.size,
           ) { index ->
             val model = properties[index]
-            val builder = dynamicBuilder.getBuilder(model.key)
+            val builder = craftDBuilderManager.getBuilder(model.key)
             builder.craft(model = model) {
                 onAction(it)
             }
