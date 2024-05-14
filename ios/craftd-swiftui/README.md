@@ -25,7 +25,7 @@ public struct TextProperties: Decodable {
 ```json
 [
   {
-    "key": "CraftDTextView",
+    "key": "MyCraftDText",
     "value": {
       "text": "Knife",
       "backgroundHex": "#9A71F6",
