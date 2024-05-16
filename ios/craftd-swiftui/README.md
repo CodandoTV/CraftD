@@ -1,7 +1,7 @@
 ## Setup
 
 Add in your `podfile`
-```swift
+```ruby
     pod ‘CraftDSwiftUI’, :git => “https://github.com/codandotv/CraftD.git", :tag => “ios-last_version”
 ```
 
@@ -73,9 +73,9 @@ struct CraftDSampleApp: App {
     var body: some Scene {
         WindowGroup {
             //Or another View
-            CraftDBuilderManager()
+            let craftDBuilderManager = CraftDBuilderManager()
                 .add(builder: <#T##any CraftDBuilder#> like MyCraftDTextBuilder)
-            CraftDynamic(craftBuilders: craftBuilders)
+            CraftDynamic(craftDBuilderManager: CraftDBuilderManager)
         }
     }
 }
