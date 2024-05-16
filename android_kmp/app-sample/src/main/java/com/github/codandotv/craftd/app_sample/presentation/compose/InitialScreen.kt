@@ -14,7 +14,7 @@ fun InitialScreen(
     vm: SampleCraftDComposeViewModel
 ) {
     val properties by vm.properties.collectAsStateWithLifecycle()
-    val dynamicBuilder = remember {
+    val craftdBuilderManager = remember {
         CraftDBuilderManager().add(
             MySampleButtonComposeBuilder()
         )
@@ -25,7 +25,7 @@ fun InitialScreen(
 
     CraftDynamic(
         properties = properties,
-        craftDBuilderManager = dynamicBuilder
+        craftDBuilderManager = craftdBuilderManager
     ) {
         println(
             ">>>> category ${it.analytics?.category} -" + " action ${it.analytics?.action} -" + " label  ${it.analytics?.label} -" + " deeplink ${it.deeplink}"
