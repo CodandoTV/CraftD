@@ -5,11 +5,8 @@ import CraftDSwiftUI
 struct CraftDSampleApp: App {
     var body: some Scene {
         WindowGroup {
-            CraftDynamic()
+            let craftBuilders = CraftDBuilderManager()
+            CraftDynamic(craftBuilders: craftBuilders)
         }
     }
-}
-
-#Preview {
-    CraftDynamic()
 }
