@@ -1,7 +1,8 @@
 ## Setup
 
-Add in your XXXXXXXXXX
+Add in your `podfile`
 ```swift
+    pod ‘CraftDSwiftUI’, :git => “https://github.com/codandotv/CraftD.git", :tag => “ios-last_version”
 ```
 
 ## How to use
