@@ -95,3 +95,7 @@ More details check our [documentation](https://codandotv.gitbook.io/craftd)
 > A Server Driven UI library for Android.
 
 Inspired by the [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
+
+
+This project exists thanks to all the people who contribute.
+<a href="https://github.com/CodandoTV/CraftD"><img src="https://opencollective.com/craftd/contributors.svg?width=890&button=false" /></a>
