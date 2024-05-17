@@ -14,7 +14,13 @@ dependencies {
 /**
  * Compose metrics
  *
+ * 1. First step is sync + build the project, this will generate the compose metrics;
+ *
+ * 2. Download [Mendable](https://github.com/jayasuryat/mendable) and run the following command:
+ * java -jar mendable.jar --scanRecursively -i <work directory>/android_kmp/craftd-compose/build/compose_metrics -o <work directory>/android_kmp/craftd-compose/reports -oName craftDComposeMetrics -eType html -rType all
  * You can generate the compose metrics report using the following task:
+ *
+ * 3. Open the html file generated : )
  *
  * To be able to see a beutiful report, the community recommends to use [Mendable](https://github.com/jayasuryat/mendable).
  *
