@@ -8,7 +8,7 @@
 class ButtonProperties {
   const ButtonProperties({
       required this.text,
-    ... rest of your construtor properties
+    ... place your construtor properties
   });
 
   final String text;
@@ -23,7 +23,7 @@ class ButtonProperties {
     "key": "CraftDBbutton",
     "value": {
          "text": "Knife",
-     ... rest of your properties
+     ... place your properties
      }
  }
   
@@ -38,7 +38,7 @@ class CraftDButton extends StatelessWidget {
     const CraftDButton(
       {super.key, required this.buttonProperties, required this.callback});
 
-      ... rest of your code
+      ... place your code
 
 }
 ```
@@ -89,7 +89,7 @@ class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
 
 ## Credits
 
-The DynamicView library was made inspired by these repositories:
+The CraftD library was made inspired by these repositories:
 
 https://github.com/vivchar/RendererRecyclerViewAdapter
 
