@@ -9,6 +9,7 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
+    implementation(libs.kotlinx.collections.immutable)
 }
 
 /**
