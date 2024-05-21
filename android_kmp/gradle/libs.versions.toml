@@ -1,6 +1,7 @@
 [versions]
 kotlin = "1.9.21"
 android_gradle_plugin = "8.2.2"
+kotlinx-collections-immutable = "0.3.7"
 plugin-maven = "0.28.0"
 
 jackson = "2.12.7"
@@ -25,6 +26,7 @@ lifecycle_version = "2.7.0"
 compose_ui = "1.6.7"
 
 [libraries]
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 plugin_maven = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "plugin-maven" }
 kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }

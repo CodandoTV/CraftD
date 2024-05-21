@@ -68,4 +68,5 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.8.2")
     // Optional - Integration with ViewModels
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation(libs.kotlinx.collections.immutable)
 }

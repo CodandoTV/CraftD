@@ -1,11 +1,15 @@
 package com.github.codandotv.craftd.androidcore.data.model.text
 
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties
 import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
 import com.github.codandotv.craftd.androidcore.domain.CraftDTextStyle
 
+@Stable
+@Immutable
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class TextProperties(
     @JsonProperty("text") val text: String? = null,

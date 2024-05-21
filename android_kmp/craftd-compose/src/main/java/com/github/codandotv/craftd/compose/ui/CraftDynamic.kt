@@ -6,10 +6,11 @@ import androidx.compose.ui.Modifier
 import com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.compose.builder.CraftDBuilderManager
+import kotlinx.collections.immutable.ImmutableList
 
 @Composable
 fun CraftDynamic(
-    properties: List<SimpleProperties>,
+    properties: ImmutableList<SimpleProperties>,
     modifier: Modifier = Modifier,
     craftDBuilderManager : CraftDBuilderManager,
     onAction: (ActionProperties) -> Unit
