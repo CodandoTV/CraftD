@@ -1,4 +1,18 @@
+## Setup
+
+### Run this command with Flutter:
+
+```sh
+ flutter pub add craftd_widget
+```
+
+### This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+```yaml
+dependencies:
+  craftd_widget: ^0.0.1
+```
 ## How to use
+
 
 ### 1. Create your ComponentPropertyClass with properties that you need
 - In this example i used Button component
