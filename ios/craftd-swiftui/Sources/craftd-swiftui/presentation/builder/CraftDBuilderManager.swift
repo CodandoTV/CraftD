@@ -1,7 +1,12 @@
 import Foundation
 
 public class CraftDBuilderManager {
-    public init() {}
+    public init() {
+        add(builders: [
+            CraftDTextBuilder(),
+            CraftDButtonBuilder()
+        ])
+    }
     
     private var listCraftDBuilder: [String: CraftDBuilder] = [:]
     

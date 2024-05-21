@@ -1,3 +1,4 @@
 public struct ActionProperties: Codable {
-    let text: String
+    var deeplink: String?
+    var analytics: AnalyticsProperties?
 }
