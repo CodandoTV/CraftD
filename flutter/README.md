@@ -9,8 +9,11 @@
 ### This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
 ```yaml
 dependencies:
-  craftd_widget: ^0.0.1
+  craftd_widget: $last_version
 ```
+
+more detail [pub.dev](https://pub.dev/packages/craftd_widget/install)
+
 ## How to use
 
 
