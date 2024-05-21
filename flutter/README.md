@@ -29,7 +29,7 @@ class ButtonProperties {
   });
 
   final String text;
-   ... rest of your properties
+   ... place your properties
 }
 
 ```
@@ -70,7 +70,7 @@ class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
 
   @override
   Widget craft(ButtonProperties model, CraftDViewListener listener) {
-    ... rest of tour code
+    ... place your code
   }
 
   @override
