@@ -7,8 +7,3 @@ struct CheckBoxProperties: Codable {
     var actionProperties: ActionProperties?
     var style: StyleProperties?
 }
-
-struct StyleProperties: Codable {
-    var checkedColorHex: String?
-    var uncheckedColorHex: String?
-}

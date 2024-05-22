@@ -10,8 +10,9 @@ struct CraftDCheckBox: View {
     let align: Alignment
     let hasItRightText: Bool
     let actionProperties: ActionProperties?
+    let listener: CraftDViewListener
     
-    init(_ properties: CheckBoxProperties) {
+    init(_ properties: CheckBoxProperties, listener: @escaping CraftDViewListener) {
         self.text = properties.text ?? ""
         self.checkedColorHex = properties.style?.checkedColorHex ?? "#0000FF"
         self.uncheckedColorHex = properties.style?.uncheckedColorHex ?? "#0000FF"
@@ -20,6 +21,7 @@ struct CraftDCheckBox: View {
         self.align = properties.align?.alignment ?? .center
         self.hasItRightText = properties.hasItRightText ?? true
         self.actionProperties = properties.actionProperties
+        self.listener = listener
     }
     
     
@@ -40,8 +42,7 @@ struct CraftDCheckBox: View {
             .frame(maxWidth: .infinity,
                    alignment: textAlign)
         Button(action: {
-            debugPrint(actionProperties)
-            #warning("TODO: implementar actions")
+            listener(actionProperties)
             isChecked.toggle()
         }, label: {
             HStack(spacing: 10) {
@@ -77,5 +78,6 @@ struct CraftDCheckBox: View {
         style: .init(
             checkedColorHex: "#351C75",
             uncheckedColorHex: "#351C75"
-        )))
+        )),
+                   listener: { _ in })
 }

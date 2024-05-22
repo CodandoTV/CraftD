@@ -10,8 +10,9 @@ struct CraftDButton: View {
     let textColorHex: String
     let backgroundHex: String
     let alignment: Alignment
+    let listener: CraftDViewListener
     
-    init(_ properties: ButtonProperties) {
+    init(_ properties: ButtonProperties, listener: @escaping CraftDViewListener) {
         self.text = properties.text ?? ""
         self.textSize = properties.textSize ?? "20"
         self.fillMaxSize = properties.fillMaxSize ?? false
@@ -21,11 +22,11 @@ struct CraftDButton: View {
         self.textColorHex = properties.textColorHex ?? "#0000FF"
         self.backgroundHex = properties.backgroundHex ?? "#FFF"
         self.alignment = properties.align?.alignment ?? .center
+        self.listener = listener
     }
     var body: some View {
         Button(action: {
-            debugPrint(actionProperties)
-            #warning("TODO: implementar actions")
+            listener(actionProperties)
         }, label: {
             Text(textAllCaps ? text.uppercased() : text)
                 .font(.system(size: CGFloat((textSize as NSString).floatValue)))
@@ -49,5 +50,6 @@ struct CraftDButton: View {
                                   backgroundHex: "#351C75",
                                   actionProperties: .init(
                                     deeplink: "deeplink",
-                                    analytics: nil)))
+                                    analytics: nil)),
+                 listener: { _ in })
 }

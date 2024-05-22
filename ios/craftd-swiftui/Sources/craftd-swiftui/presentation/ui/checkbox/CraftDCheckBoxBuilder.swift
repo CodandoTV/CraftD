@@ -1,10 +1,10 @@
 import SwiftUI
 
 class CraftDCheckBoxBuilder: CraftDBuilder {
-    public func craft(model: SimpleProperties, listener: CraftDViewListener) -> any View {
+    public func craft(model: SimpleProperties, listener: @escaping CraftDViewListener) -> any View {
         do {
             let properties = try model.decodeValue(CheckBoxProperties.self, using: decoder)
-            return CraftDCheckBox(properties)
+            return CraftDCheckBox(properties, listener: listener)
         } catch {
             return EmptyView()
         }

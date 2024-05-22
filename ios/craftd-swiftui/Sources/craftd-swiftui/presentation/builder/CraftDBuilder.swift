@@ -6,7 +6,7 @@ public protocol CraftDBuilder {
     
     func craft(
         model: SimpleProperties,
-        listener: CraftDViewListener
+        listener: @escaping CraftDViewListener
     ) -> any View
 }
 
