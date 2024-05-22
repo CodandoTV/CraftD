@@ -48,7 +48,7 @@ data class CheckBoxProperties(
 {
   "key": "CraftDCheckBox",
   "value": {
-    ... rest of your properties
+    ... place your properties
   }
 }
 
@@ -62,7 +62,7 @@ fun CraftDCheckBox(
     modifier: Modifier = Modifier,
     onChecked: (Boolean) -> Unit
 ) {
-    ... Rest of your code
+    ... place your code
 }
 ```
 
