@@ -1,8 +1,6 @@
 import SwiftUI
 
-public class CraftDTextBuilder: CraftDBuilder {
-    public let key = "CraftDText"
-    
+class CraftDTextBuilder: CraftDBuilder {
     let decoder = JSONDecoder()
     
     public func craft(

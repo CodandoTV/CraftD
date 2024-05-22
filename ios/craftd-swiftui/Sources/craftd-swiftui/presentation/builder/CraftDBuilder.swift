@@ -9,3 +9,9 @@ public protocol CraftDBuilder {
         listener: CraftDViewListener
     ) -> any View
 }
+
+extension CraftDBuilder {
+    var key: String {
+        String("\(Self.self)".replacingOccurrences(of: "Builder", with: ""))
+    }
+}
