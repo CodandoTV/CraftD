@@ -14,4 +14,8 @@ extension CraftDBuilder {
     var key: String {
         String("\(Self.self)".replacingOccurrences(of: "Builder", with: ""))
     }
+    
+    var decoder: JSONDecoder {
+        JSONDecoder()
+    }
 }
