@@ -4,7 +4,8 @@ public class CraftDBuilderManager {
     public init() {
         add(builders: [
             CraftDTextBuilder(),
-            CraftDButtonBuilder()
+            CraftDButtonBuilder(),
+            CraftDCheckBoxBuilder()
         ])
     }
     

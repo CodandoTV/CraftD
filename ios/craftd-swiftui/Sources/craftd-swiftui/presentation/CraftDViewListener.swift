@@ -1,3 +1,3 @@
 import Foundation
 
-public typealias CraftDViewListener = ((ActionProperties) -> Void)
+public typealias CraftDViewListener = ((ActionProperties?) -> Void)
