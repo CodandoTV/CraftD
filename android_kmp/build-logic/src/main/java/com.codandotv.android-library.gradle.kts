@@ -14,6 +14,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.multiplatform")
 }
 
 android {

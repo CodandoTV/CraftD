@@ -9,6 +9,7 @@ repositories {
     mavenCentral()
     google()
     gradlePluginPortal()
+    maven(url = "https://plugins.gradle.org/m2/")
 }
 
 dependencies {

@@ -1,9 +1,8 @@
 [versions]
-kotlin = "1.9.21"
+kotlin = "1.9.23"
 android_gradle_plugin = "8.2.2"
 kotlinx-collections-immutable = "0.3.7"
 plugin-maven = "0.28.0"
-
 jackson = "2.12.7"
 
 #Test
@@ -24,6 +23,7 @@ compose_bom = "2024.04.01"
 compose_material_3 = "1.2.1"
 lifecycle_version = "2.7.0"
 compose_ui = "1.6.7"
+compose_plugin="1.6.1"
 
 [libraries]
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
@@ -75,6 +75,8 @@ kotlin = ["androidx_core", "kotlin_stdlib", "kotlin_reflect"]
 [plugins]
 android_application = { id = "com.android.application", version.ref = "android_gradle_plugin" }
 android_library = { id = "com.android.library", version.ref = "android_gradle_plugin" }
+kotlin_multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains_compose = { id = "org.jetbrains.compose", version.ref = "compose_plugin" }
 
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
