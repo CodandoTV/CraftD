@@ -11,9 +11,9 @@ val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().name
 
 plugins {
     id("com.android.library")
-    id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.multiplatform")
 }
 
 android {
@@ -35,6 +35,27 @@ android {
 
         getByName("debug") {
             isMinifyEnabled = false
+        }
+    }
+}
+
+kotlin {
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "CodandoTVApp"
+            isStatic = true
+        }
+    }
+
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
         }
     }
 }
