@@ -1,5 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
+import extensions.configurePlatformTargets
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupNameSpace
@@ -40,22 +41,5 @@ android {
 }
 
 kotlin {
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "CodandoTVApp"
-            isStatic = true
-        }
-    }
-
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
-    }
+    configurePlatformTargets()
 }

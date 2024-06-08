@@ -8,6 +8,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 internal fun CommonExtension<*, *, *, *, *>.setupPackingOptions() {
     packaging {
@@ -40,10 +41,27 @@ internal fun CommonExtension<*, *, *, *, *>.setupCompileOptions() {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
 
-    /*kotlinOptions {
-        jvmTarget = "17"
-    }*/
+internal fun KotlinMultiplatformExtension.configurePlatformTargets() {
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = Config.applicationId
+            isStatic = true
+        }
+    }
+
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = Config.jvmTarget
+            }
+        }
+    }
 }
 
 fun CommonExtension<*, *, *, *, *>.setupCompose() {
