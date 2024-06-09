@@ -1,5 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
+import extensions.configurePlatformTargets
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupNameSpace
@@ -11,9 +12,9 @@ val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().name
 
 plugins {
     id("com.android.library")
-    id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.multiplatform")
 }
 
 android {
@@ -37,4 +38,8 @@ android {
             isMinifyEnabled = false
         }
     }
+}
+
+kotlin {
+    configurePlatformTargets()
 }
