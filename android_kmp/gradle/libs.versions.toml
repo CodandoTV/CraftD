@@ -20,10 +20,8 @@ viewmodel = "2.7.0"
 androidx_core_ktx = "1.13.0"
 
 #Compose
-compose_bom = "2024.04.01"
-compose_material_3 = "1.2.1"
 lifecycle_version = "2.7.0"
-compose_ui = "1.6.7"
+compose_plugin = "1.6.1"
 
 [libraries]
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
@@ -51,23 +49,13 @@ coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-
 google_material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 # Compose
-compose_bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose_bom" }
-compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose_ui" }
 compose_lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle_version" }
-compose_material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "compose_material_3" }
-
-compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose_ui" }
-compose_ui_test = { module = "androidx.compose.ui:ui-test-junit4" }
-compose_uitest = { module = "androidx.compose.ui:ui-test" }
-compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 
 #jackson
 fasterxml_jackson = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson" }
 fasterxml_jackson_databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
 
 [bundles]
-compose = ["compose.ui", "compose.material3", "compose.lifecycle", "compose.ui.tooling"]
-composetest = ["compose.uitest", "compose.junit4", "compose.ui.test"]
 test = ["junit", "mockk", "mockk_android", "viewmodel_test", "coroutines_test"]
 androidSupport = ["androidx_core", "androidx_appcompat", "androidx_dynamicanimation", "google_material"]
 kotlin = ["androidx_core", "kotlin_stdlib", "kotlin_reflect"]
@@ -80,3 +68,4 @@ kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin_parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin_multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrains_compose = { id = "org.jetbrains.compose", version.ref = "compose_plugin" }

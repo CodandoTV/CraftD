@@ -64,27 +64,6 @@ internal fun KotlinMultiplatformExtension.configurePlatformTargets() {
     }
 }
 
-fun CommonExtension<*, *, *, *, *>.setupCompose() {
-    buildFeatures {
-        compose = true
-        buildConfig = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.7"
-    }
-
-    packaging {
-        resources {
-            excludes.apply {
-                add("META-INF/AL2.0")
-                add("META-INF/LGPL2.1")
-            }
-        }
-    }
-}
-
-
 internal fun CommonExtension<*, *, *, *, *>.setupNameSpace(project: Project) {
     val moduleName = project.displayName
         .removePrefix("project ")

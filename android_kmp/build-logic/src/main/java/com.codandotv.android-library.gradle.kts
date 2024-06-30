@@ -12,7 +12,6 @@ val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().name
 
 plugins {
     id("com.android.library")
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.multiplatform")
 }
