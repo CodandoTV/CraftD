@@ -1,7 +1,7 @@
 plugins {
-    id("com.codandotv.compose")
     id("com.codandotv.android-library")
     id("com.codandotv.publish")
+    alias(libs.plugins.jetbrains.compose)
 }
 
 kotlin {
@@ -12,6 +12,11 @@ kotlin {
             implementation(libs.androidx.appcompat)
             implementation(libs.google.material)
             implementation(libs.kotlinx.collections.immutable)
+        }
+
+        commonMain.dependencies {
+            implementation(compose.ui)
+            implementation(compose.material3)
         }
     }
 }

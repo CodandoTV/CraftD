@@ -1,5 +1,12 @@
 plugins {
     id("com.codandotv.application")
+    alias(libs.plugins.jetbrains.compose)
+}
+
+android {
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {

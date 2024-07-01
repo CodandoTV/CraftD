@@ -2,7 +2,6 @@
 
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
-import extensions.setupCompose
 import extensions.setupPackingOptions
 
 val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
@@ -22,7 +21,6 @@ android {
     setupCompileOptions()
     setupPackingOptions()
     setupAndroidDefaultConfig()
-    setupCompose()
 
     defaultConfig {
         applicationId = Config.applicationId
@@ -41,9 +39,5 @@ android {
         buildFeatures {
             viewBinding = true
         }
-    }
-    
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.7"
     }
 }
