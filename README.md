@@ -2,8 +2,9 @@
 [![kotlin](https://img.shields.io/github/languages/top/codandotv/craftd.svg?style=for-the-badge&color=blueviolet)](https://kotlinlang.org/)
 [![License MIT](https://img.shields.io/github/license/codandotv/craftd.svg?style=for-the-badge&color=orange)](https://opensource.org/licenses/MIT)
 
+
 <h1 align="center">
-    <img height="150" src="https://github.com/CodandoTV/CraftD/assets/7690931/28542a9c-d5fa-4441-9e4f-3968d1533ae8"/>
+    <img height="150" src="https://github.com/user-attachments/assets/6893bd0d-7866-44b0-bc34-5c3759c1bacf"/>
     <br>
     <a href="https://codandotv.gitbook.io/craftd">CraftD</a>: A framework to implement Server-Driven UI quickly and easily to Android / iOS / Flutter / Kmp
 </h1>
