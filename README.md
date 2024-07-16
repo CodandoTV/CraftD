@@ -27,9 +27,9 @@ See the [project website](https://codandotv.gitbook.io/craftd) for documentation
 
 | Component | Compose | View System | Widget | SwiftUI |
 |-----------|----------|----------|----------|----------|
-| Button    |    X    |      X      |    X   |    -    |
+| Button    |    X    |      X      |    X   |    X    |
 | Text      |    X    |      X      |    X   |    X    |
-| CheckBox  |    X    |      -      |    -   |    -    |
+| CheckBox  |    X    |      -      |    -   |    X    |
 
 ### Create your custom component( android compose example )
 
