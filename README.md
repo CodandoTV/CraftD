@@ -89,7 +89,8 @@ More details check our [documentation](https://codandotv.gitbook.io/craftd)
 ### Samples
 | [Android Compose](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/compose) | [Android View System](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/xml) | [iOS SwiftUI](https://github.com/CodandoTV/CraftD/tree/main/ios/sample/CraftDSample) | [Flutter](https://github.com/CodandoTV/CraftD/tree/main/flutter/sample/lib) |
 |----------|----------|----------|----------|
-| ![android](https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f) | ![android](https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f)| ![iOS](https://github.com/CodandoTV/CraftD/assets/7690931/3c249097-6b7f-4afc-bc1a-b51571105d48) | ![flutter](https://github.com/CodandoTV/CraftD/assets/7690931/dfabfda7-6501-4763-b040-3ee9fbf2a2be) | 
+| <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/user-attachments/assets/c8c653b2-1289-4437-85f2-f940d5135f27" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/dfabfda7-6501-4763-b040-3ee9fbf2a2be" width="200" height="400" /> |
+
 
 ### Credits
 
