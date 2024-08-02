@@ -9,9 +9,19 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDCheckBox",
     "value": {
+      "enable" : true,
       "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDCheckBox",
+    "value": {
+      "hasItRightText" : false,
+      "text": "GreatSword",
       "textSize": "40",
       "textColorHex": "#D977EB"
     }

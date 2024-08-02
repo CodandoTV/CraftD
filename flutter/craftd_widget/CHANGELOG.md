@@ -1,3 +1,8 @@
-## 0.0.1
+## 1.0.0
+- Stable version milestone
 
-* TODO: Describe initial release.
+## 0.0.1
+- Create components 
+- ItemType mechanism 
+
+
