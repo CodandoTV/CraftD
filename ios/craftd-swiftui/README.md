@@ -2,7 +2,7 @@
 
 Add in your `podfile`
 ```ruby
-    pod ‘CraftDSwiftUI’, :git => “https://github.com/codandotv/CraftD.git", :tag => “ios-last_version”
+    pod ‘CraftDSwiftUI’
 ```
 
 ## How to use
