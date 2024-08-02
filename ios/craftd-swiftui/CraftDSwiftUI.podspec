@@ -9,5 +9,5 @@ spec.author = { "Rodrigo Vianna" => "rodrigo.vianna.oliveira@gmail.com" }
 spec.platform = :ios, "15.0"
 spec.swift_version = '5.0'
 spec.source = { :git => "https://github.com/CodandoTV/CraftD.git", :tag => 'ios-1.0.0' }
-spec.source_files = "Sources/**/*.swift"
+spec.source_files = "ios/craftd-swiftui/Sources/**/*.swift"
 end
