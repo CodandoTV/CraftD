@@ -44,16 +44,18 @@ internal fun CommonExtension<*, *, *, *, *>.setupCompileOptions() {
 }
 
 internal fun KotlinMultiplatformExtension.configurePlatformTargets() {
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = Config.applicationId
-            isStatic = true
-        }
-    }
+
+//Note: Keep when ios will be implemented
+//    listOf(
+//        iosX64(),
+//        iosArm64(),
+//        iosSimulatorArm64()
+//    ).forEach { iosTarget ->
+//        iosTarget.binaries.framework {
+//            baseName = Config.applicationId
+//            isStatic = true
+//        }
+//    }
 
     androidTarget {
         compilations.all {
