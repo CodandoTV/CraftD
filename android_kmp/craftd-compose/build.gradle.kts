@@ -7,7 +7,7 @@ plugins {
 kotlin {
     sourceSets {
         androidMain.dependencies {
-            implementation(projects.craftdCore)
+            api(projects.craftdCore)
             implementation(libs.androidx.core)
             implementation(libs.androidx.appcompat)
             implementation(libs.google.material)
