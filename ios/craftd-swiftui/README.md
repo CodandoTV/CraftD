@@ -4,6 +4,7 @@ Add in your `podfile`
 ```ruby
     pod ‘CraftDSwiftUI’
 ```
+Check out the latest version of the craftd on [Cocoapods](https://cocoapods.org/pods/CraftDSwiftUI)
 
 ## How to use
 
