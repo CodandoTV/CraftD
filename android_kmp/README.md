@@ -18,16 +18,19 @@ dependencyResolutionManagement {
 ```kotlin
 implementation("io.github.codandotv:craftd-compose:${last_version}")
 ```
+Check out the latest version of the Compose library on [Maven Central Repository](https://central.sonatype.com/artifact/io.github.codandotv/craftd-compose)
 
 - [XML View System](#xml-version)
 ```kotlin
 implementation("io.github.codandotv:craftd-xml:${last_version}")
 ```
+Check out the latest version of the Xml library on [Maven Central Repository](https://central.sonatype.com/artifact/io.github.codandotv/craftd-xml)
 
 - [Core](#core) - Is meant to be used for you to customize even the craftD mechanism
 ```kotlin
 implementation("io.github.codandotv:craftd-core:${last_version}")
 ```
+Check out the latest version of the Core library on [Maven Central Repository](https://central.sonatype.com/artifact/io.github.codandotv/craftd-core)
 
 ## How to use
 
