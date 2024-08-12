@@ -37,7 +37,11 @@ Check out the latest version of the Core library on [Maven Central Repository](h
 ### 🎯 Compose version
 
 ### 1. Create your ComponentPropertyClass with properties that you need
-- In this example i used checkbox component
+- In this example we used checkbox component
+- To use json anotation we used jackson library, feel free to user your.
+
+> :bulb: **Tip:** Current version: **1.0.2**
+
 > :warning: **Warning:** Here we have some points to consider
 > To avoid unnecessary recompositions at your component. We recommend use
 > the @Immutable and @Stable annotations in your properties. More about it below
