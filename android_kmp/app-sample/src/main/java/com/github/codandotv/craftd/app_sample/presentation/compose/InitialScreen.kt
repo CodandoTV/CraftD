@@ -2,9 +2,9 @@ package com.github.codandotv.craftd.app_sample.presentation.compose
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.github.codandotv.craftd.app_sample.presentation.compose.customview.MySampleButtonComposeBuilder
 import com.github.codandotv.craftd.compose.builder.CraftDBuilderManager
 import com.github.codandotv.craftd.compose.ui.CraftDynamic
@@ -16,7 +16,7 @@ fun InitialScreen(
     val properties by vm.properties.collectAsStateWithLifecycle()
     val craftdBuilderManager = remember {
         CraftDBuilderManager().add(
-            MySampleButtonComposeBuilder()
+            MySampleButtonComposeBuilder(),
         )
     }
     LaunchedEffect(Unit) {

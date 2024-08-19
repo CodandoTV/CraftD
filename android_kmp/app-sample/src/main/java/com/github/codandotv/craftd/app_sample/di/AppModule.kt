@@ -3,6 +3,7 @@ package com.github.codandotv.craftd.app_sample.di
 import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepository
 import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepositoryImpl
 import com.github.codandotv.craftd.app_sample.data.SampleCraftDSampleService
+import com.github.codandotv.craftd.app_sample.domain.setSslSocketFactory
 import com.github.codandotv.craftd.app_sample.presentation.compose.SampleCraftDComposeViewModel
 import com.github.codandotv.craftd.app_sample.presentation.xml.SampleCraftDViewModel
 import com.github.codandotv.craftd.xml.ui.CraftDViewAdapter
@@ -35,14 +36,18 @@ object AppModule {
         factory<SampleCraftDRepository> {
             SampleCraftDRepositoryImpl(
                 gson = get(),
-                context = androidContext()
+                context = androidContext(),
+                service = provideRetrofitClient(
+                    oktHttpClient = get(),
+                    gson = get()
+                )
             )
         }
 
         single {
             provideOkHttpClientBuilder(
                 get(),
-            )
+            ).setSslSocketFactory()
         }
 
         single<Interceptor> {
