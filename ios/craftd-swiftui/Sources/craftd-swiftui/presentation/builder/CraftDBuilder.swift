@@ -10,7 +10,7 @@ public protocol CraftDBuilder {
     ) -> any View
 }
 
-extension CraftDBuilder {
+public extension CraftDBuilder {
     var key: String {
         String("\(Self.self)".replacingOccurrences(of: "Builder", with: ""))
     }

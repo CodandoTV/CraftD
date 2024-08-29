@@ -23,7 +23,7 @@ public class CraftDBuilderManager {
     
     public func getBuilder(key: String) -> CraftDBuilder {
         guard let builder = listCraftDBuilder[key] else {
-            return CraftDTextBuilder()
+            return CraftDEmptyBuilder()
         }
         return builder
     }

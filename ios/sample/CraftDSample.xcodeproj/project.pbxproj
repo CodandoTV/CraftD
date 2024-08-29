@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BE49E242C81368800B6CBD3 /* MyCompomentCodandoTVProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE49E232C81368800B6CBD3 /* MyCompomentCodandoTVProperties.swift */; };
+		5BE49E262C81371100B6CBD3 /* MyComponentCodandoTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE49E252C81371100B6CBD3 /* MyComponentCodandoTV.swift */; };
+		5BE49E282C81383100B6CBD3 /* MyComponentCodandoTVBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE49E272C81383100B6CBD3 /* MyComponentCodandoTVBuilder.swift */; };
 		5BFC1CC52BD9DA43004BF31C /* dynamic.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC1CC42BD9DA43004BF31C /* dynamic.json */; };
 		5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */; };
 		5C0DC3752BD9C7B50077FCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BE49E232C81368800B6CBD3 /* MyCompomentCodandoTVProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCompomentCodandoTVProperties.swift; sourceTree = "<group>"; };
+		5BE49E252C81371100B6CBD3 /* MyComponentCodandoTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComponentCodandoTV.swift; sourceTree = "<group>"; };
+		5BE49E272C81383100B6CBD3 /* MyComponentCodandoTVBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyComponentCodandoTVBuilder.swift; sourceTree = "<group>"; };
 		5BFC1CC42BD9DA43004BF31C /* dynamic.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dynamic.json; sourceTree = "<group>"; };
 		5C0DC36D2BD9C7B20077FCC7 /* CraftDSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraftDSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftDSampleApp.swift; sourceTree = "<group>"; };
@@ -34,6 +40,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BE49E1C2C812E0000B6CBD3 /* mycomponent */ = {
+			isa = PBXGroup;
+			children = (
+				5BE49E232C81368800B6CBD3 /* MyCompomentCodandoTVProperties.swift */,
+				5BE49E252C81371100B6CBD3 /* MyComponentCodandoTV.swift */,
+				5BE49E272C81383100B6CBD3 /* MyComponentCodandoTVBuilder.swift */,
+			);
+			path = mycomponent;
+			sourceTree = "<group>";
+		};
 		5C0DC3642BD9C7B20077FCC7 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +70,7 @@
 		5C0DC36F2BD9C7B20077FCC7 /* CraftDSample */ = {
 			isa = PBXGroup;
 			children = (
+				5BE49E1C2C812E0000B6CBD3 /* mycomponent */,
 				5C0DC3702BD9C7B20077FCC7 /* CraftDSampleApp.swift */,
 				5C0DC3742BD9C7B50077FCC7 /* Assets.xcassets */,
 				5C0DC3762BD9C7B50077FCC7 /* Preview Content */,
@@ -154,6 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE49E242C81368800B6CBD3 /* MyCompomentCodandoTVProperties.swift in Sources */,
+				5BE49E262C81371100B6CBD3 /* MyComponentCodandoTV.swift in Sources */,
+				5BE49E282C81383100B6CBD3 /* MyComponentCodandoTVBuilder.swift in Sources */,
 				5C0DC3712BD9C7B20077FCC7 /* CraftDSampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

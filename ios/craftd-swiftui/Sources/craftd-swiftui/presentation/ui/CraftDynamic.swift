@@ -2,9 +2,13 @@ import SwiftUI
 
 public struct CraftDynamic : View {
     private var craftBuilders: CraftDBuilderManager
+    private var listener: CraftDViewListener
     
-    public init(craftBuilders: CraftDBuilderManager) {
+    public init(craftBuilders: CraftDBuilderManager,
+                listener: @escaping CraftDViewListener
+    ) {
         self.craftBuilders = craftBuilders
+        self.listener = listener
     }
     
     @State private var list: [SimpleProperties] = []
@@ -16,7 +20,10 @@ public struct CraftDynamic : View {
                     let builder = craftBuilders.getBuilder(
                         key: item.key
                     )
-                    AnyView(erasing: builder.craft(model: item) { _ in })
+                    AnyView(erasing: builder.craft(
+                        model: item,
+                        listener: listener)
+                    )
                 }
             }
         }

@@ -1,6 +1,11 @@
-[
+[{
+    "key": "MyComponentCodandoTV",
+    "value": {
+      "text": "Victor Pereira",
+    }
+  },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Knife",
       "backgroundHex" : "#9A71F6",
@@ -27,7 +32,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "textSize": "20",
       "textColorHex": "#FF0000",
@@ -78,7 +83,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Knife",
       "backgroundHex" : "#9A71F6",
@@ -87,7 +92,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -95,7 +100,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -103,7 +108,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -111,7 +116,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -119,7 +124,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -127,7 +132,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -135,7 +140,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -144,7 +149,7 @@
   },
 
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "textSize": "20",
       "textColorHex": "#FF0000",
@@ -175,7 +180,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Knife",
       "backgroundHex" : "#9A71F6",
@@ -184,7 +189,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -192,7 +197,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -200,7 +205,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -208,7 +213,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -216,7 +221,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -224,7 +229,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -232,7 +237,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -241,7 +246,7 @@
   },
 
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "textSize": "20",
       "textColorHex": "#FF0000",
@@ -273,7 +278,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Knife",
       "backgroundHex" : "#9A71F6",
@@ -282,7 +287,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -290,7 +295,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -298,7 +303,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -306,7 +311,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -314,7 +319,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -322,7 +327,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -330,7 +335,7 @@
     }
   },
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "text": "Axe",
       "textSize": "40",
@@ -339,7 +344,7 @@
   },
 
   {
-    "key": "CraftDTextView",
+    "key": "CraftDText",
     "value": {
       "textSize": "20",
       "textColorHex": "#FF0000",

@@ -1,11 +1,9 @@
 [
   {
-    "key": "CraftDTextView",
+    "key": "MatheusText",
     "value": {
-      "text": "Knife",
-      "backgroundHex": "#9A71F6",
-      "textSize": "30",
-      "textColorHex": "#000000"
+      "text": "MatheusText",
+      "textColorHex": "#FFA500"
     }
   },
   {

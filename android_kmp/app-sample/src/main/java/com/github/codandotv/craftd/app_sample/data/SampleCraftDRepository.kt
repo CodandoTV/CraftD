@@ -15,14 +15,16 @@ interface SampleCraftDRepository {
 
 class SampleCraftDRepositoryImpl(
     private val gson: Gson,
-    private val context: Context
+    private val context: Context,
+    private val service: SampleCraftDSampleService
 ) : SampleCraftDRepository {
     override suspend fun getDynamic(): Flow<List<SimpleProperties>> = flow {
-        emit(
-            gson.fromJson(
-                context.loadJSONFromAsset("dynamic"),
-                Array<SimplePropertiesResponse>::class.java
-            ).asList().toListSimpleProperties()
-        )
+        emit(service.getDynamicExample().toListSimpleProperties())
+//        emit(
+//            gson.fromJson(
+//                context.loadJSONFromAsset("dynamic"),
+//                Array<SimplePropertiesResponse>::class.java
+//            ).asList().toListSimpleProperties()
+//        )
     }
 }
