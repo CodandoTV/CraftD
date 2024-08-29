@@ -1,6 +1,6 @@
 public struct AnalyticsProperties: Codable {
-    var category: String?
-    var action: String?
-    var label: String?
-    let track: String?
+    public var category: String?
+    public var action: String?
+    public var label: String?
+    public let track: String?
 }
