@@ -12,6 +12,9 @@
 ### Documentation
 See the [project website](https://codandotv.gitbook.io/craftd) for documentation.
 
+Take a look at [CraftD: Server Driven UI for All Platforms](https://medium.com/codandotv/craftd-server-driven-ui-for-all-platforms-b2624d2c2a7b)
+
+
 ## Features
 ### 🔗 Compatibility
 
