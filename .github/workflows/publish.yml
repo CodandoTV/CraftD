@@ -23,6 +23,21 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
 
+      - name: Add the custom gpg signing program that passes the passphrase to the gpg CLI
+        run: |
+          rm -rf /tmp/gpg.sh
+          echo '#!/bin/bash' >> /tmp/gpg.sh
+          echo 'gpg --batch --pinentry-mode=loopback --passphrase $ORG_GRADLE_PROJECT_signingInMemoryKey $@' >> /tmp/gpg.sh
+          chmod +x /tmp/gpg.sh
+
+      - name: Setup git
+        run: |
+          git config commit.gpgsign true
+          git config user.signingkey $ORG_GRADLE_PROJECT_signingKeyId
+          git config gpg.program /tmp/gpg.sh
+        env:
+          ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
+
       - name: Publish to Maven Central
         run: ./gradlew publish --no-daemon
         env:
