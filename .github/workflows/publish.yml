@@ -22,6 +22,7 @@ jobs:
         run: |
           echo $ORG_GRADLE_PROJECT_signingInMemoryKey | base64 --decode > private-key.gpg
           gpg --batch --import private-key.gpg
+          gpg --list-secret-keys --keyid-format LONG
         env:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
 
