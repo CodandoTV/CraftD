@@ -41,6 +41,12 @@ jobs:
       - name: Verify GPG key import
         run: gpg --list-keys
 
+      - name: Verify environment variable ORG_GRADLE_PROJECT_signingInMemoryKey
+        run: |
+          echo "ORG_GRADLE_PROJECT_signingInMemoryKey: ${ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY:0:10}****"
+        env:
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+
       - name: Publish to Maven Central
         run: ./gradlew publish --no-daemon
         env:
