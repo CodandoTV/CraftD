@@ -48,12 +48,19 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
 
       - name: Publish to Maven Central
-        run: ./gradlew publish --no-daemon
+        run: |
+          echo $ORG_GRADLE_PROJECT_mavenCentralPassword
+          echo $ORG_GRADLE_PROJECT_mavenCentralUsername
+          echo $ORG_GRADLE_PROJECT_signingKeyId
+          echo $ORG_GRADLE_PROJECT_signingPassword
+          echo $ORG_GRADLE_PROJECT_signingInMemoryKey
+          ./gradlew publish --no-daemon
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
         working-directory: android_kmp
 
       - name: Clean up
