@@ -38,6 +38,20 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
 
+      - name: Verify environment variables
+        run: |
+          echo "MAVENCENTRALUSERNAME: $ORG_GRADLE_PROJECT_mavenCentralUsername"
+          echo "MAVENCENTRALPASSWORD: $ORG_GRADLE_PROJECT_mavenCentralPassword"
+          echo "SIGNINGKEYID: $ORG_GRADLE_PROJECT_signingKeyId"
+          echo "SIGNINGPASSWORD: $ORG_GRADLE_PROJECT_signingPassword"
+          echo "InMemoryKey: $ORG_GRADLE_PROJECT_signingInMemoryKey"
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
+          ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+
       - name: Publish to Maven Central
         run: ./gradlew publish --no-daemon
         env:
@@ -47,14 +61,6 @@ jobs:
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
         working-directory: android_kmp
-
-      - name: Verify environment variables
-        run: |
-          echo "MAVENCENTRALUSERNAME: $ORG_GRADLE_PROJECT_mavenCentralUsername"
-          echo "MAVENCENTRALPASSWORD: $ORG_GRADLE_PROJECT_mavenCentralPassword"
-          echo "SIGNINGKEYID: $ORG_GRADLE_PROJECT_signingKeyId"
-          echo "SIGNINGPASSWORD: $ORG_GRADLE_PROJECT_signingPassword"
-          echo "InMemoryKey: $ORG_GRADLE_PROJECT_signingInMemoryKey"
 
       - name: Clean up
         run: rm /tmp/gpg.sh
