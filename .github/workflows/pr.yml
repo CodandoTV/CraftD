@@ -29,6 +29,7 @@ jobs:
 
       - name: Build the project
         run: ./gradlew assembleDebug --no-daemon
+        working-directory: android_kmp
 
   test:
     name: Test
@@ -47,3 +48,4 @@ jobs:
 
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest --no-daemon
+        working-directory: android_kmp
