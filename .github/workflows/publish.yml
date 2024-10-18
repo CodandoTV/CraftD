@@ -38,6 +38,15 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
 
+      - name: Verify GPG key import
+        run: gpg --list-keys
+
+      - name: Verify environment variable ORG_GRADLE_PROJECT_signingInMemoryKey
+        run: |
+          echo "ORG_GRADLE_PROJECT_signingInMemoryKey: ${ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY:0:10}****"
+        env:
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+
       - name: Verify environment variables
         run: |
           echo "MAVENCENTRALUSERNAME: $ORG_GRADLE_PROJECT_mavenCentralUsername"
