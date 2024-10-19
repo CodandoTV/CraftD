@@ -46,6 +46,9 @@ jobs:
       - name: Verify GPG key import
         run: gpg --list-keys
 
+      - name: Setup fastlane
+        run: sudo gem install fastlane
+
       - name: Publish to Maven Central
         run: |
           echo "ORG_GRADLE_PROJECT_signingInMemoryKey: $ORG_GRADLE_PROJECT_signingInMemoryKey"
@@ -59,6 +62,19 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
         working-directory: android_kmp
+
+      - name: Fastlane Action
+        uses: maierj/fastlane-action@v3.1.0
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - uses: maierj/fastlane-action@v3.1.0
+        with:
+          lane: 'update_tag'
+        env:
+          PREFIX: 'android'
 
       - name: Clean up
         run: rm /tmp/gpg.sh

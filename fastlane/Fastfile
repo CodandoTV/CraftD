@@ -1,0 +1,25 @@
+lane :update_tag do
+  prefix = ENV['PREFIX']
+
+  last_tag = sh("git describe --tags $(git rev-list --tags --max-count=1)").strip
+
+  version_match = last_tag.match(/#{prefix}\/(\d+)\.(\d+)\.(\d+)/)
+
+  if version_match
+    major = version_match[1].to_i
+    minor = version_match[2].to_i
+    patch = version_match[3].to_i
+
+    minor += 1
+
+    new_version = "#{major}.#{minor}.0"
+    new_tag = "#{prefix}/#{new_version}"
+
+    sh("git tag #{new_tag}")
+    sh("git push origin #{new_tag}")
+
+    UI.success("New tag created: #{new_tag}")
+  else
+    UI.error("Could not find a valid tag.")
+  end
+end
