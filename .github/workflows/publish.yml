@@ -60,16 +60,19 @@ jobs:
 #          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
 #        working-directory: android_kmp
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
         with:
           ruby-version: '3.0'
           bundler-cache: true
 
-      - name: Install Fastlane dependencies
-        run: bundle install
+      - name: Install bundler & Fastlane
+        run: |
+          gem install bundler:2.2.27
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
 
-      - name: Run Fastlane lane to update tag
+      - name: Update tag
         run: bundle exec fastlane update_tag
         env:
           PREFIX: 'android'
