@@ -62,12 +62,6 @@ jobs:
 
       - name: Fastlane Action
         uses: maierj/fastlane-action@v3.1.0
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
-          bundler-cache: true
-      - uses: maierj/fastlane-action@v3.1.0
         with:
           lane: 'update_tag'
         env:
