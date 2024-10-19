@@ -1,25 +1,32 @@
 lane :update_tag do
   prefix = ENV['PREFIX']
 
-  last_tag = sh("git describe --tags $(git rev-list --tags --max-count=1)").strip
+  last_tag = sh("git tag --list '#{prefix}/*' --sort=-v:refname | head -n 1").strip
 
-  version_match = last_tag.match(/#{prefix}\/(\d+)\.(\d+)\.(\d+)/)
-
-  if version_match
-    major = version_match[1].to_i
-    minor = version_match[2].to_i
-    patch = version_match[3].to_i
-
-    minor += 1
-
-    new_version = "#{major}.#{minor}.0"
-    new_tag = "#{prefix}/#{new_version}"
-
+  if last_tag.empty?
+    UI.message("No tag found with prefix #{prefix}. Creating the first tag 1.0.0.")
+    new_tag = "#{prefix}/1.0.2"
     sh("git tag #{new_tag}")
     sh("git push origin #{new_tag}")
-
-    UI.success("New tag created: #{new_tag}")
+    UI.success("First tag created: #{new_tag}")
   else
-    UI.error("Could not find a valid tag.")
+    version_match = last_tag.match(/#{prefix}\/(\d+)\.(\d+)\.(\d+)/)
+
+    if version_match
+      major = version_match[1].to_i
+      minor = version_match[2].to_i
+      patch = version_match[3].to_i
+
+      minor += 1
+      new_version = "#{major}.#{minor}.0"
+      new_tag = "#{prefix}/#{new_version}"
+
+      sh("git tag #{new_tag}")
+      sh("git push origin #{new_tag}")
+
+      UI.success("New tag created: #{new_tag}")
+    else
+      UI.error("Invalid tag format: #{last_tag}")
+    end
   end
 end
