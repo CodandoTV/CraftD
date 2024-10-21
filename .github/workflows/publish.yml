@@ -19,18 +19,63 @@ jobs:
           java-version: '17'
 
       - name: Import GPG key
-        run: echo $ORG_GRADLE_PROJECT_signingInMemoryKey | base64 --decode | gpg --batch --import
+        run: |
+          echo $ORG_GRADLE_PROJECT_signingInMemoryKey | base64 --decode > private-key.gpg
+          gpg --batch --import private-key.gpg
+          gpg --list-secret-keys --keyid-format LONG
         env:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
 
+      - name: Add the custom gpg signing program that passes the passphrase to the gpg CLI
+        run: |
+          rm -rf /tmp/gpg.sh
+          echo '#!/bin/bash' >> /tmp/gpg.sh
+          echo 'gpg --batch --pinentry-mode=loopback --passphrase $ORG_GRADLE_PROJECT_signingInMemoryKeyPassword $@' >> /tmp/gpg.sh
+          chmod +x /tmp/gpg.sh
+        env:
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+
+      - name: Setup git
+        run: |
+          git config commit.gpgsign true
+          git config user.signingkey $ORG_GRADLE_PROJECT_signingInMemoryKeyId
+          git config gpg.program /tmp/gpg.sh
+        env:
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
+
+      - name: Verify GPG key import
+        run: gpg --list-keys
+
       - name: Publish to Maven Central
-        run: ./gradlew publish --no-daemon
+        run: |
+          echo "ORG_GRADLE_PROJECT_signingInMemoryKey: $ORG_GRADLE_PROJECT_signingInMemoryKey"
+          echo "ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: $ORG_GRADLE_PROJECT_signingInMemoryKeyPassword"
+          echo "ORG_GRADLE_PROJECT_signingInMemoryKeyId: $ORG_GRADLE_PROJECT_signingInMemoryKeyId"
+          ./gradlew publish --no-daemon
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
-          ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGKEYID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
         working-directory: android_kmp
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      - name: Install bundler & Fastlane
+        run: |
+          gem install bundler:2.2.27
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Update tag
+        run: bundle exec fastlane update_tag
+        env:
+          PREFIX: 'android'
 
       - name: Clean up
         run: rm /tmp/gpg.sh
