@@ -10,7 +10,8 @@ lane :update_tag do
     sh("git push origin #{new_tag}")
     UI.success("First tag created: #{new_tag}")
   else
-    version_match = last_tag.match(/#{prefix}\/(\d+)\.(\d+)\.(\d+)/)
+    stripped_tag = last_tag.gsub(prefix, '')
+    version_match = stripped_tag.match(/(\d+)\.(\d+)\.(\d+)/)
 
     if version_match
       major = version_match[1].to_i
