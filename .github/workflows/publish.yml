@@ -34,22 +34,19 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
         working-directory: android_kmp
 
-#      - name: Setup Ruby
-#        uses: ruby/setup-ruby@v1
-#        with:
-#          ruby-version: '3.0'
-#          bundler-cache: true
-#
-#      - name: Install bundler & Fastlane
-#        run: |
-#          gem install bundler:2.2.27
-#          bundle config path vendor/bundle
-#          bundle install --jobs 4 --retry 3
-#
-#      - name: Update tag
-#        run: bundle exec fastlane update_tag
-#        env:
-#          PREFIX: 'android'
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
 
-      - name: Clean up
-        run: rm /tmp/gpg.sh
+      - name: Install bundler & Fastlane
+        run: |
+          gem install bundler:2.2.27
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Update tag
+        run: bundle exec fastlane update_tag
+        env:
+          PREFIX: 'android'
