@@ -1,6 +1,6 @@
 name: documentation 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
