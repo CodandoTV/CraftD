@@ -8,6 +8,7 @@ theme:
   features:
   - navigation.footer
   - content.code.annotations # (1)!
+  - content.code.copy
   palette:
       # Dark Mode
       - scheme: slate
@@ -46,3 +47,6 @@ markdown_extensions:
       alternate_style: true
   - tables
   - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
