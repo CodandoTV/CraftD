@@ -1,0 +1,55 @@
+site_name: CraftD
+theme:
+  name: material
+  logo: assets/img/logo.png
+  font:
+    text: Merriweather Sans
+    code: Red Hat Mono
+  features:
+  - navigation.footer
+  - content.code.annotations # (1)!
+  - content.code.copy
+  palette:
+      # Dark Mode
+      - scheme: slate
+        toggle:
+          icon: material/weather-sunny
+          name: Dark mode
+        primary: deep purple
+        accent: light blue
+
+      # Light Mode
+      - scheme: default
+        toggle:
+          icon: material/weather-night
+          name: Light mode
+        primary: deep purple
+        accent: blue
+
+markdown_extensions:
+  - smarty
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.emoji
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
