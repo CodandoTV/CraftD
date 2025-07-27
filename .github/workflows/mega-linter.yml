@@ -31,6 +31,10 @@ jobs:
           # improve performance
           fetch-depth: 0
 
+      # Setup Flutter
+      - name: Setup Flutter
+        uses: ./.github/actions/setup-flutter
+
       # MegaLinter
       - name: MegaLinter
         uses: oxsecurity/megalinter@v8
