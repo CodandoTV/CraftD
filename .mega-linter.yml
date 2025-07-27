@@ -28,7 +28,6 @@ SHOW_ELAPSED_TIME: true
 FILEIO_REPORTER: false
 # Uncomment if you want MegaLinter to detect errors but not block CI to pass
 
-
 KOTLIN_DETEKT_ARGUMENTS: -c android_kmp/config/detekt/detekt.yml
 JAVASCRIPT_STANDARD_DISABLE_ERRORS: true
 
