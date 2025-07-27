@@ -8,7 +8,7 @@ import 'craftd_text.dart';
 
 class CraftDTextBuilder extends CraftDBuilder<TextProperties> {
   CraftDTextBuilder() : super(key: keyBuilder);
-  static String keyBuilder = "CraftDTextView";
+  static String keyBuilder = 'CraftDTextView';
 
   @override
   Widget craft(TextProperties model, CraftDViewListener listener) {
@@ -24,11 +24,11 @@ class CraftDTextBuilder extends CraftDBuilder<TextProperties> {
   @override
   TextProperties fromJson(properties) {
     return TextProperties(
-        text: properties["text"],
-        textColorHex: properties["textColorHex"],
-        textSize: properties["textSize"],
-        textAllCaps: properties["textAllCaps"],
-        backgroundHex: properties["backgroundHex"],
+        text: properties['text'],
+        textColorHex: properties['textColorHex'],
+        textSize: properties['textSize'],
+        textAllCaps: properties['textAllCaps'],
+        backgroundHex: properties['backgroundHex'],
         actionProperties: ActionProperties.fromJson(
             properties[ActionProperties.key]));
   }

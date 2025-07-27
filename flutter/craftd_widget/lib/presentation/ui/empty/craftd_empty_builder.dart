@@ -16,5 +16,5 @@ class CraftDEmptyBuilder extends CraftDBuilder<EmptyProperties> {
   EmptyProperties fromJson(properties) {
     return const EmptyProperties();
   }
-  static String keyBuilder = "CraftDEmpty";
+  static String keyBuilder = 'CraftDEmpty';
 }

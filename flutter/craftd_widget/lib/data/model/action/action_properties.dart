@@ -8,11 +8,11 @@ class ActionProperties {
 
   factory ActionProperties.fromJson(dynamic properties) {
     return ActionProperties(
-        deeplink: properties != null ? properties["deeplink"] : null,
+        deeplink: properties != null ? properties['deeplink'] : null,
         analyticsProperties: properties != null ? AnalyticsProperties
             .fromJson(
             properties[AnalyticsProperties.key]) : null);
   }
 
-  static const String key = "actionProperties";
+  static const String key = 'actionProperties';
 }

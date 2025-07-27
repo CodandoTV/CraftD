@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:craftd_widget/presentation/builder/craftd_builder_manager.dart';
 import 'package:craftd_widget/presentation/ui/craftd_dynamic.dart';
@@ -69,9 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   craftDBuilderManager : craftdBuilderManager,
                   onAction: (actionProperties) {
                     print(
-                        "categoria ${actionProperties.analyticsProperties?.category} "
-                        "label ${actionProperties.analyticsProperties?.label} - "
-                        "track ${actionProperties.analyticsProperties?.track}");
+                        'categoria ${actionProperties.analyticsProperties?.category} '
+                        'label ${actionProperties.analyticsProperties?.label} - '
+                        'track ${actionProperties.analyticsProperties?.track}');
                   });
           }
           return Container();
