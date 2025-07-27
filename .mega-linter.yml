@@ -30,5 +30,3 @@ FILEIO_REPORTER: false
 
 KOTLIN_DETEKT_ARGUMENTS: -c android_kmp/config/detekt/detekt.yml
 JAVASCRIPT_STANDARD_DISABLE_ERRORS: true
-
-DART_DARTANALYZER_CONFIG_FILE: flutter/dart_analysis_options.yaml
