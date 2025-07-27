@@ -30,3 +30,7 @@ FILEIO_REPORTER: false
 
 KOTLIN_DETEKT_ARGUMENTS: -c android_kmp/config/detekt/detekt.yml
 JAVASCRIPT_STANDARD_DISABLE_ERRORS: true
+
+DART_DARTANALYZER_PRE_COMMANDS: 
+  - flutter pub get --directory flutter/craftd_widget
+  - flutter pub get --directory flutter/sample
