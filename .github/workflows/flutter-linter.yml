@@ -1,0 +1,25 @@
+name: Flutter linter
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: ./.github/actions/setup-flutter
+
+      - name: Analyze - CraftD Widget
+        working-directory: flutter/craftd_widget
+        run: dart analyze
+
+      - name: Analyze - Sample
+        working-directory: flutter/sample
+        run: dart analyze

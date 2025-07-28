@@ -31,10 +31,6 @@ jobs:
           # improve performance
           fetch-depth: 0
 
-      # Analyze Flutter
-      - name: Analyze Flutter
-        uses: ./.github/actions/analyze-flutter
-
       # MegaLinter
       - name: MegaLinter
         uses: oxsecurity/megalinter@v8

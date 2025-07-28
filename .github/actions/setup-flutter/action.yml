@@ -1,0 +1,20 @@
+name: 'Setup Flutter'
+description: 'Reusable action to setup Flutter environment'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.29.3' # Set the desired Flutter version
+
+    - name: Install dependencies - CraftD Widget
+      working-directory: flutter/craftd_widget
+      run: flutter pub get
+      shell: bash
+
+    - name: Install dependencies - Sample
+      working-directory: flutter/sample
+      run: flutter pub get
+      shell: bash
