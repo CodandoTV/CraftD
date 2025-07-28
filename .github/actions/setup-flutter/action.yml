@@ -1,5 +1,5 @@
-name: 'Setup Flutter'
-description: 'Reusable action to setup Flutter environment'
+name: "Setup Flutter"
+description: "Reusable action to setup Flutter environment"
 
 runs:
   using: "composite"
@@ -7,7 +7,7 @@ runs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.29.3' # Set the desired Flutter version
+        flutter-version: "3.29.3" # Set the desired Flutter version
 
     - name: Install dependencies - CraftD Widget
       working-directory: flutter/craftd_widget
