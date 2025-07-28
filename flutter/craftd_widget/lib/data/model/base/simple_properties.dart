@@ -6,7 +6,7 @@ class SimpleProperties {
 
   factory SimpleProperties.fromJson(dynamic properties) {
     return SimpleProperties(
-        key: properties["key"],
-        value: properties["value"]);
+        key: properties['key'],
+        value: properties['value']);
   }
 }

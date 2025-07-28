@@ -24,14 +24,14 @@ class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
   @override
   ButtonProperties fromJson(properties) {
     return ButtonProperties(
-        text: properties["text"],
-        textColorHex: properties["textColorHex"],
-        textSize: properties["textSize"],
-        textAllCaps: properties["textAllCaps"],
-        fillMaxSize: properties["fillMaxSize"],
-        backgroundHex: properties["backgroundHex"],
+        text: properties['text'],
+        textColorHex: properties['textColorHex'],
+        textSize: properties['textSize'],
+        textAllCaps: properties['textAllCaps'],
+        fillMaxSize: properties['fillMaxSize'],
+        backgroundHex: properties['backgroundHex'],
         actionProperties: ActionProperties.fromJson(
             properties[ActionProperties.key]));
   }
-  static String keyBuilder = "CraftDButton";
+  static String keyBuilder = 'CraftDButton';
 }

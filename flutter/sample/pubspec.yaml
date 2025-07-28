@@ -1,10 +1,10 @@
 name: flutter_dynamics
 description: A new Flutter project.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.5 <3.0.0'
+  sdk: ">=2.18.5 <3.0.0"
 
 dependencies:
   flutter:
@@ -22,9 +22,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
   build_runner: ^2.4.8
-  mobx_codegen: ^2.6.1
 flutter:
   uses-material-design: true
   assets:

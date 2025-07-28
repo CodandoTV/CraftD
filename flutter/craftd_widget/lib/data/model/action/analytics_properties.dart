@@ -9,12 +9,12 @@ class AnalyticsProperties {
 
   factory AnalyticsProperties.fromJson(dynamic properties) {
     return AnalyticsProperties(
-      category: properties != null ? properties["category"] : null,
-      action: properties != null ? properties["action"] : null,
-      label: properties != null ? properties["label"] : null,
-      track: properties != null ? properties["track"] : null,
+      category: properties != null ? properties['category'] : null,
+      action: properties != null ? properties['action'] : null,
+      label: properties != null ? properties['label'] : null,
+      track: properties != null ? properties['track'] : null,
     );
   }
 
-  static String key = "analytics";
+  static String key = 'analytics';
 }

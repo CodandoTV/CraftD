@@ -21,7 +21,7 @@ abstract class MainControllerBase with Store {
   @action
   Future<void> loadProperties(BuildContext context) async {
     await DefaultAssetBundle.of(context)
-        .loadString("assets/dynamic.json")
+        .loadString('assets/dynamic.json')
         .then((value) {
       List<dynamic> list = jsonDecode(value);
 

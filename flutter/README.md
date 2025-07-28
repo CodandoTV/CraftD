@@ -7,6 +7,7 @@
 ```
 
 ## This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+
 ```yaml
 dependencies:
   craftd_widget: $last_version
@@ -16,10 +17,9 @@ more detail [pub.dev](https://pub.dev/packages/craftd_widget/install)
 
 # How to use
 
-
 ## 1. Create your ComponentPropertyClass with properties that you need
-- In this example i used Button component
 
+- In this example i used Button component
 
 ```dart
 class ButtonProperties {
@@ -35,6 +35,7 @@ class ButtonProperties {
 ```
 
 ## 2. Add your Component json object in Dymanic.json
+
 ```json
 {
     "key": "CraftDBbutton",
@@ -43,13 +44,16 @@ class ButtonProperties {
      ... place your properties
      }
  }
-  
+
 ```
 
 ## 3. Create your Component
-> :memo: **Note:** Your widget  must have two properties.
+
+> :memo: **Note:** Your widget must have two properties.
+
 - ButtonProperties: The mapped properties from json
 - callback: This make reference to the component's behaviour, for example: onclick -> for buttons, onchange -> for checkbox etc...
+
 ```dart
 class CraftDButton extends StatelessWidget {
     const CraftDButton(
@@ -61,7 +65,8 @@ class CraftDButton extends StatelessWidget {
 ```
 
 ## 4. Create your Component Builder
- > :memo: **Note:** This Builder must extend CraftBuilder Class and override craft and fromJson methods.
+
+> :memo: **Note:** This Builder must extend CraftBuilder Class and override craft and fromJson methods.
 
 ```dart
 
@@ -86,6 +91,7 @@ class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
 ```
 
 ## 5. In your Page, create your CraftDBuilder declaration and put it into CraftDynamic Widget
+
 ```dart
  // You can put it in your dependency injection
     final craftdBuilderManager = CraftDBuilderManager();
@@ -102,6 +108,7 @@ class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
           }
 
 ```
+
 ## So now just enjoy your component!!!
 
 ## Credits

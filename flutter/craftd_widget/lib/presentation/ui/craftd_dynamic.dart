@@ -18,7 +18,7 @@ class CraftDynamic extends StatelessWidget {
     return ListView.builder(
         itemCount: simplePropertiesList.length,
         itemBuilder: (context, index) {
-          final SimpleProperties simpleProperties = simplePropertiesList[index];
+          final simpleProperties = simplePropertiesList[index];
           final craftdBuilder =
               craftDBuilderManager.getBuilder(simpleProperties.key);
 
