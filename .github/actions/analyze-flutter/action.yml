@@ -1,0 +1,30 @@
+name: 'Setup Flutter'
+description: 'Reusable action to setup Flutter environment'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Analyze Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.32.6' # Set the desired Flutter version
+
+    - name: Install dependencies - CraftD
+      working-directory: ./flutter/craftd_widget
+      run: flutter pub get
+      shell: bash
+    
+    - name: Analyze code - CraftD
+      working-directory: ./flutter/craftd_widget
+      run: flutter analyze
+      shell: bash
+
+    - name: Install dependencies - Sample
+      working-directory: ./flutter/sample
+      run: flutter pub get
+      shell: bash
+    
+    - name: Analyze code - Sample
+      working-directory: ./flutter/sample
+      run: flutter analyze
+      shell: bash

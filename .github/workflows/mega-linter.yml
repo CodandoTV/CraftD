@@ -31,9 +31,9 @@ jobs:
           # improve performance
           fetch-depth: 0
 
-      # Setup Flutter
-      - name: Setup Flutter
-        uses: ./.github/actions/setup-flutter
+      # Analyze Flutter
+      - name: Analyze Flutter
+        uses: ./.github/actions/analyze-flutter
 
       # MegaLinter
       - name: MegaLinter
