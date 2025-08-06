@@ -23,7 +23,7 @@ class SampleCraftDRepositoryImpl(
         emit(
             gson.fromJson(
                 context.loadJSONFromAsset("dynamic"),
-                Array<SimplePropertiesResponse>::class
+                Array<SimplePropertiesResponse>::class.java
             ).asList().toListSimpleProperties()
         )
     }
