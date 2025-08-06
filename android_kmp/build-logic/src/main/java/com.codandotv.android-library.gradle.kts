@@ -1,12 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
-import extensions.configurePlatformTargets
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupNameSpace
 import extensions.setupPackingOptions
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
@@ -40,5 +40,13 @@ android {
 }
 
 kotlin {
-    configurePlatformTargets()
+    androidTarget {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+            freeCompilerArgs.add("-Xstring-concat=inline")
+        }
+    }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 }

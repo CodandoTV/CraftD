@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 - [Compose](#compose-version)
 
 ```kotlin
-implementation("io.github.codandotv:craftd-compose:${last_version}")
+implementation("io.github.codandotv:craftd-compose-a:${last_version}")
 ```
 Check out the latest version of the Compose library on [Maven Central Repository](https://central.sonatype.com/artifact/io.github.codandotv/craftd-compose)
 

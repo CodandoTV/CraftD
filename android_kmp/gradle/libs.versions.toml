@@ -1,42 +1,57 @@
 [versions]
-kotlin = "1.9.21"
-android_gradle_plugin = "8.2.2"
+# Core toolchain
+kotlin = "2.2.0"
+android_gradle_plugin = "8.6.1"
+compose_plugin = "1.8.2"
+
+# AndroidX / Google
+androidx_core_ktx = "1.13.1"
+
+androidx_appcompat = "1.7.0"
+material = "1.12.0"
+lifecycle = "2.8.4"
+dynamic_animation = "1.0.0"
+
+# KotlinX
 kotlinx-collections-immutable = "0.3.7"
-plugin-maven = "0.28.0"
 
-jackson = "2.12.7"
+# Jackson
+jackson = "2.17.2"
 
-#Test
+# Test
 test_junit = "4.13.2"
 androidx_core_testing = "2.2.0"
-mockk = "1.13.7"
-kotlinx-coroutines-test = "1.5.1"
+mockk = "1.13.12"
+kotlinx-coroutines-test = "1.8.1"
 
-#Android
-androidx_appcompat = "1.6.1"
-material = "1.11.0"
-dynamic_animation = "1.0.0"
-viewmodel = "2.7.0"
-androidx_core_ktx = "1.13.0"
-
-#Compose
-lifecycle_version = "2.7.0"
-compose_plugin = "1.6.1"
+# Maven Publish plugin (se você usa)
+plugin-maven = "0.28.0"
 
 [libraries]
-kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 plugin_maven = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "plugin-maven" }
 kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }
+serialization = { module = "org.jetbrains.kotlin.plugin.serialization:org.jetbrains.kotlin.plugin.serialization.gradle.plugin", version.ref = "kotlin" }
 
 # Kotlin
-kotlin_stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlin_stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
 kotlin_reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
 
-# Android Support
+# AndroidX / Google
 androidx_core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx_core_ktx" }
 androidx_appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx_appcompat" }
 androidx_dynamicanimation = { group = "androidx.dynamicanimation", name = "dynamicanimation", version.ref = "dynamic_animation" }
+google_material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Lifecycle / Compose interop
+compose_lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+
+# KotlinX
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
+
+# Jackson
+fasterxml_jackson = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson" }
+fasterxml_jackson_databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "test_junit" }
@@ -44,16 +59,6 @@ mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 mockk_android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 viewmodel_test = { group = "androidx.arch.core", name = "core-testing", version.ref = "androidx_core_testing" }
 coroutines_test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
-
-# Google
-google_material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-
-# Compose
-compose_lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle_version" }
-
-#jackson
-fasterxml_jackson = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson" }
-fasterxml_jackson_databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
 
 [bundles]
 test = ["junit", "mockk", "mockk_android", "viewmodel_test", "coroutines_test"]
@@ -63,9 +68,10 @@ kotlin = ["androidx_core", "kotlin_stdlib", "kotlin_reflect"]
 [plugins]
 android_application = { id = "com.android.application", version.ref = "android_gradle_plugin" }
 android_library = { id = "com.android.library", version.ref = "android_gradle_plugin" }
-
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin_parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+plugin_maven = { id = "com.vanniktech.maven.publish", version.ref = "plugin-maven" }
 kotlin_multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains_compose = { id = "org.jetbrains.compose", version.ref = "compose_plugin" }
+kotlin_compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

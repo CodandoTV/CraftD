@@ -7,10 +7,9 @@ import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
-internal fun CommonExtension<*, *, *, *, *>.setupPackingOptions() {
+internal fun CommonExtension<*, *, *, *, *,*>.setupPackingOptions() {
     packaging {
         resources {
             with(pickFirsts) {
@@ -26,7 +25,7 @@ internal fun CommonExtension<*, *, *, *, *>.setupPackingOptions() {
     }
 }
 
-internal fun CommonExtension<*, *, *, *, *>.setupAndroidDefaultConfig() {
+internal fun CommonExtension<*, *, *, *, *,*>.setupAndroidDefaultConfig() {
     defaultConfig {
         compileSdk = Config.compileSdkVersion
         minSdk = Config.minSdkVersion
@@ -36,37 +35,14 @@ internal fun CommonExtension<*, *, *, *, *>.setupAndroidDefaultConfig() {
     }
 }
 
-internal fun CommonExtension<*, *, *, *, *>.setupCompileOptions() {
+internal fun CommonExtension<*, *, *, *, *,*>.setupCompileOptions() {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
-internal fun KotlinMultiplatformExtension.configurePlatformTargets() {
-
-//Note: Keep when ios will be implemented
-//    listOf(
-//        iosX64(),
-//        iosArm64(),
-//        iosSimulatorArm64()
-//    ).forEach { iosTarget ->
-//        iosTarget.binaries.framework {
-//            baseName = Config.applicationId
-//            isStatic = true
-//        }
-//    }
-
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = Config.jvmTarget
-            }
-        }
-    }
-}
-
-internal fun CommonExtension<*, *, *, *, *>.setupNameSpace(project: Project) {
+internal fun CommonExtension<*, *, *, *, *,*>.setupNameSpace(project: Project) {
     val moduleName = project.displayName
         .removePrefix("project ")
         .replace(":", ".")
@@ -74,8 +50,4 @@ internal fun CommonExtension<*, *, *, *, *>.setupNameSpace(project: Project) {
         .replace("-", ".")
 
     namespace = "${Config.applicationId}$moduleName"
-}
-
-private fun CommonExtension<*, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
-    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }
