@@ -6,14 +6,14 @@ import '../util/widget_util.dart';
 
 void main() {
   testWidgets(
-    'CraftD - Button with allcaps true',
-    (tester) async {
+    'CraftD - Button with a fillMaxSize false',
+        (tester) async {
       const buttonProperties = ButtonProperties(
         text: 'Tap',
-        textColorHex: '#800080',
-        backgroundHex: '#000000',
+        textColorHex: '#000000',
+        backgroundHex: '#800080',
         textSize: '32.0',
-        textAllCaps: true,
+        fillMaxSize: false,
       );
       final widget = await WidgetsUtil.buildMaterialAppWidgetTest(
         child: CraftDButton(
@@ -27,7 +27,7 @@ void main() {
 
       await expectLater(
         find.byType(CraftDButton),
-        matchesGoldenFile('goldens/craftd_button_allcaps_snapshot.png'),
+        matchesGoldenFile('goldens/craftd_button_fill_max_size_false_snapshot.png'),
       );
     },
   );
@@ -54,7 +54,7 @@ void main() {
 
       await expectLater(
         find.byType(CraftDButton),
-        matchesGoldenFile('goldens/craftd_button_fill_max_size_snapshot.png'),
+        matchesGoldenFile('goldens/craftd_button_fill_max_size_true_snapshot.png'),
       );
     },
   );
