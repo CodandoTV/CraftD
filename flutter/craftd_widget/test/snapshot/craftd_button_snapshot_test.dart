@@ -4,15 +4,21 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../util/widget_util.dart';
 
+const defaultBackgroundHexColor = '#FFFFFF';
+const defaultTextHexColor = '#000000';
+const defaultTextSize = '32.0';
+const defaultFillMaxSize = false;
+const defaultText = 'CodandoTV';
+
 void main() {
   testWidgets(
     'CraftD - Button with a fillMaxSize false',
-        (tester) async {
+    (tester) async {
       const buttonProperties = ButtonProperties(
-        text: 'Tap',
-        textColorHex: '#000000',
-        backgroundHex: '#800080',
-        textSize: '32.0',
+        text: defaultText,
+        textColorHex: defaultTextHexColor,
+        backgroundHex: defaultBackgroundHexColor,
+        textSize: defaultTextSize,
         fillMaxSize: false,
       );
       final widget = await WidgetsUtil.buildMaterialAppWidgetTest(
@@ -27,19 +33,20 @@ void main() {
 
       await expectLater(
         find.byType(CraftDButton),
-        matchesGoldenFile('goldens/craftd_button_fill_max_size_false_snapshot.png'),
+        matchesGoldenFile(
+            'goldens/craftd_button_fill_max_size_false_snapshot.png'),
       );
     },
   );
 
   testWidgets(
     'CraftD - Button with a fillMaxSize true',
-        (tester) async {
+    (tester) async {
       const buttonProperties = ButtonProperties(
-        text: 'Tap',
-        textColorHex: '#000000',
-        backgroundHex: '#800080',
-        textSize: '32.0',
+        text: defaultText,
+        textColorHex: defaultTextHexColor,
+        backgroundHex: defaultBackgroundHexColor,
+        textSize: defaultTextSize,
         fillMaxSize: true,
       );
       final widget = await WidgetsUtil.buildMaterialAppWidgetTest(
@@ -54,7 +61,8 @@ void main() {
 
       await expectLater(
         find.byType(CraftDButton),
-        matchesGoldenFile('goldens/craftd_button_fill_max_size_true_snapshot.png'),
+        matchesGoldenFile(
+            'goldens/craftd_button_fill_max_size_true_snapshot.png'),
       );
     },
   );

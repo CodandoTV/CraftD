@@ -23,6 +23,7 @@ class CraftDText extends StatelessWidget {
               ? double.tryParse(textProperties.textSize!)
               : 16.0,
           color: CraftDColor.hexToColor(textProperties.textColorHex),
+          backgroundColor: CraftDColor.hexToColor(textProperties.backgroundHex),
         ),
       ),
     );
