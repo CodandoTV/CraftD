@@ -19,4 +19,3 @@ jobs:
       - name: Test - CraftD Widget
         working-directory: flutter/craftd_widget
         run: flutter test
-
