@@ -10,8 +10,10 @@ class MySampleButtonComposeBuilder(override val key: String = "MySampleButton") 
     @Composable
     override fun craft(model: SimpleProperties, listener: com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener) {
         val buttonProperties = model.value.convertToElement<ButtonProperties>()
-        MySampleButton(buttonProperties) {
-            buttonProperties.actionProperties?.let { listener.invoke(it) }
+        buttonProperties?.let {
+            MySampleButton(it) {
+                buttonProperties.actionProperties?.let { listener.invoke(it) }
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.github.codandotv.craftd.xml.ui.text
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.codandotv.craftd.androidcore.data.convertToElement
 import com.github.codandotv.craftd.androidcore.data.convertToVO
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
@@ -17,10 +18,10 @@ class CraftDTextViewComponentRender(override var onClickListener: CraftDViewList
     inner class TextViewHolder(val textView: CraftDTextViewComponent) : RecyclerView.ViewHolder(textView)
 
     override fun bindView(model: SimpleProperties, holder: TextViewHolder, position: Int) {
-        val textProperties = model.value.convertToVO<TextProperties>()
-        holder.textView.setProperties(textProperties)
+        val textProperties = model.value.convertToElement<TextProperties>()
+        textProperties?.let { holder.textView.setProperties(it) }
         holder.textView.setOnClickListener {
-            textProperties.actionProperties?.let { actionProperties ->
+            textProperties?.actionProperties?.let { actionProperties ->
                 holder.textView.setOnClickListener {
                     onClickListener?.invoke(actionProperties)
                 }

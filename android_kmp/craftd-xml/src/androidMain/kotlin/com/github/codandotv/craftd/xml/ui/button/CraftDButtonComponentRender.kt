@@ -3,6 +3,7 @@ package com.github.codandotv.craftd.xml.ui.button
 import android.graphics.Color.parseColor
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.github.codandotv.craftd.androidcore.data.convertToElement
 import com.github.codandotv.craftd.androidcore.data.convertToVO
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.button.ButtonProperties
@@ -18,10 +19,10 @@ class ButtonComponentRender(override var onClickListener: CraftDViewListener?) :
     inner class ButtonHolder(val button: CraftDButtonComponent) : RecyclerView.ViewHolder(button)
 
     override fun bindView(model: SimpleProperties, holder: ButtonHolder, position: Int) {
-        val buttonProperties = model.value.convertToVO<ButtonProperties>()
+        val buttonProperties = model.value.convertToElement<ButtonProperties>()
 
-        holder.button.setProperties(buttonProperties)
-        buttonProperties.actionProperties?.let { actionProperties ->
+        buttonProperties?.let { holder.button.setProperties(it) }
+        buttonProperties?.actionProperties?.let { actionProperties ->
             holder.button.setOnClickListener {
                 onClickListener?.invoke(actionProperties)
             }

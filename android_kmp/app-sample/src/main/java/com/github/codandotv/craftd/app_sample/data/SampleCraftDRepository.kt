@@ -8,6 +8,8 @@ import com.github.codandotv.craftd.androidcore.extensions.loadJSONFromAsset
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
 
 interface SampleCraftDRepository {
     suspend fun getDynamic(): Flow<List<SimpleProperties>>
@@ -20,11 +22,10 @@ class SampleCraftDRepositoryImpl(
 ) : SampleCraftDRepository {
     override suspend fun getDynamic(): Flow<List<SimpleProperties>> = flow {
 //        emit(service.getDynamicExample().toListSimpleProperties())
-        emit(
-            gson.fromJson(
-                context.loadJSONFromAsset("dynamic"),
-                Array<SimplePropertiesResponse>::class.java
-            ).asList().toListSimpleProperties()
-        )
+        val jsonString = context.loadJSONFromAsset("dynamic")
+        val list = Json { ignoreUnknownKeys = true }
+            .decodeFromString(ListSerializer(SimplePropertiesResponse.serializer()), jsonString)
+            .toListSimpleProperties()
+        emit(list)
     }
 }

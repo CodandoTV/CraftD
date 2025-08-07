@@ -13,6 +13,7 @@ android {
 dependencies {
     val koin_version = "2.2.3"
     val lifecycle_version = "2.7.0"
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(projects.craftdCore)
     implementation(projects.craftdXml)
