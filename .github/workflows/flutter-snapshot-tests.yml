@@ -1,0 +1,22 @@
+name: Flutter - Snapshot Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest # Use macOS because I generated the golden images in my macoOS
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: ./.github/actions/setup-flutter
+
+      - name: Test - CraftD Widget
+        working-directory: flutter/craftd_widget
+        run: flutter test
+
