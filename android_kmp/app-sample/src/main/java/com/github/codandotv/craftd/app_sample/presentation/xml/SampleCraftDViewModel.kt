@@ -44,8 +44,9 @@ class SampleCraftDViewModel(
             })
     }
 
-    private val listener = object : CraftDViewListener {
-        override fun invoke(actionProperties: ActionProperties) {
+    private val listener = object :
+        com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener {
+        override fun invoke(actionProperties: com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties) {
             actionProperties.analytics?.let {
                 _analytics.value =
                     "categoria: ${it.category}, ação: ${it.action}, label: ${it.label}"

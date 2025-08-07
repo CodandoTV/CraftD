@@ -1,7 +1,6 @@
 package com.github.codandotv.craftd.compose
 
-interface Platform {
-    val name: String
-}
+import androidx.compose.ui.graphics.Color
 
-expect fun getPlatform(): Platform
+expect fun String?.parseColorCompose(): Color
+expect fun parseHtmlToString(html: String): String

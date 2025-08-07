@@ -2,22 +2,22 @@ package com.github.codandotv.craftd.androidcore.data.model.action
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Stable
 @Immutable
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Serializable
 data class AnalyticsProperties(
-    @JsonProperty("category")
+    @SerialName("category")
     val category: String? = null,
 
-    @JsonProperty("action")
+    @SerialName("action")
     val action: String? = null,
 
-    @JsonProperty("label")
+    @SerialName("label")
     val label: String? = null,
 
-    @JsonProperty("track")
+    @SerialName("track")
     val track: String? = null,
 )

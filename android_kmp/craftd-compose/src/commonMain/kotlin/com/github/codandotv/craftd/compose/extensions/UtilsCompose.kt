@@ -34,11 +34,3 @@ fun CraftDAlign?.toAlignmentCompose() : Alignment.Vertical = when (this) {
     CraftDAlign.BOTTOM -> Alignment.Bottom
     else -> Alignment.Top
 }
-
-fun String?.parseColorCompose(): Color {
-    return try {
-        Color(android.graphics.Color.parseColor(this))
-    } catch (ex: Exception) {
-        Color.Unspecified
-    }
-}

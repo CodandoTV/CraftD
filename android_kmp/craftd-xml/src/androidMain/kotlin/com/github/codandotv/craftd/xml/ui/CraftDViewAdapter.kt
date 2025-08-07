@@ -6,8 +6,8 @@ import android.widget.FrameLayout
 import androidx.core.util.forEach
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
+import com.github.codandotv.craftd.androidcore.CraftDSimplePropertiesItemCallback
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
-import com.github.codandotv.craftd.androidcore.presentation.CraftDSimplePropertiesItemCallback
 
 /**
  * The creation I use with base/inspiration tree papers :

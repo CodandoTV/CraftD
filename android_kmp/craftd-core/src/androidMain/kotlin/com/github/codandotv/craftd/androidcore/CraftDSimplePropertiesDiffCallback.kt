@@ -1,4 +1,4 @@
-package com.github.codandotv.craftd.androidcore.presentation
+package com.github.codandotv.craftd.androidcore
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil

@@ -1,9 +1,10 @@
 package com.github.codandotv.craftd.compose
 
-import platform.UIKit.UIDevice
+import androidx.compose.ui.graphics.Color
 
-class IOSPlatform: Platform {
-    override val name: String = UIDevice.currentDevice.systemName() + " " + UIDevice.currentDevice.systemVersion
+actual fun String?.parseColorCompose(): Color =
+    Color.Unspecified
+
+actual fun parseHtmlToString(html: String): String {
+    return html
 }
-
-actual fun getPlatform(): Platform = IOSPlatform()

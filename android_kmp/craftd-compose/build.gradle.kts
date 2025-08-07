@@ -7,7 +7,6 @@ plugins {
 kotlin {
     sourceSets {
         androidMain.dependencies {
-            api(projects.craftdCore)
             implementation(libs.androidx.core)
             implementation(libs.androidx.appcompat)
             implementation(libs.google.material)
@@ -15,6 +14,8 @@ kotlin {
         }
 
         commonMain.dependencies {
+            implementation(libs.kotlinx.serialization.json)
+            api(projects.craftdCore)
             implementation(compose.ui)
             implementation(compose.material3)
         }
