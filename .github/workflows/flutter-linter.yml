@@ -3,9 +3,9 @@ name: Flutter linter
 on:
   pull_request:
     branches:
-      - main'
+      - main
     paths:
-      - "flutte/**"
+      - "flutter/**"
 
 jobs:
   build:
