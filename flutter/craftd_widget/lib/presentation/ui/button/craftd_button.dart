@@ -12,6 +12,17 @@ class CraftDButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (buttonProperties.fillMaxSize == true) {
+      return SizedBox(
+        child: _buildButton(),
+        width: double.infinity,
+      );
+    } else {
+      return _buildButton();
+    }
+  }
+
+  _buildButton() {
     return ElevatedButton(
       onPressed: () {
         callback();

@@ -20,3 +20,11 @@ dev_dependencies:
   flutter_lints: ^4.0.0
 
 flutter:
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-SemiBold.ttf
+        - asset: fonts/Roboto-SemiBoldItalic.ttf
+        - asset: fonts/Roboto-Thin.ttf
+        - asset: fonts/Roboto-ThinItalic.ttf

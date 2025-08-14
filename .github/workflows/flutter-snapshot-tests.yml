@@ -1,15 +1,15 @@
-name: Flutter linter
+name: Flutter - Snapshot Tests
 
 on:
   pull_request:
     branches:
       - main
     paths:
-      - "flutter/**"
+      - "flutter/craftd_widget/lib/presentation/ui/**"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest # Use macOS because I generated the golden images in my macoOS
 
     steps:
       - name: Checkout repository
@@ -18,10 +18,6 @@ jobs:
       - name: Set up Flutter
         uses: ./.github/actions/setup-flutter
 
-      - name: Analyze - CraftD Widget
+      - name: Test - CraftD Widget
         working-directory: flutter/craftd_widget
-        run: dart analyze
-
-      - name: Analyze - Sample
-        working-directory: flutter/sample
-        run: dart analyze
+        run: flutter test
