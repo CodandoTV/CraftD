@@ -21,7 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "CraftD"
 
-include(":app-sample")
+include(":app-sample-android")
+include(":composeApp-sample")
+include(":app-sample-kmp")
 include(":craftd-core")
 include(":craftd-xml")
 include(":craftd-compose")
