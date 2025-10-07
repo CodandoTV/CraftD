@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "docs/**"
+      - "mkdocs.yaml"
 permissions:
   contents: write
 jobs:
