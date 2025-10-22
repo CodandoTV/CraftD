@@ -1,9 +1,8 @@
 plugins {
-    id("com.codandotv.android-library")
+    id("com.codandotv.kmp-library")
     id("com.codandotv.publish")
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {

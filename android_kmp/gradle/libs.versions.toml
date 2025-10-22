@@ -13,7 +13,7 @@ lifecycle = "2.8.4"
 dynamic_animation = "1.0.0"
 
 # KotlinX
-kotlinx-collections-immutable = "0.3.7"
+kotlinx-collections-immutable = "0.4.0"
 kotlinx-serialization = "1.6.3"
 kotlinx-coroutines = "1.8.1"
 
@@ -26,7 +26,7 @@ androidx_core_testing = "2.2.0"
 mockk = "1.13.12"
 kotlinx-coroutines-test = "1.8.1"
 
-# Maven Publish plugin (se você usa)
+# Maven Publish plugin
 plugin-maven = "0.28.0"
 
 [libraries]

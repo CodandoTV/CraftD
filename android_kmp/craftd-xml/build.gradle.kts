@@ -6,7 +6,6 @@ android{
 
 plugins {
     id("com.codandotv.android-library")
-    id("com.codandotv.publish")
 }
 
 kotlin {

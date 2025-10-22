@@ -1,16 +1,18 @@
 plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kotlin.compose)
-    id("com.codandotv.android-library")
+    id("com.codandotv.kmp-library")
 }
 
 kotlin {
+    iosArm64()
+    iosX64()
+    iosSimulatorArm64()
     sourceSets {
         androidMain.dependencies {
             implementation(libs.androidx.core)
             implementation(libs.androidx.appcompat)
             implementation(libs.google.material)
-            implementation(libs.kotlinx.collections.immutable)
         }
 
         commonMain.dependencies {
@@ -18,6 +20,7 @@ kotlin {
             api(projects.craftdCore)
             implementation(compose.ui)
             implementation(compose.material3)
+            implementation(libs.kotlinx.collections.immutable)
         }
     }
 }
