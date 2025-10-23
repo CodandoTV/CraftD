@@ -1,0 +1,6 @@
+# Xcode
+*.xcuserdatad
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+DerivedData/
+# Build products
+*.xcframework

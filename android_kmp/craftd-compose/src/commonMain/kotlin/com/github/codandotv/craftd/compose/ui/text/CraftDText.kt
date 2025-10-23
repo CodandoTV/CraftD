@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import androidx.core.text.HtmlCompat
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.codandotv.craftd.androidcore.extensions.empty
 import com.github.codandotv.craftd.compose.extensions.toAlignCompose
 import com.github.codandotv.craftd.compose.extensions.toTextStyle
 import com.github.codandotv.craftd.compose.parseColorCompose
+import com.github.codandotv.craftd.compose.parseHtmlToPlainText
 
 @Composable
 fun CraftDText(
@@ -38,9 +38,7 @@ fun CraftDText(
                 fontSize = textProperties.textSize?.toFloat()?.sp ?: TextUnit.Unspecified,
             ),
             text = textProperties.textHtml?.let { html ->
-                HtmlCompat.fromHtml(
-                    html, HtmlCompat.FROM_HTML_MODE_COMPACT
-                ).toString()
+                parseHtmlToPlainText(html)
             } ?: textProperties.textWithRightCaps(),
             color = textProperties.textColorHex?.parseColorCompose() ?: Color.Unspecified,
             textAlign = textProperties.align.toAlignCompose(),

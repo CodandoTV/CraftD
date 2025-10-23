@@ -11,7 +11,7 @@ fun KotlinMultiplatformExtension.iosTarget() {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = Config.appName
-            isStatic = true
+            isStatic = false
         }
     }
 }

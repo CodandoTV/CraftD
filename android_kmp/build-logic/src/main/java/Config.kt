@@ -7,5 +7,5 @@ object Config {
     const val versionCode = 1
     const val jvmTarget = "17"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    const val appName = "craftd"
+    const val appName = "Craftd"
 }
