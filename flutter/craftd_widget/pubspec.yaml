@@ -1,5 +1,5 @@
 name: craftd_widget
-description: Create dynamic form screens using Server Driven UI concepts using CraftD
+description: A Server Driven UI library provided by CodandoTV.
 version: 1.0.0
 homepage: https://github.com/CodandoTV/CraftD
 
