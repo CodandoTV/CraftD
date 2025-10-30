@@ -2,18 +2,18 @@
 [![kotlin](https://img.shields.io/github/languages/top/codandotv/craftd.svg?style=for-the-badge&color=blueviolet)](https://kotlinlang.org/)
 [![License MIT](https://img.shields.io/github/license/codandotv/craftd.svg?style=for-the-badge&color=orange)](https://opensource.org/licenses/MIT)
 
+![Logo do CodandoTV](readme-files/codandotv.png)
 
 <h1 align="center">
     <img height="150" src="https://github.com/user-attachments/assets/6893bd0d-7866-44b0-bc34-5c3759c1bacf"/>
     <br>
-    <a href="https://codandotv.gitbook.io/craftd">CraftD</a>: A framework to implement Server-Driven UI quickly and easily to Android / iOS / Flutter / Kmp
+    <a href="https://codandotv.github.io/CraftD">CraftD</a>: A framework to implement Server-Driven UI quickly and easily to Android / iOS / Flutter / Kmp
 </h1>
 
 ### Documentation
-See the [project website](https://codandotv.gitbook.io/craftd) for documentation.
+See the [project website](https://codandotv.github.io/CraftD) for documentation.
 
 Take a look at [CraftD: Server Driven UI for All Platforms](https://medium.com/codandotv/craftd-server-driven-ui-for-all-platforms-b2624d2c2a7b)
-
 
 ## Features
 ### 🔗 Compatibility
