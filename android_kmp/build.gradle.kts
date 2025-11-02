@@ -46,19 +46,17 @@ tasks.register("exportCraftdComposeXCFrameworkForSample") {
             )
         }
 
-        // ---- CÓPIA CORRETA DO BUNDLE ----
         val sampleDir = File(rootDir, "samples/ios/Frameworks").apply { mkdirs() }
-        val dstBundle = File(sampleDir, outXC.name) // .../Frameworks/craftd.xcframework
+        val dstBundle = File(sampleDir, outXC.name)
 
         if (dstBundle.exists()) {
             dstBundle.deleteRecursively()
             println("🧹 Removido bundle anterior no sample: ${dstBundle.absolutePath}")
         }
 
-        // Copia o diretório 'craftd.xcframework' inteiro para dentro de Frameworks/
         copy {
             from(outXC)
-            into(dstBundle)  // <- isso cria a pasta craftd.xcframework e coloca o conteúdo dentro
+            into(dstBundle)
         }
 
         println("✅ Gerada: ${outXC.absolutePath}")

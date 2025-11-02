@@ -2,9 +2,13 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.kotlin.compose)
     id("com.codandotv.kmp-library")
+    id("com.codandotv.publish")
 }
 
 kotlin {
+    androidTarget {
+        publishLibraryVariants("release", "debug")
+    }
     sourceSets {
         androidMain.dependencies {
             implementation(libs.androidx.core)

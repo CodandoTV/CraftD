@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.AndroidMultiVariantLibrary
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins{
@@ -8,13 +7,6 @@ plugins{
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
-
-    configure(
-        AndroidMultiVariantLibrary(
-            sourcesJar = true,
-            publishJavadocJar = true,
-        )
-    )
 
     coordinates(
         project.property("GROUP_ID") as String,
