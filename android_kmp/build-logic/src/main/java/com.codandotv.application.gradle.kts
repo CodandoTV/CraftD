@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+import Config.jvmTargetTool
+import Config.jvmTargetValue
+import Config.jvmTargetVersion
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupPackingOptions
@@ -32,12 +35,12 @@ android {
     }
 
     kotlin {
-        jvmToolchain(17)
+        jvmToolchain(jvmTargetTool)
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = jvmTargetVersion
+        targetCompatibility = jvmTargetVersion
     }
 
     android {

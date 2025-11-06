@@ -1,14 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
-import extensions.getLibrary
+import Config.jvmTargetValue
 import extensions.iosTarget
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupNameSpace
 import extensions.setupPackingOptions
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("com.android.library")
@@ -20,7 +18,7 @@ plugins {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget.set(jvmTargetValue)
             freeCompilerArgs.add("-Xstring-concat=inline")
         }
     }

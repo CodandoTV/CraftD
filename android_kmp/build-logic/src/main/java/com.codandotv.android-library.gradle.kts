@@ -1,5 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
+import Config.jvmTargetValue
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupNameSpace
@@ -42,7 +43,7 @@ android {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
+            jvmTarget.set(jvmTargetValue)
             freeCompilerArgs.add("-Xstring-concat=inline")
         }
     }
