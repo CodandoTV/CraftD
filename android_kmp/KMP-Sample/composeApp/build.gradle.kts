@@ -31,7 +31,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            implementation(libs.craftd.compose)
+//            implementation(libs.craftd.compose)
+            implementation(libs.craftd.core)
             implementation(compose.runtime)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
