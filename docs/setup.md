@@ -1,6 +1,6 @@
 # Setup
 
-## Android
+## Android / CMP
 
 - Add in your settings.gradle mavenCetral:
 
@@ -29,7 +29,7 @@ dependencyResolutionManagement {
     ```
 
 !!! example "Core"
-    Core - Is meant to be used for you to customize even the craftD mechanism
+Core - Is meant to be used for you to customize even the craftD mechanism
 
     ```kotlin
     implementation("io.github.codandotv:craftd-core:${last_version}")
@@ -40,7 +40,7 @@ dependencyResolutionManagement {
 - Add your pod ‘CraftDSwiftUI’
 
 !!! warning "In Progress"
-    This section is in progress...
+This section is in progress...
 
 ## Flutter
 
@@ -53,7 +53,7 @@ flutter pub add craftd_widget
 This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
 
 !!! example "pubspec.yml"
-    ```yaml
-    dependencies:
-        craftd_widget: $last_version
-    ```
+```yaml
+dependencies:
+    craftd_widget: $last_version
+```
