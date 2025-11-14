@@ -11,9 +11,9 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
 import com.github.codandotv.craftd.androidcore.extensions.empty
+import com.github.codandotv.craftd.compose.extensions.parseColorCompose
 import com.github.codandotv.craftd.compose.extensions.toAlignCompose
 import com.github.codandotv.craftd.compose.extensions.toTextStyle
-import com.github.codandotv.craftd.compose.parseColorCompose
 import com.github.codandotv.craftd.compose.parseHtmlToPlainText
 
 @Composable

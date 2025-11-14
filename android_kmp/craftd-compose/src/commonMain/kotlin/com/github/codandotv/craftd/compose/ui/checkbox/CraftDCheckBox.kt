@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.codandotv.craftd.androidcore.data.model.checkbox.CheckBoxProperties
 import com.github.codandotv.craftd.androidcore.data.model.text.TextProperties
+import com.github.codandotv.craftd.compose.extensions.parseColorCompose
 import com.github.codandotv.craftd.compose.extensions.toAlignmentCompose
 import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
-import com.github.codandotv.craftd.compose.parseColorCompose
 import com.github.codandotv.craftd.compose.ui.text.CraftDText
 
 @Composable
