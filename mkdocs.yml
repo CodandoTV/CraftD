@@ -1,7 +1,12 @@
 site_name: CraftD
+repo_url: https://github.com/CodandoTV/CraftD
+repo_name: CraftD
+
 theme:
   name: material
   logo: assets/img/logo.png
+  icon:
+    repo: fontawesome/brands/github
   font:
     text: Merriweather Sans
     code: Red Hat Mono
