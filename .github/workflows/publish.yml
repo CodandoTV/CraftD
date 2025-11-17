@@ -25,7 +25,11 @@ jobs:
           echo "ORG_GRADLE_PROJECT_signingInMemoryKey: $ORG_GRADLE_PROJECT_signingInMemoryKey"
           echo "ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: $ORG_GRADLE_PROJECT_signingInMemoryKeyPassword"
           echo "ORG_GRADLE_PROJECT_signingInMemoryKeyId: $ORG_GRADLE_PROJECT_signingInMemoryKeyId"
-          ./gradlew publishAllPublicationsToMavenCentralRepository --no-daemon
+          ./gradlew \
+            :craftd-core:publishAllPublicationsToMavenCentralRepository \
+            :craftd-compose:publishAllPublicationsToMavenCentralRepository \
+            :craftd-xml:publish \
+            --no-daemon
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
