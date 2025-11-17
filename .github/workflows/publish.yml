@@ -28,7 +28,7 @@ jobs:
           ./gradlew \
             :craftd-core:publishAllPublicationsToMavenCentralRepository \
             :craftd-compose:publishAllPublicationsToMavenCentralRepository \
-            :craftd-xml:publish \
+            :craftd-xml:publishAndroidReleasePublicationToMavenCentralRepository  \
             --no-daemon
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
