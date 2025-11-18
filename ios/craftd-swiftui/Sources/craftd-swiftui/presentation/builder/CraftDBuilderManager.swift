@@ -5,7 +5,8 @@ public class CraftDBuilderManager {
         add(builders: [
             CraftDTextBuilder(),
             CraftDButtonBuilder(),
-            CraftDCheckBoxBuilder()
+            CraftDCheckBoxBuilder(),
+            CraftDProgressBarBuilder(),
         ])
     }
     
