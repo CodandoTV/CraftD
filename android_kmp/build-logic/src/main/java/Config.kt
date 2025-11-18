@@ -8,8 +8,8 @@ object Config {
     const val targetSdkVersion = 35
     const val versionName = "1.0"
     const val versionCode = 1
-    val jvmTargetVersion = JavaVersion.VERSION_21
-    val jvmTargetValue = JvmTarget.JVM_21
+    val jvmTargetVersion = JavaVersion.VERSION_17
+    val jvmTargetValue = JvmTarget.JVM_17
     val jvmTargetTool = Regex("\\d+").find(jvmTargetValue.toString())!!.value.toInt()
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     const val appName = "Craftd"

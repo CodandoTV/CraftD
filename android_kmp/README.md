@@ -4,7 +4,7 @@ This guide explains how to build and publish the CraftD modules to your local Ma
 
 ## Prerequisites
 
-* JDK 21+
+* JDK 17+
 * Gradle Wrapper (`./gradlew`)
 * macOS or Linux
 * Kotlin Multiplatform toolchain installed (Xcode required for iOS builds)

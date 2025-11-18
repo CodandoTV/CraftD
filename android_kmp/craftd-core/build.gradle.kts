@@ -19,7 +19,7 @@ kotlin {
         }
 
         commonMain.dependencies {
-            implementation(libs.kotlinx.serialization.json)
+            api(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines.core)
             implementation(compose.runtime)
             implementation(compose.foundation)
