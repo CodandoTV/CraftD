@@ -16,7 +16,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(projects.craftdCore)
-    implementation(projects.craftdXml)
+//    implementation(projects.craftdXml)
     implementation(projects.craftdCompose)
 
     implementation(libs.androidx.core)
@@ -24,7 +24,7 @@ dependencies {
     implementation(libs.google.material)
     implementation(libs.kotlinx.collections.immutable)
 
-//    implementation("io.github.codandotv:craftd-xml:0.0.1") // revisar se é necessário junto com `projects.craftdXml`
+    implementation("io.github.codandotv:craftd-xml:1.1.0") // revisar se é necessário junto com `projects.craftdXml`
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
