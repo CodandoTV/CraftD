@@ -1,29 +1,50 @@
-# Jetpack Compose
+# Jetpack Compose / CMP
 
-- Create your ComponentPropertyClass with properties that you need. In this example, I used checkbox component:
+- Create your `ComponentPropertyClass` with all the properties your component needs.  
+  In this example, we’re using a **checkbox component**.
 
 !!! warning "Immutable and Stable annotations"
-    Here we have some points to consider To avoid unnecessary recompositions at your component. We recommend use the `@Immutable` and `@Stable` annotations in your properties.
+To avoid unnecessary recompositions in your component,  
+we recommend using the `@Immutable` and `@Stable` annotations in your properties.
+
+---
+
+### 1. Enable Kotlin Serialization
+In your **root build.gradle.kts**, add the Kotlin serialization plugin (version **2.2.21** or higher):
+
+```gradle
+id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
+```
+
+In your **module  build.gradle.kts** add
+
+```gradle
+   implementation(libs.kotlinx.serialization.json)
+```
+
+2. Create your owner object that has the same field in your json like: (This class must match the structure of the JSON that will be parsed:)
 
 ```kotlin
-@JsonIgnoreProperties(ignoreUnknown = true)
-@Immutable
 @Stable
+@Immutable
+@Serializable
 data class CheckBoxProperties(
-    @JsonProperty("text") val text: String? = null,
+    @SerialName("text") val text: String? = null,
     ... define your properties here
 )
 ```
 
-- Add your Component json object in `Dymanic.json`:
+!!! tip "Note"
+
+    You can use your component object in dynamic.json inside the sample project [app-sample-android](https://github.com/CodandoTV/CraftD/tree/issue-59/convert-to-kmp/android_kmp/app-sample-android) or [KMP-sample](https://github.com/CodandoTV/CraftD/tree/issue-59/convert-to-kmp/android_kmp/KMP-Sample):
 
 ```json
 {
-    "key": "CraftDCheckBox",
-    "value": {
-     ... define your properties here
-     }
- }
+  "key": "CraftDCheckBox",
+  "value": {
+    ... define your properties here
+  }
+}
 ```
 
 - Create your Component
@@ -53,7 +74,7 @@ class CraftDCheckBoxBuilder(
 
 !!! tip "Note"
 
-   This Builder must extend CraftBuilder Class and override craft method.
+This Builder must extend CraftBuilder Class and override craft method.
 
 ```kotlin
 class CraftDCheckBoxBuilder(
@@ -80,7 +101,7 @@ fun InitialScreen(
     val properties by vm.properties.collectAsStateWithLifecycle()
     val dynamicBuilder = remember {
         CraftDBuilderManager().add(
-           CraftDCheckBoxBuilder()
+            CraftDCheckBoxBuilder()
         )
     }
     LaunchedEffect(Unit) {

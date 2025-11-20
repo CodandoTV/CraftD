@@ -1,0 +1,371 @@
+[
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "KMP Works",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "CraftDButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "CENTER",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "CraftDview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "CraftDCheckBox",
+    "value": {
+      "text": "Mark here ",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "hasItRightText": false,
+      "enable": true,
+      "style": {
+        "checkedColorHex": "#FF0000",
+        "uncheckedColorHex": " #808080"
+      },
+      "actionProperties": {
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "MySampleButton",
+    "value": {
+      "text": "MySampleButton",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "CraftDview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex": "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "CraftDButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "CraftDview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex": "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "CraftDButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "fillMaxSize": false,
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "CraftDview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex": "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Axe",
+      "textSize": "40",
+      "textColorHex": "#D977EB"
+    }
+  },
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "textSize": "20",
+      "textColorHex": "#FF0000",
+      "align": "CENTER",
+      "textStyle": "BOLD",
+      "textAllCaps": true,
+      "textHtml": "<p><b>Este é um texto em HTML</b></p><p>Isso é <i>itálico</i></p>"
+    }
+  },
+  {
+    "key": "CraftDButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "deeplink://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  }
+]

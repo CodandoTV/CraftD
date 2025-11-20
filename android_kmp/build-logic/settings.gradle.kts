@@ -1,5 +1,15 @@
+@file:Suppress("UnstableApiUsage")
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal();
+        google();
+        mavenCentral()
+    }
+}
 dependencyResolutionManagement {
     repositories {
+        google();
         mavenCentral()
     }
     versionCatalogs {
@@ -8,3 +18,4 @@ dependencyResolutionManagement {
         }
     }
 }
+rootProject.name = "build-logic"

@@ -1,19 +1,15 @@
 @file:Suppress("UnstableApiUsage")
 
-import extensions.configurePlatformTargets
 import extensions.setupAndroidDefaultConfig
 import extensions.setupCompileOptions
 import extensions.setupNameSpace
 import extensions.setupPackingOptions
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.artifacts.VersionCatalogsExtension
-
-val libs: VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
 
 plugins {
     id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-kapt")
     id("kotlin-parcelize")
-    id("org.jetbrains.kotlin.multiplatform")
 }
 
 android {
@@ -29,7 +25,7 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
-            proguardFiles("proguard-rules.pro")
+            proguardFiles("proguard-android.txt", "proguard-rules.pro")
             consumerProguardFiles("proguard-rules.pro")
         }
 
@@ -37,8 +33,4 @@ android {
             isMinifyEnabled = false
         }
     }
-}
-
-kotlin {
-    configurePlatformTargets()
 }

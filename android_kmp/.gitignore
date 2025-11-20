@@ -1,0 +1,139 @@
+# =========================================
+# Kotlin Multiplatform / Compose Multiplatform
+# =========================================
+
+# Build system
+/build/
+.gradle/
+local.properties
+!gradle/wrapper/gradle-wrapper.jar
+.gradle-cache/
+.gradle/
+.gradle.kts.cached
+.gradle/configuration-cache/
+.kotlinc/
+.kotlin
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.sw?
+*.swo
+*.orig
+
+# Kotlin/Java
+out/
+bin/
+classes/
+*.class
+*.log
+*.tmp
+*.lock
+*.hprof
+
+# Compose Multiplatform generated resources
+composeApp/build/
+composeApp/.kotlin/
+composeApp/.compose-cache/
+composeApp/.cache/
+composeApp/compose-resources/
+
+# KMP common artifacts
+common/build/
+shared/build/
+**/build/
+**/.kotlin/
+**/.kotlin-js-store/
+**/.gradle/
+**/.idea_modules/
+
+# Android
+captures/
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+*.keystore
+*.jks
+*.so
+*.aar
+*.iml
+**/local.properties
+**/generated/
+**/outputs/
+**/reports/
+**/release/
+**/debug/
+
+# iOS
+xcuserdata/
+DerivedData/
+build/XCFrameworks/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+Pods/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+.DS_Store
+
+# Native (K/N)
+.konan/
+**/bin/
+**/obj/
+**/native/
+
+# Packaging / Distribution
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.jar
+*.war
+*.ear
+*.klib
+*.xcframework
+*.framework
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+*.swp
+*.swo
+*.rej
+*.sublime-workspace
+*.sublime-project
+
+# Environment / Credentials
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.keystore
+*.jks
+secrets.properties
+signing.properties
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================================
+# Optional: ignore intermediate build logic
+# =========================================
+build-logic/.gradle/
+build-logic/build/
+gradle.properties

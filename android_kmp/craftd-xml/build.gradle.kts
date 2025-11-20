@@ -6,16 +6,12 @@ android{
 
 plugins {
     id("com.codandotv.android-library")
-    id("com.codandotv.publish")
+    id("com.codandotv.publish-android")
 }
 
-kotlin {
-    sourceSets {
-        androidMain.dependencies {
-            api(projects.craftdCore)
-            implementation(libs.androidx.core)
-            implementation(libs.androidx.appcompat)
-            implementation(libs.google.material)
-        }
-    }
+dependencies {
+    api(projects.craftdCore)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
 }

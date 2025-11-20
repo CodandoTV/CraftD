@@ -18,13 +18,13 @@ Take a look at [CraftD: Server Driven UI for All Platforms](https://medium.com/c
 ## Features
 ### 🔗 Compatibility
 
-| Tech                            |      Support         |
-|---------------------------------|:--------------------:|
-| View System - Android           |  ✅ **Supported**    |
-| Jetpack Compose - Android       |  ✅ **Supported**    |
-| Widget - Flutter                |  ✅ **Supported**    |
-| SwiftUi - iOS                   |  ✅ **Supported**    |
-| Jetpack Compose - Multiplatform |  ⚒️ **In Progress**   |
+| Tech                            |       Support       |
+|---------------------------------|:-------------------:|
+| View System - Android           |   ✅ **Supported**   |
+| Jetpack Compose - Android       |   ✅ **Supported**   |
+| Widget - Flutter                |   ✅ **Supported**   |
+| SwiftUi - iOS                   |   ✅ **Supported**   |
+| Jetpack Compose - Multiplatform |   ✅ **Supported**   |
 
 ### Components that already exist in the library
 
@@ -34,65 +34,13 @@ Take a look at [CraftD: Server Driven UI for All Platforms](https://medium.com/c
 | Text      |    X    |      X      |    X   |    X    |
 | CheckBox  |    X    |      -      |    -   |    X    |
 
-### Create your custom component( android compose example )
-
-```kotlin
-@JsonIgnoreProperties(ignoreUnknown = true)
-@Immutable
-@Stable
-data class CheckBoxProperties(
-    @JsonProperty("text") val text: String? = null,
-    ... rest of your properties
-)
-
-```
-
-#### Add your Component json object in Dymanic.json
-```json
-{
-  "key": "CraftDCheckBox",
-  "value": {
-    ... place your properties
-  }
-}
-
-```
-
-#### Create your Component
-```kotlin
-@Composable
-fun CraftDCheckBox(
-    checkboxProperties: CheckBoxProperties,
-    modifier: Modifier = Modifier,
-    onChecked: (Boolean) -> Unit
-) {
-    ... place your code
-}
-```
-
-#### Create your Component Builder
-```kotlin
-class CraftDCheckBoxBuilder(
-    override val key: String = CraftDComponentKey.CHECK_BOX_COMPONENT.key
-) :
-    CraftDBuilder {
-    @Composable
-    override fun craft(model: SimpleProperties, listener: CraftDViewListener) {
-        val checkBoxProperties = model.value.convertToVO<CheckBoxProperties>()
-        CraftDCheckBox(checkBoxProperties) {
-            checkBoxProperties.actionProperties?.let { listener.invoke(it) }
-        }
-    }
-}
-```
-
 More details check our [documentation](https://codandotv.gitbook.io/craftd)
 
 
 ### Samples
-| [Android Compose](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/compose) | [Android View System](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/xml) | [iOS SwiftUI](https://github.com/CodandoTV/CraftD/tree/main/ios/sample/CraftDSample) | [Flutter](https://github.com/CodandoTV/CraftD/tree/main/flutter/sample/lib) |
-|----------|----------|----------|----------|
-| <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/user-attachments/assets/c8c653b2-1289-4437-85f2-f940d5135f27" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/dfabfda7-6501-4763-b040-3ee9fbf2a2be" width="200" height="400" /> |
+| [Android Compose / Compose MultiPlatform](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/compose) | [Android View System](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/xml) | [iOS SwiftUI](https://github.com/CodandoTV/CraftD/tree/main/ios/sample/CraftDSample) | [Flutter](https://github.com/CodandoTV/CraftD/tree/main/flutter/sample/lib) |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|
+| <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" />                                                            | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/user-attachments/assets/c8c653b2-1289-4437-85f2-f940d5135f27" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/dfabfda7-6501-4763-b040-3ee9fbf2a2be" width="200" height="400" /> |
 
 
 ### Credits
