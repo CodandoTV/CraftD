@@ -10,4 +10,6 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }
