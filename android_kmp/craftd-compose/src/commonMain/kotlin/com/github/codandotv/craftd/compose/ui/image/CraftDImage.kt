@@ -12,6 +12,11 @@ import coil3.compose.AsyncImage
 import com.github.codandotv.craftd.androidcore.data.model.image.ImageProperties
 import com.github.codandotv.craftd.compose.extensions.toArrangementCompose
 
+/**
+ * CraftDImage composable for rendering images using Coil 3.
+ *
+ * Supports both local and network images via Coil's AsyncImage.
+ */
 @Composable
 fun CraftDImage(
         imageProperties: ImageProperties,
@@ -37,8 +42,8 @@ fun CraftDImage(
                                         }
                                 )
                                 .then(
-                                        imageProperties.aspectRatio?.let {
-                                            Modifier.aspectRatio(it)
+                                        imageProperties.aspectRatio?.let { ratio ->
+                                            Modifier.aspectRatio(ratio)
                                         }
                                                 ?: Modifier
                                 ),

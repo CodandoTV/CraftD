@@ -6,9 +6,7 @@ plugins {
 }
 
 kotlin {
-    androidTarget {
-        publishLibraryVariants("release", "debug")
-    }
+    androidTarget { publishLibraryVariants("release", "debug") }
     sourceSets {
         androidMain.dependencies {
             implementation(libs.androidx.core)

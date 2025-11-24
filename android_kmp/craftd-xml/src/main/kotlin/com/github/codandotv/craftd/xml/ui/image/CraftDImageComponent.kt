@@ -11,6 +11,11 @@ import com.github.codandotv.craftd.androidcore.data.model.image.ImageProperties
 import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
 import com.github.codandotv.craftd.xml.databinding.ImageBinding
 
+/**
+ * CraftDImageComponent for XML-based image rendering using Coil 3.
+ *
+ * Supports both local and network images via Coil's load extension.
+ */
 class CraftDImageComponent
 @JvmOverloads
 constructor(
@@ -25,6 +30,7 @@ constructor(
     }
 
     fun setProperties(imageProperties: ImageProperties) {
+        // Load image using Coil
         imageProperties.url?.let { url -> binding.imageView.load(url) }
 
         imageProperties.contentDescription?.let { description ->

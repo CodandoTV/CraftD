@@ -20,6 +20,9 @@ kotlinx-collections-immutable = "0.4.0"
 kotlinx-serialization = "1.9.0"
 kotlinx-coroutines = "1.10.2"
 
+# Coil
+coil = "3.0.3"
+
 # Jackson
 jackson = "2.17.2"
 
@@ -58,6 +61,10 @@ compose_lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-co
 
 # KotlinX
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
+
+# Coil
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
 # Jackson
 fasterxml_jackson = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson" }
