@@ -20,6 +20,61 @@
 | Text              | X                     |       X      |    X    |   X     |
 | Checkbox          | X                     |       -      |    -    |   -     |
 
+## Backend structure expected by CraftD
+
+To render components dynamically, CraftD expects your backend to return a JSON array where:
+
+- **`key`** is the identifier of the component you want to render (ex: `CraftDTextView`, `CraftDButton`).
+- **`value`** represents the structure and properties of that component.
+- Each platform (Compose, View System, Flutter, SwiftUI) interprets these properties according to its own specification.
+
+### Example of expected structure
+
+```json
+[
+  {
+    "key": "CraftDTextView",
+    "value": {
+      "text": "Knife",
+      "backgroundHex" : "#9A71F6",
+      "textSize": "30",
+      "textColorHex": "#000000"
+    }
+  },
+  {
+    "key": "CraftDButton",
+    "value": {
+      "text": "Some Action :)",
+      "align": "RIGHT",
+      "textAlign": "CENTER",
+      "textAllCaps": true,
+      "textSize": "20",
+      "textColorHex": "#FFFFFF",
+      "backgroundHex": "#2fa003",
+      "actionProperties": {
+        "deeplink": "CraftDview://any",
+        "analytics": {
+          "category": "hello",
+          "action": "world",
+          "label": "everywhere"
+        }
+      }
+    }
+  }
+]
+```
+
+### How to extend
+
+Each component type has its own platform-specific specification for how it is built or rendered, but all of them use the same JSON structure.
+To understand all available properties, check the documentation for:
+
+- **Compose**
+- **Android View System**
+- **Flutter**
+- **SwiftUI**
+
+
 ### Screen recordings
 
 <div class="grid cards" markdown>
