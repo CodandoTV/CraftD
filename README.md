@@ -1,6 +1,9 @@
 [![Android API](https://img.shields.io/badge/api-21%2B-brightgreen.svg?style=for-the-badge)](https://android-arsenal.com/api?level=21)
 [![kotlin](https://img.shields.io/github/languages/top/codandotv/craftd.svg?style=for-the-badge&color=blueviolet)](https://kotlinlang.org/)
 [![License MIT](https://img.shields.io/github/license/codandotv/craftd.svg?style=for-the-badge&color=orange)](https://opensource.org/licenses/MIT)
+[![Flutter](https://img.shields.io/badge/Flutter-%252302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white&labelColor=%2301579b&color=%2303a9f4)](https://docs.flutter.dev/)
+[![Pub Version](https://img.shields.io/pub/v/jujuba_svg?style=for-the-badge)](https://pub.dev/packages/craftd_widget)
+
 
 ![Logo do CodandoTV](readme-files/codandotv.png)
 
