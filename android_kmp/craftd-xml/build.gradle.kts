@@ -1,8 +1,4 @@
-android{
-    buildFeatures{
-        viewBinding =  true
-    }
-}
+android { buildFeatures { viewBinding = true } }
 
 plugins {
     id("com.codandotv.android-library")
