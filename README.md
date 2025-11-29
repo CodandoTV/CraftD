@@ -46,6 +46,11 @@ More details check our [documentation](https://codandotv.gitbook.io/craftd)
 | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" />                                                            | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/user-attachments/assets/c8c653b2-1289-4437-85f2-f940d5135f27" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/dfabfda7-6501-4763-b040-3ee9fbf2a2be" width="200" height="400" /> |
 
 
+
+### 😎 Liked the project?
+Click the ⭐ star at the top to show your support!
+
+
 ### Credits
 
 > A Server Driven UI library for Android.
