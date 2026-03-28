@@ -1,0 +1,157 @@
+name: Auto Generate Unit Tests
+
+# Runs after the PR workflow completes successfully.
+# Only triggers when files inside craftd-core are changed.
+on:
+  workflow_run:
+    workflows: ["Build and Test for PRs"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-tests:
+    name: Generate Unit Tests with Claude
+    runs-on: ubuntu-latest
+
+    # Only run when the triggering workflow succeeded and was not opened by this bot
+    if: |
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.actor.login != 'github-actions[bot]'
+
+    steps:
+      # ── 1. Checkout the PR branch that triggered the parent workflow ──────────
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 2. Reuse the existing Java composite action ───────────────────────────
+      - name: Setup Java
+        uses: ./.github/actions/java
+
+      # ── 3. Python for the Claude API script ──────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install anthropic
+
+      # ── 4. Detect which craftd-core Kotlin files changed in this PR ──────────
+      - name: Get changed Kotlin files in craftd-core
+        id: changed
+        run: |
+          BASE=${{ github.event.workflow_run.pull_requests[0].base.sha }}
+          HEAD=${{ github.event.workflow_run.head_sha }}
+
+          CHANGED=$(git diff --name-only "$BASE"..."$HEAD" \
+            | grep -E "^android_kmp/craftd-core/src/(common|android)Main/.*\.kt$" \
+            | grep -v "Test\.kt" \
+            || true)
+
+          echo "Changed craftd-core Kotlin files:"
+          echo "$CHANGED"
+
+          if [ -z "$CHANGED" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            printf "files<<EOF\n%s\nEOF\n" "$CHANGED" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 5. Call Claude API to generate tests ─────────────────────────────────
+      - name: Generate unit tests with Claude API
+        if: steps.changed.outputs.has_changes == 'true'
+        id: generate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CHANGED_FILES: ${{ steps.changed.outputs.files }}
+        run: python .github/scripts/generate_tests.py
+
+      # ── 6. Check if any test files were actually written ─────────────────────
+      - name: Check generated files
+        if: steps.changed.outputs.has_changes == 'true'
+        id: check
+        run: |
+          COUNT=$(git status --short | grep -c "Test\.kt" || true)
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
+          if [ "$COUNT" -gt "0" ]; then
+            echo "has_tests=true" >> "$GITHUB_OUTPUT"
+            NAMES=$(git status --short \
+              | grep "Test\.kt" \
+              | awk '{print $2}' \
+              | xargs -I{} basename {} \
+              | paste -sd ", ")
+            echo "covered_names=$NAMES" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_tests=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 7. Commit tests to a new branch ──────────────────────────────────────
+      - name: Commit generated tests
+        if: steps.check.outputs.has_tests == 'true'
+        id: commit
+        run: |
+          PR_NUMBER=${{ github.event.workflow_run.pull_requests[0].number }}
+          BRANCH="chore/add-tests-craftd-core-pr-${PR_NUMBER}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH"
+          git add android_kmp/craftd-core/src/test/
+          git commit -m "test: add unit tests for craftd-core (auto-generated via Claude)"
+          git push origin "$BRANCH"
+
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+
+      # ── 8. Open the companion PR with generated tests ────────────────────────
+      - name: Open Pull Request with generated tests
+        if: steps.check.outputs.has_tests == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER="${{ steps.commit.outputs.pr_number }}"
+          BRANCH="${{ steps.commit.outputs.branch }}"
+          BASE_BRANCH="${{ github.event.workflow_run.pull_requests[0].base.ref }}"
+          COVERED="${{ steps.check.outputs.covered_names }}"
+
+          PR_URL=$(gh pr create \
+            --base "$BASE_BRANCH" \
+            --head "$BRANCH" \
+            --title "[Auto] Add unit tests for craftd-core" \
+            --body "$(cat <<EOF
+          ## Auto-generated Unit Tests
+
+          This PR was automatically generated by the **Generate Unit Tests** workflow using the Claude API (claude-opus-4-6).
+
+          ### Files covered
+          \`\`\`
+          ${COVERED}
+          \`\`\`
+
+          ### How it works
+          1. PR #${PR_NUMBER} touched files inside \`android_kmp/craftd-core\`
+          2. After CI passed, this workflow detected Kotlin files without test coverage
+          3. Claude analyzed each file and generated **JUnit4 + MockK** tests
+          4. This PR was automatically created with the result
+
+          ### Review checklist
+          - [ ] Tests compile without errors (\`./gradlew testDebugUnitTest\`)
+          - [ ] Tests cover the main logic paths
+          - [ ] Edge cases are handled (null, empty, malformed input)
+          - [ ] Test naming follows project conventions
+
+          > Triggered by PR #${PR_NUMBER}
+          EOF
+          )")
+
+          echo "PR created: $PR_URL"
