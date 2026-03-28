@@ -92,3 +92,4 @@ lint/tmp/
 # macOS & Xcode files
 *.DS_Store
 xcuserdata
+log.txt\nlog/
