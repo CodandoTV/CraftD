@@ -1,0 +1,190 @@
+name: Auto Generate Cover+Test
+
+# Dispara automaticamente após o CI (Build and Test for PRs) passar,
+# ou manualmente via Actions > Run workflow para testes pontuais.
+on:
+  workflow_dispatch:
+    inputs:
+      override_files:
+        description: 'Opcional: arquivos .kt específicos (separados por espaço). Vazio = escaneia tudo sem cobertura.'
+        required: false
+        default: ''
+
+  workflow_run:
+    workflows: ["Build and Test for PRs"]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-tests:
+    name: Generate Unit Tests with Claude
+    runs-on: ubuntu-latest
+
+    # workflow_dispatch: sempre roda
+    # workflow_run: só roda se CI passou e não foi aberto pelo bot
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.actor.login != 'github-actions[bot]'
+      )
+
+    steps:
+      # ── 1. Normaliza contexto para os dois gatilhos ───────────────────────────
+      - name: Resolve trigger context
+        id: ctx
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "head_sha=${{ github.sha }}"   >> "$GITHUB_OUTPUT"
+            echo "base_ref=main"                >> "$GITHUB_OUTPUT"
+            echo "pr_number=manual"             >> "$GITHUB_OUTPUT"
+            echo "is_manual=true"               >> "$GITHUB_OUTPUT"
+          else
+            echo "head_sha=${{ github.event.workflow_run.head_sha }}"                  >> "$GITHUB_OUTPUT"
+            echo "base_ref=${{ github.event.workflow_run.pull_requests[0].base.ref }}" >> "$GITHUB_OUTPUT"
+            echo "pr_number=${{ github.event.workflow_run.pull_requests[0].number }}"  >> "$GITHUB_OUTPUT"
+            echo "is_manual=false"              >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 2. Checkout ───────────────────────────────────────────────────────────
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.ctx.outputs.head_sha }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── 3. Python ─────────────────────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install anthropic
+
+      # ── 4. Escaneia craftd-core buscando arquivos sem cobertura ──────────────
+      #       Se override_files for informado no dispatch, usa eles no lugar.
+      - name: Find uncovered Kotlin files in craftd-core
+        id: changed
+        run: |
+          OVERRIDE="${{ github.event.inputs.override_files }}"
+
+          if [ -n "$OVERRIDE" ]; then
+            UNCOVERED=$(echo "$OVERRIDE" | tr ' ' '\n' | grep -v "^$" || true)
+            echo "Modo override — arquivos informados manualmente:"
+          else
+            echo "Scan completo — buscando arquivos sem cobertura em craftd-core..."
+            UNCOVERED=""
+            while IFS= read -r SRC; do
+              TEST=$(echo "$SRC" \
+                | sed 's|src/commonMain/kotlin/|src/test/java/|' \
+                | sed 's|src/androidMain/kotlin/|src/test/java/|' \
+                | sed 's|\.kt$|Test.kt|')
+              if [ ! -f "$TEST" ]; then
+                UNCOVERED="$UNCOVERED"$'\n'"$SRC"
+              fi
+            done < <(find android_kmp/craftd-core/src \
+              \( -path "*/commonMain/kotlin/*.kt" -o -path "*/androidMain/kotlin/*.kt" \) \
+              | grep -v "Test\.kt" | sort)
+            UNCOVERED=$(echo "$UNCOVERED" | grep -v "^$" || true)
+          fi
+
+          echo "$UNCOVERED"
+
+          if [ -z "$UNCOVERED" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "Nenhum arquivo sem cobertura. Nada a fazer."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            printf "files<<EOF\n%s\nEOF\n" "$UNCOVERED" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 5. Chama Claude API para gerar os testes ─────────────────────────────
+      - name: Generate unit tests with Claude API
+        if: steps.changed.outputs.has_changes == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CHANGED_FILES: ${{ steps.changed.outputs.files }}
+        run: python .github/scripts/generate_tests.py
+
+      # ── 6. Verifica se arquivos foram gerados ─────────────────────────────────
+      - name: Check generated files
+        if: steps.changed.outputs.has_changes == 'true'
+        id: check
+        run: |
+          COUNT=$(git status --short | grep -c "Test\.kt" || true)
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
+          if [ "$COUNT" -gt "0" ]; then
+            echo "has_tests=true" >> "$GITHUB_OUTPUT"
+            NAMES=$(git status --short \
+              | grep "Test\.kt" \
+              | awk '{print $2}' \
+              | xargs -I{} basename {} \
+              | paste -sd ", ")
+            echo "covered_names=$NAMES" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_tests=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── 7. Cria branch e commita os testes ────────────────────────────────────
+      - name: Commit generated tests
+        if: steps.check.outputs.has_tests == 'true'
+        id: commit
+        run: |
+          PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
+          BRANCH="chore/add-tests-craftd-core-pr-${PR_NUMBER}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH"
+          git add android_kmp/craftd-core/src/test/
+          git commit -m "test: add unit tests for craftd-core (auto-generated via Claude)"
+          git push origin "$BRANCH"
+
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      # ── 8. Abre PR com os testes gerados ──────────────────────────────────────
+      - name: Open Pull Request with generated tests
+        if: steps.check.outputs.has_tests == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
+          BRANCH="${{ steps.commit.outputs.branch }}"
+          BASE_BRANCH="${{ steps.ctx.outputs.base_ref }}"
+          COVERED="${{ steps.check.outputs.covered_names }}"
+
+          gh pr create \
+            --base "$BASE_BRANCH" \
+            --head "$BRANCH" \
+            --title "[Auto] Add unit tests for craftd-core" \
+            --body "$(cat <<EOF
+          ## Auto-generated Unit Tests
+
+          Este PR foi gerado automaticamente pelo workflow **Auto Generate Cover+Test** usando a Claude API.
+
+          ### Arquivos cobertos
+          \`\`\`
+          ${COVERED}
+          \`\`\`
+
+          ### Como funciona
+          1. Um PR tocou arquivos em \`android_kmp/craftd-core\`
+          2. Após o CI passar, o workflow escaneou todos os arquivos sem cobertura
+          3. Claude gerou testes **JUnit4 + MockK** para cada arquivo
+          4. Este PR foi criado automaticamente com o resultado
+
+          ### Checklist de revisão
+          - [ ] Testes compilam sem erros (\`./gradlew testDebugUnitTest\`)
+          - [ ] Testes cobrem os principais caminhos de lógica
+          - [ ] Edge cases tratados (null, vazio, JSON inválido)
+
+          > Triggered by PR #${PR_NUMBER}
+          EOF
+          )"
