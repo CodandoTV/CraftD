@@ -1,122 +1,122 @@
 # Setup
 
-## Run this command with Flutter:
+## Installation
+
+Run the following command in your Flutter project:
 
 ```sh
- flutter pub add craftd_widget
+flutter pub add craftd_widget
 ```
 
-## This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+This will add the following entry to your `pubspec.yaml` and run `flutter pub get` automatically:
 
 ```yaml
 dependencies:
   craftd_widget: $last_version
 ```
 
-more detail [pub.dev](https://pub.dev/packages/craftd_widget/install)
+For more details, see the [pub.dev package page](https://pub.dev/packages/craftd_widget/install).
 
-# How to use
+# How to Use
 
-## 1. Create your ComponentPropertyClass with properties that you need
+## 1. Create your component properties class
 
-- In this example i used Button component
+Define a class with the properties your component needs. In this example, we use a Button component:
 
 ```dart
 class ButtonProperties {
   const ButtonProperties({
-      required this.text,
-    ... place your construtor properties
+    required this.text,
+    // add your other constructor properties here
   });
 
   final String text;
-   ... place your properties
+  // add your other properties here
 }
-
 ```
 
-## 2. Add your Component json object in Dymanic.json
+## 2. Add your component JSON object to Dynamic.json
 
 ```json
 {
-    "key": "CraftDBbutton",
-    "value": {
-         "text": "Knife",
-     ... place your properties
-     }
- }
-
-```
-
-## 3. Create your Component
-
-> :memo: **Note:** Your widget must have two properties.
-
-- ButtonProperties: The mapped properties from json
-- callback: This make reference to the component's behaviour, for example: onclick -> for buttons, onchange -> for checkbox etc...
-
-```dart
-class CraftDButton extends StatelessWidget {
-    const CraftDButton(
-      {super.key, required this.buttonProperties, required this.callback});
-
-      ... place your code
-
+  "key": "CraftDButton",
+  "value": {
+    "text": "Knife"
+    // add your other properties here
+  }
 }
 ```
 
-## 4. Create your Component Builder
+## 3. Create your component widget
 
-> :memo: **Note:** This Builder must extend CraftBuilder Class and override craft and fromJson methods.
+> **Note:** Your widget must have two parameters: the mapped properties and a callback for user interactions.
+
+- **properties** — the object mapped from JSON
+- **callback** — handles the component's behaviour (e.g. `onClick` for buttons, `onChange` for checkboxes)
 
 ```dart
+class CraftDButton extends StatelessWidget {
+  const CraftDButton({
+    super.key,
+    required this.buttonProperties,
+    required this.callback,
+  });
 
+  // add your code here
+}
+```
+
+## 4. Create your component builder
+
+> **Note:** Your builder must extend `CraftDBuilder` and override the `craft` and `fromJson` methods.
+
+```dart
 class CraftDButtonBuilder extends CraftDBuilder<ButtonProperties> {
   CraftDButtonBuilder() : super(key: key);
 
   @override
   Widget craft(ButtonProperties model, CraftDViewListener listener) {
-    ... place your code
+    // add your code here
   }
 
   @override
   ButtonProperties fromJson(properties) {
     return ButtonProperties(
-        text: properties["text"],
-        ... rest of tour code
-    )
+      text: properties["text"],
+      // add your other mappings here
+    );
   }
 
   static String key = "CraftDButton";
 }
 ```
 
-## 5. In your Page, create your CraftDBuilder declaration and put it into CraftDynamic Widget
+## 5. Register the builder and add CraftDynamic to your page
 
 ```dart
- // You can put it in your dependency injection
-    final craftdBuilderManager = CraftDBuilderManager();
+// You can register builders in your dependency injection layer
+final craftdBuilderManager = CraftDBuilderManager();
 
-    return CraftDynamic(
-         simplePropertiesList: simplePropertiesList,
-         craftDBuilderManager : craftdBuilderManager,
-         onAction: (actionProperties) {
-        print(
-                "categoria ${actionProperties.analyticsProperties?.category} "
-                "label ${actionProperties.analyticsProperties?.label} - "
-                "track ${actionProperties.analyticsProperties?.track}");
-            });
-          }
-
+return CraftDynamic(
+  simplePropertiesList: simplePropertiesList,
+  craftDBuilderManager: craftdBuilderManager,
+  onAction: (actionProperties) {
+    print(
+      "category: ${actionProperties.analyticsProperties?.category} "
+      "label: ${actionProperties.analyticsProperties?.label} "
+      "track: ${actionProperties.analyticsProperties?.track}"
+    );
+  },
+);
 ```
 
-## So now just enjoy your component!!!
+## That's it — enjoy your dynamic components!
 
 ## Credits
 
-The CraftD library was made inspired by these repositories:
+CraftD was inspired by the following open-source projects:
 
-https://github.com/vivchar/RendererRecyclerViewAdapter
+- https://github.com/vivchar/RendererRecyclerViewAdapter
+- https://github.com/GustavoHSSantorio/Dynamic-Adapter *(we collaborated on the initial solution)*
 
-https://github.com/GustavoHSSantorio/Dynamic-Adapter (We worked in the initial solution)
-
-Thanks to these repositories that made I think in new ideas to generate a new library version
+Thanks to these projects for sparking the ideas that led to CraftD.
