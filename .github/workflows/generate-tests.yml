@@ -116,17 +116,17 @@ jobs:
         if: steps.changed.outputs.has_changes == 'true'
         id: check
         run: |
-          COUNT=$(git status --short | grep -c "Test\.kt" || true)
+          COUNT=$(find android_kmp/craftd-core/src/test -name "*Test.kt" 2>/dev/null | wc -l | tr -d ' ')
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Found $COUNT test file(s)"
 
           if [ "$COUNT" -gt "0" ]; then
             echo "has_tests=true" >> "$GITHUB_OUTPUT"
-            NAMES=$(git status --short \
-              | grep "Test\.kt" \
-              | awk '{print $2}' \
+            NAMES=$(find android_kmp/craftd-core/src/test -name "*Test.kt" \
               | xargs -I{} basename {} \
               | paste -sd ", ")
             echo "covered_names=$NAMES" >> "$GITHUB_OUTPUT"
+            echo "Files: $NAMES"
           else
             echo "has_tests=false" >> "$GITHUB_OUTPUT"
           fi
@@ -143,7 +143,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b "$BRANCH"
-          git add android_kmp/craftd-core/src/test/
+          git add --force android_kmp/craftd-core/src/test/
           git commit -m "test: add unit tests for craftd-core (auto-generated via Claude)"
           git push origin "$BRANCH"
 
