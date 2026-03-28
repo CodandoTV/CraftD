@@ -10,45 +10,44 @@
     <a href="https://codandotv.github.io/CraftD">CraftD</a>: A framework to implement Server-Driven UI quickly and easily to Android / iOS / Flutter / Kmp
 </h1>
 
-### Documentação
-Acesse o [site do projeto](https://codandotv.github.io/CraftD) para a documentação completa.
+### Documentation
+Visit the [project website](https://codandotv.github.io/CraftD) for the full documentation.
 
-Confira também o artigo [CraftD: Server Driven UI para Todas as Plataformas](https://medium.com/codandotv/craftd-server-driven-ui-for-all-platforms-b2624d2c2a7b)
+Also check out the article [CraftD: Server Driven UI for All Platforms](https://medium.com/codandotv/craftd-server-driven-ui-for-all-platforms-b2624d2c2a7b)
 
-## Funcionalidades
-### 🔗 Compatibilidade
+## Features
+### 🔗 Platform Support
 
-| Tecnologia                      |      Suporte        |
+| Technology                      |       Status        |
 |---------------------------------|:-------------------:|
-| View System - Android           |   ✅ **Suportado**   |
-| Jetpack Compose - Android       |   ✅ **Suportado**   |
-| Widget - Flutter                |   ✅ **Suportado**   |
-| SwiftUI - iOS                   |   ✅ **Suportado**   |
-| Jetpack Compose - Multiplatform |   ✅ **Suportado**   |
+| View System - Android           |   ✅ **Supported**   |
+| Jetpack Compose - Android       |   ✅ **Supported**   |
+| Widget - Flutter                |   ✅ **Supported**   |
+| SwiftUI - iOS                   |   ✅ **Supported**   |
+| Jetpack Compose - Multiplatform |   ✅ **Supported**   |
 
-### Componentes disponíveis na biblioteca
+### Available components
 
-| Componente | Compose | View System | Widget | SwiftUI |
-|------------|---------|-------------|--------|---------|
-| Button     |    X    |      X      |    X   |    X    |
-| Text       |    X    |      X      |    X   |    X    |
-| CheckBox   |    X    |      -      |    -   |    X    |
+| Component | Compose | View System | Widget | SwiftUI |
+|-----------|:-------:|:-----------:|:------:|:-------:|
+| Button    |    ✅    |      ✅      |    ✅   |    ✅    |
+| Text      |    ✅    |      ✅      |    ✅   |    ✅    |
+| CheckBox  |    ✅    |      -      |    -   |    ✅    |
 
-Para mais detalhes, consulte a [documentação](https://codandotv.gitbook.io/craftd)
+For more details, check out the [documentation](https://codandotv.gitbook.io/craftd).
 
 
-### Exemplos
+### Samples
 | [Android Compose / Compose MultiPlatform](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/compose) | [Android View System](https://github.com/CodandoTV/CraftD/tree/main/android_kmp/app-sample/src/main/java/com/github/codandotv/craftd/app_sample/presentation/xml) | [iOS SwiftUI](https://github.com/CodandoTV/CraftD/tree/main/ios/sample/CraftDSample) | [Flutter](https://github.com/CodandoTV/CraftD/tree/main/flutter/sample/lib) |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|----------|
 | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" />                                                            | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/aa31d0a2-a998-402c-b2c2-4de5088ee30f" width="200" height="400" /> | <img src="https://github.com/user-attachments/assets/c8c653b2-1289-4437-85f2-f940d5135f27" width="200" height="400" /> | <img src="https://github.com/CodandoTV/CraftD/assets/7690931/dfabfda7-6501-4763-b040-3ee9fbf2a2be" width="200" height="400" /> |
 
 
-### Créditos
+### Credits
 
-> Uma biblioteca de Server Driven UI para Android.
+> A Server Driven UI library for Android, iOS, Flutter, and Kotlin Multiplatform.
 
-Inspirado em [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
+Inspired by [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
 
-
-Este projeto existe graças a todas as pessoas que contribuem.
+This project exists thanks to all the people who contribute.
 <a href="https://github.com/CodandoTV/CraftD"><img src="https://opencollective.com/craftd/contributors.svg?width=890&button=false" /></a>
