@@ -1,4 +1,4 @@
-name: Auto Generate Unit Tests
+name: Auto Generate Cover+Test
 
 # Dispara automaticamente após o CI passar em um PR,
 # ou manualmente pelo Actions para testes pontuais.
