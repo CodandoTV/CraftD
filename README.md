@@ -14,30 +14,30 @@
 </h1>
 
 ### Documentation
-See the [project website](https://codandotv.github.io/CraftD) for documentation.
+Visit the [project website](https://codandotv.github.io/CraftD) for the full documentation.
 
-Take a look at [CraftD: Server Driven UI for All Platforms](https://medium.com/codandotv/craftd-server-driven-ui-for-all-platforms-b2624d2c2a7b)
+Also check out the article [CraftD: Server Driven UI for All Platforms](https://medium.com/codandotv/craftd-server-driven-ui-for-all-platforms-b2624d2c2a7b)
 
 ## Features
-### 🔗 Compatibility
+### 🔗 Platform Support
 
-| Tech                            |       Support       |
+| Technology                      |       Status        |
 |---------------------------------|:-------------------:|
 | View System - Android           |   ✅ **Supported**   |
 | Jetpack Compose - Android       |   ✅ **Supported**   |
 | Widget - Flutter                |   ✅ **Supported**   |
-| SwiftUi - iOS                   |   ✅ **Supported**   |
+| SwiftUI - iOS                   |   ✅ **Supported**   |
 | Jetpack Compose - Multiplatform |   ✅ **Supported**   |
 
-### Components that already exist in the library
+### Available components
 
 | Component | Compose | View System | Widget | SwiftUI |
-|-----------|----------|----------|----------|----------|
-| Button    |    X    |      X      |    X   |    X    |
-| Text      |    X    |      X      |    X   |    X    |
-| CheckBox  |    X    |      -      |    -   |    X    |
+|-----------|:-------:|:-----------:|:------:|:-------:|
+| Button    |    ✅    |      ✅      |    ✅   |    ✅    |
+| Text      |    ✅    |      ✅      |    ✅   |    ✅    |
+| CheckBox  |    ✅    |      -      |    -   |    ✅    |
 
-More details check our [documentation](https://codandotv.gitbook.io/craftd)
+For more details, check out the [documentation](https://codandotv.gitbook.io/craftd).
 
 
 ### Samples
@@ -53,10 +53,10 @@ Click the ⭐ star at the top to show your support!
 
 ### Credits
 
-> A Server Driven UI library for Android.
+> A Server Driven UI library for Android, iOS, Flutter, and Kotlin Multiplatform.
 
-Inspired by the [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
-
+Inspired by [DynamicView](https://github.com/rviannaoliveira/DynamicView/).
 
 This project exists thanks to all the people who contribute.
 <a href="https://github.com/CodandoTV/CraftD"><img src="https://opencollective.com/craftd/contributors.svg?width=890&button=false" /></a>
+ 
