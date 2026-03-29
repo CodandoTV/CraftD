@@ -1,0 +1,493 @@
+﻿2026-03-29T13:10:37.4305344Z Current runner version: '2.333.0'
+2026-03-29T13:10:37.4329725Z ##[group]Runner Image Provisioner
+2026-03-29T13:10:37.4330616Z Hosted Compute Agent
+2026-03-29T13:10:37.4331176Z Version: 20260213.493
+2026-03-29T13:10:37.4331762Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-29T13:10:37.4332524Z Build Date: 2026-02-13T00:28:41Z
+2026-03-29T13:10:37.4333186Z Worker ID: {b9778868-9ee0-4a69-83ee-b3ce0fec44aa}
+2026-03-29T13:10:37.4333850Z Azure Region: eastus
+2026-03-29T13:10:37.4334384Z ##[endgroup]
+2026-03-29T13:10:37.4335751Z ##[group]Operating System
+2026-03-29T13:10:37.4336396Z Ubuntu
+2026-03-29T13:10:37.4336887Z 24.04.4
+2026-03-29T13:10:37.4337359Z LTS
+2026-03-29T13:10:37.4337820Z ##[endgroup]
+2026-03-29T13:10:37.4338671Z ##[group]Runner Image
+2026-03-29T13:10:37.4339235Z Image: ubuntu-24.04
+2026-03-29T13:10:37.4339840Z Version: 20260323.65.1
+2026-03-29T13:10:37.4341029Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260323.65/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-29T13:10:37.4342526Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260323.65
+2026-03-29T13:10:37.4343422Z ##[endgroup]
+2026-03-29T13:10:37.4344582Z ##[group]GITHUB_TOKEN Permissions
+2026-03-29T13:10:37.4346610Z Contents: write
+2026-03-29T13:10:37.4347223Z Metadata: read
+2026-03-29T13:10:37.4347766Z PullRequests: write
+2026-03-29T13:10:37.4348473Z ##[endgroup]
+2026-03-29T13:10:37.4350632Z Secret source: Actions
+2026-03-29T13:10:37.4351372Z Prepare workflow directory
+2026-03-29T13:10:37.4664558Z Prepare all required actions
+2026-03-29T13:10:37.4701573Z Getting action download info
+2026-03-29T13:10:37.7357773Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-29T13:10:37.8909483Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-03-29T13:10:38.0667531Z Complete job name: Generate Unit Tests with Claude
+2026-03-29T13:10:38.1308510Z ##[group]Run if [ "workflow_dispatch" = "workflow_dispatch" ]; then
+2026-03-29T13:10:38.1309507Z [36;1mif [ "workflow_dispatch" = "workflow_dispatch" ]; then[0m
+2026-03-29T13:10:38.1310380Z [36;1m  echo "head_sha=fab3a36b938e7b874f344b8f3f418414385d5995" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:38.1311197Z [36;1m  echo "pr_number=manual" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:38.1311741Z [36;1melse[0m
+2026-03-29T13:10:38.1312182Z [36;1m  echo "head_sha=" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:38.1312766Z [36;1m  echo "pr_number=" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:38.1313284Z [36;1mfi[0m
+2026-03-29T13:10:38.1342907Z shell: /usr/bin/bash -e {0}
+2026-03-29T13:10:38.1343680Z ##[endgroup]
+2026-03-29T13:10:38.1643354Z ##[group]Run actions/checkout@v4
+2026-03-29T13:10:38.1643889Z with:
+2026-03-29T13:10:38.1644302Z   ref: fab3a36b938e7b874f344b8f3f418414385d5995
+2026-03-29T13:10:38.1644893Z   fetch-depth: 0
+2026-03-29T13:10:38.1645354Z   repository: CodandoTV/CraftD
+2026-03-29T13:10:38.1646021Z   token: ***
+2026-03-29T13:10:38.1646448Z   ssh-strict: true
+2026-03-29T13:10:38.1646902Z   ssh-user: git
+2026-03-29T13:10:38.1647359Z   persist-credentials: true
+2026-03-29T13:10:38.1647798Z   clean: true
+2026-03-29T13:10:38.1648479Z   sparse-checkout-cone-mode: true
+2026-03-29T13:10:38.1649048Z   fetch-tags: false
+2026-03-29T13:10:38.1649450Z   show-progress: true
+2026-03-29T13:10:38.1649877Z   lfs: false
+2026-03-29T13:10:38.1650246Z   submodules: false
+2026-03-29T13:10:38.1650657Z   set-safe-directory: true
+2026-03-29T13:10:38.1651092Z ##[endgroup]
+2026-03-29T13:10:38.2663152Z Syncing repository: CodandoTV/CraftD
+2026-03-29T13:10:38.2664838Z ##[group]Getting Git version info
+2026-03-29T13:10:38.2665555Z Working directory is '/home/runner/work/CraftD/CraftD'
+2026-03-29T13:10:38.2666461Z [command]/usr/bin/git version
+2026-03-29T13:10:38.2704659Z git version 2.53.0
+2026-03-29T13:10:38.2731187Z ##[endgroup]
+2026-03-29T13:10:38.2754030Z Temporarily overriding HOME='/home/runner/work/_temp/659e56a9-07f8-4e42-bcbc-17aaed266a7b' before making global git config changes
+2026-03-29T13:10:38.2756724Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-29T13:10:38.2760534Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/CraftD/CraftD
+2026-03-29T13:10:38.2791372Z Deleting the contents of '/home/runner/work/CraftD/CraftD'
+2026-03-29T13:10:38.2795569Z ##[group]Initializing the repository
+2026-03-29T13:10:38.2800343Z [command]/usr/bin/git init /home/runner/work/CraftD/CraftD
+2026-03-29T13:10:38.2912937Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-29T13:10:38.2914737Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-29T13:10:38.2916355Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-29T13:10:38.2917654Z hint: call:
+2026-03-29T13:10:38.2918730Z hint:
+2026-03-29T13:10:38.2919598Z hint: 	git config --global init.defaultBranch <name>
+2026-03-29T13:10:38.2920673Z hint:
+2026-03-29T13:10:38.2921685Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-29T13:10:38.2923233Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-29T13:10:38.2924474Z hint:
+2026-03-29T13:10:38.2925183Z hint: 	git branch -m <name>
+2026-03-29T13:10:38.2925986Z hint:
+2026-03-29T13:10:38.2927086Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-29T13:10:38.2929125Z Initialized empty Git repository in /home/runner/work/CraftD/CraftD/.git/
+2026-03-29T13:10:38.2931621Z [command]/usr/bin/git remote add origin https://github.com/CodandoTV/CraftD
+2026-03-29T13:10:38.2957364Z ##[endgroup]
+2026-03-29T13:10:38.2958839Z ##[group]Disabling automatic garbage collection
+2026-03-29T13:10:38.2962476Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-29T13:10:38.2990390Z ##[endgroup]
+2026-03-29T13:10:38.2991634Z ##[group]Setting up auth
+2026-03-29T13:10:38.2997798Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-29T13:10:38.3027402Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-29T13:10:38.3313365Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-29T13:10:38.3340276Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-29T13:10:38.3548108Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-29T13:10:38.3576892Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-29T13:10:38.3787542Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-29T13:10:38.3818798Z ##[endgroup]
+2026-03-29T13:10:38.3819540Z ##[group]Fetching the repository
+2026-03-29T13:10:38.3826810Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-03-29T13:10:38.9173394Z From https://github.com/CodandoTV/CraftD
+2026-03-29T13:10:38.9176011Z  * [new branch]      add-ios-sample          -> origin/add-ios-sample
+2026-03-29T13:10:38.9180162Z  * [new branch]      android-to-kotlin-multiplatform -> origin/android-to-kotlin-multiplatform
+2026-03-29T13:10:38.9182338Z  * [new branch]      chore/add-tests-craftd-core-pr-89 -> origin/chore/add-tests-craftd-core-pr-89
+2026-03-29T13:10:38.9184748Z  * [new branch]      chore/add-tests-craftd-core-pr-manual -> origin/chore/add-tests-craftd-core-pr-manual
+2026-03-29T13:10:38.9187031Z  * [new branch]      chore/make-test-generation-manual -> origin/chore/make-test-generation-manual
+2026-03-29T13:10:38.9189484Z  * [new branch]      docs/claude-doc-ci-test-guide -> origin/docs/claude-doc-ci-test-guide
+2026-03-29T13:10:38.9191785Z  * [new branch]      docs/improve-flutter-readme -> origin/docs/improve-flutter-readme
+2026-03-29T13:10:38.9193958Z  * [new branch]      feature/issue-66-pub-dev-badge -> origin/feature/issue-66-pub-dev-badge
+2026-03-29T13:10:38.9196080Z  * [new branch]      feature/update-doc      -> origin/feature/update-doc
+2026-03-29T13:10:38.9198028Z  * [new branch]      fix/checkout-no-token   -> origin/fix/checkout-no-token
+2026-03-29T13:10:38.9200542Z  * [new branch]      fix/checkout-repository-name -> origin/fix/checkout-repository-name
+2026-03-29T13:10:38.9202917Z  * [new branch]      fix/documentation-deploy -> origin/fix/documentation-deploy
+2026-03-29T13:10:38.9204771Z  * [new branch]      gh-pages                -> origin/gh-pages
+2026-03-29T13:10:38.9207342Z  * [new branch]      gmoro/improvement-performance-of-composables -> origin/gmoro/improvement-performance-of-composables
+2026-03-29T13:10:38.9210515Z  * [new branch]      gmoro/update-readme     -> origin/gmoro/update-readme
+2026-03-29T13:10:38.9212768Z  * [new branch]      improvement/#44-test    -> origin/improvement/#44-test
+2026-03-29T13:10:38.9215522Z  * [new branch]      improvement/optimize-publish -> origin/improvement/optimize-publish
+2026-03-29T13:10:38.9217810Z  * [new branch]      ios-progress-bar        -> origin/ios-progress-bar
+2026-03-29T13:10:38.9219664Z  * [new branch]      main                    -> origin/main
+2026-03-29T13:10:38.9221536Z  * [new branch]      refactor_adjust_documentation -> origin/refactor_adjust_documentation
+2026-03-29T13:10:38.9223636Z  * [new branch]      rename-ios-folders      -> origin/rename-ios-folders
+2026-03-29T13:10:38.9225547Z  * [new branch]      rviannaoliveira-patch-1 -> origin/rviannaoliveira-patch-1
+2026-03-29T13:10:38.9227326Z  * [new branch]      test-ci-3               -> origin/test-ci-3
+2026-03-29T13:10:38.9229060Z  * [new tag]         0.0.1                   -> 0.0.1
+2026-03-29T13:10:38.9230321Z  * [new tag]         1.0.0                   -> 1.0.0
+2026-03-29T13:10:38.9231596Z  * [new tag]         1.0.2                   -> 1.0.2
+2026-03-29T13:10:38.9233012Z  * [new tag]         android-1.0.2           -> android-1.0.2
+2026-03-29T13:10:38.9234445Z  * [new tag]         android-1.1.0           -> android-1.1.0
+2026-03-29T13:10:38.9235912Z  * [new tag]         ios-0.0.1               -> ios-0.0.1
+2026-03-29T13:10:38.9237359Z  * [new tag]         ios-0.0.2               -> ios-0.0.2
+2026-03-29T13:10:38.9238943Z  * [new tag]         ios-1.0.0               -> ios-1.0.0
+2026-03-29T13:10:38.9240225Z  * [new tag]         ios-1.0.1               -> ios-1.0.1
+2026-03-29T13:10:38.9241775Z  * [new tag]         kmp-1.1.0               -> kmp-1.1.0
+2026-03-29T13:10:38.9247464Z [command]/usr/bin/git rev-parse --verify --quiet fab3a36b938e7b874f344b8f3f418414385d5995^{object}
+2026-03-29T13:10:38.9270284Z fab3a36b938e7b874f344b8f3f418414385d5995
+2026-03-29T13:10:38.9276065Z ##[endgroup]
+2026-03-29T13:10:38.9277650Z ##[group]Determining the checkout info
+2026-03-29T13:10:38.9279798Z ##[endgroup]
+2026-03-29T13:10:38.9283538Z [command]/usr/bin/git sparse-checkout disable
+2026-03-29T13:10:38.9319711Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-29T13:10:38.9347070Z ##[group]Checking out the ref
+2026-03-29T13:10:38.9351760Z [command]/usr/bin/git checkout --progress --force fab3a36b938e7b874f344b8f3f418414385d5995
+2026-03-29T13:10:39.0145962Z Note: switching to 'fab3a36b938e7b874f344b8f3f418414385d5995'.
+2026-03-29T13:10:39.0147106Z 
+2026-03-29T13:10:39.0147787Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-03-29T13:10:39.0149623Z changes and commit them, and you can discard any commits you make in this
+2026-03-29T13:10:39.0151122Z state without impacting any branches by switching back to a branch.
+2026-03-29T13:10:39.0151962Z 
+2026-03-29T13:10:39.0152579Z If you want to create a new branch to retain commits you create, you may
+2026-03-29T13:10:39.0154017Z do so (now or later) by using -c with the switch command. Example:
+2026-03-29T13:10:39.0155121Z 
+2026-03-29T13:10:39.0155491Z   git switch -c <new-branch-name>
+2026-03-29T13:10:39.0156070Z 
+2026-03-29T13:10:39.0156436Z Or undo this operation with:
+2026-03-29T13:10:39.0157012Z 
+2026-03-29T13:10:39.0157500Z   git switch -
+2026-03-29T13:10:39.0158306Z 
+2026-03-29T13:10:39.0159114Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-03-29T13:10:39.0160176Z 
+2026-03-29T13:10:39.0161032Z HEAD is now at fab3a36 Merge pull request #96 from CodandoTV/fix/workflow-printf-and-pat
+2026-03-29T13:10:39.0164407Z ##[endgroup]
+2026-03-29T13:10:39.0198139Z [command]/usr/bin/git log -1 --format=%H
+2026-03-29T13:10:39.0219793Z fab3a36b938e7b874f344b8f3f418414385d5995
+2026-03-29T13:10:39.0475154Z ##[group]Run actions/setup-python@v5
+2026-03-29T13:10:39.0476306Z with:
+2026-03-29T13:10:39.0477142Z   python-version: 3.11
+2026-03-29T13:10:39.0478123Z   check-latest: false
+2026-03-29T13:10:39.0479594Z   token: ***
+2026-03-29T13:10:39.0480512Z   update-environment: true
+2026-03-29T13:10:39.0481557Z   allow-prereleases: false
+2026-03-29T13:10:39.0482567Z   freethreaded: false
+2026-03-29T13:10:39.0483540Z ##[endgroup]
+2026-03-29T13:10:39.2115324Z ##[group]Installed versions
+2026-03-29T13:10:39.2222202Z Successfully set up CPython (3.11.15)
+2026-03-29T13:10:39.2224880Z ##[endgroup]
+2026-03-29T13:10:39.2407326Z ##[group]Run pip install anthropic
+2026-03-29T13:10:39.2408345Z [36;1mpip install anthropic[0m
+2026-03-29T13:10:39.2450959Z shell: /usr/bin/bash -e {0}
+2026-03-29T13:10:39.2451707Z env:
+2026-03-29T13:10:39.2452506Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:39.2453555Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-29T13:10:39.2454575Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:39.2455538Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:39.2456501Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:39.2457552Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-29T13:10:39.2458779Z ##[endgroup]
+2026-03-29T13:10:40.3099329Z Collecting anthropic
+2026-03-29T13:10:40.3670017Z   Downloading anthropic-0.86.0-py3-none-any.whl.metadata (3.0 kB)
+2026-03-29T13:10:40.3882836Z Collecting anyio<5,>=3.5.0 (from anthropic)
+2026-03-29T13:10:40.3921280Z   Downloading anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+2026-03-29T13:10:40.4045078Z Collecting distro<2,>=1.7.0 (from anthropic)
+2026-03-29T13:10:40.4085134Z   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2026-03-29T13:10:40.4224377Z Collecting docstring-parser<1,>=0.15 (from anthropic)
+2026-03-29T13:10:40.4264792Z   Downloading docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+2026-03-29T13:10:40.4435438Z Collecting httpx<1,>=0.25.0 (from anthropic)
+2026-03-29T13:10:40.4480237Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2026-03-29T13:10:40.5307886Z Collecting jiter<1,>=0.4.0 (from anthropic)
+2026-03-29T13:10:40.5356593Z   Downloading jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2026-03-29T13:10:40.6401371Z Collecting pydantic<3,>=1.9.0 (from anthropic)
+2026-03-29T13:10:40.6442761Z   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+2026-03-29T13:10:40.6717569Z Collecting sniffio (from anthropic)
+2026-03-29T13:10:40.6756062Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-03-29T13:10:40.6916251Z Collecting typing-extensions<5,>=4.14 (from anthropic)
+2026-03-29T13:10:40.6957591Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-29T13:10:40.7097246Z Collecting idna>=2.8 (from anyio<5,>=3.5.0->anthropic)
+2026-03-29T13:10:40.7136153Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2026-03-29T13:10:40.7359038Z Collecting certifi (from httpx<1,>=0.25.0->anthropic)
+2026-03-29T13:10:40.7396744Z   Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+2026-03-29T13:10:40.7552294Z Collecting httpcore==1.* (from httpx<1,>=0.25.0->anthropic)
+2026-03-29T13:10:40.7591389Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-03-29T13:10:40.7717999Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.25.0->anthropic)
+2026-03-29T13:10:40.7756327Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-03-29T13:10:40.7874564Z Collecting annotated-types>=0.6.0 (from pydantic<3,>=1.9.0->anthropic)
+2026-03-29T13:10:40.7916693Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2026-03-29T13:10:41.3903781Z Collecting pydantic-core==2.41.5 (from pydantic<3,>=1.9.0->anthropic)
+2026-03-29T13:10:41.3950040Z   Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2026-03-29T13:10:41.4069305Z Collecting typing-inspection>=0.4.2 (from pydantic<3,>=1.9.0->anthropic)
+2026-03-29T13:10:41.4109098Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2026-03-29T13:10:41.4214701Z Downloading anthropic-0.86.0-py3-none-any.whl (469 kB)
+2026-03-29T13:10:41.4363114Z Downloading anyio-4.13.0-py3-none-any.whl (114 kB)
+2026-03-29T13:10:41.4479720Z Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+2026-03-29T13:10:41.4543409Z Downloading docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+2026-03-29T13:10:41.4619247Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+2026-03-29T13:10:41.4683482Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-03-29T13:10:41.4745308Z Downloading jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (362 kB)
+2026-03-29T13:10:41.4862676Z Downloading pydantic-2.12.5-py3-none-any.whl (463 kB)
+2026-03-29T13:10:41.4979214Z Downloading pydantic_core-2.41.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2026-03-29T13:10:41.5246482Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 83.4 MB/s  0:00:00
+2026-03-29T13:10:41.5288381Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2026-03-29T13:10:41.5356799Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2026-03-29T13:10:41.5416445Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2026-03-29T13:10:41.5484659Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2026-03-29T13:10:41.5546227Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2026-03-29T13:10:41.5608981Z Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+2026-03-29T13:10:41.5679076Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-03-29T13:10:41.6150782Z Installing collected packages: typing-extensions, sniffio, jiter, idna, h11, docstring-parser, distro, certifi, annotated-types, typing-inspection, pydantic-core, httpcore, anyio, pydantic, httpx, anthropic
+2026-03-29T13:10:42.6366663Z 
+2026-03-29T13:10:42.6381478Z Successfully installed annotated-types-0.7.0 anthropic-0.86.0 anyio-4.13.0 certifi-2026.2.25 distro-1.9.0 docstring-parser-0.17.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.11 jiter-0.13.0 pydantic-2.12.5 pydantic-core-2.41.5 sniffio-1.3.1 typing-extensions-4.15.0 typing-inspection-0.4.2
+2026-03-29T13:10:42.8574864Z ##[group]Run OVERRIDE=""
+2026-03-29T13:10:42.8575176Z [36;1mOVERRIDE=""[0m
+2026-03-29T13:10:42.8575375Z [36;1m[0m
+2026-03-29T13:10:42.8575559Z [36;1mif [ -n "$OVERRIDE" ]; then[0m
+2026-03-29T13:10:42.8575908Z [36;1m  UNCOVERED=$(echo "$OVERRIDE" | tr ' ' '\n' | grep -v "^$" || true)[0m
+2026-03-29T13:10:42.8576352Z [36;1m  echo "Modo override, arquivos informados manualmente:"[0m
+2026-03-29T13:10:42.8576672Z [36;1melse[0m
+2026-03-29T13:10:42.8576981Z [36;1m  echo "Scan completo, buscando arquivos sem cobertura em craftd-core..."[0m
+2026-03-29T13:10:42.8577374Z [36;1m  UNCOVERED=""[0m
+2026-03-29T13:10:42.8577598Z [36;1m  while IFS= read -r SRC; do[0m
+2026-03-29T13:10:42.8577846Z [36;1m    TEST=$(echo "$SRC" \[0m
+2026-03-29T13:10:42.8578139Z [36;1m      | sed 's|src/commonMain/kotlin/|src/test/java/|' \[0m
+2026-03-29T13:10:42.8578887Z [36;1m      | sed 's|src/androidMain/kotlin/|src/test/java/|' \[0m
+2026-03-29T13:10:42.8579278Z [36;1m      | sed 's|\.kt$|Test.kt|')[0m
+2026-03-29T13:10:42.8579727Z [36;1m    if [ ! -f "$TEST" ]; then[0m
+2026-03-29T13:10:42.8579985Z [36;1m      UNCOVERED="$UNCOVERED"$'\n'"$SRC"[0m
+2026-03-29T13:10:42.8580244Z [36;1m    fi[0m
+2026-03-29T13:10:42.8580471Z [36;1m  done < <(find android_kmp/craftd-core/src \[0m
+2026-03-29T13:10:42.8580889Z [36;1m    \( -path "*/commonMain/kotlin/*.kt" -o -path "*/androidMain/kotlin/*.kt" \) \[0m
+2026-03-29T13:10:42.8581292Z [36;1m    | grep -v "Test\.kt" | sort)[0m
+2026-03-29T13:10:42.8581608Z [36;1m  UNCOVERED=$(echo "$UNCOVERED" | grep -v "^$" || true)[0m
+2026-03-29T13:10:42.8581898Z [36;1mfi[0m
+2026-03-29T13:10:42.8582066Z [36;1m[0m
+2026-03-29T13:10:42.8582234Z [36;1mecho "$UNCOVERED"[0m
+2026-03-29T13:10:42.8582434Z [36;1m[0m
+2026-03-29T13:10:42.8582602Z [36;1mif [ -z "$UNCOVERED" ]; then[0m
+2026-03-29T13:10:42.8582883Z [36;1m  echo "has_changes=false" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:42.8583224Z [36;1m  echo "Nenhum arquivo sem cobertura. Nada a fazer."[0m
+2026-03-29T13:10:42.8583522Z [36;1melse[0m
+2026-03-29T13:10:42.8583749Z [36;1m  echo "has_changes=true" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:42.8584115Z [36;1m  printf "files<<EOF\n%s\nEOF\n" "$UNCOVERED" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:10:42.8584442Z [36;1mfi[0m
+2026-03-29T13:10:42.8612244Z shell: /usr/bin/bash -e {0}
+2026-03-29T13:10:42.8612472Z env:
+2026-03-29T13:10:42.8612725Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.8613152Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-29T13:10:42.8613557Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.8613921Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.8614286Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.8614648Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-29T13:10:42.8614949Z ##[endgroup]
+2026-03-29T13:10:42.8664736Z Scan completo, buscando arquivos sem cobertura em craftd-core...
+2026-03-29T13:10:42.9180800Z android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/CraftDSimplePropertiesDiffCallback.kt
+2026-03-29T13:10:42.9181849Z android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/data/ViewMapperVo.kt
+2026-03-29T13:10:42.9182621Z android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/extensions/ContextExtesion.kt
+2026-03-29T13:10:42.9183375Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/ViewMapper.kt
+2026-03-29T13:10:42.9184698Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/action/ActionProperties.kt
+2026-03-29T13:10:42.9186003Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/action/AnalyticsProperties.kt
+2026-03-29T13:10:42.9187135Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/base/SimpleProperties.kt
+2026-03-29T13:10:42.9188008Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesResponse.kt
+2026-03-29T13:10:42.9189188Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/button/ButtonProperties.kt
+2026-03-29T13:10:42.9190044Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/checkbox/CheckBoxProperties.kt
+2026-03-29T13:10:42.9190892Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/checkbox/StyleProperties.kt
+2026-03-29T13:10:42.9191816Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/text/TextProperties.kt
+2026-03-29T13:10:42.9192566Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/domain/CraftDAlign.kt
+2026-03-29T13:10:42.9193301Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/domain/CraftDTextStyle.kt
+2026-03-29T13:10:42.9194205Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/extensions/StringExtensions.kt
+2026-03-29T13:10:42.9195000Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/presentation/CraftDComponentKey.kt
+2026-03-29T13:10:42.9195809Z android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/presentation/CraftDViewListener.kt
+2026-03-29T13:10:42.9229744Z ##[group]Run python .github/scripts/generate_tests.py
+2026-03-29T13:10:42.9230115Z [36;1mpython .github/scripts/generate_tests.py[0m
+2026-03-29T13:10:42.9255620Z shell: /usr/bin/bash -e {0}
+2026-03-29T13:10:42.9255846Z env:
+2026-03-29T13:10:42.9256085Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.9256500Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-29T13:10:42.9256900Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.9257265Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.9257622Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:10:42.9257992Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-29T13:10:42.9259055Z   ANTHROPIC_API_KEY: ***
+2026-03-29T13:10:42.9266406Z   CHANGED_FILES: android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/CraftDSimplePropertiesDiffCallback.kt
+android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/data/ViewMapperVo.kt
+android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/extensions/ContextExtesion.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/ViewMapper.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/action/ActionProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/action/AnalyticsProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/base/SimpleProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesResponse.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/button/ButtonProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/checkbox/CheckBoxProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/checkbox/StyleProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/text/TextProperties.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/domain/CraftDAlign.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/domain/CraftDTextStyle.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/extensions/StringExtensions.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/presentation/CraftDComponentKey.kt
+android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/presentation/CraftDViewListener.kt
+2026-03-29T13:10:42.9274151Z ##[endgroup]
+2026-03-29T13:14:09.9982353Z [GEN]  android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/CraftDSimplePropertiesDiffCallback.kt
+2026-03-29T13:14:09.9984765Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/CraftDSimplePropertiesDiffCallbackTest.kt
+2026-03-29T13:14:09.9987233Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/CraftDSimplePropertiesDiffCallbackTest.kt
+2026-03-29T13:14:09.9988952Z 
+2026-03-29T13:14:09.9989855Z [GEN]  android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/data/ViewMapperVo.kt
+2026-03-29T13:14:09.9991400Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/ViewMapperVoTest.kt
+2026-03-29T13:14:09.9992432Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/ViewMapperVoTest.kt
+2026-03-29T13:14:09.9992970Z 
+2026-03-29T13:14:09.9993595Z [GEN]  android_kmp/craftd-core/src/androidMain/kotlin/com/github/codandotv/craftd/androidcore/extensions/ContextExtesion.kt
+2026-03-29T13:14:09.9994601Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/extensions/ContextExtesionTest.kt
+2026-03-29T13:14:09.9995615Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/extensions/ContextExtesionTest.kt
+2026-03-29T13:14:09.9996215Z 
+2026-03-29T13:14:09.9996610Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/ViewMapper.kt
+2026-03-29T13:14:09.9997507Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/ViewMapperTest.kt
+2026-03-29T13:14:09.9998587Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/ViewMapperTest.kt
+2026-03-29T13:14:09.9999039Z 
+2026-03-29T13:14:09.9999445Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/action/ActionProperties.kt
+2026-03-29T13:14:10.0000321Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/action/ActionPropertiesTest.kt
+2026-03-29T13:14:10.0001202Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/action/ActionPropertiesTest.kt
+2026-03-29T13:14:10.0001699Z 
+2026-03-29T13:14:10.0002099Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/action/AnalyticsProperties.kt
+2026-03-29T13:14:10.0002975Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/action/AnalyticsPropertiesTest.kt
+2026-03-29T13:14:10.0003863Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/action/AnalyticsPropertiesTest.kt
+2026-03-29T13:14:10.0004369Z 
+2026-03-29T13:14:10.0004752Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/base/SimpleProperties.kt
+2026-03-29T13:14:10.0005676Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesTest.kt
+2026-03-29T13:14:10.0006683Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesTest.kt
+2026-03-29T13:14:10.0007220Z 
+2026-03-29T13:14:10.0007630Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesResponse.kt
+2026-03-29T13:14:10.0008735Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesResponseTest.kt
+2026-03-29T13:14:10.0009647Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesResponseTest.kt
+2026-03-29T13:14:10.0010169Z 
+2026-03-29T13:14:10.0010553Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/button/ButtonProperties.kt
+2026-03-29T13:14:10.0011400Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/button/ButtonPropertiesTest.kt
+2026-03-29T13:14:10.0012258Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/button/ButtonPropertiesTest.kt
+2026-03-29T13:14:10.0012753Z 
+2026-03-29T13:14:10.0013155Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/checkbox/CheckBoxProperties.kt
+2026-03-29T13:14:10.0014022Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/checkbox/CheckBoxPropertiesTest.kt
+2026-03-29T13:14:10.0015036Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/checkbox/CheckBoxPropertiesTest.kt
+2026-03-29T13:14:10.0015626Z 
+2026-03-29T13:14:10.0016094Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/checkbox/StyleProperties.kt
+2026-03-29T13:14:10.0017240Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/checkbox/StylePropertiesTest.kt
+2026-03-29T13:14:10.0018118Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/checkbox/StylePropertiesTest.kt
+2026-03-29T13:14:10.0018860Z 
+2026-03-29T13:14:10.0019236Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/data/model/text/TextProperties.kt
+2026-03-29T13:14:10.0020057Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/text/TextPropertiesTest.kt
+2026-03-29T13:14:10.0020880Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/text/TextPropertiesTest.kt
+2026-03-29T13:14:10.0021354Z 
+2026-03-29T13:14:10.0021682Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/domain/CraftDAlign.kt
+2026-03-29T13:14:10.0022413Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/domain/CraftDAlignTest.kt
+2026-03-29T13:14:10.0023148Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/domain/CraftDAlignTest.kt
+2026-03-29T13:14:10.0023585Z 
+2026-03-29T13:14:10.0023934Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/domain/CraftDTextStyle.kt
+2026-03-29T13:14:10.0024683Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/domain/CraftDTextStyleTest.kt
+2026-03-29T13:14:10.0025453Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/domain/CraftDTextStyleTest.kt
+2026-03-29T13:14:10.0025903Z 
+2026-03-29T13:14:10.0026259Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/extensions/StringExtensions.kt
+2026-03-29T13:14:10.0027057Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/extensions/StringExtensionsTest.kt
+2026-03-29T13:14:10.0027853Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/extensions/StringExtensionsTest.kt
+2026-03-29T13:14:10.0028476Z 
+2026-03-29T13:14:10.0028855Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/presentation/CraftDComponentKey.kt
+2026-03-29T13:14:10.0029679Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/presentation/CraftDComponentKeyTest.kt
+2026-03-29T13:14:10.0030518Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/presentation/CraftDComponentKeyTest.kt
+2026-03-29T13:14:10.0030998Z 
+2026-03-29T13:14:10.0031371Z [GEN]  android_kmp/craftd-core/src/commonMain/kotlin/com/github/codandotv/craftd/androidcore/presentation/CraftDViewListener.kt
+2026-03-29T13:14:10.0032193Z    ->  android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/presentation/CraftDViewListenerTest.kt
+2026-03-29T13:14:10.0033032Z [OK]   Written: android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/presentation/CraftDViewListenerTest.kt
+2026-03-29T13:14:10.0033544Z 
+2026-03-29T13:14:10.0033548Z 
+2026-03-29T13:14:10.0033643Z Done. Generated 17 test file(s).
+2026-03-29T13:14:10.0555522Z ##[group]Run COUNT=$(find android_kmp/craftd-core/src/test -name "*Test.kt" 2>/dev/null | wc -l | tr -d ' ')
+2026-03-29T13:14:10.0556248Z [36;1mCOUNT=$(find android_kmp/craftd-core/src/test -name "*Test.kt" 2>/dev/null | wc -l | tr -d ' ')[0m
+2026-03-29T13:14:10.0556882Z [36;1mecho "count=$COUNT" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:14:10.0557164Z [36;1mecho "Found $COUNT test file(s)"[0m
+2026-03-29T13:14:10.0557403Z [36;1m[0m
+2026-03-29T13:14:10.0557576Z [36;1mif [ "$COUNT" -gt "0" ]; then[0m
+2026-03-29T13:14:10.0557844Z [36;1m  echo "has_tests=true" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:14:10.0558385Z [36;1m  NAMES=$(find android_kmp/craftd-core/src/test -name "*Test.kt" \[0m
+2026-03-29T13:14:10.0558741Z [36;1m    | xargs -I{} basename {} \[0m
+2026-03-29T13:14:10.0558988Z [36;1m    | paste -sd ", ")[0m
+2026-03-29T13:14:10.0559252Z [36;1m  echo "covered_names=$NAMES" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:14:10.0559542Z [36;1m  echo "Files: $NAMES"[0m
+2026-03-29T13:14:10.0559780Z [36;1melse[0m
+2026-03-29T13:14:10.0559995Z [36;1m  echo "has_tests=false" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:14:10.0560251Z [36;1mfi[0m
+2026-03-29T13:14:10.0586301Z shell: /usr/bin/bash -e {0}
+2026-03-29T13:14:10.0586522Z env:
+2026-03-29T13:14:10.0586761Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0587170Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-29T13:14:10.0587566Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0587925Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0588480Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0588875Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-29T13:14:10.0589168Z ##[endgroup]
+2026-03-29T13:14:10.0661310Z Found 17 test file(s)
+2026-03-29T13:14:10.0843326Z Files: StringExtensionsTest.kt,ContextExtesionTest.kt CraftDSimplePropertiesDiffCallbackTest.kt,CraftDComponentKeyTest.kt CraftDViewListenerTest.kt,AnalyticsPropertiesTest.kt ActionPropertiesTest.kt,TextPropertiesTest.kt SimplePropertiesTest.kt,SimplePropertiesResponseTest.kt ButtonPropertiesTest.kt,StylePropertiesTest.kt CheckBoxPropertiesTest.kt,ViewMapperVoTest.kt ViewMapperTest.kt,CraftDTextStyleTest.kt CraftDAlignTest.kt
+2026-03-29T13:14:10.0870794Z ##[group]Run PR_NUMBER="manual"
+2026-03-29T13:14:10.0871088Z [36;1mPR_NUMBER="manual"[0m
+2026-03-29T13:14:10.0871383Z [36;1mBRANCH="chore/add-tests-craftd-core-pr-${PR_NUMBER}"[0m
+2026-03-29T13:14:10.0871698Z [36;1m[0m
+2026-03-29T13:14:10.0871909Z [36;1mgit config user.name "github-actions[bot]"[0m
+2026-03-29T13:14:10.0872302Z [36;1mgit config user.email "github-actions[bot]@users.noreply.github.com"[0m
+2026-03-29T13:14:10.0872669Z [36;1m[0m
+2026-03-29T13:14:10.0872899Z [36;1m# Autentica o push com GH_PAT via URL do remote[0m
+2026-03-29T13:14:10.0873693Z [36;1mgit remote set-url origin ***github.com/CodandoTV/CraftD.git[0m
+2026-03-29T13:14:10.0874031Z [36;1m[0m
+2026-03-29T13:14:10.0874210Z [36;1mgit checkout -b "$BRANCH"[0m
+2026-03-29T13:14:10.0874514Z [36;1mgit add --force android_kmp/craftd-core/src/test/[0m
+2026-03-29T13:14:10.0874958Z [36;1mgit commit -m "test: add unit tests for craftd-core (auto-generated via Claude)"[0m
+2026-03-29T13:14:10.0875390Z [36;1mgit push origin "$BRANCH"[0m
+2026-03-29T13:14:10.0875613Z [36;1m[0m
+2026-03-29T13:14:10.0875824Z [36;1mecho "branch=$BRANCH" >> "$GITHUB_OUTPUT"[0m
+2026-03-29T13:14:10.0900298Z shell: /usr/bin/bash -e {0}
+2026-03-29T13:14:10.0900523Z env:
+2026-03-29T13:14:10.0900763Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0901170Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-03-29T13:14:10.0901570Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0901924Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0902289Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-03-29T13:14:10.0902646Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-03-29T13:14:10.0902954Z ##[endgroup]
+2026-03-29T13:14:10.1013727Z Switched to a new branch 'chore/add-tests-craftd-core-pr-manual'
+2026-03-29T13:14:10.1241637Z [chore/add-tests-craftd-core-pr-manual c600127] test: add unit tests for craftd-core (auto-generated via Claude)
+2026-03-29T13:14:10.1242378Z  17 files changed, 4645 insertions(+)
+2026-03-29T13:14:10.1243054Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/CraftDSimplePropertiesDiffCallbackTest.kt
+2026-03-29T13:14:10.1244693Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/ViewMapperTest.kt
+2026-03-29T13:14:10.1245766Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/ViewMapperVoTest.kt
+2026-03-29T13:14:10.1246662Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/action/ActionPropertiesTest.kt
+2026-03-29T13:14:10.1247623Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/action/AnalyticsPropertiesTest.kt
+2026-03-29T13:14:10.1248913Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesResponseTest.kt
+2026-03-29T13:14:10.1249897Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/base/SimplePropertiesTest.kt
+2026-03-29T13:14:10.1250839Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/button/ButtonPropertiesTest.kt
+2026-03-29T13:14:10.1251783Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/checkbox/CheckBoxPropertiesTest.kt
+2026-03-29T13:14:10.1252731Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/checkbox/StylePropertiesTest.kt
+2026-03-29T13:14:10.1253653Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/data/model/text/TextPropertiesTest.kt
+2026-03-29T13:14:10.1254743Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/domain/CraftDAlignTest.kt
+2026-03-29T13:14:10.1255576Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/domain/CraftDTextStyleTest.kt
+2026-03-29T13:14:10.1256427Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/extensions/ContextExtesionTest.kt
+2026-03-29T13:14:10.1257300Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/extensions/StringExtensionsTest.kt
+2026-03-29T13:14:10.1258401Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/presentation/CraftDComponentKeyTest.kt
+2026-03-29T13:14:10.1259431Z  create mode 100644 android_kmp/craftd-core/src/test/java/com/github/codandotv/craftd/androidcore/presentation/CraftDViewListenerTest.kt
+2026-03-29T13:14:13.6098858Z To https://github.com/CodandoTV/CraftD.git
+2026-03-29T13:14:13.6100029Z  ! [rejected]        chore/add-tests-craftd-core-pr-manual -> chore/add-tests-craftd-core-pr-manual (non-fast-forward)
+2026-03-29T13:14:13.6101250Z error: failed to push some refs to 'https://github.com/CodandoTV/CraftD.git'
+2026-03-29T13:14:13.6129824Z hint: Updates were rejected because the tip of your current branch is behind
+2026-03-29T13:14:13.6130470Z hint: its remote counterpart. If you want to integrate the remote changes,
+2026-03-29T13:14:13.6130945Z hint: use 'git pull' before pushing again.
+2026-03-29T13:14:13.6131589Z hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+2026-03-29T13:14:13.6145913Z ##[error]Process completed with exit code 1.
+2026-03-29T13:14:13.6258489Z Post job cleanup.
+2026-03-29T13:14:13.7173167Z [command]/usr/bin/git version
+2026-03-29T13:14:13.7208844Z git version 2.53.0
+2026-03-29T13:14:13.7251846Z Temporarily overriding HOME='/home/runner/work/_temp/1ff953de-9f53-45a6-bc04-115cf387e812' before making global git config changes
+2026-03-29T13:14:13.7253011Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-29T13:14:13.7265280Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/CraftD/CraftD
+2026-03-29T13:14:13.7298810Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-29T13:14:13.7330078Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-29T13:14:13.7547943Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-29T13:14:13.7567802Z http.https://github.com/.extraheader
+2026-03-29T13:14:13.7580483Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-29T13:14:13.7609030Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-29T13:14:13.7822358Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-29T13:14:13.7851765Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-29T13:14:13.8165740Z Cleaning up orphan processes
+2026-03-29T13:14:13.8548129Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-python@v5. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -29,6 +29,7 @@ jobs:
       )
 
     steps:
+      # ── 1. Normaliza contexto para os dois gatilhos ───────────────────────────
       - name: Resolve trigger context
         id: ctx
         run: |
@@ -40,12 +41,14 @@ jobs:
             echo "pr_number=${{ github.event.workflow_run.pull_requests[0].number }}" >> "$GITHUB_OUTPUT"
           fi
 
+      # ── 2. Checkout ───────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ steps.ctx.outputs.head_sha }}
           fetch-depth: 0
 
+      # ── 3. Python ─────────────────────────────────────────────────────────────
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -54,16 +57,23 @@ jobs:
       - name: Install Python dependencies
         run: pip install anthropic
 
+      # ── 4. Escaneia craftd-core buscando arquivos sem cobertura ──────────────
       - name: Find uncovered Kotlin files in craftd-core
         id: changed
         run: |
           OVERRIDE="${{ github.event.inputs.override_files }}"
 
+          # Conta total de arquivos fonte
+          TOTAL=$(find android_kmp/craftd-core/src \
+            \( -path "*/commonMain/kotlin/*.kt" -o -path "*/androidMain/kotlin/*.kt" \) \
+            | grep -v "Test\.kt" | wc -l | tr -d ' ')
+
           if [ -n "$OVERRIDE" ]; then
             UNCOVERED=$(echo "$OVERRIDE" | tr ' ' '\n' | grep -v "^$" || true)
-            echo "Modo override, arquivos informados manualmente:"
+            UNCOVERED_COUNT=$(echo "$UNCOVERED" | grep -v "^$" | wc -l | tr -d ' ')
+            echo "Modo override — arquivos informados manualmente:"
           else
-            echo "Scan completo, buscando arquivos sem cobertura em craftd-core..."
+            echo "Scan completo — buscando arquivos sem cobertura em craftd-core..."
             UNCOVERED=""
             while IFS= read -r SRC; do
               TEST=$(echo "$SRC" \
@@ -77,9 +87,27 @@ jobs:
               \( -path "*/commonMain/kotlin/*.kt" -o -path "*/androidMain/kotlin/*.kt" \) \
               | grep -v "Test\.kt" | sort)
             UNCOVERED=$(echo "$UNCOVERED" | grep -v "^$" || true)
+            UNCOVERED_COUNT=$(echo "$UNCOVERED" | grep -v "^$" | wc -l | tr -d ' ')
           fi
 
           echo "$UNCOVERED"
+
+          COVERED_BEFORE=$((TOTAL - UNCOVERED_COUNT))
+          COVERED_AFTER=$TOTAL
+
+          if [ "$TOTAL" -gt "0" ]; then
+            PCT_BEFORE=$(( (COVERED_BEFORE * 100) / TOTAL ))
+            PCT_AFTER=100
+          else
+            PCT_BEFORE=0
+            PCT_AFTER=0
+          fi
+
+          echo "total=$TOTAL"                   >> "$GITHUB_OUTPUT"
+          echo "covered_before=$COVERED_BEFORE" >> "$GITHUB_OUTPUT"
+          echo "covered_after=$COVERED_AFTER"   >> "$GITHUB_OUTPUT"
+          echo "pct_before=$PCT_BEFORE"         >> "$GITHUB_OUTPUT"
+          echo "pct_after=$PCT_AFTER"           >> "$GITHUB_OUTPUT"
 
           if [ -z "$UNCOVERED" ]; then
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
@@ -89,6 +117,7 @@ jobs:
             printf "files<<EOF\n%s\nEOF\n" "$UNCOVERED" >> "$GITHUB_OUTPUT"
           fi
 
+      # ── 5. Chama Claude API para gerar os testes ─────────────────────────────
       - name: Generate unit tests with Claude API
         if: steps.changed.outputs.has_changes == 'true'
         env:
@@ -96,6 +125,7 @@ jobs:
           CHANGED_FILES: ${{ steps.changed.outputs.files }}
         run: python .github/scripts/generate_tests.py
 
+      # ── 6. Verifica se arquivos foram gerados ─────────────────────────────────
       - name: Check generated files
         if: steps.changed.outputs.has_changes == 'true'
         id: check
@@ -115,18 +145,26 @@ jobs:
             echo "has_tests=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # ── 7. Cria branch com nome incremental e commita os testes ──────────────
       - name: Commit generated tests
         if: steps.check.outputs.has_tests == 'true'
         id: commit
         run: |
-          PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
-          BRANCH="chore/add-tests-craftd-core-pr-${PR_NUMBER}"
-
-          git config user.name "github-actions[bot]"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # Autentica o push com GH_PAT via URL do remote
           git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/CodandoTV/CraftD.git
+
+          # Determina nome do branch com auto-incremento: cover/test, cover/test-1, cover/test-2 ...
+          BASE="cover/test"
+          BRANCH="$BASE"
+          N=1
+          while git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null 2>&1; do
+            BRANCH="${BASE}-${N}"
+            N=$((N + 1))
+          done
+          echo "Branch escolhido: $BRANCH"
 
           git checkout -b "$BRANCH"
           git add --force android_kmp/craftd-core/src/test/
@@ -135,6 +173,7 @@ jobs:
 
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
+      # ── 8. Abre PR com os testes gerados e evolução de cobertura ─────────────
       - name: Open Pull Request with generated tests
         if: steps.check.outputs.has_tests == 'true'
         env:
@@ -143,6 +182,11 @@ jobs:
           PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
           BRANCH="${{ steps.commit.outputs.branch }}"
           COVERED="${{ steps.check.outputs.covered_names }}"
+          TOTAL="${{ steps.changed.outputs.total }}"
+          COV_BEFORE="${{ steps.changed.outputs.covered_before }}"
+          COV_AFTER="${{ steps.changed.outputs.covered_after }}"
+          PCT_BEFORE="${{ steps.changed.outputs.pct_before }}"
+          PCT_AFTER="${{ steps.changed.outputs.pct_after }}"
 
           gh pr create \
             --base "main" \
@@ -152,6 +196,13 @@ jobs:
           ## Auto-generated Unit Tests
 
           Este PR foi gerado automaticamente pelo workflow **Auto Generate Cover+Test** usando a Claude API.
+
+          ### Evolução de cobertura
+
+          | | Arquivos | Cobertura |
+          |---|---|---|
+          | Antes | ${COV_BEFORE} / ${TOTAL} | ${PCT_BEFORE}% |
+          | Depois | ${COV_AFTER} / ${TOTAL} | ${PCT_AFTER}% |
 
           ### Arquivos cobertos
           \`\`\`
