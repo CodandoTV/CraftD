@@ -103,6 +103,12 @@ on:
 > ⚠️ `workflow_run` só funciona se o arquivo do workflow estiver na branch **default (main)**.
 > Enquanto o PR não for mergeado, o trigger automático não dispara.
 
+> ⚠️ **O `generate-tests.yml` só dispara se o `pr.yml` passar com sucesso.**
+> PRs que tocam apenas docs, README ou outros módulos não-Android podem fazer o
+> `pr.yml` falhar — nesse caso o `generate-tests.yml` nunca é acionado.
+> Para ver o fluxo completo, abra um PR tocando código dentro do módulo Android/KMP
+> e confirme que o CI passa antes de esperar o generate rodar.
+
 **Permissões necessárias:**
 ```yaml
 permissions:
