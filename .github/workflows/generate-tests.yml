@@ -48,17 +48,39 @@ jobs:
           ref: ${{ steps.ctx.outputs.head_sha }}
           fetch-depth: 0
 
-      # ── 3. Python ─────────────────────────────────────────────────────────────
+      # ── 3. Verifica se há arquivos .kt modificados ───────────────────────────
+      - name: Check for Kotlin file changes
+        id: kt_guard
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "has_kotlin=true" >> "$GITHUB_OUTPUT"
+            echo "workflow_dispatch — pulando verificação de .kt"
+          else
+            KT=$(git diff --name-only origin/main...HEAD | grep '\.kt$' || true)
+            if [ -n "$KT" ]; then
+              echo "has_kotlin=true" >> "$GITHUB_OUTPUT"
+              echo "Arquivos .kt detectados:"
+              echo "$KT"
+            else
+              echo "has_kotlin=false" >> "$GITHUB_OUTPUT"
+              echo "Nenhum arquivo .kt modificado. Pulando geração de testes."
+            fi
+          fi
+
+      # ── 4. Python ─────────────────────────────────────────────────────────────
       - name: Set up Python
+        if: steps.kt_guard.outputs.has_kotlin == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install Python dependencies
+        if: steps.kt_guard.outputs.has_kotlin == 'true'
         run: pip install anthropic
 
-      # ── 4. Escaneia craftd-core buscando arquivos sem cobertura ──────────────
+      # ── 5. Escaneia craftd-core buscando arquivos sem cobertura ──────────────
       - name: Find uncovered Kotlin files in craftd-core
+        if: steps.kt_guard.outputs.has_kotlin == 'true'
         id: changed
         run: |
           OVERRIDE="${{ github.event.inputs.override_files }}"
@@ -117,17 +139,17 @@ jobs:
             printf "files<<EOF\n%s\nEOF\n" "$UNCOVERED" >> "$GITHUB_OUTPUT"
           fi
 
-      # ── 5. Chama Claude API para gerar os testes ─────────────────────────────
+      # ── 6. Chama Claude API para gerar os testes ─────────────────────────────
       - name: Generate unit tests with Claude API
-        if: steps.changed.outputs.has_changes == 'true'
+        if: steps.kt_guard.outputs.has_kotlin == 'true' && steps.changed.outputs.has_changes == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CHANGED_FILES: ${{ steps.changed.outputs.files }}
         run: python .github/scripts/generate_tests.py
 
-      # ── 6. Verifica se arquivos foram gerados ─────────────────────────────────
+      # ── 7. Verifica se arquivos foram gerados ─────────────────────────────────
       - name: Check generated files
-        if: steps.changed.outputs.has_changes == 'true'
+        if: steps.kt_guard.outputs.has_kotlin == 'true' && steps.changed.outputs.has_changes == 'true'
         id: check
         run: |
           COUNT=$(find android_kmp/craftd-core/src/test -name "*Test.kt" 2>/dev/null | wc -l | tr -d ' ')
@@ -145,7 +167,7 @@ jobs:
             echo "has_tests=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # ── 7. Cria branch com nome incremental e commita os testes ──────────────
+      # ── 8. Cria branch com nome incremental e commita os testes ──────────────
       - name: Commit generated tests
         if: steps.check.outputs.has_tests == 'true'
         id: commit
@@ -173,7 +195,7 @@ jobs:
 
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
 
-      # ── 8. Abre PR com os testes gerados e evolução de cobertura ─────────────
+      # ── 9. Abre PR com os testes gerados e evolução de cobertura ─────────────
       - name: Open Pull Request with generated tests
         if: steps.check.outputs.has_tests == 'true'
         env:

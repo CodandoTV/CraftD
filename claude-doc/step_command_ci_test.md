@@ -159,13 +159,17 @@ if: |
 |------|-----------|
 | Resolve trigger context | Normaliza `head_sha` e `pr_number` para os dois gatilhos |
 | Checkout | **Sem token** — repo público não precisa de auth para fetch |
-| Set up Python | Versão 3.11 |
+| Check for Kotlin changes | Verifica `git diff origin/main...HEAD` — pula tudo se não houver `.kt` modificado. `workflow_dispatch` sempre passa. |
+| Set up Python | Versão 3.11 (só roda se houver `.kt` modificado) |
 | Install dependencies | `pip install anthropic` |
 | Find uncovered files | `find` nos diretórios `commonMain` e `androidMain` + calcula cobertura antes/depois |
 | Generate tests | Chama `generate_tests.py` com `CHANGED_FILES` |
 | Check generated files | Usa `find` (não `git status`) para contar `*Test.kt` |
 | Commit tests | Branch com auto-incremento `cover/test` → `cover/test-1` → ..., `git add --force` + push autenticado via `git remote set-url` |
 | Open PR | Usa `GH_TOKEN: ${{ secrets.GH_PAT }}` com tabela de evolução de cobertura |
+
+> ⚠️ `workflow_run` não suporta filtros de `paths` nativamente (ao contrário de `push`/`pull_request`).
+> O filtro de `.kt` é feito manualmente via `git diff` dentro do job.
 
 **Autenticação no push (crítico):**
 ```yaml
