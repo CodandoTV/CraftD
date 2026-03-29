@@ -331,3 +331,4 @@ Após o workflow rodar, verifique:
 - [ ] Adicionar secret `GH_PAT` (PAT com escopo `repo`)
 - [ ] Abrir PR com os arquivos do workflow e mergear para `main`
 - [ ] Abrir qualquer PR tocando o módulo alvo e acompanhar o Actions
+ 
