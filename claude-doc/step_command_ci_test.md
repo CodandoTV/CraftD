@@ -162,7 +162,7 @@ if: |
 | Check for Kotlin changes | Verifica `git diff origin/main...HEAD` — pula tudo se não houver `.kt` modificado. `workflow_dispatch` sempre passa. |
 | Set up Python | Versão 3.11 (só roda se houver `.kt` modificado) |
 | Install dependencies | `pip install anthropic` |
-| Find uncovered files | `find` nos diretórios `commonMain` e `androidMain` + calcula cobertura antes/depois |
+| Find uncovered files | **`workflow_run`**: só processa `.kt` modificados no PR sem teste. **`workflow_dispatch`** sem override: scan completo. Calcula cobertura antes/depois. |
 | Generate tests | Chama `generate_tests.py` com `CHANGED_FILES` |
 | Check generated files | Usa `find` (não `git status`) para contar `*Test.kt` |
 | Commit tests | Branch com auto-incremento `cover/test` → `cover/test-1` → ..., `git add --force` + push autenticado via `git remote set-url` |
