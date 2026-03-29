@@ -137,18 +137,76 @@ if: |
 
 ---
 
-## Fase 4 — Secrets necessários no repositório
+## Fase 4 — Credenciais necessárias (leia com atenção)
 
-Configure em: **Settings → Secrets and variables → Actions**
+Esta fase é crítica. Sem as duas credenciais abaixo o workflow vai rodar e falhar
+silenciosamente ou com erro de autenticação. Configure **antes** de testar.
 
-| Secret | Como obter | Para que serve |
-|--------|-----------|----------------|
-| `ANTHROPIC_API_KEY` | console.anthropic.com → API Keys | Autenticar chamadas à Claude API |
-| `GH_PAT` | github.com → Settings → Developer settings → Personal access tokens (classic) → escopo `repo` | Permitir que o workflow abra PRs |
+Configure em: **Settings → Secrets and variables → Actions → New repository secret**
 
-> ⚠️ **Por que `GH_PAT` e não `GITHUB_TOKEN`?**
-> O `GITHUB_TOKEN` tem restrição de segurança que impede a criação de PRs
-> que poderiam disparar outros workflows. O PAT pessoal não tem essa limitação.
+---
+
+### 🔑 `ANTHROPIC_API_KEY` — Chave da API do Claude
+
+**O que é:** A chave que autentica as chamadas à Claude API. Sem ela o script
+não consegue chamar o modelo e nenhum teste é gerado.
+
+**Como obter:**
+1. Acesse [console.anthropic.com](https://console.anthropic.com)
+2. Vá em **API Keys → Create Key**
+3. Copie o valor (começa com `sk-ant-...`) — ele só aparece uma vez
+
+**Atenção ao saldo:**
+- A API é **paga por uso** — não é gratuita
+- Você precisa adicionar créditos em **Plans & Billing** antes de usar
+- Créditos **não expiram** — ficam disponíveis até serem consumidos
+- Com **$5** você tem de sobra para começar
+
+**Custo estimado por execução:**
+
+| Modelo | ~17 arquivos | ~50 arquivos |
+|--------|-------------|-------------|
+| `claude-haiku-4-5-20251001` | ~$0.09 | ~$0.25 |
+| `claude-opus-4-6` | ~$1.50 | ~$4.50 |
+
+> Use **Haiku** para geração de testes — é ~10x mais barato e suficiente para
+> data classes, extension functions, DiffUtil e enums.
+
+**Erro comum:** key correta mas conta sem saldo →
+```
+Your credit balance is too low to access the Anthropic API.
+```
+Solução: console.anthropic.com → Plans & Billing → Add credits.
+
+---
+
+### 🔑 `GH_PAT` — Personal Access Token do GitHub
+
+**O que é:** Um token pessoal do GitHub que permite ao workflow abrir PRs
+em nome de um usuário real. Substitui o `GITHUB_TOKEN` padrão do Actions.
+
+**Por que não usar `GITHUB_TOKEN`:**
+O `GITHUB_TOKEN` gerado automaticamente pelo Actions tem uma restrição de segurança
+intencional do GitHub — ele **não pode abrir PRs** que disparariam outros workflows
+(para evitar loops infinitos). O PAT pessoal não tem essa limitação.
+
+**Como criar:**
+1. Acesse seu perfil no GitHub → **Settings**
+2. **Developer settings → Personal access tokens → Tokens (classic)**
+3. **Generate new token (classic)**
+4. Marque o escopo: `repo` (acesso completo)
+5. Copie o token (começa com `ghp_...`)
+
+**Boas práticas:**
+- Dê um nome descritivo ao token (ex: `craftd-actions-bot`)
+- Defina uma data de expiração (90 dias é um bom equilíbrio)
+- Guarde o token em local seguro — o GitHub não mostra novamente
+
+**Erro comum:** usar `GITHUB_TOKEN` no lugar do PAT →
+```
+refusing to allow a GitHub Actions Bot to create or approve pull requests
+```
+Solução: garantir que o step de `gh pr create` use `GH_TOKEN: ${{ secrets.GH_PAT }}`.
 
 ---
 
