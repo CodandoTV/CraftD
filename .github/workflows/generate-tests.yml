@@ -86,10 +86,8 @@ jobs:
             echo "Nenhum arquivo sem cobertura. Nada a fazer."
           else
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
-            printf "files<<EOF\n%s\nEOF\n" "$UNCOVER_OUTPUT"
+            printf "files<<EOF\n%s\nEOF\n" "$UNCOVERED" >> "$GITHUB_OUTPUT"
           fi
-        env:
-          UNCOVER_OUTPUT: $GITHUB_OUTPUT
 
       - name: Generate unit tests with Claude API
         if: steps.changed.outputs.has_changes == 'true'
@@ -140,7 +138,7 @@ jobs:
       - name: Open Pull Request with generated tests
         if: steps.check.outputs.has_tests == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
           BRANCH="${{ steps.commit.outputs.branch }}"
