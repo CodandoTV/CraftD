@@ -49,6 +49,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          repository: CodandoTV/CraftD
           ref: ${{ steps.ctx.outputs.head_sha }}
           fetch-depth: 0
           token: ${{ secrets.GH_PAT }}
