@@ -14,8 +14,34 @@ PR aberto
       → Escaneia arquivos sem cobertura
         → Chama Claude API para cada arquivo
           → Gera arquivos *Test.kt
-            → Cria branch + abre PR automático com os testes
+            → Cria branch cover/test (auto-incremento) + abre PR automático
+              → PR body mostra evolução de cobertura (antes vs depois)
 ```
+
+---
+
+## Como usar este guia em um novo repositório
+
+Se você está replicando este fluxo em um repo diferente, passe as seguintes
+instruções para o Claude Code no início da sessão:
+
+```
+Quero configurar geração automática de testes com Claude API + GitHub Actions.
+Leia o arquivo claude-doc/step_command_ci_test.md do repositório CodandoTV/CraftD
+e replique o mesmo fluxo aqui para o módulo <nome-do-modulo>.
+
+Contexto:
+- Módulo alvo: <caminho/do/modulo>
+- Source sets: <commonMain e/ou androidMain>
+- CI existente: <nome exato do workflow de CI>
+- Secrets já configurados: ANTHROPIC_API_KEY=sim/não, GH_PAT=sim/não
+```
+
+O Claude vai:
+1. Analisar os arquivos sem cobertura no módulo
+2. Criar `.github/scripts/generate_tests.py`
+3. Criar `.github/workflows/generate-tests.yml`
+4. Abrir o PR — você só precisa mergear e cadastrar os secrets
 
 ---
 
@@ -132,14 +158,42 @@ if: |
 | Step | O que faz |
 |------|-----------|
 | Resolve trigger context | Normaliza `head_sha` e `pr_number` para os dois gatilhos |
-| Checkout | Usa `GH_PAT` (não `GITHUB_TOKEN`) para permitir push |
+| Checkout | **Sem token** — repo público não precisa de auth para fetch |
 | Set up Python | Versão 3.11 |
 | Install dependencies | `pip install anthropic` |
-| Find uncovered files | `find` nos diretórios `commonMain` e `androidMain` |
+| Find uncovered files | `find` nos diretórios `commonMain` e `androidMain` + calcula cobertura antes/depois |
 | Generate tests | Chama `generate_tests.py` com `CHANGED_FILES` |
 | Check generated files | Usa `find` (não `git status`) para contar `*Test.kt` |
-| Commit tests | `git add --force` + push para nova branch |
-| Open PR | Usa `GH_TOKEN: ${{ secrets.GH_PAT }}` |
+| Commit tests | Branch com auto-incremento `cover/test` → `cover/test-1` → ..., `git add --force` + push autenticado via `git remote set-url` |
+| Open PR | Usa `GH_TOKEN: ${{ secrets.GH_PAT }}` com tabela de evolução de cobertura |
+
+**Autenticação no push (crítico):**
+```yaml
+# Checkout SEM token — repo público não precisa de auth para fetch
+- name: Checkout
+  uses: actions/checkout@v4
+  with:
+    ref: ${{ steps.ctx.outputs.head_sha }}
+    fetch-depth: 0
+    # NÃO colocar token aqui — causa "fatal: could not read Username" mesmo em repo público
+
+# Push autentica via remote URL (não via checkout token)
+- name: Commit generated tests
+  run: |
+    git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/org/repo.git
+    git push origin "$BRANCH"
+```
+
+**Branch com auto-incremento:**
+```bash
+BASE="cover/test"
+BRANCH="$BASE"
+N=1
+while git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null 2>&1; do
+  BRANCH="${BASE}-${N}"
+  N=$((N + 1))
+done
+```
 
 ---
 
@@ -154,8 +208,7 @@ Configure em: **Settings → Secrets and variables → Actions → New repositor
 
 ### 🔑 `ANTHROPIC_API_KEY` — Chave da API do Claude
 
-**O que é:** A chave que autentica as chamadas à Claude API. Sem ela o script
-não consegue chamar o modelo e nenhum teste é gerado.
+**O que é:** A chave que autentica as chamadas à Claude API.
 
 **Como obter:**
 1. Acesse [console.anthropic.com](https://console.anthropic.com)
@@ -175,8 +228,7 @@ não consegue chamar o modelo e nenhum teste é gerado.
 | `claude-haiku-4-5-20251001` | ~$0.09 | ~$0.25 |
 | `claude-opus-4-6` | ~$1.50 | ~$4.50 |
 
-> Use **Haiku** para geração de testes — é ~10x mais barato e suficiente para
-> data classes, extension functions, DiffUtil e enums.
+> Use **Haiku** para geração de testes — é ~10x mais barato e suficiente.
 
 **Erro comum:** key correta mas conta sem saldo →
 ```
@@ -188,8 +240,7 @@ Solução: console.anthropic.com → Plans & Billing → Add credits.
 
 ### 🔑 `GH_PAT` — Personal Access Token do GitHub
 
-**O que é:** Um token pessoal do GitHub que permite ao workflow abrir PRs
-em nome de um usuário real. Substitui o `GITHUB_TOKEN` padrão do Actions.
+**O que é:** Um token pessoal do GitHub que permite ao workflow fazer push e abrir PRs.
 
 **Por que não usar `GITHUB_TOKEN`:**
 O `GITHUB_TOKEN` gerado automaticamente pelo Actions tem uma restrição de segurança
@@ -200,13 +251,14 @@ intencional do GitHub — ele **não pode abrir PRs** que disparariam outros wor
 1. Acesse seu perfil no GitHub → **Settings**
 2. **Developer settings → Personal access tokens → Tokens (classic)**
 3. **Generate new token (classic)**
-4. Marque o escopo: `repo` (acesso completo)
+4. Marque **apenas** os escopos: `repo` e `workflow`
 5. Copie o token (começa com `ghp_...`)
 
 **Boas práticas:**
 - Dê um nome descritivo ao token (ex: `craftd-actions-bot`)
 - Defina uma data de expiração (90 dias é um bom equilíbrio)
 - Guarde o token em local seguro — o GitHub não mostra novamente
+- Se o token expirar, crie um novo e atualize o secret `GH_PAT` no repositório
 
 **Erro comum:** usar `GITHUB_TOKEN` no lugar do PAT →
 ```
@@ -251,7 +303,7 @@ Para testar antes do merge, use `workflow_dispatch` manualmente.
 ### ❌ Actions não consegue criar PR (permission error)
 **Causa:** `GITHUB_TOKEN` não tem permissão para abrir PRs que disparam workflows.
 
-**Solução:** Criar um PAT pessoal com escopo `repo`, salvar como secret `GH_PAT`
+**Solução:** Criar um PAT pessoal com escopo `repo` + `workflow`, salvar como secret `GH_PAT`
 e usar `GH_TOKEN: ${{ secrets.GH_PAT }}` no step de criação de PR.
 
 ---
@@ -261,6 +313,81 @@ e usar `GH_TOKEN: ${{ secrets.GH_PAT }}` no step de criação de PR.
 
 **Solução:** Adicionar créditos em console.anthropic.com → Plans & Billing.
 Com Haiku, $5 cobrem ~50 execuções completas do módulo.
+
+---
+
+### ❌ `token:` no checkout causa "fatal: could not read Username"
+**Causa:** Passar o `GH_PAT` como `token:` no step de `actions/checkout` configura
+um credential helper que falha mesmo em repos públicos quando o token está
+vazio, inválido ou expirado — bloqueando até o simples `git fetch`.
+
+**Solução:** Remover o `token:` do checkout completamente. Para repos públicos,
+o fetch não precisa de autenticação. A autenticação só é necessária no `git push`,
+e deve ser feita via `git remote set-url`:
+```yaml
+# ✅ Checkout sem token
+- name: Checkout
+  uses: actions/checkout@v4
+  with:
+    ref: ${{ steps.ctx.outputs.head_sha }}
+    fetch-depth: 0
+
+# ✅ Push autenticado via remote URL
+- name: Commit generated tests
+  run: |
+    git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/org/repo.git
+    git push origin "$BRANCH"
+```
+
+---
+
+### ❌ Push rejeitado com "non-fast-forward" em re-runs
+**Causa:** O branch `cover/test` já existia no remote de uma execução anterior.
+O `git push` padrão não sobrescreve branches divergentes.
+
+**Solução:** Usar auto-incremento no nome do branch — verifica se existe no remote
+antes de criar:
+```bash
+BASE="cover/test"
+BRANCH="$BASE"
+N=1
+while git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null 2>&1; do
+  BRANCH="${BASE}-${N}"
+  N=$((N + 1))
+done
+# Resulta em: cover/test, cover/test-1, cover/test-2, ...
+```
+
+---
+
+### ❌ `printf` com variável errada + sem redirecionamento
+**Causa:** Ao editar o workflow manualmente, o step de scan ficou assim (errado):
+```bash
+printf "files<<EOF\n%s\nEOF\n" "$UNCOVER_OUTPUT"   # ❌
+```
+`$UNCOVER_OUTPUT` apontava para o path do arquivo `$GITHUB_OUTPUT`, não para a lista
+de arquivos. Além disso, faltava o redirecionamento.
+
+**Solução:**
+```bash
+printf "files<<EOF\n%s\nEOF\n" "$UNCOVERED" >> "$GITHUB_OUTPUT"  # ✅
+```
+
+---
+
+### ❌ Repo renomeado quebra o checkout
+**Causa:** O repositório `CodandoTV/CraftD-android` foi renomeado para `CodandoTV/CraftD`.
+Sem o campo `repository:` explícito no checkout, o Actions usa o nome antigo e falha.
+
+**Solução:** Sempre especificar `repository:` no checkout de workflows que usam `workflow_run`:
+```yaml
+- name: Checkout
+  uses: actions/checkout@v4
+  with:
+    repository: org/repo   # nome atual do repositório
+    ref: ${{ steps.ctx.outputs.head_sha }}
+    fetch-depth: 0
+```
 
 ---
 
@@ -295,11 +422,12 @@ Deixe o campo vazio para escanear tudo, ou informe arquivos específicos.
 
 Após o workflow rodar, verifique:
 
-1. **Step "Find uncovered Kotlin files"** — lista os arquivos detectados
+1. **Step "Find uncovered Kotlin files"** — lista os arquivos detectados e mostra cobertura antes/depois
 2. **Step "Generate unit tests with Claude API"** — cada arquivo deve mostrar `[OK] Written: ...`
 3. **Step "Check generated files"** — deve mostrar `Found N test file(s)`
-4. **Step "Open Pull Request"** — URL do PR gerado aparece no log
-5. **PR aberto automaticamente** com os testes em `src/test/java/...`
+4. **Step "Commit tests"** — deve mostrar o nome do branch escolhido (`cover/test`, `cover/test-1` etc.)
+5. **Step "Open Pull Request"** — URL do PR gerado aparece no log
+6. **PR aberto automaticamente** com tabela de evolução de cobertura no body
 
 ---
 
@@ -328,7 +456,8 @@ Após o workflow rodar, verifique:
 - [ ] Criar `.github/scripts/generate_tests.py`
 - [ ] Criar `.github/workflows/generate-tests.yml` apontando para o nome correto do CI
 - [ ] Adicionar secret `ANTHROPIC_API_KEY` (console.anthropic.com)
-- [ ] Adicionar secret `GH_PAT` (PAT com escopo `repo`)
+- [ ] Adicionar secret `GH_PAT` (PAT classic com escopos `repo` + `workflow`)
+- [ ] **Não colocar `token:` no step de checkout** — usar `git remote set-url` para push
 - [ ] Abrir PR com os arquivos do workflow e mergear para `main`
 - [ ] Abrir qualquer PR tocando o módulo alvo e acompanhar o Actions
- 
+- [ ] Verificar que o PR gerado mostra a tabela de evolução de cobertura
