@@ -52,7 +52,6 @@ jobs:
           repository: CodandoTV/CraftD
           ref: ${{ steps.ctx.outputs.head_sha }}
           fetch-depth: 0
-          token: ${{ secrets.GH_PAT }}
 
       # ── 3. Python ─────────────────────────────────────────────────────────────
       - name: Set up Python
@@ -137,6 +136,9 @@ jobs:
 
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Autentica o push com GH_PAT via URL do remote
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/CodandoTV/CraftD.git
 
           git checkout -b "$BRANCH"
           git add --force android_kmp/craftd-core/src/test/
