@@ -39,14 +39,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "head_sha=${{ github.sha }}"   >> "$GITHUB_OUTPUT"
-            echo "base_ref=main"                >> "$GITHUB_OUTPUT"
             echo "pr_number=manual"             >> "$GITHUB_OUTPUT"
-            echo "is_manual=true"               >> "$GITHUB_OUTPUT"
           else
             echo "head_sha=${{ github.event.workflow_run.head_sha }}"                  >> "$GITHUB_OUTPUT"
-            echo "base_ref=${{ github.event.workflow_run.pull_requests[0].base.ref }}" >> "$GITHUB_OUTPUT"
             echo "pr_number=${{ github.event.workflow_run.pull_requests[0].number }}"  >> "$GITHUB_OUTPUT"
-            echo "is_manual=false"              >> "$GITHUB_OUTPUT"
           fi
 
       # ── 2. Checkout ───────────────────────────────────────────────────────────
@@ -55,7 +51,7 @@ jobs:
         with:
           ref: ${{ steps.ctx.outputs.head_sha }}
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
 
       # ── 3. Python ─────────────────────────────────────────────────────────────
       - name: Set up Python
@@ -67,7 +63,6 @@ jobs:
         run: pip install anthropic
 
       # ── 4. Escaneia craftd-core buscando arquivos sem cobertura ──────────────
-      #       Se override_files for informado no dispatch, usa eles no lugar.
       - name: Find uncovered Kotlin files in craftd-core
         id: changed
         run: |
@@ -153,15 +148,14 @@ jobs:
       - name: Open Pull Request with generated tests
         if: steps.check.outputs.has_tests == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
           BRANCH="${{ steps.commit.outputs.branch }}"
-          BASE_BRANCH="${{ steps.ctx.outputs.base_ref }}"
           COVERED="${{ steps.check.outputs.covered_names }}"
 
           gh pr create \
-            --base "$BASE_BRANCH" \
+            --base "main" \
             --head "$BRANCH" \
             --title "[Auto] Add unit tests for craftd-core" \
             --body "$(cat <<EOF
