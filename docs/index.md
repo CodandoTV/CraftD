@@ -1,4 +1,9 @@
 # Welcome to CraftD
+<h1>Welcome to CraftD</h1>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b9274339-5636-4f4c-aa89-6bf382639ab3" alt="CraftD logo" width="280"/>
+</p>
 
 ## Features
 
