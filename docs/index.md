@@ -1,4 +1,3 @@
-# Welcome to CraftD
 <h1>Welcome to CraftD</h1>
 
 <p align="center">
