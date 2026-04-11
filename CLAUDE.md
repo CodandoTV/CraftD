@@ -54,6 +54,8 @@ docs/                   # documentação do site (MkDocs)
 
 10. **Dependências de bibliotecas externas devem ser abstraídas.** Nunca acoplar diretamente uma lib de terceiro (ex: Coil, Picasso, Glide) dentro do builder. Expor uma interface/função como parâmetro do construtor para que o consumidor injete a implementação.
 
+11. **Todo novo componente deve ser demonstrado no app de exemplo da respectiva plataforma.** Para Android Compose: `app-sample-android/` (registrar o builder no `CraftDBuilderManager` do sample e incluir o componente no JSON de mock/tela de exemplo). Para XML: idem na Activity XML do sample. Nunca criar um componente sem adicionar um exemplo funcional no sample correspondente.
+
 ---
 
 ## Abstrações principais por plataforma
