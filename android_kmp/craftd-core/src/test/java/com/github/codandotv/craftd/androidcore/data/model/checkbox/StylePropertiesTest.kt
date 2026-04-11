@@ -218,7 +218,7 @@ class StylePropertiesTest {
     fun `given StyleProperties when comparing with different type then returns false`() {
         val styleProperties = StyleProperties(checkedColor = "#FF0000")
 
-        assertNotEquals(styleProperties, "#FF0000")
+        assertNotEquals<Any?>(styleProperties, "#FF0000")
     }
 
     @Test

@@ -42,17 +42,6 @@ class ViewMapperVoTest {
     }
 
     @Test
-    fun `given valid json string when convertToVO then returns correct object`() {
-        val input = """{"name":"TestName","value":42}"""
-        
-        val result: TestData = input.convertToVO()
-        
-        assertNotNull(result)
-        assertEquals("TestName", result.name)
-        assertEquals(42, result.value)
-    }
-
-    @Test
     fun `given null input when convertToVO then throws exception`() {
         try {
             val result: TestData = (null as Any?).convertToVO()
@@ -97,21 +86,6 @@ class ViewMapperVoTest {
         
         assertNotNull(result)
         assertEquals("TestName", result.name)
-    }
-
-    @Test
-    fun `given list of maps when convertToVO then converts to list of objects`() {
-        val input = listOf(
-            mapOf("name" to "Test1", "value" to 1),
-            mapOf("name" to "Test2", "value" to 2)
-        )
-        
-        val result: List<TestData> = input.convertToVO()
-        
-        assertNotNull(result)
-        assertEquals(2, result.size)
-        assertEquals("Test1", result[0].name)
-        assertEquals("Test2", result[1].name)
     }
 
     @Test

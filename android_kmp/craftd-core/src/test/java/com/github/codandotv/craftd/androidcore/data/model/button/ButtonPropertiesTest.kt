@@ -98,7 +98,7 @@ class ButtonPropertiesTest {
         val original = ButtonProperties(
             text = "Original",
             textColorHex = "#000000",
-            align = CraftDAlign.START
+            align = CraftDAlign.LEFT
         )
         val copied = original.copy(
             text = "Updated",
@@ -114,7 +114,7 @@ class ButtonPropertiesTest {
 
         assertEquals("Original", original.text)
         assertEquals("#000000", original.textColorHex)
-        assertEquals(CraftDAlign.START, original.align)
+        assertEquals(CraftDAlign.LEFT, original.align)
         assertEquals(null, original.actionProperties)
     }
 
@@ -155,7 +155,7 @@ class ButtonPropertiesTest {
     @Test
     fun `given two ButtonProperties with different align when comparing with equals then returns false`() {
         val button1 = ButtonProperties(align = CraftDAlign.CENTER)
-        val button2 = ButtonProperties(align = CraftDAlign.START)
+        val button2 = ButtonProperties(align = CraftDAlign.LEFT)
 
         assertNotEquals(button1, button2)
     }
@@ -163,7 +163,7 @@ class ButtonPropertiesTest {
     @Test
     fun `given two ButtonProperties with different textAlign when comparing with equals then returns false`() {
         val button1 = ButtonProperties(textAlign = CraftDAlign.CENTER)
-        val button2 = ButtonProperties(textAlign = CraftDAlign.END)
+        val button2 = ButtonProperties(textAlign = CraftDAlign.RIGHT)
 
         assertNotEquals(button1, button2)
     }
@@ -324,9 +324,9 @@ class ButtonPropertiesTest {
     @Test
     fun `given ButtonProperties with all CraftDAlign values when constructing then creates instances correctly`() {
         val alignValues = listOf(
-            CraftDAlign.START,
+            CraftDAlign.LEFT,
             CraftDAlign.CENTER,
-            CraftDAlign.END
+            CraftDAlign.RIGHT
         )
 
         alignValues.forEach { align ->
@@ -338,9 +338,9 @@ class ButtonPropertiesTest {
     @Test
     fun `given ButtonProperties with all CraftDAlign values for textAlign when constructing then creates instances correctly`() {
         val alignValues = listOf(
-            CraftDAlign.START,
+            CraftDAlign.LEFT,
             CraftDAlign.CENTER,
-            CraftDAlign.END
+            CraftDAlign.RIGHT
         )
 
         alignValues.forEach { align ->

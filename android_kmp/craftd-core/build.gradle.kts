@@ -10,6 +10,12 @@ kotlin {
         publishLibraryVariants("release", "debug")
     }
     sourceSets {
+        androidUnitTest.dependencies {
+            implementation(libs.junit)
+            implementation(libs.mockk)
+            implementation(kotlin("test-junit"))
+        }
+
         androidMain.dependencies {
             implementation(libs.androidx.core)
             implementation(libs.androidx.appcompat)

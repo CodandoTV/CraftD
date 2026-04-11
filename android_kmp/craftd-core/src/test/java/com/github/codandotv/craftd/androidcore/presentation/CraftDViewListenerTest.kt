@@ -1,4 +1,3 @@
-```kotlin
 package com.github.codandotv.craftd.androidcore.presentation
 
 import com.github.codandotv.craftd.androidcore.data.model.action.ActionProperties
@@ -166,4 +165,3 @@ class CraftDViewListenerTest {
         assert(capturedInstances[0] === capturedInstances[1])
     }
 }
-```

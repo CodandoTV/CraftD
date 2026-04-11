@@ -1,6 +1,5 @@
 package com.github.codandotv.craftd.androidcore.data.model.action
 
-import androidx.recyclerview.widget.DiffUtil
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.serialization.json.JsonElement

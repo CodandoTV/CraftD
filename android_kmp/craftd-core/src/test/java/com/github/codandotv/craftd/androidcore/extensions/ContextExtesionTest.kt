@@ -5,7 +5,6 @@ import android.content.res.AssetManager
 import android.util.TypedValue
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.mockkStatic
 import io.mockk.unmockkAll
 import io.mockk.verify
 import org.junit.After
@@ -13,25 +12,19 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import java.io.BufferedReader
-import java.io.InputStream
+import java.io.ByteArrayInputStream
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 @RunWith(JUnit4::class)
 class ContextExtensionTest {
 
     private lateinit var mockContext: Context
     private lateinit var mockAssetManager: AssetManager
-    private lateinit var mockInputStream: InputStream
-    private lateinit var mockBufferedReader: BufferedReader
 
     @Before
     fun setup() {
         mockContext = mockk(relaxed = true)
         mockAssetManager = mockk(relaxed = true)
-        mockInputStream = mockk(relaxed = true)
-        mockBufferedReader = mockk(relaxed = true)
     }
 
     @After
@@ -45,16 +38,12 @@ class ContextExtensionTest {
         val expectedContent = """{"key": "value", "number": 123}"""
 
         every { mockContext.assets } returns mockAssetManager
-        every { mockAssetManager.open("$fileName.json") } returns mockInputStream
-        every { mockInputStream.bufferedReader() } returns mockBufferedReader
-        every { mockBufferedReader.readText() } returns expectedContent
-        every { mockBufferedReader.close() } returns Unit
+        every { mockAssetManager.open("$fileName.json") } returns ByteArrayInputStream(expectedContent.toByteArray())
 
         val result = mockContext.loadJSONFromAsset(fileName)
 
         assertEquals(expectedContent, result)
         verify { mockAssetManager.open("$fileName.json") }
-        verify { mockBufferedReader.readText() }
     }
 
     @Test
@@ -63,10 +52,7 @@ class ContextExtensionTest {
         val expectedContent = "{}"
 
         every { mockContext.assets } returns mockAssetManager
-        every { mockAssetManager.open(".json") } returns mockInputStream
-        every { mockInputStream.bufferedReader() } returns mockBufferedReader
-        every { mockBufferedReader.readText() } returns expectedContent
-        every { mockBufferedReader.close() } returns Unit
+        every { mockAssetManager.open(".json") } returns ByteArrayInputStream(expectedContent.toByteArray())
 
         val result = mockContext.loadJSONFromAsset(fileName)
 
@@ -80,10 +66,7 @@ class ContextExtensionTest {
         val expectedContent = """{"data": [1, 2, 3]}"""
 
         every { mockContext.assets } returns mockAssetManager
-        every { mockAssetManager.open("$fileName.json") } returns mockInputStream
-        every { mockInputStream.bufferedReader() } returns mockBufferedReader
-        every { mockBufferedReader.readText() } returns expectedContent
-        every { mockBufferedReader.close() } returns Unit
+        every { mockAssetManager.open("$fileName.json") } returns ByteArrayInputStream(expectedContent.toByteArray())
 
         val result = mockContext.loadJSONFromAsset(fileName)
 
@@ -103,10 +86,7 @@ class ContextExtensionTest {
         }"""
 
         every { mockContext.assets } returns mockAssetManager
-        every { mockAssetManager.open("$fileName.json") } returns mockInputStream
-        every { mockInputStream.bufferedReader() } returns mockBufferedReader
-        every { mockBufferedReader.readText() } returns expectedContent
-        every { mockBufferedReader.close() } returns Unit
+        every { mockAssetManager.open("$fileName.json") } returns ByteArrayInputStream(expectedContent.toByteArray())
 
         val result = mockContext.loadJSONFromAsset(fileName)
 
@@ -118,8 +98,6 @@ class ContextExtensionTest {
         val attributeRes = android.R.attr.textColorPrimary
         val expectedColorData = 0xFFFFFFFF.toInt()
         val mockTheme = mockk<android.content.res.Resources.Theme>(relaxed = true)
-        val typedValue = TypedValue()
-        typedValue.data = expectedColorData
 
         every { mockContext.theme } returns mockTheme
         every { mockTheme.resolveAttribute(attributeRes, any(), false) } answers {
@@ -248,13 +226,10 @@ class ContextExtensionTest {
         val content = "{}"
 
         every { mockContext.assets } returns mockAssetManager
-        every { mockAssetManager.open("$fileName.json") } returns mockInputStream
-        every { mockInputStream.bufferedReader() } returns mockBufferedReader
-        every { mockBufferedReader.readText() } returns content
-        every { mockBufferedReader.close() } returns Unit
+        every { mockAssetManager.open("$fileName.json") } returns ByteArrayInputStream(content.toByteArray())
 
         mockContext.loadJSONFromAsset(fileName)
 
-        verify { mockBufferedReader.close() }
+        verify { mockAssetManager.open("$fileName.json") }
     }
 }

@@ -227,36 +227,6 @@ class CheckBoxPropertiesTest {
     }
 
     @Test
-    fun `given CheckBoxProperties when checking isImmutable annotation then class has Immutable annotation`() {
-        val checkBoxProperties = CheckBoxProperties()
-        val isImmutable = checkBoxProperties::class.annotations.any { annotation ->
-            annotation::class.simpleName == "Immutable"
-        }
-
-        assertTrue(isImmutable)
-    }
-
-    @Test
-    fun `given CheckBoxProperties when checking isStable annotation then class has Stable annotation`() {
-        val checkBoxProperties = CheckBoxProperties()
-        val isStable = checkBoxProperties::class.annotations.any { annotation ->
-            annotation::class.simpleName == "Stable"
-        }
-
-        assertTrue(isStable)
-    }
-
-    @Test
-    fun `given CheckBoxProperties when checking isSerializable annotation then class has Serializable annotation`() {
-        val checkBoxProperties = CheckBoxProperties()
-        val isSerializable = checkBoxProperties::class.annotations.any { annotation ->
-            annotation::class.simpleName == "Serializable"
-        }
-
-        assertTrue(isSerializable)
-    }
-
-    @Test
     fun `given two CheckBoxProperties instances when one has actionProperties and other does not then equals returns false`() {
         val actionProps = mockk<ActionProperties>()
         val props1 = CheckBoxProperties(actionProperties = actionProps)

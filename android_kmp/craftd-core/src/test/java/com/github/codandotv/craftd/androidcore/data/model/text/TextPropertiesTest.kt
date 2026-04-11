@@ -186,7 +186,7 @@ class TextPropertiesTest {
 
     @Test
     fun `given all CraftDTextStyle enum values when verifying they exist then all are accessible`() {
-        assertEquals(CraftDTextStyle.REGULAR, enumValueOf<CraftDTextStyle>("REGULAR"))
+        assertEquals(CraftDTextStyle.NORMAL, enumValueOf<CraftDTextStyle>("NORMAL"))
         assertEquals(CraftDTextStyle.BOLD, enumValueOf<CraftDTextStyle>("BOLD"))
         assertEquals(CraftDTextStyle.ITALIC, enumValueOf<CraftDTextStyle>("ITALIC"))
     }
@@ -308,11 +308,11 @@ class TextPropertiesTest {
 
     @Test
     fun `given TextProperties with all textStyle values when creating each then all are stored correctly`() {
-        val styleRegular = TextProperties(textStyle = CraftDTextStyle.REGULAR)
+        val styleRegular = TextProperties(textStyle = CraftDTextStyle.NORMAL)
         val styleBold = TextProperties(textStyle = CraftDTextStyle.BOLD)
         val styleItalic = TextProperties(textStyle = CraftDTextStyle.ITALIC)
 
-        assertEquals(CraftDTextStyle.REGULAR, styleRegular.textStyle)
+        assertEquals(CraftDTextStyle.NORMAL, styleRegular.textStyle)
         assertEquals(CraftDTextStyle.BOLD, styleBold.textStyle)
         assertEquals(CraftDTextStyle.ITALIC, styleItalic.textStyle)
     }

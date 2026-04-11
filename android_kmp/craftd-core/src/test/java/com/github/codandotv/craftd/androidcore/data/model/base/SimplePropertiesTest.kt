@@ -193,7 +193,7 @@ class SimplePropertiesTest {
         val prop2 = SimpleProperties(key = "key", value = value)
         
         assertEquals(prop1, prop2)
-        assertNotEquals(prop1 as Any, prop2 as Any)
+        assertTrue(prop1 !== prop2)
     }
 
     @Test
@@ -241,7 +241,7 @@ class SimplePropertiesTest {
         val copied = original.copy()
         
         assertEquals(original, copied)
-        assertNotEquals(original as Any, copied as Any)
+        assertTrue(original !== copied)
     }
 
     @Test

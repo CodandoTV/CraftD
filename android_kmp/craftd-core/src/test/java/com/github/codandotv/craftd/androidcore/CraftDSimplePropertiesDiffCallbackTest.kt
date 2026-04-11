@@ -2,6 +2,7 @@ package com.github.codandotv.craftd.androidcore
 
 import androidx.recyclerview.widget.DiffUtil
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
+import io.mockk.every
 import io.mockk.mockk
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
@@ -39,9 +40,8 @@ class CraftDSimplePropertiesDiffCallbackTest {
 
     @Test
     fun `given exception during key comparison when areItemsTheSame then returns false`() {
-        val mockOldItem = mockk<SimpleProperties> {
-            throws(RuntimeException("Test exception"))
-        }
+        val mockOldItem = mockk<SimpleProperties>()
+        every { mockOldItem.key } throws RuntimeException("Test exception")
         val newItem = SimpleProperties(key = "key", value = JsonPrimitive("value"))
 
         val result = callback.areItemsTheSame(mockOldItem, newItem)
@@ -72,44 +72,17 @@ class CraftDSimplePropertiesDiffCallbackTest {
 
     @Test
     fun `given identical AbstractMap values when areContentsTheSame then returns true`() {
-        val oldMap = object : AbstractMap<String, String>() {
-            override val entries: Set<Map.Entry<String, String>> = setOf(
-                SimpleEntry("key", "value")
-            )
-        }
-        val newMap = object : AbstractMap<String, String>() {
-            override val entries: Set<Map.Entry<String, String>> = setOf(
-                SimpleEntry("key", "value")
-            )
-        }
+        val value = JsonPrimitive("same_value")
+        val oldItem = SimpleProperties(key = "key1", value = value)
+        val newItem = SimpleProperties(key = "key1", value = value)
 
-        val oldItem = SimpleProperties(key = "key1", value = mockk { })
-        val newItem = SimpleProperties(key = "key1", value = mockk { })
-
-        val oldItemWithMap = oldItem.copy().apply { value = oldMap as JsonElement }
-        val newItemWithMap = newItem.copy().apply { value = newMap as JsonElement }
-
-        val result = callback.areContentsTheSame(
-            oldItem.copy(),
-            newItem.copy()
-        )
+        val result = callback.areContentsTheSame(oldItem, newItem)
 
         assertTrue(result)
     }
 
     @Test
     fun `given different AbstractMap values when areContentsTheSame then returns false`() {
-        val oldMap = object : AbstractMap<String, String>() {
-            override val entries: Set<Map.Entry<String, String>> = setOf(
-                SimpleEntry("key", "value1")
-            )
-        }
-        val newMap = object : AbstractMap<String, String>() {
-            override val entries: Set<Map.Entry<String, String>> = setOf(
-                SimpleEntry("key", "value2")
-            )
-        }
-
         val oldItem = SimpleProperties(key = "key1", value = JsonPrimitive("value1"))
         val newItem = SimpleProperties(key = "key1", value = JsonPrimitive("value2"))
 
@@ -177,13 +150,6 @@ class CraftDSimplePropertiesDiffCallbackTest {
 
     @Test
     fun `given empty AbstractMap when areContentsTheSame with AbstractMap comparison then returns true`() {
-        val oldMap = object : AbstractMap<String, String>() {
-            override val entries: Set<Map.Entry<String, String>> = emptySet()
-        }
-        val newMap = object : AbstractMap<String, String>() {
-            override val entries: Set<Map.Entry<String, String>> = emptySet()
-        }
-
         val oldItem = SimpleProperties(key = "key1", value = JsonPrimitive("{}"))
         val newItem = SimpleProperties(key = "key1", value = JsonPrimitive("{}"))
 
