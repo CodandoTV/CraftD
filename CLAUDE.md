@@ -164,15 +164,6 @@ commonMain/
 - **`pr.yml`** — build e testes, dispara em todo PR
 - **`generate-tests.yml`** — gera testes unitários automaticamente via Claude API para `.kt` modificados, abre PR separado. Só roda após `pr.yml` passar. Não roda em PRs de bots.
 
-## OpenSpec — fluxo de changes
-
-Ao iniciar um change com `/opsx:propose`:
-- Se a sessão pode ser interrompida antes de gerar os artefatos, criar um `notes.md` dentro de `openspec/changes/<name>/` com o contexto relevante (requisitos, PR de referência, decisões discutidas)
-- Ao retomar, ler o `notes.md` antes de gerar os artefatos
-- Após gerar todos os artefatos (`proposal.md`, `design.md`, `tasks.md`), **deletar o `notes.md`** — o conteúdo já estará nos artefatos
-
----
-
 ## Review de PRs
 
 Quando um PR for publicado ou quando solicitado, revisar usando `gh pr review` verificando:
