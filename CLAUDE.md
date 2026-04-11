@@ -56,97 +56,26 @@ docs/                   # documentação do site (MkDocs)
 
 ---
 
-## Abstrações principais por plataforma
+## Contexto por plataforma
 
-As três plataformas espelham os mesmos conceitos com nomes equivalentes.
+Antes de iniciar qualquer task, identifique a plataforma e leia o arquivo correspondente em `.claude/instructions/`:
 
-### Android / KMP (Kotlin)
+- Android/KMP → `.claude/instructions/android-patterns.md`
+- iOS → `.claude/instructions/ios-patterns.md`
+- Flutter → `.claude/instructions/flutter-patterns.md`
 
-| Classe | Papel |
-|---|---|
-| `CraftDBuilder` | Interface base para criar componentes |
-| `CraftDBuilderManager` | Registra e resolve builders pelo `key` |
-| `CraftDynamic` | Composable principal que renderiza o SDUI |
-| `SimpleProperties` | Modelo base de dados (`key` + `value` JSON) |
-| `ActionProperties` | Dados de ação (deeplink + analytics) |
-| `CraftDComponentKey` | Enum com as chaves de componentes built-in |
-| `CraftDViewListener` | Callback de ações para o consumidor |
+Ao gerar um `proposal.md` via `/propose`, detecte a plataforma na descrição do usuário e adicione frontmatter no início do arquivo:
 
-### iOS / SwiftUI (Swift — `ios/craftd-swiftui/`)
-
-| Classe | Papel |
-|---|---|
-| `CraftDBuilder` | Protocol base para criar componentes |
-| `CraftDBuilderManager` | Registra e resolve builders pelo `key` |
-| `CraftDynamic` | View principal que renderiza o SDUI |
-| `SimpleProperties` | Modelo base de dados |
-| `ActionProperties` | Dados de ação (deeplink + analytics) |
-| `CraftDViewListener` | Callback de ações para o consumidor |
-
-### Flutter (Dart — `flutter/craftd_widget/`)
-
-| Classe | Papel |
-|---|---|
-| `CraftDynamic` | Widget principal que renderiza o SDUI |
-| `CraftDViewListener` | Callback de ações para o consumidor |
-| `SimpleProperties` | Modelo base de dados |
-| `ActionProperties` | Dados de ação (deeplink + analytics) |
-| `CraftDAlign` | Alinhamento de componentes |
-
-> Ao adicionar um novo componente, ele deve ser implementado nas três plataformas seguindo a mesma abstração de cada uma. Consultar `CraftDButton` / `CraftDButtonBuilder` como referência em todas.
-
+```
 ---
-
-## Padrão de estrutura de pastas
-
-### craftd-core (modelos e abstrações)
-```
-commonMain/
-  data/
-    model/
-      base/       → SimpleProperties, SimplePropertiesResponse
-      action/     → ActionProperties, AnalyticsProperties
-      [name]/     → [Name]Properties.kt para cada componente
-  domain/         → enums e sealed classes (CraftDAlign, CraftDTextStyle)
-  presentation/   → CraftDViewListener, CraftDComponentKey
-  extensions/     → funções de extensão
-```
-
-### craftd-compose (implementação Compose/KMP)
-```
-commonMain/
-  builder/        → CraftDBuilder.kt (interface), CraftDBuilderManager.kt
-  ui/
-    [name]/
-      CraftD[Name].kt         → o @Composable do componente
-      CraftD[Name]Builder.kt  → implementa CraftDBuilder
-  extensions/     → funções utilitárias Compose
-```
-
-### Padrão por novo componente (exemplo: CraftDImage)
-
-1. `craftd-core/commonMain/data/model/image/ImageProperties.kt` — data class do modelo
-2. `craftd-compose/commonMain/ui/image/CraftDImage.kt` — composable
-3. `craftd-compose/commonMain/ui/image/CraftDImageBuilder.kt` — builder
-4. Equivalentes em `ios/craftd-swiftui/` e `flutter/craftd_widget/` com a mesma estrutura
-
+platform: android   # mencionou android / compose / xml / kmp
+platform: ios       # mencionou ios / swiftui / swift
+platform: flutter   # mencionou flutter / dart
+platform: all       # multiplatforma ou não ficou claro
 ---
+```
 
-## Princípios de desenvolvimento
-
-### Compose
-- Composables devem ser **stateless** — estado vem sempre do caller (state hoisting)
-- Todo componente expõe `modifier: Modifier = Modifier` como parâmetro
-- Sem valores hardcoded de cor ou tipografia — usar `MaterialTheme.colorScheme` e `MaterialTheme.typography`
-- Todo componente interativo deve ter **touch target mínimo de 48x48dp**
-
-### Arquitetura
-- A camada `domain` não pode ter dependências Android — apenas Kotlin puro
-- Repositórios usam `suspend functions` main-safe
-
-### Build
-- Dependências sempre via `libs.versions.toml` — nunca versão hardcoded no `build.gradle.kts`
-- Configuração compartilhada entre módulos vai em convention plugin no `build-logic/`
+Ao iniciar `/apply`, leia o campo `platform:` do `proposal.md` da change e carregue o arquivo de instructions correspondente antes de qualquer outra leitura.
 
 ---
 
