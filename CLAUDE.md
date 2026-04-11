@@ -190,6 +190,18 @@ Ao aplicar uma change que adiciona um novo componente Android/KMP (detectável p
 
 Cada agent roda em worktree isolada (`isolation: "worktree"`) e valida o build antes de marcar `[x]`.
 
+Durante a execução, reportar progresso no formato:
+
+```
+[Agent Core]     ✓ 1.1 IMAGE_COMPONENT adicionado
+[Agent Core]     ✓ 1.2 CraftDContentScale criado
+[Agent Compose]  ⟳ 2.2 Criando CraftDImage composable...
+[Agent XML]      ⟳ 3.1 Criando CraftDImageComponent...
+[Agent Compose]  ✓ 2.2 CraftDImage composable criado
+```
+
+Usar `⟳` para em progresso e `✓` para concluído. Reportar a cada task iniciada e concluída.
+
 ---
 
 ## CI / automação
