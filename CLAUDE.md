@@ -50,6 +50,10 @@ docs/                   # documentação do site (MkDocs)
 
 8. **Toda mudança que afeta comportamento público da lib** (novo componente, novo parâmetro, breaking change) deve atualizar `docs/how-to-use/` da plataforma correspondente: `compose.md`, `view-system.md`, `swift-ui.md` ou `futter.md`.
 
+9. **Todo novo builder deve ser registrado no `CraftDBuilderManager`** da respectiva plataforma. No Compose/KMP: `CraftDComponentKey.X.key to CraftDXBuilder()`. No XML: adicionar o render em `getBuilderRenders()`. Nunca criar um builder sem registrá-lo.
+
+10. **Dependências de bibliotecas externas devem ser abstraídas.** Nunca acoplar diretamente uma lib de terceiro (ex: Coil, Picasso, Glide) dentro do builder. Expor uma interface/função como parâmetro do construtor para que o consumidor injete a implementação.
+
 ---
 
 ## Abstrações principais por plataforma
