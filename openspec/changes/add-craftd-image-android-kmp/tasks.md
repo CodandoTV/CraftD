@@ -28,6 +28,13 @@
 - [ ] 5.1 Update `docs/how-to-use/compose.md` with `CraftDImage` usage example (including imageLoader injection with Coil)
 - [ ] 5.2 Update `docs/how-to-use/view-system.md` with `CraftDImageComponentRender` usage example
 
-## 6. Cleanup
+## 6. Sample app
 
-- [ ] 6.1 Delete `openspec/changes/add-craftd-image/notes.md` (context consumed)
+- [ ] 6.1 Register `CraftDImageBuilder` (with Coil imageLoader) in `app-sample-android` Compose setup
+- [ ] 6.2 Add image entry to the mock/sample JSON in `app-sample-android` so the component is visible na tela Compose
+- [ ] 6.3 Register `CraftDImageComponentRender` (with Coil imageLoader) in `app-sample-android` XML setup
+- [ ] 6.4 Add image entry to the mock/sample JSON in `app-sample-android` so the component is visible na tela XML
+
+## 7. Cleanup
+
+- [ ] 7.1 Delete `openspec/changes/add-craftd-image-android-kmp/notes.md` (context consumed)
