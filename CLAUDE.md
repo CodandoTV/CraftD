@@ -161,6 +161,18 @@ commonMain/
 
 ---
 
+## Implementação de tasks
+
+Ao concluir cada task de um `tasks.md`:
+1. Implemente o código da task
+2. Rode `./gradlew build` no módulo afetado (`android_kmp/`)
+3. Corrija erros de compilação se houver
+4. Só então marque `[x]` no `tasks.md`
+
+Nunca marcar `[x]` antes do build passar.
+
+---
+
 ## CI / automação
 
 - **`pr.yml`** — build e testes, dispara em todo PR
