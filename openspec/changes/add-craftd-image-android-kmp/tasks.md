@@ -19,22 +19,22 @@
 
 ## 4. Tests
 
-- [ ] 4.1 Unit test for `ImageProperties` serialization/deserialization (craftd-core)
-- [ ] 4.2 Unit test for `toContentScale()` covering all `CraftDContentScale` values
-- [ ] 4.3 Unit test for `CraftDImageBuilder` — verify `imageLoader` is called with correct args and `actionProperties` triggers listener
+- [x] 4.1 Unit test for `ImageProperties` serialization/deserialization (craftd-core)
+- [x] 4.2 Unit test for `toContentScale()` covering all `CraftDContentScale` values
+- [x] 4.3 Unit test for `CraftDImageBuilder` — verify `imageLoader` is called with correct args and `actionProperties` triggers listener
 
 ## 5. Documentation
 
-- [ ] 5.1 Update `docs/how-to-use/compose.md` with `CraftDImage` usage example (including imageLoader injection with Coil)
-- [ ] 5.2 Update `docs/how-to-use/view-system.md` with `CraftDImageComponentRender` usage example
+- [x] 5.1 Update `docs/how-to-use/compose.md` with `CraftDImage` usage example (including imageLoader injection with Coil)
+- [x] 5.2 Update `docs/how-to-use/view-system.md` with `CraftDImageComponentRender` usage example
 
 ## 6. Sample app
 
-- [ ] 6.1 Register `CraftDImageBuilder` (with Coil imageLoader) in `app-sample-android` Compose setup
-- [ ] 6.2 Add image entry to the mock/sample JSON in `app-sample-android` so the component is visible na tela Compose
-- [ ] 6.3 Register `CraftDImageComponentRender` (with Coil imageLoader) in `app-sample-android` XML setup
-- [ ] 6.4 Add image entry to the mock/sample JSON in `app-sample-android` so the component is visible na tela XML
+- [x] 6.1 Register `CraftDImageBuilder` (with Coil imageLoader) in `app-sample-android` Compose setup
+- [x] 6.2 Add image entry to the mock/sample JSON in `app-sample-android` so the component is visible na tela Compose
+- [x] 6.3 Register `CraftDImageComponentRender` (with Picasso imageLoader) in `app-sample-android` XML setup
+- [x] 6.4 Add image entry to the mock/sample JSON in `app-sample-android` so the component is visible na tela XML
 
 ## 7. Cleanup
 
-- [ ] 7.1 Delete `openspec/changes/add-craftd-image-android-kmp/notes.md` (context consumed)
+- [x] 7.1 Delete `openspec/changes/add-craftd-image-android-kmp/notes.md` (context consumed)

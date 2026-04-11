@@ -144,3 +144,42 @@ class DynamicViewModel(
     ```
 
 So now enjoy your component!!!
+
+---
+
+## CraftDImage — Built-in image component
+
+`CraftDImage` is a built-in component for rendering remote images via Server Driven UI. The `CraftDImageComponentRender` accepts an injected `imageLoader` lambda so the consuming app picks the image library.
+
+### JSON payload
+
+```json
+{
+  "key": "CraftDImage",
+  "value": {
+    "url": "https://example.com/photo.jpg",
+    "contentDescription": "A description for accessibility",
+    "actionProperties": {
+      "deeplink": "myapp://detail/1"
+    }
+  }
+}
+```
+
+### Registering the render (with Picasso)
+
+Pass `imageLoader` to `CraftDBuilderManager.getBuilderRenders()`:
+
+```kotlin
+private fun setupDynamicRender(list: List<SimpleProperties>) {
+    craft.registerRenderers(
+        CraftDBuilderManager.getBuilderRenders(
+            simpleProperties = list,
+            onAction = { action -> listener.invoke(action) },
+            imageLoader = { url, imageView ->
+                Picasso.get().load(url).into(imageView)
+            }
+        )
+    )
+}
+```

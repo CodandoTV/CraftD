@@ -23,5 +23,9 @@ kotlin {
             implementation(compose.material3)
             implementation(libs.kotlinx.collections.immutable)
         }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
     }
 }
