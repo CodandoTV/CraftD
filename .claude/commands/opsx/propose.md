@@ -35,6 +35,8 @@ When ready to implement, run /opsx:apply
    ```
    This creates a scaffolded change at `openspec/changes/<name>/` with `.openspec.yaml`.
 
+   **If the change already exists**, read `openspec/changes/<name>/notes.md` if it exists — it contains context from a previous session (requirements, reference PRs, decisions). Use it to inform artifact creation, then delete it after all artifacts are generated.
+
 3. **Get the artifact build order**
    ```bash
    openspec status --change "<name>" --json
