@@ -48,6 +48,8 @@ docs/                   # documentação do site (MkDocs)
 
 7. **Todo novo componente deve ter teste unitário** (quando possível) e **documentação em `docs/` na seção da respectiva plataforma**.
 
+8. **Toda mudança que afeta comportamento público da lib** (novo componente, novo parâmetro, breaking change) deve atualizar `docs/how-to-use/` da plataforma correspondente: `compose.md`, `view-system.md`, `swift-ui.md` ou `futter.md`.
+
 ---
 
 ## Abstrações principais por plataforma
@@ -88,6 +90,59 @@ As três plataformas espelham os mesmos conceitos com nomes equivalentes.
 | `CraftDAlign` | Alinhamento de componentes |
 
 > Ao adicionar um novo componente, ele deve ser implementado nas três plataformas seguindo a mesma abstração de cada uma. Consultar `CraftDButton` / `CraftDButtonBuilder` como referência em todas.
+
+---
+
+## Padrão de estrutura de pastas
+
+### craftd-core (modelos e abstrações)
+```
+commonMain/
+  data/
+    model/
+      base/       → SimpleProperties, SimplePropertiesResponse
+      action/     → ActionProperties, AnalyticsProperties
+      [name]/     → [Name]Properties.kt para cada componente
+  domain/         → enums e sealed classes (CraftDAlign, CraftDTextStyle)
+  presentation/   → CraftDViewListener, CraftDComponentKey
+  extensions/     → funções de extensão
+```
+
+### craftd-compose (implementação Compose/KMP)
+```
+commonMain/
+  builder/        → CraftDBuilder.kt (interface), CraftDBuilderManager.kt
+  ui/
+    [name]/
+      CraftD[Name].kt         → o @Composable do componente
+      CraftD[Name]Builder.kt  → implementa CraftDBuilder
+  extensions/     → funções utilitárias Compose
+```
+
+### Padrão por novo componente (exemplo: CraftDImage)
+
+1. `craftd-core/commonMain/data/model/image/ImageProperties.kt` — data class do modelo
+2. `craftd-compose/commonMain/ui/image/CraftDImage.kt` — composable
+3. `craftd-compose/commonMain/ui/image/CraftDImageBuilder.kt` — builder
+4. Equivalentes em `ios/craftd-swiftui/` e `flutter/craftd_widget/` com a mesma estrutura
+
+---
+
+## Princípios de desenvolvimento
+
+### Compose
+- Composables devem ser **stateless** — estado vem sempre do caller (state hoisting)
+- Todo componente expõe `modifier: Modifier = Modifier` como parâmetro
+- Sem valores hardcoded de cor ou tipografia — usar `MaterialTheme.colorScheme` e `MaterialTheme.typography`
+- Todo componente interativo deve ter **touch target mínimo de 48x48dp**
+
+### Arquitetura
+- A camada `domain` não pode ter dependências Android — apenas Kotlin puro
+- Repositórios usam `suspend functions` main-safe
+
+### Build
+- Dependências sempre via `libs.versions.toml` — nunca versão hardcoded no `build.gradle.kts`
+- Configuração compartilhada entre módulos vai em convention plugin no `build-logic/`
 
 ---
 
