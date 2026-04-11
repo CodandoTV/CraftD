@@ -190,6 +190,16 @@ Ao aplicar uma change que adiciona um novo componente Android/KMP (detectável p
 
 Cada agent roda em worktree isolada (`isolation: "worktree"`) e valida o build antes de marcar `[x]`.
 
+Após cada mudança de estado relevante (agent iniciado, concluído ou com erro), exibir tabela de progresso:
+
+| Agent | Status | Tasks |
+|---|---|---|
+| Agent Core | ✓ Completo | 1.x |
+| Agent Compose | ⟳ Rodando | 2.x |
+| Agent XML | ⏳ Aguardando | 3.x |
+
+Ícones: `⟳` rodando, `✓` completo, `⏳` aguardando, `✗` erro.
+
 Durante a execução, reportar progresso no formato:
 
 ```
