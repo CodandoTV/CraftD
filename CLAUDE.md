@@ -159,6 +159,84 @@ commonMain/
 
 ---
 
+## Implementação de tasks
+
+Ao concluir cada task de um `tasks.md`:
+1. Implemente o código da task
+2. Rode `./gradlew build` no módulo afetado (`android_kmp/`)
+3. Corrija erros de compilação se houver
+4. Só então marque `[x]` no `tasks.md`
+
+Nunca marcar `[x]` antes do build passar.
+
+### Orquestração com agents para componentes Android/KMP
+
+Ao aplicar uma change que adiciona um novo componente Android/KMP (detectável pela estrutura das tasks: core → compose/xml → docs/sample), usar agents paralelos com worktrees isoladas seguindo estas rodadas:
+
+**Rodada 1** — sequencial (core é dependência das demais):
+- Agent Core → tasks de `craftd-core` (model, enum, key)
+
+**Rodada 2** — paralelo (após Rodada 1 mergeada):
+- Agent Compose → tasks de `craftd-compose` (composable, builder, registro, testes)
+- Agent XML → tasks de `craftd-xml` (render, registro)
+
+**Rodada 3** — sequencial (após Rodada 2):
+- Agent Docs/Sample → tasks de documentação e sample app
+
+**Rodada 4** — revisor (após Rodada 3):
+- Agent Revisor → revisa todo o código produzido seguindo as regras de review do CLAUDE.md. Não faz build — cada agent já validou o seu.
+
+Cada agent roda em worktree isolada (`isolation: "worktree"`) e valida o build antes de marcar `[x]`.
+
+### Custo de contexto — diretrizes para agents
+
+**Escopo de plataforma — ignorar pastas irrelevantes:**
+- Tasks Android/KMP → ignorar `ios/` e `flutter/`
+- Tasks iOS → ignorar `android_kmp/` e `flutter/`
+- Tasks Flutter → ignorar `android_kmp/` e `ios/`
+
+Nunca ler, listar ou referenciar arquivos fora da plataforma da task em execução.
+
+**Quando NÃO usar agent (fazer inline):**
+- Rodada 3 (Docs/Sample) e Rodada 4 (Revisor) — edições simples, o overhead do agent supera o benefício
+- Qualquer task com menos de 10 arquivos a editar e sem necessidade de build isolado
+
+**Quando usar agent com worktree:**
+- Rodadas 1 e 2 — compilação isolada necessária, risco de conflito entre módulos paralelos
+
+**Como montar o prompt de um agent:**
+- Passar os caminhos exatos dos arquivos relevantes
+- Incluir o trecho de código de referência (ex: o builder existente que deve ser replicado)
+- Nunca escrever "leia o projeto e implemente" — especificar o quê e onde
+
+**Modelo por tipo de tarefa:**
+- Edições mecânicas (JSON, doc, registro simples): usar `model: "haiku"`
+- Lógica, compilação e decisões arquiteturais: Sonnet (default)
+
+Após cada mudança de estado relevante (agent iniciado, concluído ou com erro), exibir tabela de progresso:
+
+| Agent | Status | Tasks |
+|---|---|---|
+| Agent Core | ✓ Completo | 1.x |
+| Agent Compose | ⟳ Rodando | 2.x |
+| Agent XML | ⏳ Aguardando | 3.x |
+
+Ícones: `⟳` rodando, `✓` completo, `⏳` aguardando, `✗` erro.
+
+Durante a execução, reportar progresso no formato:
+
+```
+[Agent Core]     ✓ 1.1 IMAGE_COMPONENT adicionado
+[Agent Core]     ✓ 1.2 CraftDContentScale criado
+[Agent Compose]  ⟳ 2.2 Criando CraftDImage composable...
+[Agent XML]      ⟳ 3.1 Criando CraftDImageComponent...
+[Agent Compose]  ✓ 2.2 CraftDImage composable criado
+```
+
+Usar `⟳` para em progresso e `✓` para concluído. Reportar a cada task iniciada e concluída.
+
+---
+
 ## CI / automação
 
 - **`pr.yml`** — build e testes, dispara em todo PR
