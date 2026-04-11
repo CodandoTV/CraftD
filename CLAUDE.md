@@ -190,6 +190,31 @@ Ao aplicar uma change que adiciona um novo componente Android/KMP (detectável p
 
 Cada agent roda em worktree isolada (`isolation: "worktree"`) e valida o build antes de marcar `[x]`.
 
+### Custo de contexto — diretrizes para agents
+
+**Escopo de plataforma — ignorar pastas irrelevantes:**
+- Tasks Android/KMP → ignorar `ios/` e `flutter/`
+- Tasks iOS → ignorar `android_kmp/` e `flutter/`
+- Tasks Flutter → ignorar `android_kmp/` e `ios/`
+
+Nunca ler, listar ou referenciar arquivos fora da plataforma da task em execução.
+
+**Quando NÃO usar agent (fazer inline):**
+- Rodada 3 (Docs/Sample) e Rodada 4 (Revisor) — edições simples, o overhead do agent supera o benefício
+- Qualquer task com menos de 10 arquivos a editar e sem necessidade de build isolado
+
+**Quando usar agent com worktree:**
+- Rodadas 1 e 2 — compilação isolada necessária, risco de conflito entre módulos paralelos
+
+**Como montar o prompt de um agent:**
+- Passar os caminhos exatos dos arquivos relevantes
+- Incluir o trecho de código de referência (ex: o builder existente que deve ser replicado)
+- Nunca escrever "leia o projeto e implemente" — especificar o quê e onde
+
+**Modelo por tipo de tarefa:**
+- Edições mecânicas (JSON, doc, registro simples): usar `model: "haiku"`
+- Lógica, compilação e decisões arquiteturais: Sonnet (default)
+
 Após cada mudança de estado relevante (agent iniciado, concluído ou com erro), exibir tabela de progresso:
 
 | Agent | Status | Tasks |
