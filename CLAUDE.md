@@ -160,6 +160,18 @@ commonMain/
 - **`pr.yml`** — build e testes, dispara em todo PR
 - **`generate-tests.yml`** — gera testes unitários automaticamente via Claude API para `.kt` modificados, abre PR separado. Só roda após `pr.yml` passar. Não roda em PRs de bots.
 
+## Review de PRs
+
+Quando um PR for publicado ou quando solicitado, revisar usando `gh pr review` verificando:
+
+1. **Regras arquiteturais** — componente implementa `CraftDBuilder` (ou equivalente), sem dependência entre módulos de plataforma, `commonMain` sem deps de plataforma
+2. **Completude** — builder registrado no `CraftDBuilderManager`, `onAction`/fallback coberto, `ImageProperties` (ou equivalente) no `craftd-core`
+3. **Testes** — testes unitários presentes e com nomenclatura correta em backtick
+4. **Docs** — `docs/how-to-use/` atualizado para a plataforma afetada
+5. **Padrão de código** — prefixo `CraftD`, `Modifier` exposto, sem valores hardcoded de cor/tipografia
+
+Usar `gh pr review <número> --comment -b "<comentário>"` para comentários gerais e `gh api` para comentários em linha específicos.
+
 ---
 
 ## O que não fazer
