@@ -171,6 +171,25 @@ Ao concluir cada task de um `tasks.md`:
 
 Nunca marcar `[x]` antes do build passar.
 
+### Orquestração com agents para componentes Android/KMP
+
+Ao aplicar uma change que adiciona um novo componente Android/KMP (detectável pela estrutura das tasks: core → compose/xml → docs/sample), usar agents paralelos com worktrees isoladas seguindo estas rodadas:
+
+**Rodada 1** — sequencial (core é dependência das demais):
+- Agent Core → tasks de `craftd-core` (model, enum, key)
+
+**Rodada 2** — paralelo (após Rodada 1 mergeada):
+- Agent Compose → tasks de `craftd-compose` (composable, builder, registro, testes)
+- Agent XML → tasks de `craftd-xml` (render, registro)
+
+**Rodada 3** — sequencial (após Rodada 2):
+- Agent Docs/Sample → tasks de documentação e sample app
+
+**Rodada 4** — revisor (após Rodada 3):
+- Agent Revisor → revisa todo o código produzido seguindo as regras de review do CLAUDE.md. Não faz build — cada agent já validou o seu.
+
+Cada agent roda em worktree isolada (`isolation: "worktree"`) e valida o build antes de marcar `[x]`.
+
 ---
 
 ## CI / automação
