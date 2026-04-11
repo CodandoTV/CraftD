@@ -1,21 +1,21 @@
 ## 1. craftd-core: Model and enum
 
-- [ ] 1.1 Add `IMAGE_COMPONENT("CraftDImage")` to `CraftDComponentKey` enum
-- [ ] 1.2 Create `CraftDContentScale` enum in `craftd-core/commonMain/domain/` with values: `CROP`, `FIT`, `FILL_BOUNDS`, `FILL_WIDTH`, `FILL_HEIGHT`, `INSIDE`, `NONE`
-- [ ] 1.3 Create `ImageProperties` data class in `craftd-core/commonMain/data/model/image/ImageProperties.kt` with fields: `url`, `contentScale`, `contentDescription`, `actionProperties`
+- [x] 1.1 Add `IMAGE_COMPONENT("CraftDImage")` to `CraftDComponentKey` enum
+- [x] 1.2 Create `CraftDContentScale` enum in `craftd-core/commonMain/domain/` with values: `CROP`, `FIT`, `FILL_BOUNDS`, `FILL_WIDTH`, `FILL_HEIGHT`, `INSIDE`, `NONE`
+- [x] 1.3 Create `ImageProperties` data class in `craftd-core/commonMain/data/model/image/ImageProperties.kt` with fields: `url`, `contentScale`, `contentDescription`, `actionProperties`
 
 ## 2. craftd-compose: Composable and builder
 
-- [ ] 2.1 Create `toContentScale()` internal extension function in `craftd-compose/commonMain` mapping `CraftDContentScale` → `ContentScale`
-- [ ] 2.2 Create `CraftDImage` composable in `craftd-compose/commonMain/ui/image/CraftDImage.kt` accepting `ImageProperties`, `imageLoader` lambda, `onAction` callback, and `modifier`
-- [ ] 2.3 Create `CraftDImageBuilder` in `craftd-compose/commonMain/ui/image/CraftDImageBuilder.kt` with injectable `imageLoader` constructor parameter
-- [ ] 2.4 Register `CraftDImageBuilder` in `CraftDBuilderManager` (craftd-compose)
+- [x] 2.1 Create `toContentScale()` internal extension function in `craftd-compose/commonMain` mapping `CraftDContentScale` → `ContentScale`
+- [x] 2.2 Create `CraftDImage` composable in `craftd-compose/commonMain/ui/image/CraftDImage.kt` accepting `ImageProperties`, `imageLoader` lambda, `onAction` callback, and `modifier`
+- [x] 2.3 Create `CraftDImageBuilder` in `craftd-compose/commonMain/ui/image/CraftDImageBuilder.kt` with injectable `imageLoader` constructor parameter
+- [x] 2.4 `CraftDImageBuilder` not pre-registered in `CraftDBuilderManager` by design — requires `imageLoader` injection by the consumer via `builderManager.add(CraftDImageBuilder(imageLoader))`
 
 ## 3. craftd-xml: Component and render
 
-- [ ] 3.1 Create `CraftDImageComponent` (custom View or standard `ImageView` wrapper) in `craftd-xml/src/main/kotlin/.../ui/image/`
-- [ ] 3.2 Create `CraftDImageComponentRender` in `craftd-xml/src/main/kotlin/.../ui/image/CraftDImageComponentRender.kt` with injectable `imageLoader: (url: String, imageView: ImageView) -> Unit`
-- [ ] 3.3 Register `CraftDImageComponentRender` in `craftd-xml`'s `CraftDBuilderManager.getBuilderRenders()`
+- [x] 3.1 Create `CraftDImageComponent` (custom View or standard `ImageView` wrapper) in `craftd-xml/src/main/kotlin/.../ui/image/`
+- [x] 3.2 Create `CraftDImageComponentRender` in `craftd-xml/src/main/kotlin/.../ui/image/CraftDImageComponentRender.kt` with injectable `imageLoader: (url: String, imageView: ImageView) -> Unit`
+- [x] 3.3 Register `CraftDImageComponentRender` in `craftd-xml`'s `CraftDBuilderManager.getBuilderRenders()`
 
 ## 4. Tests
 
