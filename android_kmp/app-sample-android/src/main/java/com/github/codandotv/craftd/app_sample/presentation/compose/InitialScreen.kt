@@ -20,11 +20,12 @@ fun InitialScreen(
         CraftDBuilderManager().add(
             MySampleButtonComposeBuilder(),
             CraftDImageBuilder(
-                imageLoader = { url, contentDescription, modifier ->
+                imageLoader = { url, contentDescription, modifier, contentScale ->
                     AsyncImage(
                         model = url,
                         contentDescription = contentDescription,
                         modifier = modifier,
+                        contentScale = contentScale,
                     )
                 }
             ),

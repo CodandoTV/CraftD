@@ -8,7 +8,7 @@ class CraftDImageBuilderTest {
 
     @Test
     fun `given CraftDImageBuilder when created then key matches IMAGE_COMPONENT`() {
-        val builder = CraftDImageBuilder(imageLoader = { _, _, _ -> })
+        val builder = CraftDImageBuilder(imageLoader = { _, _, _, _ -> })
 
         assertEquals(CraftDComponentKey.IMAGE_COMPONENT.key, builder.key)
     }
@@ -16,7 +16,7 @@ class CraftDImageBuilderTest {
     @Test
     fun `given CraftDImageBuilder when created with custom key then key is overridden`() {
         val customKey = "custom_image_key"
-        val builder = CraftDImageBuilder(imageLoader = { _, _, _ -> }, key = customKey)
+        val builder = CraftDImageBuilder(imageLoader = { _, _, _, _ -> }, key = customKey)
 
         assertEquals(customKey, builder.key)
     }

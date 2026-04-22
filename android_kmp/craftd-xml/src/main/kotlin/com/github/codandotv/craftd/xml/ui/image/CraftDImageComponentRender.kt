@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.codandotv.craftd.androidcore.data.convertToElement
 import com.github.codandotv.craftd.androidcore.data.model.base.SimpleProperties
 import com.github.codandotv.craftd.androidcore.data.model.image.ImageProperties
+import com.github.codandotv.craftd.androidcore.domain.CraftDContentScale
 import com.github.codandotv.craftd.androidcore.presentation.CraftDComponentKey
 import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.xml.ui.CraftDViewRenderer
@@ -23,6 +24,8 @@ class CraftDImageComponentRender(
     override fun bindView(model: SimpleProperties, holder: ImageHolder, position: Int) {
         val imageProperties = model.value.convertToElement<ImageProperties>()
 
+        holder.imageView.scaleType = imageProperties?.contentScale.toScaleType()
+
         imageProperties?.url?.let { url ->
             imageLoader(url, holder.imageView)
         }
@@ -37,4 +40,15 @@ class CraftDImageComponentRender(
     override fun createViewHolder(parent: ViewGroup): ImageHolder {
         return ImageHolder(CraftDImageComponent(parent.context))
     }
+}
+
+private fun CraftDContentScale?.toScaleType(): ImageView.ScaleType = when (this) {
+    CraftDContentScale.CROP -> ImageView.ScaleType.CENTER_CROP
+    CraftDContentScale.FIT -> ImageView.ScaleType.FIT_CENTER
+    CraftDContentScale.FILL_BOUNDS -> ImageView.ScaleType.FIT_XY
+    CraftDContentScale.FILL_WIDTH -> ImageView.ScaleType.FIT_XY
+    CraftDContentScale.FILL_HEIGHT -> ImageView.ScaleType.FIT_XY
+    CraftDContentScale.INSIDE -> ImageView.ScaleType.CENTER_INSIDE
+    CraftDContentScale.NONE -> ImageView.ScaleType.FIT_CENTER
+    null -> ImageView.ScaleType.FIT_CENTER
 }
