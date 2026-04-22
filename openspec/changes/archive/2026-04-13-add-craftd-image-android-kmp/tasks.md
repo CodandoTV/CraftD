@@ -3,11 +3,13 @@
 - [x] 1.1 Add `IMAGE_COMPONENT("CraftDImage")` to `CraftDComponentKey` enum
 - [x] 1.2 Create `CraftDContentScale` enum in `craftd-core/commonMain/domain/` with values: `CROP`, `FIT`, `FILL_BOUNDS`, `FILL_WIDTH`, `FILL_HEIGHT`, `INSIDE`, `NONE`
 - [x] 1.3 Create `ImageProperties` data class in `craftd-core/commonMain/data/model/image/ImageProperties.kt` with fields: `url`, `contentScale`, `contentDescription`, `actionProperties`
+- [x] 1.4 *(fix PR review)* Remove `@Stable`/`@Immutable` from `ImageProperties` — anotações `androidx.compose.runtime` proibidas em `commonMain` (regra 4)
 
 ## 2. craftd-compose: Composable and builder
 
 - [x] 2.1 Create `toContentScale()` internal extension function in `craftd-compose/commonMain` mapping `CraftDContentScale` → `ContentScale`
-- [x] 2.2 Create `CraftDImage` composable in `craftd-compose/commonMain/ui/image/CraftDImage.kt` accepting `ImageProperties`, `imageLoader` lambda, `onAction` callback, and `modifier`
+- [x] 2.2 Create `CraftDImage` composable in `craftd-compose/commonMain/ui/image/CraftDImage.kt` accepting `ImageProperties`, `imageLoader` lambda (com `ContentScale`), `onAction` callback, e `modifier`
+- [x] 2.2a *(fix PR review)* `imageLoader` lambda deve incluir `contentScale: ContentScale` como parâmetro e `CraftDImage` deve passar `properties.contentScale.toContentScale()` — antes o `contentScale` era ignorado silenciosamente
 - [x] 2.3 Create `CraftDImageBuilder` in `craftd-compose/commonMain/ui/image/CraftDImageBuilder.kt` with injectable `imageLoader` constructor parameter
 - [x] 2.4 `CraftDImageBuilder` not pre-registered in `CraftDBuilderManager` by design — requires `imageLoader` injection by the consumer via `builderManager.add(CraftDImageBuilder(imageLoader))`
 
@@ -15,13 +17,15 @@
 
 - [x] 3.1 Create `CraftDImageComponent` (custom View or standard `ImageView` wrapper) in `craftd-xml/src/main/kotlin/.../ui/image/`
 - [x] 3.2 Create `CraftDImageComponentRender` in `craftd-xml/src/main/kotlin/.../ui/image/CraftDImageComponentRender.kt` with injectable `imageLoader: (url: String, imageView: ImageView) -> Unit`
+- [x] 3.2a *(fix PR review)* Mapear `contentScale` → `ImageView.scaleType` via `toScaleType()` em `bindView` antes de chamar `imageLoader` — antes o `contentScale` era ignorado no XML
 - [x] 3.3 Register `CraftDImageComponentRender` in `craftd-xml`'s `CraftDBuilderManager.getBuilderRenders()`
 
 ## 4. Tests
 
 - [x] 4.1 Unit test for `ImageProperties` serialization/deserialization (craftd-core)
 - [x] 4.2 Unit test for `toContentScale()` covering all `CraftDContentScale` values
-- [x] 4.3 Unit test for `CraftDImageBuilder` — verify `imageLoader` is called with correct args and `actionProperties` triggers listener
+- [x] 4.3 Unit test para `CraftDImageBuilder` — verifica `key` e override de `key`
+- [ ] 4.4 *(pendente — novo propose)* Complementar testes: verificar que `imageLoader` é chamado com args corretos (url, contentDescription, contentScale) e que `listener.invoke(actionProperties)` é disparado; adicionar testes para `CraftDImageComponentRender` (XML)
 
 ## 5. Documentation
 
