@@ -10,7 +10,7 @@ description: Testing strategies for Android/KMP. Use when creating or reviewing 
 | Nível | Foco | Ferramentas |
 |---|---|---|
 | Unit | Lógica isolada (ViewModels, Repositories, Builders) | JUnit4, MockK |
-| Integration | Interação entre componentes | AndroidX Test, Hilt |
+| Integration | Interação entre componentes | AndroidX Test |
 | Screenshot | Verificação visual de UI | Roborazzi (roda na JVM, sem emulador) |
 
 ## Padrão no CraftD
@@ -25,13 +25,4 @@ description: Testing strategies for Android/KMP. Use when creating or reviewing 
 ```bash
 ./gradlew recordRoborazziDebug   # grava baseline
 ./gradlew verifyRoborazziDebug   # verifica regressão
-```
-
-## Hilt em testes
-
-```kotlin
-@HiltAndroidTest
-class MyTest {
-    @get:Rule val hiltRule = HiltAndroidRule(this)
-}
 ```
