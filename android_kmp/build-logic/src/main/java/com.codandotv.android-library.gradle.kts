@@ -17,6 +17,10 @@ android {
 
     setupCompileOptions()
 
+    kotlinOptions {
+        jvmTarget = Config.jvmTargetValue.target
+    }
+
     setupPackingOptions()
 
     setupAndroidDefaultConfig()
