@@ -31,6 +31,7 @@ kotlinx-coroutines-test = "1.8.1"
 
 # Coil
 coil = "2.6.0"
+coil3 = "3.0.4"
 
 # Maven Publish plugin
 plugin-maven = "0.28.0"
@@ -64,6 +65,8 @@ kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collec
 
 # Coil
 coil_compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+coil3_compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil3" }
+coil3_network_okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil3" }
 
 # Jackson
 fasterxml_jackson = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "jackson" }

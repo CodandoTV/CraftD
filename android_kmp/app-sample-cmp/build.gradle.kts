@@ -44,6 +44,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.coil3.network.okhttp)
         }
         commonMain.dependencies {
             implementation(projects.craftdCompose)
@@ -58,6 +59,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.kotlinx.collections.immutable)
             implementation(compose.components.resources)
+            implementation(libs.coil3.compose)
         }
     }
 }
