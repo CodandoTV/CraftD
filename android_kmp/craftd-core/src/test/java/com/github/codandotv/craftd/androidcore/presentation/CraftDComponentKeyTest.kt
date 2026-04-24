@@ -66,10 +66,11 @@ class CraftDComponentKeyTest {
     @Test
     fun `given all enum constants when iterating then all constants are present`() {
         val constants = CraftDComponentKey.values()
-        assertEquals(3, constants.size)
+        assertEquals(4, constants.size)
         assertEquals(true, constants.contains(CraftDComponentKey.TEXT_VIEW_COMPONENT))
         assertEquals(true, constants.contains(CraftDComponentKey.BUTTON_COMPONENT))
         assertEquals(true, constants.contains(CraftDComponentKey.CHECK_BOX_COMPONENT))
+        assertEquals(true, constants.contains(CraftDComponentKey.IMAGE_COMPONENT))
     }
 
     @Test
@@ -133,7 +134,7 @@ class CraftDComponentKeyTest {
     @Test
     fun `given all components when checking keys are unique then no duplicates exist`() {
         val keys = CraftDComponentKey.values().map { it.key }.toSet()
-        assertEquals(3, keys.size)
+        assertEquals(4, keys.size)
     }
 
     @Test

@@ -10,6 +10,7 @@ import com.github.codandotv.craftd.androidcore.presentation.CraftDViewListener
 import com.github.codandotv.craftd.app_sample.data.SampleCraftDRepository
 import com.github.codandotv.craftd.xml.builder.CraftDBuilderManager
 import com.github.codandotv.craftd.xml.ui.CraftDView
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
@@ -39,9 +40,12 @@ class SampleCraftDViewModel(
         craft.registerRenderers(
             CraftDBuilderManager.getBuilderRenders(
                 simpleProperties = list,
-            ) { action ->
-                listener.invoke(action)
-            })
+                onAction = { action -> listener.invoke(action) },
+                imageLoader = { url, imageView ->
+                    Picasso.get().load(url).into(imageView)
+                },
+            )
+        )
     }
 
     private val listener = object :

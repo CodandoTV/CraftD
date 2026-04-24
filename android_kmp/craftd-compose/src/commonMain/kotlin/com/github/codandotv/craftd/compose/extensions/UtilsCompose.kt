@@ -3,11 +3,13 @@ package com.github.codandotv.craftd.compose.extensions
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.github.codandotv.craftd.androidcore.domain.CraftDAlign
+import com.github.codandotv.craftd.androidcore.domain.CraftDContentScale
 import com.github.codandotv.craftd.androidcore.domain.CraftDTextStyle
 
 fun CraftDTextStyle?.toTextStyle() = when (this) {
@@ -33,6 +35,17 @@ fun CraftDAlign?.toAlignmentCompose() : Alignment.Vertical = when (this) {
     CraftDAlign.CENTER -> Alignment.CenterVertically
     CraftDAlign.BOTTOM -> Alignment.Bottom
     else -> Alignment.Top
+}
+
+internal fun CraftDContentScale?.toContentScale(): ContentScale = when (this) {
+    CraftDContentScale.CROP -> ContentScale.Crop
+    CraftDContentScale.FIT -> ContentScale.Fit
+    CraftDContentScale.FILL_BOUNDS -> ContentScale.FillBounds
+    CraftDContentScale.FILL_WIDTH -> ContentScale.FillWidth
+    CraftDContentScale.FILL_HEIGHT -> ContentScale.FillHeight
+    CraftDContentScale.INSIDE -> ContentScale.Inside
+    CraftDContentScale.NONE -> ContentScale.None
+    null -> ContentScale.Fit
 }
 
 fun String?.parseColorCompose(): Color {
