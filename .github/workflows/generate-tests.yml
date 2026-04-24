@@ -8,9 +8,8 @@ on:
         required: false
         default: ''
 
-  workflow_run:
-    workflows: ["Build and Test for PRs"]
-    types: [completed]
+  pull_request:
+    types: [closed]
 
 permissions:
   contents: write
@@ -24,28 +23,17 @@ jobs:
     if: |
       github.event_name == 'workflow_dispatch' ||
       (
-        github.event.workflow_run.conclusion == 'success' &&
-        github.event.workflow_run.actor.login != 'github-actions[bot]'
+        github.event.pull_request.merged == true &&
+        github.event.pull_request.base.ref == 'main' &&
+        github.event.pull_request.user.login != 'github-actions[bot]'
       )
 
     steps:
-      # ── 1. Normaliza contexto para os dois gatilhos ───────────────────────────
-      - name: Resolve trigger context
-        id: ctx
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "head_sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
-            echo "pr_number=manual" >> "$GITHUB_OUTPUT"
-          else
-            echo "head_sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
-            echo "pr_number=${{ github.event.workflow_run.pull_requests[0].number }}" >> "$GITHUB_OUTPUT"
-          fi
-
-      # ── 2. Checkout ───────────────────────────────────────────────────────────
+      # ── 1. Checkout ───────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.ctx.outputs.head_sha }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.sha || github.event.pull_request.merge_commit_sha }}
           fetch-depth: 0
 
       # ── 3. Verifica se há arquivos .kt modificados ───────────────────────────
@@ -56,7 +44,7 @@ jobs:
             echo "has_kotlin=true" >> "$GITHUB_OUTPUT"
             echo "workflow_dispatch — pulando verificação de .kt"
           else
-            KT=$(git diff --name-only origin/main...HEAD | grep '\.kt$' || true)
+            KT=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...HEAD | grep '\.kt$' || true)
             if [ -n "$KT" ]; then
               echo "has_kotlin=true" >> "$GITHUB_OUTPUT"
               echo "Arquivos .kt detectados:"
@@ -96,8 +84,8 @@ jobs:
             UNCOVERED_COUNT=$(echo "$UNCOVERED" | grep -v "^$" | wc -l | tr -d ' ')
             echo "Modo override — arquivos informados manualmente:"
 
-          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
-            # Modo automático (PR) — apenas .kt modificados no PR sem teste ainda
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Modo automático (PR mergeado) — apenas .kt modificados no PR sem teste ainda
             echo "Modo PR — apenas arquivos .kt modificados neste PR sem cobertura..."
             UNCOVERED=""
             while IFS= read -r SRC; do
@@ -111,7 +99,7 @@ jobs:
                   UNCOVERED="$UNCOVERED"$'\n'"$SRC"
                 fi
               fi
-            done < <(git diff --name-only origin/main...HEAD | grep '\.kt$' | grep -v "Test\.kt" | sort)
+            done < <(git diff --name-only ${{ github.event.pull_request.base.sha }}...HEAD | grep '\.kt$' | grep -v "Test\.kt" | sort)
             UNCOVERED=$(echo "$UNCOVERED" | grep -v "^$" || true)
             UNCOVERED_COUNT=$(echo "$UNCOVERED" | grep -v "^$" | wc -l | tr -d ' ')
 
@@ -223,7 +211,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          PR_NUMBER="${{ steps.ctx.outputs.pr_number }}"
+          PR_NUMBER="${{ github.event_name == 'workflow_dispatch' && 'manual' || github.event.pull_request.number }}"
           BRANCH="${{ steps.commit.outputs.branch }}"
           COVERED="${{ steps.check.outputs.covered_names }}"
           TOTAL="${{ steps.changed.outputs.total }}"
