@@ -1,0 +1,36 @@
+# CraftD — AI Agents Context (Codex / OpenAI)
+
+CraftD is a **Server Driven UI** multiplatform library (Android Compose, Android XML, iOS SwiftUI, Flutter).
+
+## Critical Rules
+
+1. Platform modules never depend on each other — `craftd-compose`, `craftd-xml`, `ios/`, and `flutter/` depend only on `craftd-core`.
+2. Every new component implements the platform abstraction — `CraftDBuilder` on Android/KMP, equivalent protocols on iOS and Flutter.
+3. `onAction`/fallback always covered, even as a no-op.
+4. `commonMain` must have zero platform dependencies — use `expect/actual`.
+5. Every new builder must be registered in `CraftDBuilderManager`.
+6. External libraries injected via constructor — never coupled directly in the builder.
+7. Class names consistent across all platforms (`CraftDImage` everywhere).
+8. `CraftD` prefix on all lib classes and files.
+9. No hardcoded colors or typography — use `MaterialTheme`.
+10. Tests: JUnit4 + MockK, backtick naming `` `given X when Y then Z` ``.
+
+## What NOT to Do
+
+- Do not create components outside `CraftDBuilder` abstraction
+- Do not add platform imports in `commonMain`
+- Do not create cross-platform module dependencies
+- Do not commit `local.properties` or credentials
+
+## Complete Context and Skills
+
+Read these files for full rules, platform patterns, and available skills:
+
+```
+mcp/context/rules.md          ← architectural rules
+mcp/context/module-graph.md   ← module dependencies
+mcp/context/android.md        ← Android/KMP patterns
+mcp/context/ios.md            ← iOS patterns
+mcp/context/flutter.md        ← Flutter patterns
+mcp/context/skills/           ← skills: new-component, review-pr, run-build, android-testing, compose-ui
+```
