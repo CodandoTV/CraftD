@@ -1,24 +1,10 @@
-# CraftD — Architectural Rules
+---
+name: architecture
+description: CraftD architectural rules and code conventions. Use when reviewing, designing, or implementing any component across platforms.
+trigger: when the user asks about architecture, rules, conventions, or what is/isn't allowed in the codebase
+---
 
-CraftD is a **Server Driven UI** multiplatform library. The server decides which components to render and how; the client (app) only executes. Supports Android Compose, Android XML, KMP Compose Multiplatform, iOS SwiftUI, and Flutter.
-
-## Module Structure
-
-```
-android_kmp/
-  craftd-core/          # shared models and abstractions (KMP)
-    commonMain/         # code shared across platforms
-    androidMain/        # Android-specific implementations
-  craftd-compose/       # Compose / KMP implementation
-  craftd-xml/           # View System (XML) implementation
-  app-sample-android/   # Android sample app
-  app-sample-cmp/       # KMP Compose sample app
-  build-logic/          # shared build configuration
-
-ios/craftd-swiftui/     # iOS library (Swift Package + CocoaPods)
-flutter/craftd_widget/  # Flutter library (pub.dev)
-docs/                   # site documentation (MkDocs)
-```
+# CraftD — Architectural Rules & Conventions
 
 ## Architectural Rules — Never Violate
 
@@ -42,13 +28,6 @@ docs/                   # site documentation (MkDocs)
 
 10. **External library dependencies must be abstracted.** Never directly couple a third-party lib (e.g., Coil, Picasso, Glide) inside the builder. Expose an interface/function as a constructor parameter so the consumer injects the implementation.
 
-## Code Conventions
-
-- **Kotlin:** follows official Kotlin conventions. Prefer `data class` for models.
-- **Component naming:** `CraftD` prefix on everything that is part of the lib (e.g., `CraftDButton`, `CraftDButtonBuilder`).
-- **Tests:** JUnit4 + MockK. Backtick naming: `` `given X when Y then Z` ``. Path mirrors source: `src/test/java/...`
-- **Commits:** messages in English, semantic (`feat:`, `fix:`, `test:`, `chore:`, `docs:`).
-
 ## What NOT to Do
 
 - Do not create a component outside the `CraftDBuilder` abstraction (or platform equivalent)
@@ -56,3 +35,10 @@ docs/                   # site documentation (MkDocs)
 - Do not create dependencies between platform modules (`craftd-compose` → `craftd-xml`, for example)
 - Do not commit `local.properties` or credential files
 - Do not use `--no-verify` to bypass CI hooks
+
+## Code Conventions
+
+- **Kotlin:** follows official Kotlin conventions. Prefer `data class` for models.
+- **Component naming:** `CraftD` prefix on everything that is part of the lib (e.g., `CraftDButton`, `CraftDButtonBuilder`).
+- **Tests:** JUnit4 + MockK. Backtick naming: `` `given X when Y then Z` ``. Path mirrors source: `src/test/java/...`
+- **Commits:** messages in English, semantic (`feat:`, `fix:`, `test:`, `chore:`, `docs:`).
