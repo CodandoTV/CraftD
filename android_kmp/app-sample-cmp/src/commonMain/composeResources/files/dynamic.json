@@ -1,5 +1,21 @@
 [
   {
+    "key": "CraftDImage",
+    "value": {
+      "url": "https://picsum.photos/400/200",
+      "contentScale": "CROP",
+      "contentDescription": "Sample image from CraftDImage",
+      "actionProperties": {
+        "deeplink": "craftd://image/1",
+        "analytics": {
+          "category": "image",
+          "action": "tap",
+          "label": "sample_banner"
+        }
+      }
+    }
+  },
+  {
     "key": "CraftDTextView",
     "value": {
       "text": "KMP Works",

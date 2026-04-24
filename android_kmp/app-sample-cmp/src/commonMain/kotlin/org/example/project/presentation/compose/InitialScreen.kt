@@ -6,9 +6,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil3.compose.AsyncImage
 import org.example.project.presentation.compose.customview.MySampleButtonComposeBuilder
 import com.github.codandotv.craftd.compose.builder.CraftDBuilderManager
 import com.github.codandotv.craftd.compose.ui.CraftDynamic
+import com.github.codandotv.craftd.compose.ui.image.CraftDImageBuilder
 import org.example.project.data.SampleCraftDRepositoryImpl
 
 @Composable
@@ -19,6 +21,16 @@ fun InitialScreen(
     val craftdBuilderManager = remember {
         CraftDBuilderManager().add(
             MySampleButtonComposeBuilder(),
+            CraftDImageBuilder(
+                imageLoader = { url, contentDescription, modifier, contentScale ->
+                    AsyncImage(
+                        model = url,
+                        contentDescription = contentDescription,
+                        modifier = modifier,
+                        contentScale = contentScale,
+                    )
+                }
+            ),
         )
     }
     LaunchedEffect(Unit) {

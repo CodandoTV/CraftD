@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew :craftd-xml:assembleDebug)",
+      "Bash(./gradlew :craftd-core:build)",
+      "Bash(git fetch:*)",
+      "Bash(gh pr:*)",
+      "Bash(git merge:*)",
+      "Bash(./gradlew :craftd-core:testDebugUnitTest)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -31,5 +31,11 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material3)
         }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.serialization.json)
+            implementation(compose.runtime)
+        }
     }
 }

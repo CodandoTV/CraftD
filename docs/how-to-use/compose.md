@@ -118,3 +118,65 @@ fun InitialScreen(
 ```
 
 So now enjoy your component!
+
+---
+
+## CraftDImage — Built-in image component
+
+`CraftDImage` is a built-in component for rendering remote images via Server Driven UI. It requires an injected `imageLoader` so the consuming app chooses the image library.
+
+### JSON payload
+
+```json
+{
+  "key": "CraftDImage",
+  "value": {
+    "url": "https://example.com/photo.jpg",
+    "contentScale": "CROP",
+    "contentDescription": "A description for accessibility",
+    "actionProperties": {
+      "deeplink": "myapp://detail/1",
+      "analytics": {
+        "category": "image",
+        "action": "tap",
+        "label": "banner"
+      }
+    }
+  }
+}
+```
+
+Supported `contentScale` values: `CROP`, `FIT`, `FILL_BOUNDS`, `FILL_WIDTH`, `FILL_HEIGHT`, `INSIDE`, `NONE`.
+
+### Registering the builder (with Coil)
+
+`CraftDImageBuilder` is **not** pre-registered in `CraftDBuilderManager` because it requires an `imageLoader` lambda injected by the consumer.
+
+```kotlin
+// build.gradle.kts
+implementation("io.coil-kt:coil-compose:2.6.0")
+```
+
+```kotlin
+@Composable
+fun InitialScreen(vm: SampleViewModel) {
+    val craftdBuilderManager = remember {
+        CraftDBuilderManager().add(
+            CraftDImageBuilder(
+                imageLoader = { url, contentDescription, modifier ->
+                    AsyncImage(
+                        model = url,
+                        contentDescription = contentDescription,
+                        modifier = modifier,
+                    )
+                }
+            )
+        )
+    }
+
+    CraftDynamic(
+        properties = properties,
+        craftDBuilderManager = craftdBuilderManager,
+    ) { action -> /* handle action */ }
+}
+```

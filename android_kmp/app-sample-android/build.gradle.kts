@@ -16,15 +16,13 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation(projects.craftdCore)
-//    implementation(projects.craftdXml)
+    implementation(projects.craftdXml)
     implementation(projects.craftdCompose)
 
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
     implementation(libs.kotlinx.collections.immutable)
-
-    implementation("io.github.codandotv:craftd-xml:1.1.0") // revisar se é necessário junto com `projects.craftdXml`
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -37,6 +35,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation(libs.coil.compose)
 
     implementation("io.insert-koin:koin-androidx-scope:$koin_version")
     implementation("io.insert-koin:koin-androidx-viewmodel:$koin_version")

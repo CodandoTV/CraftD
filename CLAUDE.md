@@ -56,97 +56,26 @@ docs/                   # documentação do site (MkDocs)
 
 ---
 
-## Abstrações principais por plataforma
+## Contexto por plataforma
 
-As três plataformas espelham os mesmos conceitos com nomes equivalentes.
+Antes de iniciar qualquer task, identifique a plataforma e leia o arquivo correspondente em `.claude/instructions/`:
 
-### Android / KMP (Kotlin)
+- Android/KMP → `.claude/instructions/android-patterns.md`
+- iOS → `.claude/instructions/ios-patterns.md`
+- Flutter → `.claude/instructions/flutter-patterns.md`
 
-| Classe | Papel |
-|---|---|
-| `CraftDBuilder` | Interface base para criar componentes |
-| `CraftDBuilderManager` | Registra e resolve builders pelo `key` |
-| `CraftDynamic` | Composable principal que renderiza o SDUI |
-| `SimpleProperties` | Modelo base de dados (`key` + `value` JSON) |
-| `ActionProperties` | Dados de ação (deeplink + analytics) |
-| `CraftDComponentKey` | Enum com as chaves de componentes built-in |
-| `CraftDViewListener` | Callback de ações para o consumidor |
+Ao gerar um `proposal.md` via `/propose`, detecte a plataforma na descrição do usuário e adicione frontmatter no início do arquivo:
 
-### iOS / SwiftUI (Swift — `ios/craftd-swiftui/`)
-
-| Classe | Papel |
-|---|---|
-| `CraftDBuilder` | Protocol base para criar componentes |
-| `CraftDBuilderManager` | Registra e resolve builders pelo `key` |
-| `CraftDynamic` | View principal que renderiza o SDUI |
-| `SimpleProperties` | Modelo base de dados |
-| `ActionProperties` | Dados de ação (deeplink + analytics) |
-| `CraftDViewListener` | Callback de ações para o consumidor |
-
-### Flutter (Dart — `flutter/craftd_widget/`)
-
-| Classe | Papel |
-|---|---|
-| `CraftDynamic` | Widget principal que renderiza o SDUI |
-| `CraftDViewListener` | Callback de ações para o consumidor |
-| `SimpleProperties` | Modelo base de dados |
-| `ActionProperties` | Dados de ação (deeplink + analytics) |
-| `CraftDAlign` | Alinhamento de componentes |
-
-> Ao adicionar um novo componente, ele deve ser implementado nas três plataformas seguindo a mesma abstração de cada uma. Consultar `CraftDButton` / `CraftDButtonBuilder` como referência em todas.
-
+```
 ---
-
-## Padrão de estrutura de pastas
-
-### craftd-core (modelos e abstrações)
-```
-commonMain/
-  data/
-    model/
-      base/       → SimpleProperties, SimplePropertiesResponse
-      action/     → ActionProperties, AnalyticsProperties
-      [name]/     → [Name]Properties.kt para cada componente
-  domain/         → enums e sealed classes (CraftDAlign, CraftDTextStyle)
-  presentation/   → CraftDViewListener, CraftDComponentKey
-  extensions/     → funções de extensão
-```
-
-### craftd-compose (implementação Compose/KMP)
-```
-commonMain/
-  builder/        → CraftDBuilder.kt (interface), CraftDBuilderManager.kt
-  ui/
-    [name]/
-      CraftD[Name].kt         → o @Composable do componente
-      CraftD[Name]Builder.kt  → implementa CraftDBuilder
-  extensions/     → funções utilitárias Compose
-```
-
-### Padrão por novo componente (exemplo: CraftDImage)
-
-1. `craftd-core/commonMain/data/model/image/ImageProperties.kt` — data class do modelo
-2. `craftd-compose/commonMain/ui/image/CraftDImage.kt` — composable
-3. `craftd-compose/commonMain/ui/image/CraftDImageBuilder.kt` — builder
-4. Equivalentes em `ios/craftd-swiftui/` e `flutter/craftd_widget/` com a mesma estrutura
-
+platform: android   # mencionou android / compose / xml / kmp
+platform: ios       # mencionou ios / swiftui / swift
+platform: flutter   # mencionou flutter / dart
+platform: all       # multiplatforma ou não ficou claro
 ---
+```
 
-## Princípios de desenvolvimento
-
-### Compose
-- Composables devem ser **stateless** — estado vem sempre do caller (state hoisting)
-- Todo componente expõe `modifier: Modifier = Modifier` como parâmetro
-- Sem valores hardcoded de cor ou tipografia — usar `MaterialTheme.colorScheme` e `MaterialTheme.typography`
-- Todo componente interativo deve ter **touch target mínimo de 48x48dp**
-
-### Arquitetura
-- A camada `domain` não pode ter dependências Android — apenas Kotlin puro
-- Repositórios usam `suspend functions` main-safe
-
-### Build
-- Dependências sempre via `libs.versions.toml` — nunca versão hardcoded no `build.gradle.kts`
-- Configuração compartilhada entre módulos vai em convention plugin no `build-logic/`
+Ao iniciar `/apply`, leia o campo `platform:` do `proposal.md` da change e carregue o arquivo de instructions correspondente antes de qualquer outra leitura.
 
 ---
 
@@ -156,6 +85,84 @@ commonMain/
 - **Nomenclatura de componentes:** prefixo `CraftD` em tudo que é parte da lib (ex: `CraftDButton`, `CraftDButtonBuilder`).
 - **Testes:** JUnit4 + MockK. Nomenclatura em backtick: `` `given X when Y then Z` ``. Path espelha o source: `src/test/java/...`
 - **Commits:** mensagens em inglês, semânticas (`feat:`, `fix:`, `test:`, `chore:`, `docs:`).
+
+---
+
+## Implementação de tasks
+
+Ao concluir cada task de um `tasks.md`:
+1. Implemente o código da task
+2. Rode `./gradlew build` no módulo afetado (`android_kmp/`)
+3. Corrija erros de compilação se houver
+4. Só então marque `[x]` no `tasks.md`
+
+Nunca marcar `[x]` antes do build passar.
+
+### Orquestração com agents para componentes Android/KMP
+
+Ao aplicar uma change que adiciona um novo componente Android/KMP (detectável pela estrutura das tasks: core → compose/xml → docs/sample), usar agents paralelos com worktrees isoladas seguindo estas rodadas:
+
+**Rodada 1** — sequencial (core é dependência das demais):
+- Agent Core → tasks de `craftd-core` (model, enum, key)
+
+**Rodada 2** — paralelo (após Rodada 1 mergeada):
+- Agent Compose → tasks de `craftd-compose` (composable, builder, registro, testes)
+- Agent XML → tasks de `craftd-xml` (render, registro)
+
+**Rodada 3** — sequencial (após Rodada 2):
+- Agent Docs/Sample → tasks de documentação e sample app
+
+**Rodada 4** — revisor (após Rodada 3):
+- Agent Revisor → revisa todo o código produzido seguindo as regras de review do CLAUDE.md. Não faz build — cada agent já validou o seu.
+
+Cada agent roda em worktree isolada (`isolation: "worktree"`) e valida o build antes de marcar `[x]`.
+
+### Custo de contexto — diretrizes para agents
+
+**Escopo de plataforma — ignorar pastas irrelevantes:**
+- Tasks Android/KMP → ignorar `ios/` e `flutter/`
+- Tasks iOS → ignorar `android_kmp/` e `flutter/`
+- Tasks Flutter → ignorar `android_kmp/` e `ios/`
+
+Nunca ler, listar ou referenciar arquivos fora da plataforma da task em execução.
+
+**Quando NÃO usar agent (fazer inline):**
+- Rodada 3 (Docs/Sample) e Rodada 4 (Revisor) — edições simples, o overhead do agent supera o benefício
+- Qualquer task com menos de 10 arquivos a editar e sem necessidade de build isolado
+
+**Quando usar agent com worktree:**
+- Rodadas 1 e 2 — compilação isolada necessária, risco de conflito entre módulos paralelos
+
+**Como montar o prompt de um agent:**
+- Passar os caminhos exatos dos arquivos relevantes
+- Incluir o trecho de código de referência (ex: o builder existente que deve ser replicado)
+- Nunca escrever "leia o projeto e implemente" — especificar o quê e onde
+
+**Modelo por tipo de tarefa:**
+- Edições mecânicas (JSON, doc, registro simples): usar `model: "haiku"`
+- Lógica, compilação e decisões arquiteturais: Sonnet (default)
+
+Após cada mudança de estado relevante (agent iniciado, concluído ou com erro), exibir tabela de progresso:
+
+| Agent | Status | Tasks |
+|---|---|---|
+| Agent Core | ✓ Completo | 1.x |
+| Agent Compose | ⟳ Rodando | 2.x |
+| Agent XML | ⏳ Aguardando | 3.x |
+
+Ícones: `⟳` rodando, `✓` completo, `⏳` aguardando, `✗` erro.
+
+Durante a execução, reportar progresso no formato:
+
+```
+[Agent Core]     ✓ 1.1 IMAGE_COMPONENT adicionado
+[Agent Core]     ✓ 1.2 CraftDContentScale criado
+[Agent Compose]  ⟳ 2.2 Criando CraftDImage composable...
+[Agent XML]      ⟳ 3.1 Criando CraftDImageComponent...
+[Agent Compose]  ✓ 2.2 CraftDImage composable criado
+```
+
+Usar `⟳` para em progresso e `✓` para concluído. Reportar a cada task iniciada e concluída.
 
 ---
 
