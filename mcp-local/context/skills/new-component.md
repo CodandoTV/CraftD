@@ -102,4 +102,4 @@ Fix any compilation errors before proceeding.
 
 ## iOS / Flutter
 
-Follow the same pattern adapted to each platform. See `mcp/context/ios.md` and `mcp/context/flutter.md` for platform-specific folder structure and conventions.
+Follow the same pattern adapted to each platform. See `mcp-local/context/ios.md` and `mcp-local/context/flutter.md` for platform-specific folder structure and conventions.

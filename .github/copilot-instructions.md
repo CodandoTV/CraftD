@@ -27,10 +27,10 @@ CraftD is a **Server Driven UI** multiplatform library (Android Compose, Android
 For full architectural rules, platform patterns, module graph, and available skills, read:
 
 ```
-mcp/context/rules.md          ← architectural rules and conventions
-mcp/context/module-graph.md   ← module dependencies
-mcp/context/android.md        ← Android/KMP patterns
-mcp/context/ios.md            ← iOS/SwiftUI patterns
-mcp/context/flutter.md        ← Flutter patterns
-mcp/context/skills/           ← available skills (new-component, review-pr, run-build, ...)
+mcp-local/context/rules.md          ← architectural rules and conventions
+mcp-local/context/module-graph.md   ← module dependencies
+mcp-local/context/android.md        ← Android/KMP patterns
+mcp-local/context/ios.md            ← iOS/SwiftUI patterns
+mcp-local/context/flutter.md        ← Flutter patterns
+mcp-local/context/skills/           ← available skills (new-component, review-pr, run-build, ...)
 ```

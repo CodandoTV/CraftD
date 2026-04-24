@@ -10,8 +10,8 @@ O resultado: devs que usam Copilot ou Cursor no mesmo repo trabalham sem as regr
 ## Goals / Non-Goals
 
 **Goals:**
-- Criar `mcp/context/` como fonte única de verdade para qualquer ferramenta de IA
-- Cada ferramenta tem arquivo nativo leve com essencial inline + referência a `mcp/context/`
+- Criar `mcp-local/context/` como fonte única de verdade para qualquer ferramenta de IA
+- Cada ferramenta tem arquivo nativo leve com essencial inline + referência a `mcp-local/context/`
 - Skills autodescritivas com `name` e `description` que qualquer modelo descobre ao ler
 - Comunidade entende o padrão ao abrir qualquer pasta nativa (explicativo em inglês + diagrama)
 - Zero infraestrutura — apenas arquivos markdown
@@ -19,7 +19,7 @@ O resultado: devs que usam Copilot ou Cursor no mesmo repo trabalham sem as regr
 **Non-Goals:**
 - MCP Server com processo rodando (futuro, se necessário)
 - Garantir comportamento idêntico entre todos os modelos (cada um interpreta à sua maneira)
-- Migrar o sistema de skills estruturadas do `.claude/skills/` (formato YAML interno) — apenas criar versões em `mcp/context/skills/` legíveis por qualquer modelo
+- Migrar o sistema de skills estruturadas do `.claude/skills/` (formato YAML interno) — apenas criar versões em `mcp-local/context/skills/` legíveis por qualquer modelo
 
 ## Decisions
 
@@ -46,17 +46,17 @@ mcp/
 
 | Ferramenta | Arquivo nativo | Estratégia |
 |---|---|---|
-| Claude Code | `CLAUDE.md` | Atualizar referências para `mcp/context/` |
+| Claude Code | `CLAUDE.md` | Atualizar referências para `mcp-local/context/` |
 | GitHub Copilot | `.github/copilot-instructions.md` | Novo — essencial inline + referência |
 | Cursor | `.cursorrules` | Novo — essencial inline + referência |
 | Gemini (Google IDX) | `.gemini/context.md` | Novo — essencial inline + referência |
 | Codex / OpenAI | `AGENTS.md` | Novo — essencial inline + referência |
 
-**Decisão:** cada arquivo nativo carrega as 5-8 regras mais críticas inline (garante que qualquer modelo as leia, mesmo sem seguir a referência) e adiciona `For complete rules and skills, read mcp/context/` ao final.
+**Decisão:** cada arquivo nativo carrega as 5-8 regras mais críticas inline (garante que qualquer modelo as leia, mesmo sem seguir a referência) e adiciona `For complete rules and skills, read mcp-local/context/` ao final.
 
 **Alternativa descartada:** arquivo nativo apenas como apontador. Risco: modelos com contexto limitado ou implementações inconsistentes ignoram a instrução de ir ler outra pasta.
 
-### Conteúdo das skills em mcp/context/skills/
+### Conteúdo das skills em mcp-local/context/skills/
 
 Cada skill é um markdown autodescritivo:
 
@@ -82,7 +82,7 @@ Cada pasta nativa ganha um arquivo `AI_CONTEXT.md` (ou `README.md` onde faz sent
 
 ## Risks / Trade-offs
 
-- **[Risco] Modelos ignoram a referência a `mcp/context/`** → Mitigado mantendo regras críticas inline em cada arquivo nativo
-- **[Risco] `mcp/context/` fica desatualizado** → O nome da pasta (`mcp/`) pode confundir — não é um MCP Server, é contexto. Mitigado com `README.md` explicativo claro
-- **[Trade-off] Alguma duplicação intencional** → Regras críticas aparecem tanto no arquivo nativo quanto em `mcp/context/rules.md`. Aceito: o arquivo nativo é o "resumo garantido", o `mcp/context/` é o "detalhe completo"
-- **[Risco] `.claude/skills/` e `mcp/context/skills/` coexistem** → As skills em `.claude/skills/` têm formato estruturado para o Claude Code; as de `mcp/context/skills/` são markdown livre para qualquer modelo. Diferentes propósitos, podem coexistir sem conflito
+- **[Risco] Modelos ignoram a referência a `mcp-local/context/`** → Mitigado mantendo regras críticas inline em cada arquivo nativo
+- **[Risco] `mcp-local/context/` fica desatualizado** → O nome da pasta (`mcp/`) pode confundir — não é um MCP Server, é contexto. Mitigado com `README.md` explicativo claro
+- **[Trade-off] Alguma duplicação intencional** → Regras críticas aparecem tanto no arquivo nativo quanto em `mcp-local/context/rules.md`. Aceito: o arquivo nativo é o "resumo garantido", o `mcp-local/context/` é o "detalhe completo"
+- **[Risco] `.claude/skills/` e `mcp-local/context/skills/` coexistem** → As skills em `.claude/skills/` têm formato estruturado para o Claude Code; as de `mcp-local/context/skills/` são markdown livre para qualquer modelo. Diferentes propósitos, podem coexistir sem conflito

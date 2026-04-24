@@ -16,7 +16,7 @@ graph TD
     GE["Gemini<br/><code>.gemini/context.md</code>"]
     OA["Codex / OpenAI<br/><code>AGENTS.md</code>"]
 
-    CTX["📁 mcp/context/"]
+    CTX["📁 mcp-local/context/"]
     RULES["rules.md"]
     GRAPH["module-graph.md"]
     AND["android.md"]
@@ -57,9 +57,9 @@ graph TD
 
 This structure can be copied to any public repository as a starting point for centralized AI context:
 
-1. Create `mcp/context/` with your project's rules and platform patterns
+1. Create `mcp-local/context/` with your project's rules and platform patterns
 2. Create a native file for each AI tool you use (see examples in this repo)
-3. Each native file: include critical rules inline + point to `mcp/context/` for details
+3. Each native file: include critical rules inline + point to `mcp-local/context/` for details
 4. Add skills as Markdown files with `name`, `description`, and `trigger` frontmatter
 
-The native files ensure basic context even if the tool doesn't follow the `mcp/context/` reference. The central folder provides complete context for tools that do.
+The native files ensure basic context even if the tool doesn't follow the `mcp-local/context/` reference. The central folder provides complete context for tools that do.

@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cada ferramenta tem arquivo nativo com regras essenciais inline
-O projeto SHALL manter um arquivo nativo para cada ferramenta de IA suportada contendo as regras arquiteturais mais críticas diretamente no arquivo (inline), garantindo funcionamento mesmo sem leitura de `mcp/context/`.
+O projeto SHALL manter um arquivo nativo para cada ferramenta de IA suportada contendo as regras arquiteturais mais críticas diretamente no arquivo (inline), garantindo funcionamento mesmo sem leitura de `mcp-local/context/`.
 
 #### Scenario: Copilot funciona sem configuração adicional
 - **WHEN** um desenvolvedor abre o projeto com GitHub Copilot
@@ -13,17 +13,17 @@ O projeto SHALL manter um arquivo nativo para cada ferramenta de IA suportada co
 
 #### Scenario: Claude Code funciona sem configuração adicional
 - **WHEN** um desenvolvedor abre o projeto com Claude Code
-- **THEN** `CLAUDE.md` é lido automaticamente com as regras críticas e referência a `mcp/context/`
+- **THEN** `CLAUDE.md` é lido automaticamente com as regras críticas e referência a `mcp-local/context/`
 
-### Requirement: Arquivos nativos referenciam mcp/context/ para detalhes completos
-Todo arquivo nativo SHALL incluir ao final uma instrução explícita para ler `mcp/context/` para regras completas e skills disponíveis.
+### Requirement: Arquivos nativos referenciam mcp-local/context/ para detalhes completos
+Todo arquivo nativo SHALL incluir ao final uma instrução explícita para ler `mcp-local/context/` para regras completas e skills disponíveis.
 
 #### Scenario: Modelo com suporte a leitura de contexto externo carrega detalhes
 - **WHEN** um modelo capaz de ler arquivos externos processa o arquivo nativo
-- **THEN** encontra a instrução `For complete rules and skills, read mcp/context/` e carrega o contexto completo
+- **THEN** encontra a instrução `For complete rules and skills, read mcp-local/context/` e carrega o contexto completo
 
 #### Scenario: Modelo sem suporte a leitura externa ainda funciona
-- **WHEN** um modelo ignora a referência a `mcp/context/`
+- **WHEN** um modelo ignora a referência a `mcp-local/context/`
 - **THEN** ainda possui as regras críticas inline e pode trabalhar com o projeto corretamente
 
 ### Requirement: Ferramentas suportadas cobrem Claude, Copilot, Cursor, Gemini e Codex

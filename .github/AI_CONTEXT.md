@@ -5,7 +5,7 @@ This folder (`.github/`) contains GitHub-specific configuration: workflows, issu
 The **complete AI context** (architectural rules, platform patterns, available skills) lives in a single central location to avoid duplication across tools:
 
 ```
-📁 mcp/context/   ← single source of truth for all AI tools
+📁 mcp-local/context/   ← single source of truth for all AI tools
 ```
 
 ## Why This Structure?
@@ -19,7 +19,7 @@ graph LR
     CURSOR["Cursor<br/><code>.cursorrules</code>"]
     OTHER["Other tools..."]
 
-    MCP["📁 mcp/context/<br/>Single Source of Truth"]
+    MCP["📁 mcp-local/context/<br/>Single Source of Truth"]
 
     COPILOT -->|references| MCP
     CLAUDE -->|references| MCP
@@ -31,13 +31,13 @@ graph LR
 
 | File | Purpose |
 |---|---|
-| `copilot-instructions.md` | Copilot native context — critical rules inline + reference to `mcp/context/` |
+| `copilot-instructions.md` | Copilot native context — critical rules inline + reference to `mcp-local/context/` |
 | `workflows/` | CI/CD automation (build, test, auto-generate tests) |
 | `AI_CONTEXT.md` | This file — explains the AI context structure for the community |
 
 ## Quick Reference
 
-- Full rules → `mcp/context/rules.md`
-- Module dependencies → `mcp/context/module-graph.md`
-- Platform patterns → `mcp/context/android.md`, `ios.md`, `flutter.md`
-- Skills (any tool) → `mcp/context/skills/`
+- Full rules → `mcp-local/context/rules.md`
+- Module dependencies → `mcp-local/context/module-graph.md`
+- Platform patterns → `mcp-local/context/android.md`, `ios.md`, `flutter.md`
+- Skills (any tool) → `mcp-local/context/skills/`

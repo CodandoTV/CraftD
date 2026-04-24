@@ -58,11 +58,11 @@ docs/                   # documentação do site (MkDocs)
 
 ## Contexto por plataforma
 
-Antes de iniciar qualquer task, identifique a plataforma e leia o arquivo correspondente em `mcp/context/`:
+Antes de iniciar qualquer task, identifique a plataforma e leia o arquivo correspondente em `mcp-local/context/`:
 
-- Android/KMP → `mcp/context/android.md`
-- iOS → `mcp/context/ios.md`
-- Flutter → `mcp/context/flutter.md`
+- Android/KMP → `mcp-local/context/android.md`
+- iOS → `mcp-local/context/ios.md`
+- Flutter → `mcp-local/context/flutter.md`
 
 Ao gerar um `proposal.md` via `/propose`, detecte a plataforma na descrição do usuário e adicione frontmatter no início do arquivo:
 
