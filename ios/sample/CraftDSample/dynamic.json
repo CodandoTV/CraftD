@@ -373,5 +373,18 @@
         }
       }
     }
+  },
+  {
+    "key": "CraftDProgressBar",
+    "value": {
+        "text": "Loading...",
+        "alignment": "RIGHT",
+        "textAlign": "CENTER",
+        "progressColor": "#FFAA00",
+        "textColor": "#00FFBB",
+        "progress": 0.65,
+        "height": 12.0,
+        "spaceBetween": 32.0
+      }
   }
 ]
