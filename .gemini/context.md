@@ -1,6 +1,6 @@
-# CraftD — Claude Code
+# CraftD — Gemini
 
-> Start every session by reading `mcp-local/init.md`. If the file was fully read, the session token at the end will be present — confirm it before responding.
+> Start every session by reading `mcp-local/init.md`.
 
 ## Context Files
 
