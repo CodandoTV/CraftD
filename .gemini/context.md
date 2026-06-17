@@ -13,13 +13,3 @@ CraftD is a Server Driven UI multiplatform library (Android Compose, Android XML
 5. Every new builder must be registered in `CraftDBuilderManager`.
 6. `CraftD` prefix on all lib classes and files.
 7. No hardcoded colors or typography — use `MaterialTheme`.
-
-## Context Files
-
-```
-ia/module-graph.md         ← module dependency graph
-ia/instructions/android.md ← Android/KMP patterns
-ia/instructions/ios.md     ← iOS/SwiftUI patterns
-ia/instructions/flutter.md ← Flutter patterns
-ia/skills/                 ← skills: architecture, compose-ui, android-testing, android-gradle-logic, ...
-```
