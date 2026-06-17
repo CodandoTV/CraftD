@@ -1,14 +1,25 @@
 # CraftD — Gemini
 
-> Start every session by reading `mcp-local/init.md`.
+> Read `AGENTS.md` at the start of every session for full project context.
+
+CraftD is a Server Driven UI multiplatform library (Android Compose, Android XML, iOS SwiftUI, Flutter).
+
+## Critical Rules
+
+1. Platform modules never depend on each other — `craftd-compose`, `craftd-xml`, `ios/`, and `flutter/` depend only on `craftd-core`.
+2. Every new component implements `CraftDBuilder` (Android/KMP) or equivalent protocol.
+3. `onAction`/fallback always covered, even as a no-op.
+4. `commonMain` must have zero platform dependencies — use `expect/actual`.
+5. Every new builder must be registered in `CraftDBuilderManager`.
+6. `CraftD` prefix on all lib classes and files.
+7. No hardcoded colors or typography — use `MaterialTheme`.
 
 ## Context Files
 
 ```
-mcp-local/init.md                 ← initializer: project overview, tasks, agents, CI, review
-mcp-local/module-graph.md         ← module dependency graph
-mcp-local/instructions/android.md ← Android/KMP patterns
-mcp-local/instructions/ios.md     ← iOS/SwiftUI patterns
-mcp-local/instructions/flutter.md ← Flutter patterns
-mcp-local/skills/                 ← skills: architecture, compose-ui, android-testing, android-gradle-logic, ...
+ia/module-graph.md         ← module dependency graph
+ia/instructions/android.md ← Android/KMP patterns
+ia/instructions/ios.md     ← iOS/SwiftUI patterns
+ia/instructions/flutter.md ← Flutter patterns
+ia/skills/                 ← skills: architecture, compose-ui, android-testing, android-gradle-logic, ...
 ```

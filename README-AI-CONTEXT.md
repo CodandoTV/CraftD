@@ -3,29 +3,34 @@
 CraftD uses multiple AI coding tools (Claude Code, GitHub Copilot, Gemini, Cursor, etc.). Instead of maintaining separate context files for each tool — which would quickly diverge — all tools point to the same source.
 
 ```
-📁 mcp-local/   ← single source of truth for all AI tools
+📄 AGENTS.md  ← single source of truth (master initializer)
+📁 ia/        ← detailed context: instructions, skills, module graph
 ```
 
 ```mermaid
 graph LR
     CLAUDE["Claude Code<br/><code>CLAUDE.md</code>"]
     COPILOT["GitHub Copilot<br/><code>.github/copilot-instructions.md</code>"]
+    CURSOR["Cursor<br/><code>.cursorrules</code>"]
     GEMINI["Gemini<br/><code>.gemini/context.md</code>"]
-    OTHER["Other tools..."]
+    CODEX["Codex / OpenAI<br/>(reads natively)"]
 
-    MCP["📁 mcp-local/<br/>Single Source of Truth"]
+    AG["📄 AGENTS.md<br/>Master Initializer"]
+    IA["📁 ia/<br/>Detailed Context"]
 
-    CLAUDE -->|references| MCP
-    COPILOT -->|references| MCP
-    GEMINI -->|references| MCP
-    OTHER -->|references| MCP
+    CLAUDE -->|reads| AG
+    COPILOT -->|reads| AG
+    CURSOR -->|reads| AG
+    GEMINI -->|reads| AG
+    CODEX -->|reads| AG
+
+    AG -->|references| IA
 ```
 
-## mcp-local/ structure
+## ia/ structure
 
 ```
-mcp-local/
-  init.md                 ← initializer: read this first every session
+ia/
   module-graph.md         ← module dependency graph
   instructions/
     android.md            ← Android/KMP patterns
@@ -45,8 +50,8 @@ mcp-local/
 
 | Location | Tool | Purpose |
 |---|---|---|
-| `CLAUDE.md` | Claude Code | Entry point → points to `mcp-local/` |
-| `.gemini/context.md` | Gemini | Entry point → points to `mcp-local/` |
-| `.github/copilot-instructions.md` | GitHub Copilot | Entry point → points to `mcp-local/` |
-| `.claude/skills/` | Claude Code | Native skills (openspec-propose, apply, explore, archive) |
-| `.github/skills/` | GitHub Copilot | Native skills (openspec-propose, apply, explore, archive) |
+| `AGENTS.md` | All tools | Master initializer — single source of truth |
+| `CLAUDE.md` | Claude Code | Entry point → reads `AGENTS.md` |
+| `.gemini/context.md` | Gemini | Entry point → reads `AGENTS.md` |
+| `.github/copilot-instructions.md` | GitHub Copilot | Entry point → reads `AGENTS.md` |
+| `.cursorrules` | Cursor | Entry point → reads `AGENTS.md` |
