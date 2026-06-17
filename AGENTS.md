@@ -64,6 +64,22 @@ When starting `/apply`, read the `platform:` field from the change's `proposal.m
 
 ---
 
+## Available Skills
+
+Before starting any task, check if a skill exists for it:
+
+```
+ia/skills/new-component.md      ← step-by-step for creating a new CraftD component
+ia/skills/architecture.md       ← architectural rules and code conventions
+ia/skills/compose-ui.md         ← Compose component checklist and patterns
+ia/skills/android-testing.md    ← Android/KMP testing strategies
+ia/skills/android-gradle-logic.md ← build-logic and version catalog
+ia/skills/review-pr.md          ← PR review checklist
+ia/skills/run-build.md          ← how to run builds per platform
+```
+
+---
+
 ## Implementing Tasks
 
 When completing each task from a `tasks.md`:
