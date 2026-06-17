@@ -66,7 +66,12 @@ When starting `/apply`, read the `platform:` field from the change's `proposal.m
 
 ## Available Skills
 
-Before starting any task, check `ia/skills/` for an existing skill that covers it. Each file is a self-contained guide — read the relevant one before proceeding.
+Before starting any task:
+1. List all files in `ia/skills/`
+2. Identify which one covers the current task
+3. Read that file in full before proceeding
+
+Each skill file is a self-contained guide. Never skip this step — the skill may contain patterns, checklists, or constraints that are not obvious from the code alone.
 
 ---
 
