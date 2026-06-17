@@ -7,7 +7,16 @@
       "Bash(gh pr:*)",
       "Bash(git merge:*)",
       "Bash(./gradlew :craftd-core:testDebugUnitTest)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(./gradlew :craftd-core:build :craftd-compose:build :craftd-xml:build)",
+      "Bash(git stash:*)",
+      "Bash(./gradlew :craftd-core:testReleaseUnitTest)",
+      "Bash(./gradlew :craftd-core:assembleRelease :craftd-compose:assembleRelease :craftd-xml:assembleRelease)",
+      "Bash(git push:*)",
+      "Read(//Users/rodrigo/rep/CraftD/**)",
+      "Bash(openspec list:*)",
+      "Bash(./gradlew :app-sample-cmp:assembleDebug)"
     ]
   }
 }
