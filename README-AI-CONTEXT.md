@@ -4,7 +4,7 @@ CraftD uses multiple AI coding tools (Claude Code, GitHub Copilot, Gemini, Curso
 
 ```
 📄 AGENTS.md  ← single source of truth (master initializer)
-📁 ia/        ← detailed context: instructions, skills, module graph
+📁 ai/        ← detailed context: instructions, skills, module graph
 ```
 
 ```mermaid
@@ -16,7 +16,7 @@ graph LR
     CODEX["Codex / OpenAI<br/>(reads natively)"]
 
     AG["📄 AGENTS.md<br/>Master Initializer"]
-    IA["📁 ia/<br/>Detailed Context"]
+    IA["📁 ai/<br/>Detailed Context"]
 
     CLAUDE -->|reads| AG
     COPILOT -->|reads| AG
@@ -27,10 +27,10 @@ graph LR
     AG -->|references| IA
 ```
 
-## ia/ structure
+## ai/ structure
 
 ```
-ia/
+ai/
   module-graph.md         ← module dependency graph
   instructions/
     android.md            ← Android/KMP patterns

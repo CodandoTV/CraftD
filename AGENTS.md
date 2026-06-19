@@ -32,7 +32,7 @@ flutter/craftd_widget/  # Flutter library (pub.dev)
 docs/                   # site documentation (MkDocs)
 ```
 
-Full module dependency graph → `ia/module-graph.md`
+Full module dependency graph → `ai/module-graph.md`
 
 ---
 
@@ -40,9 +40,9 @@ Full module dependency graph → `ia/module-graph.md`
 
 Before starting any task, identify the platform and read the corresponding file:
 
-- Android/KMP → `ia/instructions/android.md`
-- iOS → `ia/instructions/ios.md`
-- Flutter → `ia/instructions/flutter.md`
+- Android/KMP → `ai/instructions/android.md`
+- iOS → `ai/instructions/ios.md`
+- Flutter → `ai/instructions/flutter.md`
 
 Ignore folders outside the platform of the current task:
 - Android/KMP tasks → ignore `ios/` and `flutter/`
@@ -67,7 +67,7 @@ When starting `/apply`, read the `platform:` field from the change's `proposal.m
 ## Available Skills
 
 Before starting any task:
-1. List all files in `ia/skills/`
+1. List all files in `ai/skills/`
 2. Identify which one covers the current task
 3. Read that file in full before proceeding
 
@@ -103,7 +103,7 @@ When applying a change that adds a new Android/KMP component (detectable by the 
 - Agent Docs/Sample → documentation and sample app tasks
 
 **Round 4** — reviewer (after Round 3):
-- Agent Reviewer → reviews all produced code against the rules in `ia/skills/architecture.md`. No build — each agent already validated theirs.
+- Agent Reviewer → reviews all produced code against the rules in `ai/skills/architecture.md`. No build — each agent already validated theirs.
 
 Each agent runs in an isolated worktree (`isolation: "worktree"`) and validates the build before marking `[x]`.
 
