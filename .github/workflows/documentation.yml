@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
 jobs:
-  documentation:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
