@@ -7,7 +7,6 @@ on:
     paths:
       - "docs/**"
       - "mkdocs.yml"
-      - ".github/workflows/documentation.yml"
 
 permissions:
   contents: write
