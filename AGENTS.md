@@ -29,7 +29,7 @@ android_kmp/
 
 ios/craftd-swiftui/     # iOS library (Swift Package + CocoaPods)
 flutter/craftd_widget/  # Flutter library (pub.dev)
-docs/                   # site documentation (MkDocs)
+docs/                   # site documentation (Zensical)
 ```
 
 Full module dependency graph → `ai/module-graph.md`

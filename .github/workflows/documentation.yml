@@ -1,13 +1,14 @@
 name: documentation
 on:
   workflow_dispatch:
-
   pull_request:
     branches:
       - main
     paths:
       - "docs/**"
       - "mkdocs.yml"
+      - ".github/workflows/documentation.yml"
+
 permissions:
   contents: write
 jobs:
@@ -25,9 +26,13 @@ jobs:
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: zensical-${{ env.cache_id }}
           path: .cache
           restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+            zensical-
+      - run: pip install zensical==0.0.46
+      - run: zensical build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
