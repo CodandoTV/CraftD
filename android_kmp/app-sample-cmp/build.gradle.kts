@@ -68,7 +68,7 @@ kotlin {
             implementation(libs.coil3.network.okhttp)
         }
         commonMain.dependencies {
-            implementation(libs.craftd.compose)
+            implementation(projects.craftdCompose)
             implementation(compose.runtime)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
