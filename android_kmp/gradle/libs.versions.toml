@@ -1,4 +1,5 @@
 [versions]
+craftd = "1.1.1"
 androidx-activity = "1.11.0"
 androidx-lifecycle = "2.9.4"
 
@@ -40,6 +41,9 @@ plugin-maven = "0.28.0"
 androidx-lifecycle-viewmodelCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+craftd-core = { module = "io.github.codandotv:craftd-core", version.ref = "craftd" }
+craftd-compose = { module = "io.github.codandotv:craftd-compose", version.ref = "craftd" }
+craftd-xml = { module = "io.github.codandotv:craftd-xml", version.ref = "craftd" }
 plugin_maven = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "plugin-maven" }
 kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }

@@ -10,14 +10,35 @@ plugins {
 
 android {
     namespace = "com.codandotv.appsamplecmp"
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "org.example.project"
         minSdk = 24
         targetSdk = 36
-        compileSdk = 36
         versionCode = 1
         versionName = "1.0"
+    }
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
+    buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = false
+        }
+        getByName("release") {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+            signingConfig = signingConfigs.getByName("release")
+        }
     }
 }
 
