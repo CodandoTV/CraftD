@@ -1,0 +1,2 @@
+-keep class com.github.codandotv.craftd.compose.** { *; }
+-keepnames class com.github.codandotv.craftd.compose.** { *; }

@@ -1,0 +1,2 @@
+-keep class com.github.codandotv.craftd.xml.** { *; }
+-keepnames class com.github.codandotv.craftd.xml.** { *; }
