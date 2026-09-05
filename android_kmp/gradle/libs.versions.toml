@@ -43,6 +43,7 @@ androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 craftd-core = { module = "io.github.codandotv:craftd-core", version.ref = "craftd" }
 craftd-compose = { module = "io.github.codandotv:craftd-compose", version.ref = "craftd" }
+craftd-xml = { module = "io.github.codandotv:craftd-xml", version.ref = "craftd" }
 plugin_maven = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "plugin-maven" }
 kotlin_gradle_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 android_gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "android_gradle_plugin" }
